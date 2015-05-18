@@ -20,11 +20,8 @@ find_root <- function(filename, contents = NULL, n = -1L, path = getwd(), ...) {
   repeat {
     files <- list_files(path, filename)
     for (f in files) {
-      if (!is.null(contents)) {
-        fc <- readLines(f, n)
-        if (!any(grepl(contents, fc))) {
-          next
-        }
+      if (!match_contents(f, contents, n)) {
+        next
       }
       return(file.path(path, ...))
     }
@@ -48,6 +45,15 @@ list_files <- function(path, filename) {
   files <- subset(files, !isdir)
   files <- rownames(files)
   files
+}
+
+match_contents <- function(f, contents, n) {
+  if (is.null(contents)) {
+    return(TRUE)
+  }
+
+  fc <- readLines(f, n)
+  any(grepl(contents, fc))
 }
 
 is_root <- function(path) {
