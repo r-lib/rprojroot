@@ -56,6 +56,7 @@ match_contents <- function(f, contents, n) {
   any(grepl(contents, fc))
 }
 
+# Borrowed from devtools
 is_root <- function(path) {
   identical(path, dirname(path))
 }
