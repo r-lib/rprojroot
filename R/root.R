@@ -18,10 +18,7 @@ find_root <- function(filename, contents = NULL, n = -1L, path = getwd(), ...) {
   path <- normalizePath(path, mustWork = TRUE)
 
   repeat {
-    files <- dir(path = path, pattern = filename, all.files = TRUE)
-    files <- file.info(file.path(path, files), extra_cols = FALSE)
-    files <- subset(files, !isdir)
-    files <- rownames(files)
+    files <- list_files(path, filename)
     for (f in files) {
       if (!is.null(contents)) {
         fc <- readLines(f, n)
@@ -43,6 +40,14 @@ find_root <- function(filename, contents = NULL, n = -1L, path = getwd(), ...) {
 
     path <- normalizePath(file.path(path, ".."))
   }
+}
+
+list_files <- function(path, filename) {
+  files <- dir(path = path, pattern = filename, all.files = TRUE)
+  files <- file.info(file.path(path, files), extra_cols = FALSE)
+  files <- subset(files, !isdir)
+  files <- rownames(files)
+  files
 }
 
 is_root <- function(path) {
