@@ -42,8 +42,7 @@ find_root <- function(filename, contents = NULL, n = -1L, path = getwd(), ...) {
 list_files <- function(path, filename) {
   files <- dir(path = path, pattern = filename, all.files = TRUE)
   files <- file.info(file.path(path, files), extra_cols = FALSE)
-  files <- subset(files, !isdir)
-  files <- rownames(files)
+  files <- rownames(files)[!files$isdir]
   files
 }
 
