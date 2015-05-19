@@ -20,6 +20,8 @@
 #' find_root(glob2rx("DESCRIPTION"), "^Package: ")
 #'
 #' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
+#'
+#' @export
 find_root <- function(filename, contents = NULL, n = -1L, path = getwd()) {
   original_path <- path
   path <- normalizePath(path, mustWork = TRUE)

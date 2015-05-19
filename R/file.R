@@ -23,6 +23,8 @@
 #' make_find_root_file(glob2rx("DESCRIPTION"), "^Package: ")
 #'
 #' @seealso \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
+#'
+#' @export
 find_root_file <- function(..., filename, contents = NULL, n = -1L, path = getwd()) {
   root <- find_root(filename = filename, contents = contents, n = n, path = path)
   file.path(root, ...)
