@@ -1,3 +1,6 @@
+Version 0.0-1 (2015-05-19)
+===
+
 - Initial version
 - Main workhorse function `find_root`
 - Wrapper `find_root_file`
