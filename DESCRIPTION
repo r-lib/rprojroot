@@ -5,12 +5,14 @@ Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: What the package does (one paragraph)
 Depends:
     R (>= 3.2.0)
-License: GPL-3
-LazyData: true
-Encoding: UTF-8
-GitHub: https://github.com/krlmlr/rprojroot
 Suggests:
     testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+License: GPL-3
+LazyData: true
+Encoding: UTF-8
+GitHub: https://github.com/krlmlr/rprojroot
+URL: https://krlmlr.github.io/rprojroot
+BugReports: https://github.com/krlmlr/rprojroot/issues
