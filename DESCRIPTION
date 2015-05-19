@@ -7,7 +7,7 @@ Description: Robust, reliable and flexible paths to files below a project root.
     whose name matches a given pattern and whose contents optionally match
     another pattern.
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.0.0)
 Suggests:
     testthat,
     knitr,
