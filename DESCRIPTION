@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: What the Package Does (one line, title case)
-Version: 0.0-1
+Version: 0.0-2
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: What the package does (one paragraph)
 Depends:

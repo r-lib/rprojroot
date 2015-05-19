@@ -1,3 +1,6 @@
+Version 0.0-2 (2015-05-19)
+===
+
 - Factory `make_fix_root_file` that fixes the working directory
 
 Version 0.0-1 (2015-05-19)
