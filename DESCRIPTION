@@ -8,7 +8,7 @@ Depends:
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-GitHub: https://github.com/krlmlr/
+GitHub: https://github.com/krlmlr/rprojroot
 Suggests:
     testthat,
     knitr,
