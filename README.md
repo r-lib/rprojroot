@@ -4,7 +4,7 @@ rprojroot [![wercker status](https://app.wercker.com/status/c4dfa136cd78514514e2
 This package helps accessing files relative to a *project root*. Install from GitHub:
 
 ``` r
-devtools::install("krlmlr/MakefileR")
+devtools::install("krlmlr/rprojroot")
 ```
 
 See the [vignette](http://krlmlr.github.io/rprojroot/vignettes/rprojroot.html) for more detail.
