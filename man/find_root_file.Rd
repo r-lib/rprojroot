@@ -5,11 +5,14 @@
 \alias{find_root_file}
 \alias{find_rstudio_root_file}
 \alias{make_find_root_file}
+\alias{make_fix_root_file}
 \title{File paths relative to the root of a directory hierarchy}
 \usage{
 find_root_file(..., filename, contents = NULL, n = -1L, path = getwd())
 
 make_find_root_file(filename, contents = NULL, n = -1L)
+
+make_fix_root_file(filename, contents = NULL, n = -1L)
 
 find_rstudio_root_file(..., path = getwd())
 
@@ -41,11 +44,15 @@ appends an arbitrary number of path components to the root using
 \code{\link[base]{file.path}}.
 The function \code{make_find_root_file} can be used to create shorthand functions
 such as \code{find_rstudio_root_file} and \code{find_package_root_file}.
-You may want to alias the latter two with a much shorter name in your code.
+In many cases, the function \code{make_fix_root_file} is even more useful:
+It creates a shorthand function that is tied to a fixed root (as opposed to
+\code{make_find_root_file} which creates a function that will look for the
+root every time it is called).
 }
 \examples{
 find_package_root_file("tests", "testthat.R")
 make_find_root_file(glob2rx("DESCRIPTION"), "^Package: ")
+make_fix_root_file(glob2rx("DESCRIPTION"), "^Package: ")
 }
 \seealso{
 \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}

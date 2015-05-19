@@ -84,6 +84,29 @@ class(try(dir.exists(R("man"))))
 ```
 
 
+## Fixed root
+
+If there is only one root, things get even simpler: We can create a function
+that computes a path relative to the root *at creation time*.
+
+```{r}
+F <- make_fix_root_file(glob2rx("DESCRIPTION"))
+formals(F)
+readLines(F("NAMESPACE"))
+```
+
+This even works if we later change the working directory to somewhere outside
+the project:
+
+```{r}
+local({
+  oldwd <- setwd("../..")
+  on.exit(setwd(oldwd), add = TRUE)
+  file.size(F("NAMESPACE"))
+})
+```
+
+
 ## Summary
 
 The `rprojroot` package allows easy access to files below a project root
@@ -91,7 +114,9 @@ which is supposed to be the only directory in the whole hierarchy that contains
 a specific file.
 This is a robust solution for finding project files in largish projects
 with a subdirectory hierarchy if the current working directory cannot be assumed
-fixed (but can be assumed to be somewhere below the project root).
+fixed.
+(However, at least initially, the current working directory must be
+somewhere below the project root.)
 
 
 ## Acknowledgement
