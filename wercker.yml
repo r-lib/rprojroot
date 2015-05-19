@@ -1,0 +1,32 @@
+box: krlmlr/r-test
+build:
+  steps:
+    - script:
+        name: submodules
+        code: if ! make init; then fail "Init of submodules failed"; fi
+    - script:
+        name: install
+        code: if ! make dependencies; then fail "Install failed"; fi
+    - script:
+        name: test
+        code: if ! make test; then fail "Test failed"; fi
+    - script:
+        name: codecov
+        code: if ! make covr; then fail "Coverage failed"; fi
+    - script:
+        name: lint
+        code: if ! make lintr; then fail "Linting failed"; fi
+    - script:
+        name: staticdocs
+        code: if ! make staticdocs; then fail "Building docs failed"; fi
+deploy:
+  steps:
+    - leipert/add-ssh-key-gh-bb@0.0.6:
+        keyname: DEPLOY_SSH
+    - add-to-known_hosts:
+        hostname: github.com
+        fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+    - leipert/git-push@0.7.6:
+        host: github.com
+        gh_pages: true
+        basedir: inst/web
