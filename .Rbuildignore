@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.gitignore$
+^README\.md$
+^NEWS\.md$
+^NEWS\.md\.tmpl$
