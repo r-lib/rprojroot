@@ -34,6 +34,9 @@ If a root is found, the \code{...} arguments are used to construct a path;
 thus, if no extra arguments are given, the root is returned.
 If no root is found, an error is thrown.
 }
+\examples{
+find_root(glob2rx("DESCRIPTION"), "^Package: ")
+}
 \seealso{
 \code{\link[utils]{glob2rx}} \code{\link{file.path}}
 }

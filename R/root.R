@@ -16,6 +16,9 @@
 #' @return The normalized path of the root as specified by the search criteria.
 #'   Throws an error if no root is found
 #'
+#' @examples
+#' find_root(glob2rx("DESCRIPTION"), "^Package: ")
+#'
 #' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
 find_root <- function(filename, contents = NULL, n = -1L, path = getwd()) {
   original_path <- path

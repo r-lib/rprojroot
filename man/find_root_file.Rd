@@ -43,6 +43,10 @@ The function \code{make_find_root_file} can be used to create shorthand function
 such as \code{find_rstudio_root_file} and \code{find_package_root_file}.
 You may want to alias the latter two with a much shorter name in your code.
 }
+\examples{
+find_package_root_file("tests", "testthat.R")
+make_find_root_file(glob2rx("DESCRIPTION"), "^Package: ")
+}
 \seealso{
 \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
 }
