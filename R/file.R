@@ -22,9 +22,11 @@
 #'   Throws an error if no root is found
 #'
 #' @examples
+#' \dontrun{
 #' find_package_root_file("tests", "testthat.R")
 #' make_find_root_file(glob2rx("DESCRIPTION"), "^Package: ")
 #' make_fix_root_file(glob2rx("DESCRIPTION"), "^Package: ")
+#' }
 #'
 #' @seealso \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
 #'

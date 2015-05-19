@@ -50,9 +50,11 @@ It creates a shorthand function that is tied to a fixed root (as opposed to
 root every time it is called).
 }
 \examples{
+\dontrun{
 find_package_root_file("tests", "testthat.R")
 make_find_root_file(glob2rx("DESCRIPTION"), "^Package: ")
 make_fix_root_file(glob2rx("DESCRIPTION"), "^Package: ")
+}
 }
 \seealso{
 \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}

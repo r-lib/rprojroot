@@ -17,7 +17,9 @@
 #'   Throws an error if no root is found
 #'
 #' @examples
+#' \dontrun{
 #' find_root(glob2rx("DESCRIPTION"), "^Package: ")
+#' }
 #'
 #' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
 #'
