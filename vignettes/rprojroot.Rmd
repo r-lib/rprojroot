@@ -121,6 +121,6 @@ somewhere below the project root.)
 
 ## Acknowledgement
 
-This package was inspired by the
-["Stop working directory insanity"](https://gist.github.com/jennybc/362f52446fe1ebc4c49f)
-gist by Jennifer Bryan, and by the way Git knows where its files are.
+This package was inspired by the gist
+["Stop the working directory insanity"](https://gist.github.com/jennybc/362f52446fe1ebc4c49f)
+by Jennifer Bryan, and by the way Git knows where its files are.
