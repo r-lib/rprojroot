@@ -1,10 +1,10 @@
 ---
-title: "Finding files reliably"
+title: "Finding files in project subdirectories"
 author: "Kirill Müller"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Finding files reliably}
+  %\VignetteIndexEntry{Finding files in project subdirectories}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,11 +15,12 @@ in any largish project:
 How to find files in subdirectories?
 Relative file paths are almost always preferable to absolute paths,
 but relative to what should they be?
-Unfortunately, we cannot always be sure about the value of the working directory:
-For instance, in RStudio,
-sometimes it's the project root (when running R scripts),
-sometimes a subdirectory (when building vignettes),
-sometimes again the project root (when executing chunks of a vignette):
+Unfortunately, we cannot always be sure about the current working directory:
+For instance, in RStudio it's sometimes:
+
+- the project root (when running R scripts),
+- a subdirectory (when building vignettes),
+- again the project root (when executing chunks of a vignette).
 
 ```{r}
 basename(getwd())
@@ -30,10 +31,11 @@ If we could only get hold of our...
 
 ## Project root
 
-The *root* of a project is defined as a directory that contains a regular file
-whose name matches a given pattern and whose contents optionally match
-another pattern.
-Thus, the following method reliably finds our project root:
+We assume a self-contained project
+where all files and directories are located below a common *root* directory.
+Often, this root contains a regular file whose name matches a given pattern,
+and/or whose contents match another pattern.
+In this case, the following method reliably finds our project root:
 
 - Start the search in any subdirectory of our project
 - Proceed up the directory hierarchy until finding a file that matches
@@ -61,7 +63,9 @@ file.exists(find_root_file("R", "root.R", filename = glob2rx("DESCRIPTION")))
 ```
 
 Note that the following code produces identical results when building the
-vignette *and* when sourcing the chunk, provided that the project root is the current working directory or a parent thereof.
+vignette *and* when sourcing the chunk in RStudio,
+provided that the project root is the current working directory
+or a parent thereof.
 
 
 ## Practical use
@@ -87,8 +91,9 @@ P <- find_package_root_file
 file.exists(P("vignettes", "rprojroot.Rmd"))
 ```
 
-You might also want to define your project root differently
-(this fails here -- we look for a file named `LICENSE` which is absent):
+Different notions of a project root are conceivable.
+The next example looks for a file named `LICENSE` which is absent,
+querying the root results in an error:
 
 ```{r}
 # Define a function that computes file paths below a directory with a file named LICENSE
@@ -96,7 +101,7 @@ R <- make_find_root_file(glob2rx("LICENSE"))
 R
 
 # Our package does not have such a file, trying to find the root results in an error
-class(try(dir.exists(R("man"))))
+class(try(R())))
 ```
 
 
@@ -113,8 +118,7 @@ F <- make_fix_root_file(glob2rx("DESCRIPTION"))
 readLines(F("NAMESPACE"))
 ```
 
-This even works if we later change the working directory to somewhere outside
-the project:
+This function can be used even if we later change the working directory to somewhere outside the project:
 
 ```{r}
 # Print the size of the namespace file, working directory outside the project
