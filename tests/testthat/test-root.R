@@ -10,7 +10,7 @@ test_that("", {
   path <- hierarchy(4L)
 
   with_mock(
-    is_root = function(x) x == stop_path,
+    `rprojroot:::is_root` = function(x) x == stop_path,
     expect_equal(find_root(glob2rx("a"), path = path), hierarchy(3L)),
     expect_equal(find_root(glob2rx("b"), path = path), hierarchy(3L)),
     expect_equal(find_root(glob2rx("c"), path = path), hierarchy(1L)),
