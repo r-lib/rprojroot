@@ -86,7 +86,7 @@ class(try(dir.exists(R("man"))))
 
 ## Summary
 
-The `rprojroot` allows easy access to files below a project root
+The `rprojroot` package allows easy access to files below a project root
 which is supposed to be the only directory in the whole hierarchy that contains
 a specific file.
 This is a robust solution for finding project files in largish projects
