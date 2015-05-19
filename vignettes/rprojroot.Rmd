@@ -1,18 +1,19 @@
 ---
-title: "Project roots"
+title: "Finding files reliably"
 author: "Kirill Müller"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Finding files reliably}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-This package solves a trivial but annoying problem that occurs sooner or later
+The `rprojroot` package solves a seemingly trivial but annoying problem
+that occurs sooner or later
 in any project that is large enough to be spread over subdirectories.
 Relative file paths are almost always preferable to absolute paths,
-but relative to what?
+but relative to what should they be?
 Unfortunately, we cannot always be sure about the value of the working directory:
 For instance, in RStudio,
 sometimes it's the project root (when running R scripts),
@@ -43,9 +44,57 @@ repository.
 
 ## A simple example
 
+Note that the following code produces identical results when building the
+vignette *and* when sourcing the chunk, provided that the project root is the current working directory or a parent thereof:
+
 ```{r}
 library(rprojroot)
 basename(find_root("DESCRIPTION"))
-file.exists(find_root_file("DESCRIPTION", "R", "root.R"))
+file.exists(find_root_file("R", "root.R", filename = "DESCRIPTION"))
 ```
+
+
+## Practical use
+
+You can save some time for RStudio projects and packages:
+
+```{r}
+print(find_package_root_file)
+head(readLines(find_package_root_file("vignettes", "rprojroot.Rmd")))
+```
+
+If you're lazy, define a shortcut:
+
+```{r}
+P <- find_package_root_file
+file.exists(P("vignettes", "rprojroot.Rmd"))
+```
+
+Legacy code can benefit immediately if the `file.path` function is overwritten.
+
+You might also want to define your project root differently
+(this fails here -- we look for a file named `LICENSE` which is absent):
+
+```{r}
+R <- make_find_root_file(glob2rx("LICENSE"))
+R
+class(try(dir.exists(R("man"))))
+```
+
+
+## Summary
+
+The `rprojroot` allows easy access to files below a project root
+which is supposed to be the only directory in the whole hierarchy that contains
+a specific file.
+This is a robust solution for finding project files in largish projects
+with a subdirectory hierarchy if the current working directory cannot be assumed
+fixed (but can be assumed to be somewhere below the project root).
+
+
+## Acknowledgement
+
+This package was inspired by the
+["Stop working directory insanity"](https://gist.github.com/jennybc/362f52446fe1ebc4c49f)
+gist by Jennifer Bryan.
 
