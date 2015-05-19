@@ -4,11 +4,9 @@ make_find_root_file <- function(filename, contents = NULL, n = -1L) {
   force(filename)
   force(contents)
   force(n)
-  ret <- function(..., path = getwd()) {
-    find_root_file(filename = filename, contents = contents, n = n, ..., path = path)
-  }
-  environment(ret) <- environment(find_root)
-  ret
+  eval(bquote(function(..., path = getwd()) {
+    find_root_file(..., filename = .(filename), contents = .(contents), n = .(n), path = path)
+  }))
 }
 
 #' @rdname find_root_file
