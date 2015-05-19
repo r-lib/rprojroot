@@ -7,7 +7,7 @@
 \alias{make_find_root_file}
 \title{File paths relative to the root of a directory hierarchy}
 \usage{
-find_root_file(filename, contents = NULL, n = -1L, ..., path = getwd())
+find_root_file(..., filename, contents = NULL, n = -1L, path = getwd())
 
 make_find_root_file(filename, contents = NULL, n = -1L)
 
@@ -16,13 +16,13 @@ find_rstudio_root_file(..., path = getwd())
 find_package_root_file(..., path = getwd())
 }
 \arguments{
+\item{...}{Additional arguments passed to \code{\link{file.path}}}
+
 \item{filename,contents}{Regular expressions to match the file name or contents}
 
 \item{n}{integer.  The (maximal) number of lines to
     read.  Negative values indicate that one should read up to the end of
     input on the connection.}
-
-\item{...}{Additional arguments passed to \code{\link{file.path}}}
 
 \item{path}{The start directory}
 }
