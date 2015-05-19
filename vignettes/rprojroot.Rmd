@@ -53,8 +53,8 @@ or throws an error if there is no such directory.
 ```{r}
 library(rprojroot)
 
-# List all files below the root
-dir(find_root(glob2rx("DESCRIPTION")), recursive = TRUE)
+# List all files and directories below the root
+dir(find_root(glob2rx("DESCRIPTION")))
 
 # Find a file relative to the root
 file.exists(find_root_file("R", "root.R", filename = glob2rx("DESCRIPTION")))
