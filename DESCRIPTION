@@ -10,4 +10,7 @@ LazyData: true
 Encoding: UTF-8
 GitHub: https://github.com/krlmlr/
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
