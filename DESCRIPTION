@@ -1,8 +1,11 @@
 Package: rprojroot
-Title: What the Package Does (one line, title case)
+Title: Finding Files Reliably
 Version: 0.0-2
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
-Description: What the package does (one paragraph)
+Description: Robust, reliable and flexible paths to files below a project root.
+    The 'root' of a project is defined as a directory that contains a regular file
+    whose name matches a given pattern and whose contents optionally match
+    another pattern.
 Depends:
     R (>= 3.2.0)
 Suggests:
