@@ -46,52 +46,70 @@ repository.
 
 ## A simple example
 
-Note that the following code produces identical results when building the
-vignette *and* when sourcing the chunk, provided that the project root is the current working directory or a parent thereof:
+The `find_root` function is the central function of this package.
+It returns the path to the first directory that matches the filtering criteria,
+or throws an error if there is no such directory.
 
 ```{r}
 library(rprojroot)
-basename(find_root("DESCRIPTION"))
-file.exists(find_root_file("R", "root.R", filename = "DESCRIPTION"))
+
+# List all files below the root
+dir(find_root(glob2rx("DESCRIPTION"), recursive = TRUE)
+
+# Find a file relative to the root
+file.exists(find_root_file("R", "root.R", filename = glob2rx("DESCRIPTION")))
 ```
+
+Note that the following code produces identical results when building the
+vignette *and* when sourcing the chunk, provided that the project root is the current working directory or a parent thereof.
 
 
 ## Practical use
 
-You can save some time for RStudio projects and packages:
+To avoid specifying the search criteria for the project root every time,
+shortcut functions can be created.
+Shortcuts are predefined for RStudio projects and packages:
 
 ```{r}
+# Show definition of shortcut function
 print(find_package_root_file)
+
+# Print first lines of the source for this document
 head(readLines(find_package_root_file("vignettes", "rprojroot.Rmd")))
 ```
 
-If you're lazy, define a shortcut:
+To save typing effort, define a shorter alias:
 
 ```{r}
 P <- find_package_root_file
+
+# Use a shorter alias
 file.exists(P("vignettes", "rprojroot.Rmd"))
 ```
-
-Legacy code can benefit immediately if the `file.path` function is overwritten.
 
 You might also want to define your project root differently
 (this fails here -- we look for a file named `LICENSE` which is absent):
 
 ```{r}
+# Define a function that computes file paths below a directory with a file named LICENSE
 R <- make_find_root_file(glob2rx("LICENSE"))
 R
+
+# Our package does not have such a file, trying to find the root results in an error
 class(try(dir.exists(R("man"))))
 ```
 
 
 ## Fixed root
 
-If there is only one root, things get even simpler: We can create a function
+We can also create a function
 that computes a path relative to the root *at creation time*.
 
 ```{r}
+# Define a function that computes file paths below the current root
 F <- make_fix_root_file(glob2rx("DESCRIPTION"))
-formals(F)
+
+# Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
 ```
 
@@ -99,6 +117,7 @@ This even works if we later change the working directory to somewhere outside
 the project:
 
 ```{r}
+# Print the size of the namespace file, working directory outside the project
 local({
   oldwd <- setwd("../..")
   on.exit(setwd(oldwd), add = TRUE)
