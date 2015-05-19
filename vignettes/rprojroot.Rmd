@@ -11,7 +11,8 @@ vignette: >
 
 The `rprojroot` package solves a seemingly trivial but annoying problem
 that occurs sooner or later
-in any project that is large enough to be spread over subdirectories.
+in any largish project:
+How to find files in subdirectories?
 Relative file paths are almost always preferable to absolute paths,
 but relative to what should they be?
 Unfortunately, we cannot always be sure about the value of the working directory:
@@ -30,11 +31,12 @@ If we could only get hold of our...
 ## Project root
 
 The *root* of a project is defined as a directory that contains a regular file
-whose name matches a given pattern and which optionally contains a given text.
+whose name matches a given pattern and whose contents optionally match
+another pattern.
 Thus, the following method reliably finds our project root:
 
 - Start the search in any subdirectory of our project
-- Proceeding up the directory hierarchy until finding a file that matches
+- Proceed up the directory hierarchy until finding a file that matches
 the criteria
 
 The Git version control system (and probably many other tools) use a similar
