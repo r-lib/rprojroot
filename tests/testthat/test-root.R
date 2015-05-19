@@ -15,7 +15,7 @@ test_that("", {
     expect_equal(find_root(glob2rx("b"), path = path), hierarchy(3L)),
     expect_equal(find_root(glob2rx("c"), path = path), hierarchy(1L)),
     expect_equal(find_root(glob2rx("d"), path = path), hierarchy(4L)),
-    expect_equal(find_root(glob2rx("*.Rproj"), "^Version: ", 1, path = path), hierarchy(1L)),
+    expect_equal(find_root(glob2rx("DESCRIPTION"), "^Package: ", 1, path = path), hierarchy(1L)),
     expect_equal(find_root(glob2rx("DESCRIPTION"), "^Package: ", path = path), hierarchy(1L)),
     expect_error(find_root(glob2rx("test-root.R"), path = path), "No file .* found"),
     expect_error(find_root(glob2rx("rprojroot.Rproj"), path = path), "No file .* found"),
