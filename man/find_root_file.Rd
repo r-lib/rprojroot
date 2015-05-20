@@ -10,9 +10,9 @@
 \usage{
 find_root_file(..., criterion, path = getwd())
 
-make_find_root_file(filename, contents = NULL, n = -1L)
+make_find_root_file(criterion)
 
-make_fix_root_file(filename, contents = NULL, n = -1L)
+make_fix_root_file(criterion)
 
 find_rstudio_root_file(..., path = getwd())
 
