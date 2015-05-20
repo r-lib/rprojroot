@@ -101,7 +101,7 @@ R <- make_find_root_file(glob2rx("LICENSE"))
 R
 
 # Our package does not have such a file, trying to find the root results in an error
-class(try(R())))
+class(try(R()))
 ```
 
 
