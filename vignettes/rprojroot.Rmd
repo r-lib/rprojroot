@@ -108,9 +108,6 @@ The `find_package_root_file` is a shortcut for
 `find_root_file(..., criterion = is_r_package)`:
 
 ```{r}
-# Show definition of shortcut function
-print(find_package_root_file)
-
 # Print first lines of the source for this document
 head(readLines(find_package_root_file("vignettes", "rprojroot.Rmd")))
 ```
@@ -129,15 +126,11 @@ function.
 As our project does not have a file named `LICENSE`,
 querying the root results in an error:
 
-```{r}
+```{r error = TRUE}
 # Use the has_license criterion to find the root
 R <- make_find_root_file(has_license)
-R
-```
 
-
-```{r error = TRUE}
-# Our package does not have such a file, trying to find the root results in an error
+# Our package does not have a LICENSE file, trying to find the root results in an error
 R()
 ```
 

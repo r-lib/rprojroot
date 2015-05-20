@@ -3,7 +3,6 @@
 make_find_root_file <- function(criterion) {
   force(criterion)
   eval(bquote(function(..., path = getwd()) {
-    criterion = .(criterion)
     find_root_file(..., criterion = criterion, path = path)
   }))
 }
