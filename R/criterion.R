@@ -27,6 +27,11 @@ root_criterion <- function(testfun, desc) {
   )
 }
 
+#' @rdname root_criterion
+#' @param x An object
+#' @export
+is.root_criterion <- function(x) inherits(x, "root_criterion")
+
 #' @export
 format.root_criterion <- function(x, ...) {
   paste("Root criterion:", x$desc)

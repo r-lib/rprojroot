@@ -2,10 +2,13 @@
 % Please edit documentation in R/criterion.R, R/has-file.R
 \name{root_criterion}
 \alias{has_file}
+\alias{is.root_criterion}
 \alias{root_criterion}
 \title{Is a directory the project root?}
 \usage{
 root_criterion(testfun, desc)
+
+is.root_criterion(x)
 
 has_file(filename, contents = NULL, n = -1L)
 }
@@ -15,6 +18,8 @@ if the directory specified by this parameter is the project root,
 and \code{FALSE} otherwise}
 
 \item{desc}{A textual description of the test criterion}
+
+\item{x}{An object}
 
 \item{filename,contents}{Regular expressions to match the file name or contents}
 
