@@ -1,3 +1,6 @@
+- Criterion concept: constructors `root_criterion` and `has_file`
+- All functions that used to accept `filename` + `contents` + `n` now accept only a criterion
+
 Version 0.0-2 (2015-05-19)
 ===
 
