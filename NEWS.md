@@ -1,3 +1,6 @@
+Version 0.0-4 (2015-05-20)
+===
+
 - New variables `criteria`, `is_rstudio_project`, `is_r_package`
 - New function `has_file_pattern` (was previously `has_file`); the `has_file` function now checks the entire file name without pattern matching
 
