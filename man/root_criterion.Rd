@@ -23,6 +23,13 @@ and \code{FALSE} otherwise}
     input on the connection.}
 }
 \description{
-TBD
+Objects of the \code{root_criterion} class decide if a
+given directory is a project root.
+}
+\details{
+Construct criteria using \code{root_criterion} in a very general fashion
+by specifying a function with a \code{path} argument, and a description.
+The \code{has_file} function constructs a criterion that checks for the
+existence of a specific file with specific contents.
 }
 
