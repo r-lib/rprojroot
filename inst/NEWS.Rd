@@ -1,6 +1,12 @@
 \name{NEWS}
 \title{News for Package 'rprojroot'}
 \encoding{UTF-8}
+\section{Changes in rprojroot version 0.0-4 (2015-05-20)}{
+  \itemize{
+    \item New variables \code{criteria}, \code{is_rstudio_project}, \code{is_r_package}
+    \item New function \code{has_file_pattern} (was previously \code{has_file}); the \code{has_file} function now checks the entire file name without pattern matching
+  }
+}
 \section{Changes in rprojroot version 0.0-3 (2015-05-20)}{
   \itemize{
     \item Criterion concept: constructors \code{root_criterion} and \code{has_file}
