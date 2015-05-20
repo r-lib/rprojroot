@@ -1,6 +1,7 @@
 #' @rdname root_criterion
 #' @param filename,contents Regular expressions to match the file name or contents
 #' @inheritParams base::readLines
+#' @export
 has_file <- function(filename, contents = NULL, n = -1L) {
   force(filename)
   force(contents)
