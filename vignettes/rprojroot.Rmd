@@ -33,13 +33,13 @@ If we could only get hold of our...
 
 We assume a self-contained project
 where all files and directories are located below a common *root* directory.
-Often, this root contains a regular file whose name matches a given pattern,
-and/or whose contents match another pattern.
+Also, there should be a way to correctly identify this root directory.
+(Often, the root contains a regular file whose name matches a given pattern,
+and/or whose contents match another pattern.)
 In this case, the following method reliably finds our project root:
 
 - Start the search in any subdirectory of our project
-- Proceed up the directory hierarchy until finding a file that matches
-the criteria
+- Proceed up the directory hierarchy until the root directory has been identified
 
 The Git version control system (and probably many other tools) use a similar
 approach: A Git command can be executed from within any subdirectory of a
@@ -51,15 +51,19 @@ repository.
 The `find_root` function is the central function of this package.
 It returns the path to the first directory that matches the filtering criteria,
 or throws an error if there is no such directory.
+Filtering criteria are constructed in a generic fashion using the 
+`root_criterion()` function,
+the `has_file()` function constructs a criterion that checks for the presence
+of a file with a specific name and specific contents.
 
 ```{r}
 library(rprojroot)
 
 # List all files and directories below the root
-dir(find_root(glob2rx("DESCRIPTION")))
+dir(find_root(has_file(glob2rx("DESCRIPTION"))))
 
 # Find a file relative to the root
-file.exists(find_root_file("R", "root.R", filename = glob2rx("DESCRIPTION")))
+file.exists(find_root_file("R", "root.R", criterion = has_file(glob2rx("DESCRIPTION"))))
 ```
 
 Note that the following code produces identical results when building the
@@ -97,7 +101,7 @@ querying the root results in an error:
 
 ```{r}
 # Define a function that computes file paths below a directory with a file named LICENSE
-R <- make_find_root_file(glob2rx("LICENSE"))
+R <- make_find_root_file(has_file(glob2rx("LICENSE")))
 R
 
 # Our package does not have such a file, trying to find the root results in an error
@@ -112,7 +116,7 @@ that computes a path relative to the root *at creation time*.
 
 ```{r}
 # Define a function that computes file paths below the current root
-F <- make_fix_root_file(glob2rx("DESCRIPTION"))
+F <- make_fix_root_file(has_file(glob2rx("DESCRIPTION")))
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
