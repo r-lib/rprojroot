@@ -5,8 +5,6 @@
 #'
 #' Construct criteria using \code{root_criterion} in a very general fashion
 #' by specifying a function with a \code{path} argument, and a description.
-#' The \code{has_file} function constructs a criterion that checks for the
-#' existence of a specific file with specific contents.
 #'
 #' @param testfun A function with one parameter that returns \code{TRUE}
 #'   if the directory specified by this parameter is the project root,

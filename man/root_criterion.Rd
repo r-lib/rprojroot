@@ -2,6 +2,7 @@
 % Please edit documentation in R/criterion.R, R/has-file.R
 \name{root_criterion}
 \alias{has_file}
+\alias{has_file_pattern}
 \alias{is.root_criterion}
 \alias{root_criterion}
 \title{Is a directory the project root?}
@@ -10,7 +11,9 @@ root_criterion(testfun, desc)
 
 is.root_criterion(x)
 
-has_file(filename, contents = NULL, n = -1L)
+has_file(filepath, contents = NULL, n = -1L)
+
+has_file_pattern(pattern, contents = NULL, n = -1L)
 }
 \arguments{
 \item{testfun}{A function with one parameter that returns \code{TRUE}
@@ -21,11 +24,15 @@ and \code{FALSE} otherwise}
 
 \item{x}{An object}
 
-\item{filename,contents}{Regular expressions to match the file name or contents}
+\item{filepath}{File path (can contain directories)}
+
+\item{contents}{Regular expression to match the file contents}
 
 \item{n}{integer.  The (maximal) number of lines to
     read.  Negative values indicate that one should read up to the end of
     input on the connection.}
+
+\item{pattern}{Regular expression to match the file name}
 }
 \description{
 Objects of the \code{root_criterion} class decide if a
@@ -34,7 +41,12 @@ given directory is a project root.
 \details{
 Construct criteria using \code{root_criterion} in a very general fashion
 by specifying a function with a \code{path} argument, and a description.
+
 The \code{has_file} function constructs a criterion that checks for the
-existence of a specific file with specific contents.
+existence of a specific file (which itself can be in a subdirectory of the
+root) with specific contents.
+
+The \code{has_file_pattern} function constructs a criterion that checks for the
+existence of a file that matches a pattern, with specific contents.
 }
 
