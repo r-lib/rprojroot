@@ -66,6 +66,44 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   root_criterion(testfun, desc)
 }
 
+#' @export
+is_rstudio_project <- has_file_pattern(glob2rx("*.Rproj"), contents = "^Version: ", n = 1L)
+
+#' @export
+is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
+
+#' Prespecified criteria
+#'
+#' This is a collection of commonly used root criteria.
+#'
+#' @export
+criteria <- structure(
+  list(
+    is_rstudio_project = is_rstudio_project,
+    is_r_package = is_r_package
+  ),
+  class = "root_criteria")
+
+#' @export
+str.root_criteria <- function(x, ...) {
+  str(lapply(x, format))
+}
+
+#' @details
+#' \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
+#'
+#' @rdname criteria
+#' @export
+"is_rstudio_project"
+
+#' @details
+#' \code{is_r_package} looks for a \code{DESCRIPTION} file.
+#'
+#' @rdname criteria
+#' @export
+"is_r_package"
+
+
 list_files <- function(path, filename) {
   files <- dir(path = path, pattern = filename, all.files = TRUE, full.names = TRUE)
   dirs <- is_dir(files)
