@@ -60,10 +60,10 @@ of a file with a specific name and specific contents.
 library(rprojroot)
 
 # List all files and directories below the root
-dir(find_root(has_file(glob2rx("DESCRIPTION"))))
+dir(find_root(has_file("DESCRIPTION")))
 
 # Find a file relative to the root
-file.exists(find_root_file("R", "root.R", criterion = has_file(glob2rx("DESCRIPTION"))))
+file.exists(find_root_file("R", "root.R", criterion = has_file("DESCRIPTION")))
 ```
 
 Note that the following code produces identical results when building the
@@ -101,7 +101,7 @@ querying the root results in an error:
 
 ```{r}
 # Define a function that computes file paths below a directory with a file named LICENSE
-R <- make_find_root_file(has_file(glob2rx("LICENSE")))
+R <- make_find_root_file(has_file("LICENSE"))
 R
 
 # Our package does not have such a file, trying to find the root results in an error
@@ -116,7 +116,7 @@ that computes a path relative to the root *at creation time*.
 
 ```{r}
 # Define a function that computes file paths below the current root
-F <- make_fix_root_file(has_file(glob2rx("DESCRIPTION")))
+F <- make_fix_root_file(has_file("DESCRIPTION"))
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
