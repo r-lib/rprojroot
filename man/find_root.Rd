@@ -4,21 +4,16 @@
 \alias{find_root}
 \title{Find the root of a directory hierarchy}
 \usage{
-find_root(filename, contents = NULL, n = -1L, path = getwd())
+find_root(criterion, path = getwd())
 }
 \arguments{
-\item{filename}{Regular expressions to match the file name or contents}
-
-\item{contents}{Regular expressions to match the file name or contents}
-
-\item{n}{integer.  The (maximal) number of lines to
-    read.  Negative values indicate that one should read up to the end of
-    input on the connection.}
+\item{criterion}{A criterion created by \code{\link{root_criterion}}, e.g.,
+\code{has_file(...)}}
 
 \item{path}{The start directory}
 }
 \value{
-The normalized path of the root as specified by the search criteria.
+The normalized path of the root as specified by the search criterion.
   Throws an error if no root is found
 }
 \description{

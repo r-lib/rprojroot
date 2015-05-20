@@ -11,17 +11,19 @@ test_that("", {
 
   with_mock(
     `rprojroot:::is_root` = function(x) x == stop_path,
-    expect_equal(find_root(glob2rx("a"), path = path), hierarchy(3L)),
-    expect_equal(find_root(glob2rx("b"), path = path), hierarchy(3L)),
-    expect_equal(find_root(glob2rx("c"), path = path), hierarchy(1L)),
-    expect_equal(find_root(glob2rx("d"), path = path), hierarchy(4L)),
-    expect_equal(find_root(glob2rx("DESCRIPTION"), "^Package: ", 1, path = path), hierarchy(1L)),
-    expect_equal(find_root(glob2rx("DESCRIPTION"), "^Package: ", path = path), hierarchy(1L)),
-    expect_error(find_root(glob2rx("test-root.R"), path = path), "No file .* found"),
-    expect_error(find_root(glob2rx("rprojroot.Rproj"), path = path), "No file .* found"),
-    expect_error(find_root(glob2rx("e"), "f", path = path),
-                 "No file .* with contents"),
-    expect_error(find_root(glob2rx("e"), "f", 1, path = path),
-                 "No file .* with contents .* in the first .* lines")
+    expect_equal(find_root(has_file(glob2rx("a")), path = path), hierarchy(3L)),
+    expect_equal(find_root(has_file(glob2rx("b")), path = path), hierarchy(3L)),
+    expect_equal(find_root(has_file(glob2rx("c")), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file(glob2rx("d")), path = path), hierarchy(4L)),
+    expect_equal(find_root(has_file(glob2rx("DESCRIPTION"), "^Package: ", 1), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file(glob2rx("DESCRIPTION"), "^Package: "), path = path), hierarchy(1L)),
+    expect_error(find_root(has_file(glob2rx("test-root.R")), path = path),
+                 "No root directory found.* file matching "),
+    expect_error(find_root(has_file(glob2rx("rprojroot.Rproj")), path = path),
+                 "No root directory found.* file matching "),
+    expect_error(find_root(has_file(glob2rx("e"), "f"), path = path),
+                 "No root directory found.* with contents"),
+    expect_error(find_root(has_file(glob2rx("e"), "f", 1), path = path),
+                 "No root directory found.* with contents .* in the first .* lines")
   )
 })

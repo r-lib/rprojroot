@@ -14,9 +14,9 @@
 #' \code{make_find_root_file} which creates a function that will look for the
 #' root every time it is called).
 #'
-#' @param filename,contents Regular expressions to match the file name or contents
+#' @param criterion A criterion created by \code{\link{root_criterion}}, e.g.,
+#'   \code{has_file(...)}
 #' @param path The start directory
-#' @inheritParams base::readLines
 #' @param ... Additional arguments passed to \code{\link{file.path}}
 #' @return The normalized path of the root as specified by the search criteria.
 #'   Throws an error if no root is found
@@ -31,7 +31,7 @@
 #' @seealso \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
 #'
 #' @export
-find_root_file <- function(..., filename, contents = NULL, n = -1L, path = getwd()) {
-  root <- find_root(filename = filename, contents = contents, n = n, path = path)
+find_root_file <- function(..., criterion, path = getwd()) {
+  root <- find_root(criterion = criterion, path = path)
   file.path(root, ...)
 }

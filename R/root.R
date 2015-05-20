@@ -12,8 +12,7 @@
 #' If no root is found, an error is thrown.
 #'
 #' @inheritParams find_root_file
-#' @inheritParams base::readLines
-#' @return The normalized path of the root as specified by the search criteria.
+#' @return The normalized path of the root as specified by the search criterion.
 #'   Throws an error if no root is found
 #'
 #' @examples
@@ -24,46 +23,22 @@
 #' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
 #'
 #' @export
-find_root <- function(filename, contents = NULL, n = -1L, path = getwd()) {
+find_root <- function(criterion, path = getwd()) {
   original_path <- path
   path <- normalizePath(path, mustWork = TRUE)
 
   repeat {
-    files <- list_files(path, filename)
-    for (f in files) {
-      if (!match_contents(f, contents, n)) {
-        next
-      }
+    if (criterion$testfun(path)) {
       return(path)
     }
 
     if (is_root(path)) {
-      stop("No file matching '", filename,
-           if (!is.null(contents)) {
-             paste0("' with contents matching '", contents, "'",
-                    if (n >= 0L) paste(" in the first", n, "lines"))
-           },
-           " found in ", original_path, " or above", call. = FALSE)
+      stop("No root directory found. Test criterion:\n",
+           criterion$desc, call. = FALSE)
     }
 
     path <- normalizePath(file.path(path, ".."))
   }
-}
-
-list_files <- function(path, filename) {
-  files <- dir(path = path, pattern = filename, all.files = TRUE)
-  files <- file.info(file.path(path, files), extra_cols = FALSE)
-  files <- rownames(files)[!files$isdir]
-  files
-}
-
-match_contents <- function(f, contents, n) {
-  if (is.null(contents)) {
-    return(TRUE)
-  }
-
-  fc <- readLines(f, n)
-  any(grepl(contents, fc))
 }
 
 # Borrowed from devtools
