@@ -9,6 +9,8 @@ find_root(criterion, path = getwd())
 \arguments{
 \item{criterion}{A criterion created by \code{\link{root_criterion}}, e.g.,
 \code{has_file(...)}}
+
+\item{path}{The start directory}
 }
 \value{
 The normalized path of the root as specified by the search criterion.

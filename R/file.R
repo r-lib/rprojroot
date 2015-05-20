@@ -14,6 +14,8 @@
 #' \code{make_find_root_file} which creates a function that will look for the
 #' root every time it is called).
 #'
+#' @param criterion A criterion created by \code{\link{root_criterion}}, e.g.,
+#'   \code{has_file(...)}
 #' @param path The start directory
 #' @param ... Additional arguments passed to \code{\link{file.path}}
 #' @return The normalized path of the root as specified by the search criteria.

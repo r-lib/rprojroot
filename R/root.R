@@ -11,8 +11,7 @@
 #' thus, if no extra arguments are given, the root is returned.
 #' If no root is found, an error is thrown.
 #'
-#' @param criterion A criterion created by \code{\link{root_criterion}}, e.g.,
-#'   \code{has_file(...)}
+#' @inheritParams find_root_file
 #' @return The normalized path of the root as specified by the search criterion.
 #'   Throws an error if no root is found
 #'
