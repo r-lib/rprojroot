@@ -72,11 +72,40 @@ provided that the project root is the current working directory
 or a parent thereof.
 
 
-## Practical use
+## Criteria
+
+The `has_file()` function (and the more general `root_criterion()`)
+both return an S3 object of class `root_criterion`:
+
+```{r}
+has_file("DESCRIPTION")
+```
+
+The return value of these functions can be stored and reused;
+in fact, the package provides `r length(criteria)` such criteria:
+
+```{r}
+criteria
+```
+
+Defining new criteria is easy:
+
+```{r}
+has_license <- has_file("LICENSE")
+has_license
+
+is_projecttemplate_project <- has_file("config/global.dcf", "^version: ")
+is_projecttemplate_project
+```
+
+
+
+## Shortcuts
 
 To avoid specifying the search criteria for the project root every time,
 shortcut functions can be created.
-Shortcuts are predefined for RStudio projects and packages:
+The `find_package_root_file` is a shortcut for
+`find_root_file(..., criterion = is_r_package)`:
 
 ```{r}
 # Show definition of shortcut function
@@ -95,17 +124,21 @@ P <- find_package_root_file
 file.exists(P("vignettes", "rprojroot.Rmd"))
 ```
 
-Different notions of a project root are conceivable.
-The next example looks for a file named `LICENSE` which is absent,
+Shortcuts for custom criteria are constructed with the `make_find_root_file()`
+function.
+As our project does not have a file named `LICENSE`,
 querying the root results in an error:
 
 ```{r}
-# Define a function that computes file paths below a directory with a file named LICENSE
-R <- make_find_root_file(has_file("LICENSE"))
+# Use the has_license criterion to find the root
+R <- make_find_root_file(has_license)
 R
+```
 
+
+```{r error = TRUE}
 # Our package does not have such a file, trying to find the root results in an error
-class(try(R()))
+R()
 ```
 
 
@@ -116,7 +149,7 @@ that computes a path relative to the root *at creation time*.
 
 ```{r}
 # Define a function that computes file paths below the current root
-F <- make_fix_root_file(has_file("DESCRIPTION"))
+F <- make_fix_root_file(is_r_package)
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
@@ -137,9 +170,9 @@ local({
 ## Summary
 
 The `rprojroot` package allows easy access to files below a project root
-which is supposed to be the only directory in the whole hierarchy that contains
-a specific file.
-This is a robust solution for finding project files in largish projects
+if the project root can be identified easily, e.g. if it is the only directory
+in the whole hierarchy that contains a specific file.
+This is a robust solution for finding files in largish projects
 with a subdirectory hierarchy if the current working directory cannot be assumed
 fixed.
 (However, at least initially, the current working directory must be
