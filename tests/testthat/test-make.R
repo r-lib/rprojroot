@@ -1,11 +1,11 @@
 context("make")
 
 test_that("Shortcuts", {
-  expect_equal(make_find_root_file(is_r_package)("tests", "testthat"), getwd())
+  expect_equal(make_find_root_file("testthat.R")("testthat"), getwd())
 
-  R <- make_fix_root_file(is_r_package)
+  R <- make_fix_root_file("testthat.R")
   oldwd <- setwd("~")
   on.exit(setwd(oldwd))
 
-  expect_equal(R("tests", "testthat"), oldwd)
+  expect_equal(R("testthat"), oldwd)
 })
