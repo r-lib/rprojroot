@@ -25,3 +25,12 @@ test_that("Formatting", {
     expect_match(print(is_r_package), "^Root criterion: .*DESCRIPTION")
   )
 })
+
+test_that("Formatting criteria", {
+  ret <- character()
+  with_mock(
+    `base::cat` = function(..., sep = "") ret <<- c(ret, paste(..., sep = sep)),
+     str(criteria)
+  )
+  expect_match(ret[[1]], "^List of ")
+})
