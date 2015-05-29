@@ -1,3 +1,6 @@
+Version 0.0-5 (2015-05-29)
+===
+
 - New function `as.root_criterion` (called by `find_root()`), a character argument is converted to a `has_file()` criterion. Now the call `find_root("filename")` is identical to `find_root(has_file("filename"))`.
 - Use `"."` instead of `"getwd()"` as default for `path` argument
 - Improved documentation
