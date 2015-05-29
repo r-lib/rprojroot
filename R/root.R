@@ -24,6 +24,8 @@
 #'
 #' @export
 find_root <- function(criterion, path = getwd()) {
+  criterion <- as.root_criterion(criterion)
+
   original_path <- path
   path <- normalizePath(path, mustWork = TRUE)
 

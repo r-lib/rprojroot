@@ -28,7 +28,26 @@ root_criterion <- function(testfun, desc) {
 #' @rdname root_criterion
 #' @param x An object
 #' @export
-is.root_criterion <- function(x) inherits(x, "root_criterion")
+is.root_criterion <- function(x) {
+  inherits(x, "root_criterion")
+}
+
+#' @rdname root_criterion
+#' @export
+as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
+
+#' @export
+as.root_criterion.character <- function(x) {
+  has_file(x)
+}
+
+#' @export
+as.root_criterion.root_criterion <- identity
+
+#' @export
+as.root_criterion.default <- function(x) {
+  stop("Cannot coerce ", x, " to type root_criterion.")
+}
 
 #' @export
 format.root_criterion <- function(x, ...) {
