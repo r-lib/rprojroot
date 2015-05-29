@@ -7,8 +7,8 @@
 find_root(criterion, path = getwd())
 }
 \arguments{
-\item{criterion}{A criterion created by \code{\link{root_criterion}}, e.g.,
-\code{has_file(...)}}
+\item{criterion}{A criterion, will be coerced using
+\code{\link{as.root_criterion}}}
 
 \item{path}{The start directory}
 }

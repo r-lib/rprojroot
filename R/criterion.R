@@ -36,11 +36,18 @@ is.root_criterion <- function(x) {
 #' @export
 as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
 
+#' @details
+#' The \code{as.root_criterion} function accepts objects of class
+#' \code{root_criterion}, and character values; the latter will be
+#' converted to criteria using \code{has_file}.
+#'
+#' @rdname root_criterion
 #' @export
 as.root_criterion.character <- function(x) {
   has_file(x)
 }
 
+#' @rdname root_criterion
 #' @export
 as.root_criterion.root_criterion <- identity
 
