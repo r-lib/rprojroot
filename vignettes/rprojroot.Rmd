@@ -31,11 +31,26 @@ If we could only get hold of our...
 
 ## Project root
 
+For an R package, the root is defined by the location of the
+`DESCRIPTION` file:
+
+```{r}
+library(rprojroot)
+
+# List all files and directories below the root
+dir(find_root("DESCRIPTION"))
+```
+
+
+### The general case
+
 We assume a self-contained project
 where all files and directories are located below a common *root* directory.
 Also, there should be a way to correctly identify this root directory.
 (Often, the root contains a regular file whose name matches a given pattern,
 and/or whose contents match another pattern.)
+
+
 In this case, the following method reliably finds our project root:
 
 - Start the search in any subdirectory of our project
@@ -68,8 +83,8 @@ file.exists(find_root_file("R", "root.R", criterion = has_file("DESCRIPTION")))
 
 Note that the following code produces identical results when building the
 vignette *and* when sourcing the chunk in RStudio,
-provided that the project root is the current working directory
-or a parent thereof.
+provided that the current working directory is the project root
+or anywhere below.
 
 
 ### Criteria
@@ -79,6 +94,13 @@ both return an S3 object of class `root_criterion`:
 
 ```{r}
 has_file("DESCRIPTION")
+```
+
+In addition, character values are coerced to `has_file` criteria by default, this coercion is applied automatically by `find_root()`.
+(This feature is used by the introductory example.)
+
+```{r}
+as.root_criterion("DESCRIPTION")
 ```
 
 The return value of these functions can be stored and reused;
