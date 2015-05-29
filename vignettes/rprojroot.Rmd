@@ -160,6 +160,19 @@ local({
 ```
 
 
+## Other applications
+
+### Cascading R profile
+
+Add the following to your `.Rprofile` to load the next profile further up
+the path if it exists.
+
+```r
+try(source(rprojroot::find_root_file(".Rprofile", criterion = has_file(".Rprofile")),
+           chdir = TRUE))
+```
+
+
 ## Summary
 
 The `rprojroot` package allows easy access to files below a project root
