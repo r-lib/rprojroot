@@ -46,7 +46,7 @@ approach: A Git command can be executed from within any subdirectory of a
 repository.
 
 
-## A simple example
+### A simple example
 
 The `find_root` function is the central function of this package.
 It returns the path to the first directory that matches the filtering criteria,
@@ -72,7 +72,7 @@ provided that the project root is the current working directory
 or a parent thereof.
 
 
-## Criteria
+### Criteria
 
 The `has_file()` function (and the more general `root_criterion()`)
 both return an S3 object of class `root_criterion`:
@@ -100,7 +100,7 @@ is_projecttemplate_project
 
 
 
-## Shortcuts
+### Shortcuts
 
 To avoid specifying the search criteria for the project root every time,
 shortcut functions can be created.
@@ -135,7 +135,7 @@ R()
 ```
 
 
-## Fixed root
+### Fixed root
 
 We can also create a function
 that computes a path relative to the root *at creation time*.
