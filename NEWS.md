@@ -1,3 +1,5 @@
+- Full test coverage
+
 Version 0.0-5 (2015-05-29)
 ===
 
