@@ -1,6 +1,13 @@
 \name{NEWS}
 \title{News for Package 'rprojroot'}
 \encoding{UTF-8}
+\section{Changes in rprojroot version 0.0-5 (2015-05-29)}{
+  \itemize{
+    \item New function \code{as.root_criterion} (called by \code{find_root()}), a character argument is converted to a \code{has_file()} criterion. Now the call \code{find_root("filename")} is identical to \code{find_root(has_file("filename"))}.
+    \item Use \code{"."} instead of \code{"getwd()"} as default for \code{path} argument
+    \item Improved documentation
+  }
+}
 \section{Changes in rprojroot version 0.0-4 (2015-05-20)}{
   \itemize{
     \item New variables \code{criteria}, \code{is_rstudio_project}, \code{is_r_package}
