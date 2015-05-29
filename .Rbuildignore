@@ -8,3 +8,4 @@
 ^Makefile\.in$
 ^makeR
 ^wercker\.yml$
+^readme$
