@@ -17,3 +17,11 @@ test_that("is.root_criterion", {
 test_that("Absolute paths are returned", {
   expect_equal(find_root("DESCRIPTION"), normalizePath(find_root("DESCRIPTION")))
 })
+
+test_that("Formatting", {
+  expect_match(format(is_r_package), "^Root criterion: .*DESCRIPTION")
+  with_mock(
+    `base::cat` = identity,
+    expect_match(print(is_r_package), "^Root criterion: .*DESCRIPTION")
+  )
+})
