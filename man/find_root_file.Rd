@@ -8,15 +8,15 @@
 \alias{make_fix_root_file}
 \title{File paths relative to the root of a directory hierarchy}
 \usage{
-find_root_file(..., criterion, path = getwd())
+find_root_file(..., criterion, path = ".")
 
 make_find_root_file(criterion)
 
 make_fix_root_file(criterion)
 
-find_rstudio_root_file(..., path = getwd())
+find_rstudio_root_file(..., path = ".")
 
-find_package_root_file(..., path = getwd())
+find_package_root_file(..., path = ".")
 }
 \arguments{
 \item{...}{Additional arguments passed to \code{\link{file.path}}}

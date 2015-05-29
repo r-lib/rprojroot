@@ -23,7 +23,7 @@
 #' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
 #'
 #' @export
-find_root <- function(criterion, path = getwd()) {
+find_root <- function(criterion, path = ".") {
   criterion <- as.root_criterion(criterion)
 
   original_path <- path

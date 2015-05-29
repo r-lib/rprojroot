@@ -4,7 +4,7 @@
 \alias{find_root}
 \title{Find the root of a directory hierarchy}
 \usage{
-find_root(criterion, path = getwd())
+find_root(criterion, path = ".")
 }
 \arguments{
 \item{criterion}{A criterion, will be coerced using
