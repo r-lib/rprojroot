@@ -14,6 +14,8 @@ test_that("has_file", {
     expect_equal(find_root("a", path = path), hierarchy(3L)),
     expect_equal(find_root("b", path = path), hierarchy(3L)),
     expect_equal(find_root("b/a", path = path), hierarchy(2L)),
+    expect_equal(find_root_file("c", criterion = "b/a", path = path),
+                 file.path(hierarchy(2L), "c")),
     expect_equal(find_root("c", path = path), hierarchy(1L)),
     expect_equal(find_root("d", path = path), hierarchy(4L)),
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L)),
