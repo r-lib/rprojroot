@@ -168,8 +168,10 @@ Add the following to your `.Rprofile` to load the next profile further up
 the path if it exists.
 
 ```r
-try(source(rprojroot::find_root_file(".Rprofile", criterion = has_file(".Rprofile")),
-           chdir = TRUE))
+try(source(
+  rprojroot::find_root_file(
+    ".Rprofile", criterion = ".Rprofile", path = ".."),
+  chdir = TRUE))
 ```
 
 
