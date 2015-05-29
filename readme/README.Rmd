@@ -2,6 +2,10 @@
 output:
   md_document:
     variant: markdown_github
+knit: (function(inputFile, encoding) {
+      rmarkdown::render(
+        inputFile, encoding=encoding,
+        output_file=rprojroot::find_root_file("README.md", criterion = "DESCRIPTION")) })
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
