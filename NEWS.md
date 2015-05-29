@@ -1,3 +1,6 @@
+Version 0.0-6 (2015-05-29)
+===
+
 - Full test coverage
 
 Version 0.0-5 (2015-05-29)
