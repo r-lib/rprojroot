@@ -1,3 +1,5 @@
+- New function `as.root_criterion` (called by `find_root()`), a character argument is converted to a `has_file()` criterion. Now the call `find_root("filename")` is identical to `find_root(has_file("filename"))`.
+
 Version 0.0-4 (2015-05-20)
 ===
 
