@@ -7,7 +7,7 @@ This package helps accessing files relative to a *project root* to [stop the wor
 Example
 -------
 
-The source for this text is in the `readme` subdirectory:
+The source for this text is in the [`readme` subdirectory](https://github.com/krlmlr/rprojroot/tree/master/readme):
 
 ``` r
 basename(getwd())
