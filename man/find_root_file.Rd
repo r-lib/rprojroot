@@ -8,21 +8,21 @@
 \alias{make_fix_root_file}
 \title{File paths relative to the root of a directory hierarchy}
 \usage{
-find_root_file(..., criterion, path = getwd())
+find_root_file(..., criterion, path = ".")
 
 make_find_root_file(criterion)
 
 make_fix_root_file(criterion)
 
-find_rstudio_root_file(..., path = getwd())
+find_rstudio_root_file(..., path = ".")
 
-find_package_root_file(..., path = getwd())
+find_package_root_file(..., path = ".")
 }
 \arguments{
 \item{...}{Additional arguments passed to \code{\link{file.path}}}
 
-\item{criterion}{A criterion created by \code{\link{root_criterion}}, e.g.,
-\code{has_file(...)}}
+\item{criterion}{A criterion, will be coerced using
+\code{\link{as.root_criterion}}}
 
 \item{path}{The start directory}
 }

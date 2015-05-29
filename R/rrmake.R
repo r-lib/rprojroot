@@ -2,7 +2,7 @@
 #' @export
 make_find_root_file <- function(criterion) {
   force(criterion)
-  eval(bquote(function(..., path = getwd()) {
+  eval(bquote(function(..., path = ".") {
     find_root_file(..., criterion = criterion, path = path)
   }))
 }
