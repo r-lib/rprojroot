@@ -187,11 +187,9 @@ local({
 ```
 
 
-## Other applications
-
 ### Cascading R profile
 
-Add the following to your `.Rprofile` to load the next profile further up
+Add the following to a local `.Rprofile` to load the next profile further up
 the path if it exists.
 
 ```r
