@@ -3,9 +3,8 @@ Title: Finding Files in Project Subdirectories
 Version: 0.0-6
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: Robust, reliable and flexible paths to files below a project root.
-    The 'root' of a project is defined as a directory that contains a regular file
-    whose name matches a given pattern and whose contents optionally match
-    another pattern.
+    The 'root' of a project is defined as a directory that matches a certain
+    criterion, e.g., it contains a certain regular file.
 Depends:
     R (>= 3.0.0)
 Suggests:
