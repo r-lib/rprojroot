@@ -9,3 +9,4 @@
 ^makeR
 ^wercker\.yml$
 ^readme$
+^appveyor\.yml$
