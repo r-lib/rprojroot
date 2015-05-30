@@ -29,7 +29,7 @@ find_root <- function(criterion, path = ".") {
   original_path <- path
   path <- normalizePath(path, mustWork = TRUE)
 
-  repeat {
+  for (i in seq_len(.MAX_DEPTH)) {
     if (criterion$testfun(path)) {
       return(path)
     }
@@ -41,7 +41,11 @@ find_root <- function(criterion, path = ".") {
 
     path <- normalizePath(file.path(path, ".."))
   }
+
+  stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path)
 }
+
+.MAX_DEPTH <- 100L
 
 # Borrowed from devtools
 is_root <- function(path) {
