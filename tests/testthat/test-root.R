@@ -3,7 +3,7 @@ context("root")
 test_that("has_file", {
   wd <- normalizePath(getwd())
   hierarchy <- function(n = 0L) {
-    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
+    normalizePath(do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)]))
   }
 
   stop_path <- hierarchy(1L)
