@@ -62,3 +62,9 @@ test_that("has_file_pattern", {
                  "No root directory found.* with contents .* in the first .* lines")
   )
 })
+
+test_that("finds root", {
+  skip_on_cran()
+  # Checks that search for root actually terminates
+  expect_error(find_root("/"), "No root directory found.* file '.*'")
+})
