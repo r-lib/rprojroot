@@ -1,7 +1,7 @@
 context("root")
 
 test_that("has_file", {
-  wd <- normalizePath(getwd())
+  wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
@@ -32,7 +32,7 @@ test_that("has_file", {
 })
 
 test_that("has_file_pattern", {
-  wd <- normalizePath(getwd())
+  wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
@@ -61,4 +61,10 @@ test_that("has_file_pattern", {
     expect_error(find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
                  "No root directory found.* with contents .* in the first .* lines")
   )
+})
+
+test_that("finds root", {
+  skip_on_cran()
+  # Checks that search for root actually terminates
+  expect_error(find_root("/"), "No root directory found.* file '.*'")
 })

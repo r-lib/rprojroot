@@ -1,3 +1,7 @@
+- Use `winslash = "/"` for consistent tests and behavior
+- Replace potentially endless loop with a limited loop
+- Test on Windows with appveyor
+
 Version 0.0-6 (2015-05-29)
 ===
 
