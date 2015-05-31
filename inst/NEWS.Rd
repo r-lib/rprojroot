@@ -1,6 +1,13 @@
 \name{NEWS}
 \title{News for Package 'rprojroot'}
 \encoding{UTF-8}
+\section{Changes in rprojroot version 0.0-7 (2015-05-31)}{
+  \itemize{
+    \item Use \code{winslash = "/"} for consistent tests and behavior
+    \item Replace potentially endless loop with a limited loop
+    \item Test on Windows with appveyor
+  }
+}
 \section{Changes in rprojroot version 0.0-6 (2015-05-29)}{
   \itemize{
     \item Full test coverage
