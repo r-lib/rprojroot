@@ -2,7 +2,7 @@ context("make")
 
 test_that("Shortcuts", {
   expect_equal(make_find_root_file("testthat.R")("testthat"),
-               normalizePath(getwd()))
+               normalizePath(getwd(), winslash = "/"))
 
   R <- make_fix_root_file("testthat.R")
   oldwd <- setwd("~")

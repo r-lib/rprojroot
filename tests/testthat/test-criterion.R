@@ -15,7 +15,8 @@ test_that("is.root_criterion", {
 })
 
 test_that("Absolute paths are returned", {
-  expect_equal(find_root("testthat.R"), normalizePath(find_root("testthat.R")))
+  expect_equal(find_root("testthat.R"),
+               normalizePath(find_root("testthat.R"), winslash = "/"))
 })
 
 test_that("Formatting", {

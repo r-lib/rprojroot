@@ -1,9 +1,9 @@
 context("root")
 
 test_that("has_file", {
-  wd <- normalizePath(getwd())
+  wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
-    normalizePath(do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)]))
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
 
   stop_path <- hierarchy(1L)
@@ -32,9 +32,9 @@ test_that("has_file", {
 })
 
 test_that("has_file_pattern", {
-  wd <- normalizePath(getwd())
+  wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
-    normalizePath(do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)]))
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
 
   stop_path <- hierarchy(1L)
