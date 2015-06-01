@@ -39,7 +39,7 @@ find_root <- function(criterion, path = ".") {
            criterion$desc, call. = FALSE)
     }
 
-    path <- normalizePath(file.path(path, ".."), winslash = "/")
+    path <- dirname(path)
   }
 
   stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path)
