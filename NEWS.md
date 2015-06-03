@@ -1,3 +1,5 @@
+- use `dirname` instead of `normalizePath("..")`
+
 Version 0.0-7 (2015-05-31)
 ===
 
