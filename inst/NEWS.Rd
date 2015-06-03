@@ -1,6 +1,11 @@
 \name{NEWS}
 \title{News for Package 'rprojroot'}
 \encoding{UTF-8}
+\section{Changes in rprojroot version 0.0-8 (2015-06-03)}{
+  \itemize{
+    \item use \code{dirname} instead of \code{normalizePath("..")}
+  }
+}
 \section{Changes in rprojroot version 0.0-7 (2015-05-31)}{
   \itemize{
     \item Use \code{winslash = "/"} for consistent tests and behavior
