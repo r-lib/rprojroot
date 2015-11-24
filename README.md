@@ -32,7 +32,7 @@ Installation and further reading
 Install from GitHub:
 
 ``` r
-devtools::install("krlmlr/rprojroot")
+devtools::install_github("krlmlr/rprojroot")
 ```
 
 See the [vignette](http://krlmlr.github.io/rprojroot/vignettes/rprojroot.html) for more detail.
