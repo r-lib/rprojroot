@@ -1,7 +1,4 @@
-box:
-    id: krlmlr/r-test
-    env:
-        LINTR_COMMENT_BOT: false
+box: krlmlr/r-test
 build:
   steps:
     - script:

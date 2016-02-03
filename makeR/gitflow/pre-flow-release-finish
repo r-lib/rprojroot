@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Runs before git flow release finish
+#
+# Positional arguments:
+# $1    The version (including the version prefix)
+# $2    The origin remote
+# $3    The full branch name (including the release prefix)
+#
+# The following variables are available as they are exported by git-flow:
+#
+# MASTER_BRANCH - The branch defined as Master
+# DEVELOP_BRANCH - The branch defined as Develop
+#
+VERSION=$1
+ORIGIN=$2
+BRANCH=$3
+
+# Implement your script here.
+
+hub ci-status -v
+HUB_EXIT=$?
+if [ $HUB_EXIT -eq 0 ]; then exit 0; fi
+if [ $HUB_EXIT -ne 3 ]; then exit $HUB_EXIT; fi
+sleep 10
+hub ci-status -v
+HUB_EXIT=$?
+if [ $HUB_EXIT -eq 3 ]; then exit 0; fi
+exit $HUB_EXIT
