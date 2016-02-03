@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+cp makeR/res/wercker.yml .
+Rscript -e 'devtools::use_build_ignore(c("wercker.yml", "_builds", "_projects", "_steps")); devtools:::add_git_ignore(ignores = c("_builds", "_projects", "_steps"))'
+git add wercker.yml .Rbuildignore .gitignore
+git commit -m "init wercker"

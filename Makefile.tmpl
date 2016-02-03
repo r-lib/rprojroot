@@ -1,0 +1,2 @@
+-include makeR/Makefile
+-include Makefile.in

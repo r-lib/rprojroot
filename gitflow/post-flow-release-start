@@ -1,0 +1,34 @@
+#!/usr/bin/env Rscript
+
+autoroxy::rox_on()
+
+library(magrittr)
+
+repo <- git2r::repository()
+branch_name <- (git2r::branches(repo) %>% Filter(git2r::is_head, .) %>% "[["(1))@name
+version <- gsub("^.*/([^/]*)$", "\\1", branch_name)
+package_version(version)
+date <- as.character(Sys.Date())
+
+desc <- read.dcf("DESCRIPTION")
+desc[, "Version"] <- version
+if ("Date" %in% colnames(desc)) {
+  desc[, "Date"] <- date
+}
+write.dcf(desc, "DESCRIPTION")
+
+devtools::document()
+git2r::add(repo, "DESCRIPTION")
+git2r::commit(repo, paste("bump version to", version))
+
+master <- Reduce(c, git2r::config())$gitflow.branch.master
+if (is.null(master)) {
+  warning("Config option gitflow.branch.master not set, are you running git flow?")
+} else {
+  changes_since_master <- system(paste0('git show -s $(git rev-list --first-parent ', master, '.. | head -n -1) --format=format:"%b" | sed "/^$/d"'), intern=TRUE)
+
+  news <- character()
+  news <- readLines("NEWS.md")
+  news <- c(paste0("Version ", version, " (", date, ")"), "===", "", changes_since_master, "", "", news)
+  writeLines(news, "NEWS.md")
+}

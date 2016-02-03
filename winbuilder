@@ -1,0 +1,60 @@
+#!/usr/bin/env Rscript
+
+library(BBmisc)
+library(checkmate)
+library(devtools)
+library(stringr)
+
+#' Builds a package on winbuilder, but sends link to an arbitrary email address.
+#
+#' Copies the package directory to a temporary directory, changes the maintainer field and
+#' then calls devtools::build_win.
+#'
+#' @param path [\code{character(1)}]\cr
+#'   Path where package is located on disk.
+#'   Default is current directory \dQuote{.}.
+#' @param user.name [\code{character(1)}]\cr
+#'   User name for maintainer field. Not really needed.
+#'   Default is \dQuote{LIB USER}.
+#' @param email [\code{character(1)}]\cr
+#'   Email addresss that winbdulder link should be sent to.
+#'   Default is to query the user on the R console.
+#' @return Nothing.
+buildOnWinBuilder = function(path = ".", user.name = "LIB USER", email) {
+  assertString(path)
+  assertString(user.name)
+
+  if (missing(email)) {
+    message("Please type in your email address like foo@bar.com so a link can be send to you:")
+    # scan does not work with Rscript. argh!
+    con = file("stdin")
+    email = readLines(con, 1L)
+    close(con)
+  }
+  assertString(email)
+
+  message("The package will be built on winbuilder.\nPLEASE USE THIS METHOD WITH CARE AND DO NOT AUTOMATE IT!")
+
+  # copy so we dont change anything inplace
+  dest.dir = tempdir()
+  messagef("Copying directory package dir from %s to %s.", path, dest.dir)
+  file.copy(path, dest.dir, recursive = TRUE)
+
+  # trim input and change field and write to disk
+  email = str_trim(email)
+  user.name = str_trim(user.name)
+  maintainer = sprintf("%s <%s>", user.name, email)
+  messagef("Setting MAINTAINER field to %s.", maintainer)
+  desc.path = file.path(dest.dir, "DESCRIPTION")
+  desc = read.dcf(desc.path)
+  desc[, "Maintainer"] = maintainer
+  write.dcf(desc, file = desc.path)
+
+  # this will also check package and do some safety validation, eg malformed email
+  build_win(dest.dir)
+  invisible(NULL)
+}
+
+buildOnWinBuilder(".")
+
+# vim: ft = r

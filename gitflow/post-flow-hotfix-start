@@ -1,0 +1,18 @@
+#!/usr/bin/env Rscript
+
+library(magrittr)
+repo <- git2r::repository()
+branch_name <- (git2r::branches(repo) %>% Filter(git2r::is_head, .) %>% extract2(1))@name
+version <- gsub("^.*/([^/]*)$", "\\1", branch_name)
+package_version(version)
+desc <- read.dcf("DESCRIPTION")
+desc[, "Version"] <- version
+date <- Sys.Date()
+desc[, "Date"] <- date
+write.dcf(desc, "DESCRIPTION")
+git2r::add(repo, "DESCRIPTION")
+git2r::commit(repo, paste("bump version to", version))
+
+news <- readLines("NEWS.md")
+news <- c(paste0("Version ", version, " (", date, ")"), "===", "", "", "", news)
+writeLines(news, "NEWS.md")
