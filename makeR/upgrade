@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+subtree="https://github.com/krlmlr/makeR.git"
+
+git subtree pull --prefix makeR "$subtree" master2 --squash -m "upgrade makeR as subtree"
+sh ./makeR/postinstall

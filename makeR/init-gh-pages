@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if ! grep /inst/web .gitignore; then
+  echo /inst/web >> .gitignore
+  git add .gitignore
+  git commit -m "ignore /inst/web"
+fi
+mkdir -p inst
+git clone . inst/web
+cd inst/web
+git checkout --orphan gh-pages
+git reset --hard
+git commit -m "initial" --allow-empty
+git push -u origin gh-pages

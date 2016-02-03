@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[rprojroot](https://krlmlr.github.io/rprojroot) [![wercker status](https://app.wercker.com/status/c4dfa136cd78514514e259cc388e880c/s/master "wercker status")](https://app.wercker.com/project/bykey/c4dfa136cd78514514e259cc388e880c) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/rprojroot?branch=master)](https://ci.appveyor.com/project/krlmlr/rprojroot) [![codecov.io](https://codecov.io/github/krlmlr/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/krlmlr/rprojroot?branch=master)
+[rprojroot](https://krlmlr.github.io/rprojroot) [![wercker status](https://app.wercker.com/status/c4dfa136cd78514514e259cc388e880c/s/master "wercker status")](https://app.wercker.com/project/bykey/c4dfa136cd78514514e259cc388e880c) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/rprojroot?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/rprojroot) [![codecov.io](https://codecov.io/github/krlmlr/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/krlmlr/rprojroot?branch=master)
 =======================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
 This package helps accessing files relative to a *project root* to [stop the working directory insanity](https://gist.github.com/jennybc/362f52446fe1ebc4c49f).
@@ -32,7 +32,7 @@ Installation and further reading
 Install from GitHub:
 
 ``` r
-devtools::install("krlmlr/rprojroot")
+devtools::install_github("krlmlr/rprojroot")
 ```
 
 See the [vignette](http://krlmlr.github.io/rprojroot/vignettes/rprojroot.html) for more detail.
