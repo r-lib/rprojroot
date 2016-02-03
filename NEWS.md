@@ -1,49 +1,24 @@
-Version 0.0-8 (2015-06-03)
+Version 0.1 (2016-02-03)
 ===
 
-- use `dirname` instead of `normalizePath("..")`
+Initial GitHub release.
 
-Version 0.0-7 (2015-05-31)
-===
+- Getting started:
+    - `find_package_root_file()`
+    - `find_rstudio_root_file()`
 
-- Use `winslash = "/"` for consistent tests and behavior
-- Replace potentially endless loop with a limited loop
-- Test on Windows with appveyor
+- S3 class `root_criterion`:
+    - `root_criterion()`
+    - `as.root_criterion()`
+    - `is.root_criterion()`
+    - `has_file()`
+    - `has_file_pattern()`
+    - `criteria`
+        - `is_r_package`
+        - `is_rstudio_project`
 
-Version 0.0-6 (2015-05-29)
-===
-
-- Full test coverage
-
-Version 0.0-5 (2015-05-29)
-===
-
-- New function `as.root_criterion` (called by `find_root()`), a character argument is converted to a `has_file()` criterion. Now the call `find_root("filename")` is identical to `find_root(has_file("filename"))`.
-- Use `"."` instead of `"getwd()"` as default for `path` argument
-- Improved documentation
-
-Version 0.0-4 (2015-05-20)
-===
-
-- New variables `criteria`, `is_rstudio_project`, `is_r_package`
-- New function `has_file_pattern` (was previously `has_file`); the `has_file` function now checks the entire file name without pattern matching
-
-Version 0.0-3 (2015-05-20)
-===
-
-- Criterion concept: constructors `root_criterion` and `has_file`
-- All functions that used to accept `filename` + `contents` + `n` now accept only a criterion
-
-Version 0.0-2 (2015-05-19)
-===
-
-- Factory `make_fix_root_file` that fixes the working directory
-
-Version 0.0-1 (2015-05-19)
-===
-
-- Initial version
-- Main workhorse function `find_root`
-- Wrapper `find_root_file`
-- Factory `make_find_root_file` and helpers `find_rstudio_root_file` and `find_package_root_file`
-- Vignette
+- Use a custom notion of a project root:
+    - `find_root()`
+    - `find_root_file()`
+    - `make_find_root_file()`
+    - `make_fix_root_file()`
