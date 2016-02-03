@@ -12,7 +12,7 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-GitHub: https://github.com/krlmlr/rprojroot
 URL: https://krlmlr.github.io/rprojroot
+URLNote: https://github.com/krlmlr/rprojroot
 BugReports: https://github.com/krlmlr/rprojroot/issues
 RoxygenNote: 5.0.1
