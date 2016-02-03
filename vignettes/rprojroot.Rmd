@@ -9,11 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(error = TRUE)
-```
-
-
 The `rprojroot` package solves a seemingly trivial but annoying problem
 that occurs sooner or later
 in any largish project:
