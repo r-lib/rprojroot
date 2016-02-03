@@ -11,6 +11,7 @@ Depends:
 Suggests:
     testthat,
     knitr,
+    withr,
     rmarkdown
 VignetteBuilder: knitr
 License: GPL-3
