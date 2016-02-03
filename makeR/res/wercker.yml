@@ -1,0 +1,30 @@
+box: krlmlr/r-test
+build:
+  steps:
+    - script:
+        name: install
+        code: if ! make dependencies; then fail "Install failed"; fi
+    - script:
+        name: test
+        code: if ! make test; then fail "Test failed"; fi
+    - script:
+        name: codecov
+        code: if ! make covr; then fail "Coverage failed"; fi
+    - script:
+        name: lint
+        code: if ! make lintr; then fail "Linting failed"; fi
+    - script:
+        name: staticdocs
+        code: if ! make staticdocs; then fail "Building docs failed"; fi
+deploy:
+  steps:
+    - add-ssh-key@1.0.2:
+        host: github.com
+        keyname: DEPLOY_SSH
+    - add-to-known_hosts:
+        hostname: github.com
+        fingerprint: SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8
+    - leipert/git-push@0.7.6:
+        host: github.com
+        gh_pages: true
+        basedir: inst/web

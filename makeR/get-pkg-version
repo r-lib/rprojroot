@@ -1,0 +1,5 @@
+#!/usr/bin/env Rscript --vanilla
+
+cat(read.dcf("DESCRIPTION")[,"Version"])
+
+# vim: ft=r

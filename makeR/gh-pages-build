@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+cd inst/web
+git fetch
+git merge --no-edit origin/master --strategy ours
+git add .
+git commit --amend -m "Publish"
+git push -f origin gh-pages
