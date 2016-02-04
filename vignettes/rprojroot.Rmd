@@ -9,11 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(error = TRUE)
-```
-
-
 The `rprojroot` package solves a seemingly trivial but annoying problem
 that occurs sooner or later
 in any largish project:
@@ -148,14 +143,12 @@ P <- find_package_root_file
 file.exists(P("vignettes", "rprojroot.Rmd"))
 ```
 
-Shortcuts for custom criteria are constructed with the `make_find_root_file()`
-function.
-As our project does not have a file named `LICENSE`,
-querying the root results in an error:
+Each criterion actually contains a function that allows finding a file below the root specified by this criterion.
+As our project does not have a file named `LICENSE`, querying the root results in an error:
 
 ```{r error = TRUE}
 # Use the has_license criterion to find the root
-R <- make_find_root_file(has_license)
+R <- has_license$find_file
 
 # Our package does not have a LICENSE file, trying to find the root results in an error
 R()
@@ -169,7 +162,7 @@ that computes a path relative to the root *at creation time*.
 
 ```{r}
 # Define a function that computes file paths below the current root
-F <- make_fix_root_file(is_r_package)
+F <- is_r_package$make_fix_file()
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
@@ -179,24 +172,10 @@ This function can be used even if we later change the working directory to somew
 
 ```{r}
 # Print the size of the namespace file, working directory outside the project
-local({
-  oldwd <- setwd("../..")
-  on.exit(setwd(oldwd), add = TRUE)
+withr::with_dir(
+  "../..",
   file.size(F("NAMESPACE"))
-})
-```
-
-
-### Cascading R profile
-
-Add the following to a local `.Rprofile` to load the next profile further up
-the path if it exists.
-
-```r
-try(source(
-  rprojroot::find_root_file(
-    ".Rprofile", criterion = ".Rprofile", path = ".."),
-  chdir = TRUE))
+)
 ```
 
 

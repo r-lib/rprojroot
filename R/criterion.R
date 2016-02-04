@@ -11,18 +11,25 @@
 #'   and \code{FALSE} otherwise
 #' @param desc A textual description of the test criterion
 #'
+#' @include rrmake.R
 #' @export
 root_criterion <- function(testfun, desc) {
   if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
     stop("testfun must be a function with one argument 'path'")
   }
-  structure(
+  criterion <- structure(
     list(
       testfun = testfun,
       desc = desc
     ),
     class = "root_criterion"
   )
+
+  criterion$find_file <- make_find_root_file(criterion)
+  criterion$make_fix_file <-
+    function(path = getwd()) make_fix_root_file(criterion, path)
+
+  criterion
 }
 
 #' @rdname root_criterion
