@@ -28,3 +28,4 @@ Collate:
     'has-file.R'
     'root.R'
     'shortcut.R'
+    'zzz-autoroxy.R'
