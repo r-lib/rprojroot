@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 0.1
+Version: 0.1-1
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: Robust, reliable and flexible paths to files below a
     project root. The 'root' of a project is defined as a directory
