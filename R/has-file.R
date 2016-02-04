@@ -67,7 +67,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
 }
 
 #' @export
-is_rstudio_project <- has_file_pattern(glob2rx("*.Rproj"), contents = "^Version: ", n = 1L)
+is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n = 1L)
 
 #' @export
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
