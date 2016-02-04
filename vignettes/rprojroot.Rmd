@@ -9,17 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(error = TRUE)
-```
-
-
 The `rprojroot` package solves a seemingly trivial but annoying problem
 that occurs sooner or later
 in any largish project:
 How to find files in subdirectories?
-Relative file paths are almost always preferable to absolute paths,
-but relative to what should they be?
+Ideally, file paths are relative to the *project root*.
+
 Unfortunately, we cannot always be sure about the current working directory:
 For instance, in RStudio it's sometimes:
 
@@ -31,31 +26,87 @@ For instance, in RStudio it's sometimes:
 basename(getwd())
 ```
 
-If we could only get hold of our...
+In some cases, it's even outside the project root.
+
+This vignette starts with a very brief summary that helps you get started,
+followed by a longer description of the features.
+
+## TL;DR
+
+What is your project: An R package?
+
+```{r}
+rprojroot::is_r_package
+```
+
+Or an RStudio project?
+
+```{r}
+rprojroot::is_rstudio_project
+```
+
+Or something else?
+
+```{r}
+rprojroot::has_file(".git/index")
+```
+
+For now, we assume it's an R package:
+
+```{r}
+root <- rprojroot::is_r_package
+```
+
+The `root` object contains a function that helps locating files below the root
+of your package, regardless of your current working directory.
+If you are sure that it is somewhere below your project's root,
+use the `root$find_file()` function:
+
+```{r}
+readLines(root$find_file("DESCRIPTION"), 3)
+```
+
+If the current working directory can be outside of your project,
+construct an accessor to your root using the `root$make_fix_file()` function:
+
+```{r}
+root_file <- root$make_fix_file()
+```
+
+Note that `root_file()` is a *function* that will find files below your root:
+
+```{r}
+withr::with_dir(
+  "../..",
+  readLines(root_file("DESCRIPTION"), 3)
+)
+```
+
+If you know the absolute path of some directory below your project,
+but cannot be sure of your current working directory,
+pass that absolute path to `root$make_fix_file()`:
+
+```r
+root_file <- root$make_fix_file("C:\\Users\\User Name\\...")
+```
+
+Get the path of standalone R scripts or vignettes
+using the `thisfile()` function in the `kimisc` package:
+
+```r
+root_file <- root$make_fix_file(dirname(kimisc::thisfile()))
+```
+
+The remainder of this vignette describes implementation details and advanced features.
 
 
 ## Project root
 
-For an R package, the root is defined by the location of the
-`DESCRIPTION` file:
-
-```{r}
-library(rprojroot)
-
-# List all files and directories below the root
-dir(find_root("DESCRIPTION"))
-```
-
-
-### The general case
-
 We assume a self-contained project
 where all files and directories are located below a common *root* directory.
-Also, there should be a way to correctly identify this root directory.
+Also, there should be a way to unambiguously identify this root directory.
 (Often, the root contains a regular file whose name matches a given pattern,
 and/or whose contents match another pattern.)
-
-
 In this case, the following method reliably finds our project root:
 
 - Start the search in any subdirectory of our project
@@ -68,7 +119,7 @@ repository.
 
 ### A simple example
 
-The `find_root` function is the central function of this package.
+The `find_root()` function implements the core functionality.
 It returns the path to the first directory that matches the filtering criteria,
 or throws an error if there is no such directory.
 Filtering criteria are constructed in a generic fashion using the 
@@ -131,7 +182,7 @@ is_projecttemplate_project
 
 To avoid specifying the search criteria for the project root every time,
 shortcut functions can be created.
-The `find_package_root_file` is a shortcut for
+The `find_package_root_file()` is a shortcut for
 `find_root_file(..., criterion = is_r_package)`:
 
 ```{r}
@@ -148,14 +199,12 @@ P <- find_package_root_file
 file.exists(P("vignettes", "rprojroot.Rmd"))
 ```
 
-Shortcuts for custom criteria are constructed with the `make_find_root_file()`
-function.
-As our project does not have a file named `LICENSE`,
-querying the root results in an error:
+Each criterion actually contains a function that allows finding a file below the root specified by this criterion.
+As our project does not have a file named `LICENSE`, querying the root results in an error:
 
 ```{r error = TRUE}
 # Use the has_license criterion to find the root
-R <- make_find_root_file(has_license)
+R <- has_license$find_file
 
 # Our package does not have a LICENSE file, trying to find the root results in an error
 R()
@@ -169,7 +218,7 @@ that computes a path relative to the root *at creation time*.
 
 ```{r}
 # Define a function that computes file paths below the current root
-F <- make_fix_root_file(is_r_package)
+F <- is_r_package$make_fix_file()
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
@@ -179,25 +228,16 @@ This function can be used even if we later change the working directory to somew
 
 ```{r}
 # Print the size of the namespace file, working directory outside the project
-local({
-  oldwd <- setwd("../..")
-  on.exit(setwd(oldwd), add = TRUE)
+withr::with_dir(
+  "../..",
   file.size(F("NAMESPACE"))
-})
+)
 ```
 
-
-### Cascading R profile
-
-Add the following to a local `.Rprofile` to load the next profile further up
-the path if it exists.
-
-```r
-try(source(
-  rprojroot::find_root_file(
-    ".Rprofile", criterion = ".Rprofile", path = ".."),
-  chdir = TRUE))
-```
+The `make_fix_file()` member function also accepts an optional `path` argument,
+in case you know your project's root but the current working directory is somewhere outside.
+Take a look at the `thisfile()` function in the `kimisc` package for getting
+the path to the current script or `knitr` document.
 
 
 ## Summary

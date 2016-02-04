@@ -1,18 +1,30 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 0.1
+Version: 0.1-1
 Authors@R: as.person("Kirill Müller <krlmlr+r@mailbox.org> [aut, cre]")
 Description: Robust, reliable and flexible paths to files below a
-        project root. The 'root' of a project is defined as a directory
-        that matches a certain criterion, e.g., it contains a certain
-        regular file.
-Depends: R (>= 3.0.0)
-Suggests: testthat, knitr, rmarkdown
+    project root. The 'root' of a project is defined as a directory
+    that matches a certain criterion, e.g., it contains a certain
+    regular file.
+Depends:
+    R (>= 3.0.0)
+Suggests:
+    testthat,
+    knitr,
+    withr,
+    rmarkdown
 VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-GitHub: https://github.com/krlmlr/rprojroot
 URL: https://krlmlr.github.io/rprojroot
+URLNote: https://github.com/krlmlr/rprojroot
 BugReports: https://github.com/krlmlr/rprojroot/issues
 RoxygenNote: 5.0.1
+Collate:
+    'rrmake.R'
+    'criterion.R'
+    'file.R'
+    'has-file.R'
+    'root.R'
+    'shortcut.R'
