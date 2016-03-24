@@ -1,5 +1,4 @@
-Version 0.1-1 (2016-02-04)
-===
+# rprojroot 0.2 (2016-03-24)
 
 - Add TL;DR section to vignette.
 - Root criteria now have two function members, `find_file()` and `make_fix_file()`, instead of the now removed `make_find_root_file()` and `make_fix_root_file()`.

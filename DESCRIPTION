@@ -1,7 +1,8 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 0.1-1
-Authors@R: person(given = "Kirill", family = "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
+Version: 0.2
+Authors@R: person(given = "Kirill", family = "Müller", role = c("aut",
+        "cre"), email = "krlmlr+r@mailbox.org")
 Description: Robust, reliable and flexible paths to files below a
     project root. The 'root' of a project is defined as a directory
     that matches a certain criterion, e.g., it contains a certain
@@ -28,4 +29,3 @@ Collate:
     'has-file.R'
     'root.R'
     'shortcut.R'
-    'zzz-autoroxy.R'
