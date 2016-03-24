@@ -59,7 +59,7 @@ root <- rprojroot::is_r_package
 
 The `root` object contains a function that helps locating files below the root
 of your package, regardless of your current working directory.
-If you are sure that it is somewhere below your project's root,
+If you are sure that your working directory is somewhere below your project's root,
 use the `root$find_file()` function:
 
 ```{r}

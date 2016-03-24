@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-mkdir -p inst/staticdocs
-cd inst/staticdocs
-touch index.R
-git add index.R
-git commit -m "init staticdocs"
