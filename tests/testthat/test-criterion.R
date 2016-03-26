@@ -21,10 +21,7 @@ test_that("Absolute paths are returned", {
 
 test_that("Formatting", {
   expect_match(format(is_r_package), "^Root criterion: .*DESCRIPTION")
-  with_mock(
-    `base::cat` = identity,
-    expect_match(print(is_r_package), "^Root criterion: .*DESCRIPTION")
-  )
+  expect_output(print(is_r_package), "^Root criterion: .*DESCRIPTION")
 })
 
 test_that("Formatting criteria", {
