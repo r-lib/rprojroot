@@ -2,8 +2,6 @@
 ^\.Rproj\.user$
 ^\.gitignore$
 ^README\.md$
-^NEWS\.md$
-^NEWS\.md\.tmpl$
 ^Makefile$
 ^Makefile\.in$
 ^makeR
@@ -11,3 +9,4 @@
 ^readme$
 ^appveyor\.yml$
 ^makeR$
+^cran-comments\.md$
