@@ -85,6 +85,7 @@ criteria <- structure(
   class = "root_criteria")
 
 #' @export
+#' @importFrom utils str
 str.root_criteria <- function(object, ...) {
   str(lapply(object, format))
 }
