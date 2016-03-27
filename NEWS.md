@@ -1,4 +1,4 @@
-# rprojroot 1.0 (2016-03-24)
+# rprojroot 1.0-1 (2016-03-26)
 
 Initial CRAN release.
 
