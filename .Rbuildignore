@@ -10,3 +10,5 @@
 ^appveyor\.yml$
 ^makeR$
 ^cran-comments\.md$
+^inst/web$
+^inst/staticdocs$
