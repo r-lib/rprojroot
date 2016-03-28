@@ -8,5 +8,6 @@ test_that("Shortcuts", {
   oldwd <- setwd("~")
   on.exit(setwd(oldwd))
 
-  expect_equal(R("testthat"), oldwd)
+  expect_equal(normalizePath(R("testthat"), mustWork = TRUE),
+               normalizePath(oldwd, mustWork = TRUE))
 })
