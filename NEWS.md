@@ -1,4 +1,14 @@
+# rprojroot 1.0-2 (2016-03-28)
+
+- Fix test that fails on Windows only on CRAN.
+
+
 # rprojroot 1.0-1 (2016-03-26)
+
+- Updated NEWS.
+
+
+# rprojroot 1.0 (2016-03-26)
 
 Initial CRAN release.
 
