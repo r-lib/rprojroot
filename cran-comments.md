@@ -7,7 +7,7 @@
 
 0 errors | 0 warnings | 1 note
 
-* 1 day since last update: Fixup release to repair NEWS file.
+* 1 day since last update: Fix checks that fail on Windows.
 
 ## Reverse dependencies
 
