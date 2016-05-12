@@ -23,5 +23,13 @@ test_that("thisfile works with knitr", {
   out <- tempfile(pattern = "rprojroot", fileext = ".md")
   knitr::knit("scripts/thisfile.Rmd", output = out, quiet = TRUE)
   res <- readLines(out)
-  expect_equal("scripts/thisfile.Rmd", res)
+  expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
+})
+
+test_that("thisfile works with rmarkdown", {
+  out <- tempfile(pattern = "rprojroot", fileext = ".md")
+  rmarkdown::render("scripts/thisfile.Rmd", output_file = out,
+                    output_format = "md_document", quiet = TRUE)
+  res <- readLines(out)
+  expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
 })
