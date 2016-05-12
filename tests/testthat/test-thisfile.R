@@ -11,3 +11,10 @@ test_that("thisfile works with Rscript", {
   res <- readLines(p)
   expect_equal("scripts/thisfile-cat.R", res)
 })
+
+test_that("thisfile works with R", {
+  p <- pipe("R --quiet --vanilla --no-save -f scripts/thisfile-cat.R")
+  on.exit(close(p))
+  res <- readLines(p)
+  expect_equal("scripts/thisfile-cat.R", res[[2]])
+})
