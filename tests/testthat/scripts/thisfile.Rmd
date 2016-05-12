@@ -1,1 +1,1 @@
-`r rprojroot::thisfile()`
+`r rprojroot::thisfile_knit()`
