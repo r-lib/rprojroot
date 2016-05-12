@@ -66,14 +66,16 @@ use the `root$find_file()` function:
 readLines(root$find_file("DESCRIPTION"), 3)
 ```
 
-If the current working directory can be outside of your project,
+You can also
 construct an accessor to your root using the `root$make_fix_file()` function:
 
 ```{r}
 root_file <- root$make_fix_file()
 ```
 
-Note that `root_file()` is a *function* that will find files below your root:
+
+Note that `root_file()` is a *function* that works just like `$find_file()` but
+will find the files even if the current working directory is outside your project:
 
 ```{r}
 withr::with_dir(
@@ -205,6 +207,7 @@ As our project does not have a file named `LICENSE`, querying the root results i
 ```{r error = TRUE}
 # Use the has_license criterion to find the root
 R <- has_license$find_file
+R
 
 # Our package does not have a LICENSE file, trying to find the root results in an error
 R()
@@ -219,10 +222,16 @@ that computes a path relative to the root *at creation time*.
 ```{r}
 # Define a function that computes file paths below the current root
 F <- is_r_package$make_fix_file()
+F
 
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
 ```
+
+This is a more robust alternative to `$find_file()`, because it *fixes* the project
+directory when `$make_fix_file()` is called, instead of searching for it every
+time.  (For that reason it is also slightly faster, but I doubt this matters
+in practice.)
 
 This function can be used even if we later change the working directory to somewhere outside the project:
 
