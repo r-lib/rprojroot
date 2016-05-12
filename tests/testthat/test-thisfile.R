@@ -18,3 +18,10 @@ test_that("thisfile works with R", {
   res <- readLines(p)
   expect_equal("scripts/thisfile-cat.R", res[[2]])
 })
+
+test_that("thisfile works with knitr", {
+  out <- tempfile(pattern = "rprojroot", fileext = ".md")
+  knitr::knit("scripts/thisfile.Rmd", output = out, quiet = TRUE)
+  res <- readLines(out)
+  expect_equal("scripts/thisfile.Rmd", res)
+})
