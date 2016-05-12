@@ -84,7 +84,7 @@ thisfile_rscript <- function() {
 #' @export
 thisfile_knit <- function() {
   if (requireNamespace("knitr"))
-    return (knitr::current_input())
+    return (knitr::current_input(dir = TRUE))
 
   NULL
 }
