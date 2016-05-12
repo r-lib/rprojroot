@@ -36,6 +36,7 @@ thisfile_source <- function() {
 }
 
 #' @rdname thisfile
+#' @importFrom utils tail
 #' @export
 thisfile_r <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
@@ -58,6 +59,7 @@ thisfile_r <- function() {
 }
 
 #' @rdname thisfile
+#' @importFrom utils tail
 #' @export
 thisfile_rscript <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
