@@ -6,7 +6,6 @@ test_that("thisfile works with source", {
 })
 
 test_that("thisfile works with Rscript", {
-  skip("Doesn't seem to work for R CMD check")
   p <- pipe("Rscript scripts/thisfile-cat.R")
   on.exit(close(p))
   res <- readLines(p)
