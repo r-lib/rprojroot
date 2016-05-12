@@ -33,3 +33,20 @@ test_that("thisfile works with rmarkdown", {
   res <- readLines(out)
   expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
 })
+
+test_that("thisfile works with spin", {
+  skip("TODO")
+  out <- tempfile(pattern = "rprojroot", fileext = ".md")
+  knitr::spin("scripts/thisfile-cat.R", format = "Rmd", precious = TRUE)
+  res <- readLines(out)
+  expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
+})
+
+test_that("thisfile works with rendering an R script", {
+  skip("TODO")
+  out <- tempfile(pattern = "rprojroot", fileext = ".md")
+  rmarkdown::render("scripts/thisfile-cat.R", output_file = out,
+                    output_format = "md_document", quiet = TRUE)
+  res <- readLines(out)
+  expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
+})
