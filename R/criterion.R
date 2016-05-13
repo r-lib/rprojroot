@@ -11,21 +11,50 @@
 #'   and \code{FALSE} otherwise
 #' @param desc A textual description of the test criterion
 #'
+#' @return
+#' An S3 object of class \code{root_criterion} wit the following members:
+#'
 #' @include rrmake.R
 #' @export
+#'
+#' @examples
+#' root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")
+#' has_file("DESCRIPTION")
+#' is_r_package
+#' is_r_package$find_file
+#' \dontrun{
+#' is_r_package$make_fix_file(".")
+#' }
 root_criterion <- function(testfun, desc) {
   if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
     stop("testfun must be a function with one argument 'path'")
   }
   criterion <- structure(
     list(
+      #' @return
+      #' \describe{
+      #'   \item{\code{testfun}}{The \code{testfun} argument}
       testfun = testfun,
+      #'   \item{\code{desc}}{The \code{desc} argument}
       desc = desc
     ),
     class = "root_criterion"
   )
 
+  #'   \item{\code{find_file}}{A function with \code{...} argument that returns
+  #'     for a path relative to the root specified by this criterion.
+  #'     The optional \code{path} argument specifies the starting directory,
+  #'     which defaults to \code{"."}.
+  #'   }
   criterion$find_file <- make_find_root_file(criterion)
+  #'   \item{\code{make_fix_file}}{A function with a \code{path} argument that
+  #'      returns a function that finds paths relative to the root.  For a
+  #'      criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
+  #'      is identical to \code{cr$find_file(...)}. The function created by
+  #'      \code{make_fix_file} can be saved to a variable to be more independent
+  #'      of the current working directory.
+  #'   }
+  #' }
   criterion$make_fix_file <-
     function(path = getwd()) make_fix_root_file(criterion, path)
 

@@ -3,16 +3,19 @@
 \docType{data}
 \name{criteria}
 \alias{criteria}
+\alias{from_wd}
 \alias{is_r_package}
 \alias{is_rstudio_project}
 \title{Prespecified criteria}
-\format{An object of class \code{root_criteria} of length 2.}
+\format{An object of class \code{root_criteria} of length 3.}
 \usage{
 criteria
 
 is_rstudio_project
 
 is_r_package
+
+from_wd
 }
 \description{
 This is a collection of commonly used root criteria.
@@ -21,6 +24,8 @@ This is a collection of commonly used root criteria.
 \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
 
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
+
+\code{from_wd} uses the current working directory.
 }
 \keyword{datasets}
 

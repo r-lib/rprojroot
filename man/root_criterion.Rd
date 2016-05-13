@@ -43,6 +43,26 @@ and \code{FALSE} otherwise}
 
 \item{pattern}{Regular expression to match the file name}
 }
+\value{
+An S3 object of class \code{root_criterion} wit the following members:
+
+\describe{
+  \item{\code{testfun}}{The \code{testfun} argument}
+  \item{\code{desc}}{The \code{desc} argument}
+  \item{\code{find_file}}{A function with \code{...} argument that returns
+    for a path relative to the root specified by this criterion.
+    The optional \code{path} argument specifies the starting directory,
+    which defaults to \code{"."}.
+  }
+  \item{\code{make_fix_file}}{A function with a \code{path} argument that
+     returns a function that finds paths relative to the root.  For a
+     criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
+     is identical to \code{cr$find_file(...)}. The function created by
+     \code{make_fix_file} can be saved to a variable to be more independent
+     of the current working directory.
+  }
+}
+}
 \description{
 Objects of the \code{root_criterion} class decide if a
 given directory is a project root.
@@ -61,5 +81,14 @@ root) with specific contents.
 
 The \code{has_file_pattern} function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.
+}
+\examples{
+root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")
+has_file("DESCRIPTION")
+is_r_package
+is_r_package$find_file
+\dontrun{
+is_r_package$make_fix_file(".")
+}
 }
 
