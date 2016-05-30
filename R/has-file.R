@@ -72,6 +72,9 @@ is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n =
 #' @export
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
+#' @export
+from_wd <- root_criterion(function(path) TRUE, "From current working directory")
+
 #' Prespecified criteria
 #'
 #' This is a collection of commonly used root criteria.
@@ -80,7 +83,8 @@ is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 criteria <- structure(
   list(
     is_rstudio_project = is_rstudio_project,
-    is_r_package = is_r_package
+    is_r_package = is_r_package,
+    from_wd = from_wd
   ),
   class = "root_criteria")
 
@@ -103,6 +107,13 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_r_package"
+
+#' @details
+#' \code{from_wd} uses the current working directory.
+#'
+#' @rdname criteria
+#' @export
+"from_wd"
 
 
 list_files <- function(path, filename) {
