@@ -1,6 +1,6 @@
 # rprojroot 1.0-3 (2016-05-13)
 
-- New root criterion , useful for creating accessors to a known path (#11).
+- New root criterion `from_wd`, useful for creating accessors to a known path (#11).
 - Clarify difference between `find_file()` and `make_fix_file()` in vignette (#9).
 - Remove unexported functions from documentation and examples (#10).
 
