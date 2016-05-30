@@ -1,3 +1,10 @@
+# rprojroot 1.0-4 (2016-05-30)
+
+- Improve AppVeyor testing.
+- Restore compatibility with R < 3.2.
+- Add package documentation with a few examples (#13)
+
+
 # rprojroot 1.0-3 (2016-05-13)
 
 - New root criterion `from_wd`, useful for creating accessors to a known path (#11).
