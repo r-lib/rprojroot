@@ -28,5 +28,6 @@ Collate:
     'file.R'
     'has-file.R'
     'root.R'
+    'rprojroot-package.R'
     'shortcut.R'
     'zzz-autoroxy.R'
