@@ -2,7 +2,7 @@
 
 - Improve AppVeyor testing.
 - Restore compatibility with R < 3.2.
-- Add package documentation with a few examples (#13)
+- Add package documentation with a few examples (#13).
 
 
 # rprojroot 1.0-3 (2016-05-13)
