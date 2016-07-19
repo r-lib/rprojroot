@@ -101,3 +101,13 @@ format.root_criterion <- function(x, ...) {
 print.root_criterion <- function(x, ...) {
   cat(paste0(format(x), "\n"))
 }
+
+#' @export
+`|.root_criterion` <- function(x, y) {
+  stopifnot(is.root_criterion(y))
+
+  root_criterion(
+    function(path) x$testfun(path) || y$testfun(path),
+    paste0(x$desc, ", or ", y$desc)
+  )
+}

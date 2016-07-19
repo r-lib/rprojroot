@@ -178,6 +178,12 @@ is_projecttemplate_project <- has_file("config/global.dcf", "^version: ")
 is_projecttemplate_project
 ```
 
+You can also combine criteria via the `|` operator:
+
+```{r}
+is_r_package | is_rstudio_project
+```
+
 
 
 ### Shortcuts
