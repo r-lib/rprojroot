@@ -25,6 +25,9 @@ r_github_packages:
   - krlmlr/travis@develop
   - hadley/pkgdown
 
+r_packages:
+  - covr
+
 after_success:
   - R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
   - scripts/deploy-pages.sh
