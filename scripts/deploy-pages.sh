@@ -2,7 +2,7 @@
 
 set -e
 
-doc_dir=inst/web
+doc_dir=docs
 
 # adapted from https://github.com/tjmahr/rprime/blob/1e756aea85677ebcbe785e4d3bd65e3b367e0660/deploy-pages.sh
 # and https://github.com/RyanHope/gazetools/blob/master/staticdocs-gh_pages.sh

@@ -16,3 +16,4 @@
 ^\.deploy_key\.pub$
 ^\.deploy_key\.enc$
 ^scripts/deploy-pages\.sh$
+^docs$
