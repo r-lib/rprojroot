@@ -1,0 +1,6 @@
+language: R
+sudo: no
+cache: packages
+r_github_packages: ropenscilabs/travis
+after_success: R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
+
