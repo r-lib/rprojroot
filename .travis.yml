@@ -1,6 +1,6 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
 sudo: false
 cache: packages
 warnings_are_errors: true
@@ -10,20 +10,20 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=false
     - MAKEFLAGS="-j 2"
 
-r:
-  - oldrel
-  - release
-  - devel
-
 # Linux:
 addons:
   apt:
     packages:
       - libmagick++-dev
+      - libssh2-1-dev
 
 # OS X (R release only)
 matrix:
   include:
+    - r: oldrel
+    - r: release
+      env: DEPLOY_PAGES=true
+    - r: devel
     - os: osx
       osx_image: xcode7.2
       r: release
@@ -34,6 +34,12 @@ notifications:
     on_success: change
     on_failure: change
 
+after_success:
+  - scripts/deploy-pages.sh
+  - R -e 'covr::codecov()'; fi
+
+# Custom parts:
+
 r_github_packages:
   - krlmlr/travis@develop
   - krlmlr/pkgdown@develop
@@ -41,7 +47,3 @@ r_github_packages:
 r_packages:
   - covr
 
-after_success:
-  - R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
-  - scripts/deploy-pages.sh
-  - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
