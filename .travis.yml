@@ -27,6 +27,7 @@ r_github_packages:
 
 r_packages:
   - covr
+  - roxygen2
 
 after_success:
   - R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
