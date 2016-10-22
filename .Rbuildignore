@@ -12,3 +12,8 @@
 ^cran-comments\.md$
 ^inst/web$
 ^inst/staticdocs$
+^\.travis\.yml$
+^\.deploy_key\.pub$
+^\.deploy_key\.enc$
+^scripts/deploy-pages\.sh$
+^docs$

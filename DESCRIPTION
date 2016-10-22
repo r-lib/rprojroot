@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 1.0-4
+Version: 1.0-5
 Authors@R: person(given = "Kirill", family = "Müller", role = c("aut",
         "cre"), email = "krlmlr+r@mailbox.org")
 Description: Robust, reliable and flexible paths to files below a
@@ -18,10 +18,9 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-URL: https://krlmlr.github.io/rprojroot
-URLNote: https://github.com/krlmlr/rprojroot
+URL: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
 BugReports: https://github.com/krlmlr/rprojroot/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000
 Collate:
     'rrmake.R'
     'criterion.R'
@@ -30,4 +29,3 @@ Collate:
     'root.R'
     'rprojroot-package.R'
     'shortcut.R'
-    'zzz-autoroxy.R'

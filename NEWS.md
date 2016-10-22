@@ -1,23 +1,29 @@
-# rprojroot 1.0-4 (2016-05-30)
+## rprojroot 1.0-5 (2016-10-22)
+
+- Use Travis instead of wercker.
+- Criteria can be combined with the `|` operator (#15).
+
+
+## rprojroot 1.0-4 (2016-05-30)
 
 - Improve AppVeyor testing.
 - Restore compatibility with R < 3.2.
-- Add package documentation with a few examples (#13)
+- Add package documentation with a few examples (#13).
 
 
-# rprojroot 1.0-3 (2016-05-13)
+## rprojroot 1.0-3 (2016-05-13)
 
 - New root criterion `from_wd`, useful for creating accessors to a known path (#11).
 - Clarify difference between `find_file()` and `make_fix_file()` in vignette (#9).
 - Remove unexported functions from documentation and examples (#10).
 
 
-# rprojroot 1.0-2 (2016-03-28)
+## rprojroot 1.0-2 (2016-03-28)
 
 - Fix test that fails on Windows only on CRAN.
 
 
-# rprojroot 1.0-1 (2016-03-26)
+## rprojroot 1.0-1 (2016-03-26)
 
 - Updated NEWS.
 
