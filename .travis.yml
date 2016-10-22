@@ -30,5 +30,6 @@ r_packages:
 
 after_success:
   - R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
+  - ssh -vvv git@github.com
   - scripts/deploy-pages.sh
   - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
