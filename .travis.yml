@@ -18,7 +18,7 @@ addons:
       - libmagick++-dev
       - libssh2-1-dev
 
-# OS X (R release only)
+# Matrix: 3x Linux, 1x OS X
 matrix:
   include:
     - r: oldrel
