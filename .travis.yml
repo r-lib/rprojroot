@@ -23,6 +23,8 @@ matrix:
     - r: oldrel
     - r: release
       env: DEPLOY_PAGES=true
+      r_github_packages:
+        - krlmlr/pkgdown@develop
     - r: devel
     - os: osx
       osx_image: xcode7.2
@@ -42,7 +44,6 @@ after_success:
 
 r_github_packages:
   - krlmlr/travis@develop
-  - krlmlr/pkgdown@develop
 
 r_packages:
   - covr
