@@ -1,0 +1,34 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+sudo: false
+cache: packages
+
+warnings_are_errors: true
+env:
+  global:
+    - _R_CHECK_FORCE_SUGGESTS_=false
+    - MAKEFLAGS="-j 2"
+    - R_CODECOV=true
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+addons:
+  apt:
+    packages:
+      - libmagick++-dev
+
+r_github_packages:
+  - krlmlr/travis@develop
+  - krlmlr/pkgdown@develop
+
+r_packages:
+  - covr
+
+after_success:
+  - R -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
+  - scripts/deploy-pages.sh
+  - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi

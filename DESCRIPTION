@@ -18,8 +18,7 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-URL: https://krlmlr.github.io/rprojroot
-URLNote: https://github.com/krlmlr/rprojroot
+URL: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
 BugReports: https://github.com/krlmlr/rprojroot/issues
 RoxygenNote: 5.0.1
 Collate:
