@@ -12,7 +12,10 @@ doc_dir=docs
 # For local testing use:
 # TRAVIS_OS_NAME=linux TRAVIS_PULL_REQUEST=false TRAVIS_BRANCH=production TRAVIS_REPO_SLUG=rstats-db/DBI TRAVIS_COMMIT=$(git rev-parse HEAD) GITHUB_PAT=<your-PAT> scripts/deploy-pages.sh
 
-if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ] && [ "$GITHUB_PAT" != "" ]; then
+if [ "$DEPLOY_PAGES" ] && [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ]; then
+  R -q -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
+  ssh git@github.com
+
   # Query name and e-mail of current author
   # https://gist.github.com/l15n/3103708
   user_email=$(git show --format="%ae" | head -n 1)
