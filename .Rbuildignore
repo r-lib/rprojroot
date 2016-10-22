@@ -17,3 +17,4 @@
 ^\.deploy_key\.enc$
 ^scripts/deploy-pages\.sh$
 ^docs$
+^_pkgdown\.yml$

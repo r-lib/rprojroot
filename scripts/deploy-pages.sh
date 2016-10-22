@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 doc_dir=docs
 
@@ -24,7 +25,7 @@ if [ "$DEPLOY_PAGES" ] && [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_RE
   mkdir -p $doc_dir
 
   # Clone the current docs.
-  git clone --quiet --branch=gh-pages git@github.com:{TRAVIS_REPO_SLUG}.git $doc_dir > /dev/null
+  git clone --quiet --branch=gh-pages git@github.com:${TRAVIS_REPO_SLUG}.git $doc_dir > /dev/null
 
   # Clean current docs and build anew.
   echo -e "Building pkgdown...\n"

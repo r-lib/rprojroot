@@ -37,6 +37,7 @@ matrix:
 #r_packages
 r_packages:
   - covr
+  - roxygen2
 
 #notifications
 notifications:
