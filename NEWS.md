@@ -1,3 +1,9 @@
+## rprojroot 1.0-5 (2016-10-22)
+
+- Use Travis instead of wercker.
+- Criteria can be combined with the `|` operator (#15).
+
+
 ## rprojroot 1.0-4 (2016-05-30)
 
 - Improve AppVeyor testing.
