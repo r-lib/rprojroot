@@ -1,3 +1,7 @@
+## rprojroot 1.0-6 (2016-10-22)
+
+- Travis tests three R versions, and OS X.
+
 ## rprojroot 1.0-5 (2016-10-22)
 
 - Use Travis instead of wercker.
