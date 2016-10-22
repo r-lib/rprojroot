@@ -52,3 +52,12 @@ after_success:
 
 #r_github_packages (also need to add to the matrix definition above)
 
+#r_packages
+r_packages:
+  - plogr
+
+env:
+  global:
+    - XXX_ZZZ=true
+    - MAKEFLAGS="-j 1"
+
