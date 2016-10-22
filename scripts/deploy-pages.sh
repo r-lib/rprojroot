@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 doc_dir=docs
 
