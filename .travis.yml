@@ -19,19 +19,17 @@ os:
   - linux
   - osx
 
-matrix:
-  include:
-    - os: linux
-      dist: precise
-      sudo: false
-      env: R_CODECOV=true
-      addons:
-        apt:
-          packages:
-            - libmagick++-dev
-    - os: osx
-      osx_image: xcode7.2
-      latex: false
+# Linux:
+dist: precise
+sudo: false
+addons:
+  apt:
+    packages:
+      - libmagick++-dev
+
+# OS X:
+osx_image: xcode7.2
+latex: false
 
 notifications:
   email:
