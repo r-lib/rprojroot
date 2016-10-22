@@ -15,21 +15,19 @@ r:
   - release
   - devel
 
-os:
-  - linux
-  - osx
-
 # Linux:
-dist: precise
-sudo: false
 addons:
   apt:
     packages:
       - libmagick++-dev
 
-# OS X:
-osx_image: xcode7.2
-latex: false
+# OS X (R release only)
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode7.2
+      r: release
+      latex: false
 
 notifications:
   email:
