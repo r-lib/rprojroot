@@ -23,7 +23,7 @@ addons:
 
 r_github_packages:
   - krlmlr/travis@develop
-  - hadley/pkgdown
+  - krlmlr/pkgdown@develop
 
 r_packages:
   - covr
