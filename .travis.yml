@@ -3,23 +3,36 @@
 language: R
 sudo: false
 cache: packages
-
 warnings_are_errors: true
+
 env:
   global:
     - _R_CHECK_FORCE_SUGGESTS_=false
     - MAKEFLAGS="-j 2"
-    - R_CODECOV=true
+
+r:
+  - oldrel
+  - release
+  - devel
+
+matrix:
+  include:
+    - os: linux
+      dist: precise
+      sudo: false
+      env: R_CODECOV=true
+      addons:
+        apt:
+          packages:
+            - libmagick++-dev
+    - os: osx
+      osx_image: xcode7.2
+      latex: false
 
 notifications:
   email:
     on_success: change
     on_failure: change
-
-addons:
-  apt:
-    packages:
-      - libmagick++-dev
 
 r_github_packages:
   - krlmlr/travis@develop
