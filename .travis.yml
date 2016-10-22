@@ -23,7 +23,8 @@ matrix:
   include:
     - r: oldrel
     - r: release
-      env: DEPLOY_PAGES=true
+      env:
+        - DEPLOY_PAGES=true
       r_github_packages:
         - krlmlr/pkgdown@develop
         - krlmlr/travis@develop
@@ -52,12 +53,7 @@ after_success:
 
 #r_github_packages (also need to add to the matrix definition above)
 
-#r_packages
-r_packages:
-  - plogr
+#r_packages (need to copy packages included above)
 
-env:
-  global:
-    - XXX_ZZZ=true
-    - MAKEFLAGS="-j 1"
+#env (need to copy settings from above)
 
