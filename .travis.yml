@@ -10,16 +10,21 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=false
     - MAKEFLAGS="-j 2"
 
+r:
+  - oldrel
+  - release
+  - devel
+
+os:
+  - linux
+  - osx
+
 matrix:
   include:
     - os: linux
       dist: precise
       sudo: false
       env: R_CODECOV=true
-      r:
-        - oldrel
-        - release
-        - devel
       addons:
         apt:
           packages:
