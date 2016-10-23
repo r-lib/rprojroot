@@ -11,8 +11,9 @@
 #' @param criterion A criterion, will be coerced using
 #'   \code{\link{as.root_criterion}}
 #' @param path The start directory
-#' @param ... Additional arguments passed to \code{\link{file.path}}
-#' @return The normalized path of the root as specified by the search criteria.
+#' @param ... Further path components passed to \code{\link{file.path}}
+#' @return The normalized path of the root as specified by the search criteria,
+#'   with the additional path components appended.
 #'   Throws an error if no root is found
 #'
 #' @examples

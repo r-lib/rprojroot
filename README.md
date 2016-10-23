@@ -35,4 +35,4 @@ Install from GitHub:
 devtools::install_github("krlmlr/rprojroot")
 ```
 
-See the [vignette](http://krlmlr.github.io/rprojroot/vignettes/rprojroot.html) for more detail.
+See the [documentation](http://krlmlr.github.io/rprojroot/articles/rprojroot.html) for more detail.

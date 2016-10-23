@@ -255,6 +255,33 @@ Take a look at the `thisfile()` function in the `kimisc` package for getting
 the path to the current script or `knitr` document.
 
 
+## `testthat` files
+
+Tests run with [`testthat`](https://cran.r-project.org/package=testthat)
+commonly use files that live below the `tests/testthat` directory.
+Ideally, this should work in the following situation:
+
+- During package development (working directory: package root)
+- When testing with `devtools::test()` (working directory: `tests/testthat`)
+- When running `R CMD check` (working directory: a renamed recursive copy of `tests`)
+
+The `is_testthat` criterion allows robust lookup of test files.
+
+```{r}
+is_testthat
+```
+
+The example code below lists all files in the
+[hierarchy](https://github.com/krlmlr/rprojroot/tree/master/tests/testthat/hierarchy)
+test directory.
+It uses two project root lookups in total,
+so that it also works when rendering the vignette (*sigh*):
+
+```{r}
+dir(is_testthat$find_file("hierarchy", path = is_r_package$find_file()))
+```
+
+
 ## Summary
 
 The `rprojroot` package allows easy access to files below a project root

@@ -2,8 +2,10 @@
 % Please edit documentation in R/file.R, R/shortcut.R
 \name{find_root_file}
 \alias{find_package_root_file}
+\alias{find_remake_root_file}
 \alias{find_root_file}
 \alias{find_rstudio_root_file}
+\alias{find_testthat_root_file}
 \title{File paths relative to the root of a directory hierarchy}
 \usage{
 find_root_file(..., criterion, path = ".")
@@ -11,9 +13,13 @@ find_root_file(..., criterion, path = ".")
 find_rstudio_root_file(..., path = ".")
 
 find_package_root_file(..., path = ".")
+
+find_remake_root_file(..., path = ".")
+
+find_testthat_root_file(..., path = ".")
 }
 \arguments{
-\item{...}{Additional arguments passed to \code{\link{file.path}}}
+\item{...}{Further path components passed to \code{\link{file.path}}}
 
 \item{criterion}{A criterion, will be coerced using
 \code{\link{as.root_criterion}}}
@@ -21,7 +27,8 @@ find_package_root_file(..., path = ".")
 \item{path}{The start directory}
 }
 \value{
-The normalized path of the root as specified by the search criteria.
+The normalized path of the root as specified by the search criteria,
+  with the additional path components appended.
   Throws an error if no root is found
 }
 \description{

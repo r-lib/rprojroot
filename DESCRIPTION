@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 1.0-6
+Version: 1.0-7
 Authors@R: person(given = "Kirill", family = "Müller", role = c("aut",
         "cre"), email = "krlmlr+r@mailbox.org")
 Description: Robust, reliable and flexible paths to files below a
@@ -9,6 +9,8 @@ Description: Robust, reliable and flexible paths to files below a
     regular file.
 Depends:
     R (>= 3.0.0)
+Imports:
+    backports
 Suggests:
     testthat,
     knitr,
