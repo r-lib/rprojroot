@@ -10,6 +10,7 @@
 #'   if the directory specified by this parameter is the project root,
 #'   and \code{FALSE} otherwise
 #' @param desc A textual description of the test criterion
+#' @param subdir Subdirectories to start the search in, if found
 #'
 #' @return
 #' An S3 object of class \code{root_criterion} wit the following members:
@@ -25,7 +26,7 @@
 #' \dontrun{
 #' is_r_package$make_fix_file(".")
 #' }
-root_criterion <- function(testfun, desc) {
+root_criterion <- function(testfun, desc, subdir = NULL) {
   if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
     stop("testfun must be a function with one argument 'path'")
   }
@@ -36,7 +37,9 @@ root_criterion <- function(testfun, desc) {
       #'   \item{\code{testfun}}{The \code{testfun} argument}
       testfun = testfun,
       #'   \item{\code{desc}}{The \code{desc} argument}
-      desc = desc
+      desc = desc,
+      #'   \item{\code{subdir}}{The \code{subdir} argument}
+      subdir = subdir
     ),
     class = "root_criterion"
   )

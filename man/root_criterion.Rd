@@ -10,7 +10,7 @@
 \alias{root_criterion}
 \title{Is a directory the project root?}
 \usage{
-root_criterion(testfun, desc)
+root_criterion(testfun, desc, subdir = NULL)
 
 is.root_criterion(x)
 
@@ -31,6 +31,8 @@ and \code{FALSE} otherwise}
 
 \item{desc}{A textual description of the test criterion}
 
+\item{subdir}{Subdirectories to start the search in, if found}
+
 \item{x}{An object}
 
 \item{filepath}{File path (can contain directories)}
@@ -49,6 +51,7 @@ An S3 object of class \code{root_criterion} wit the following members:
 \describe{
   \item{\code{testfun}}{The \code{testfun} argument}
   \item{\code{desc}}{The \code{desc} argument}
+  \item{\code{subdir}}{The \code{subdir} argument}
   \item{\code{find_file}}{A function with \code{...} argument that returns
     for a path relative to the root specified by this criterion.
     The optional \code{path} argument specifies the starting directory,
