@@ -50,7 +50,7 @@ notifications:
 #after_success (deploy to gh-pages and run covr)
 after_success:
   - scripts/deploy-pages.sh
-  - R -e 'covr::codecov()'; fi
+  - R -e 'covr::codecov()'
 
 # Custom parts:
 
