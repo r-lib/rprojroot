@@ -135,10 +135,7 @@ list_files <- function(path, filename) {
 }
 
 is_dir <- function(x) {
-  if (getRversion() >= "3.2")
-    file.info(x, extra_cols = FALSE)$isdir
-  else
-    file.info(x)$isdir
+  dir.exists(x)
 }
 
 match_contents <- function(f, contents, n) {
