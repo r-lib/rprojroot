@@ -8,3 +8,7 @@ test_that("is_testthat", {
   expect_equal(is_testthat$find_file(path = "package/tests"), testthat_path)
   expect_equal(is_testthat$find_file(path = "package/tests/testthat"), testthat_path)
 })
+
+test_that("dogfood", {
+  expect_true(file.exists(is_testthat$find_file("hierarchy", "a", "b", "c", "d")))
+})
