@@ -4,13 +4,14 @@
 \alias{as.root_criterion}
 \alias{as.root_criterion.character}
 \alias{as.root_criterion.root_criterion}
+\alias{has_dirname}
 \alias{has_file}
 \alias{has_file_pattern}
 \alias{is.root_criterion}
 \alias{root_criterion}
 \title{Is a directory the project root?}
 \usage{
-root_criterion(testfun, desc)
+root_criterion(testfun, desc, subdir = NULL)
 
 is.root_criterion(x)
 
@@ -23,6 +24,8 @@ as.root_criterion(x)
 has_file(filepath, contents = NULL, n = -1L)
 
 has_file_pattern(pattern, contents = NULL, n = -1L)
+
+has_dirname(dirname, subdir = NULL)
 }
 \arguments{
 \item{testfun}{A function with one parameter that returns \code{TRUE}
@@ -30,6 +33,8 @@ if the directory specified by this parameter is the project root,
 and \code{FALSE} otherwise}
 
 \item{desc}{A textual description of the test criterion}
+
+\item{subdir}{Subdirectories to start the search in, if found}
 
 \item{x}{An object}
 
@@ -42,6 +47,8 @@ and \code{FALSE} otherwise}
     input on the connection.}
 
 \item{pattern}{Regular expression to match the file name}
+
+\item{dirname}{A directory name, without subdirectories}
 }
 \value{
 An S3 object of class \code{root_criterion} wit the following members:
@@ -49,6 +56,7 @@ An S3 object of class \code{root_criterion} wit the following members:
 \describe{
   \item{\code{testfun}}{The \code{testfun} argument}
   \item{\code{desc}}{The \code{desc} argument}
+  \item{\code{subdir}}{The \code{subdir} argument}
   \item{\code{find_file}}{A function with \code{...} argument that returns
     for a path relative to the root specified by this criterion.
     The optional \code{path} argument specifies the starting directory,
@@ -81,6 +89,9 @@ root) with specific contents.
 
 The \code{has_file_pattern} function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.
+
+The \code{has_dirname} function constructs a criterion that checks if the
+\code{\link[base]{dirname}} has a specific name.
 }
 \examples{
 root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")

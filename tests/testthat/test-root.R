@@ -63,8 +63,42 @@ test_that("has_file_pattern", {
   )
 })
 
+test_that("has_dirname", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
+  }
+
+  stop_path <- hierarchy(1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(has_dirname("a"), path = path), hierarchy(2L)),
+    expect_equal(find_root(has_dirname("b"), path = path), hierarchy(3L)),
+    expect_equal(find_root_file("c", criterion = has_dirname("b"), path = path),
+                 file.path(hierarchy(3L), "c")),
+    expect_equal(find_root(has_dirname("c"), path = path), hierarchy(4L)),
+    expect_error(find_root(has_dirname("d"), path = path),
+                 "No root directory found.* is '.*'"),
+    expect_error(find_root(has_dirname("rprojroot.Rproj"), path = path),
+                 "No root directory found.* is '.*'"),
+    TRUE
+  )
+})
+
 test_that("finds root", {
   skip_on_cran()
   # Checks that search for root actually terminates
   expect_error(find_root("/"), "No root directory found.* file '.*'")
+})
+
+test_that("stops if depth reached", {
+  find_root_mocked <- find_root
+  mock_env <- new.env()
+  mock_env$dirname <- identity
+  environment(find_root_mocked) <- mock_env
+
+  # Checks that search for root terminates for very deep hierarchies
+  expect_error(find_root_mocked(""), "Maximum search of [0-9]+ exceeded")
 })

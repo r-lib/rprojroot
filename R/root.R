@@ -26,8 +26,7 @@
 find_root <- function(criterion, path = ".") {
   criterion <- as.root_criterion(criterion)
 
-  original_path <- path
-  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
+  path <- start_path(path, criterion$subdir)
 
   for (i in seq_len(.MAX_DEPTH)) {
     if (criterion$testfun(path)) {
@@ -46,6 +45,19 @@ find_root <- function(criterion, path = ".") {
 }
 
 .MAX_DEPTH <- 100L
+
+start_path <- function(path, subdirs) {
+  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
+
+  for (subdir in subdirs) {
+    subdir_path <- file.path(path, subdir)
+    if (dir.exists(subdir_path)) {
+      return(subdir_path)
+    }
+  }
+
+  path
+}
 
 # Borrowed from devtools
 is_root <- function(path) {

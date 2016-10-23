@@ -34,6 +34,8 @@ test_that("Formatting criteria", {
 })
 
 test_that("Combining criteria", {
+  skip_on_cran()
+
   comb_crit <- is_r_package | is_rstudio_project
 
   expect_true(is.root_criterion(comb_crit))
