@@ -66,6 +66,25 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   root_criterion(testfun, desc)
 }
 
+#' @details
+#' The \code{has_dirname} function constructs a criterion that checks if the
+#' \code{\link[base]{dirname}} has a specific name.
+#'
+#' @rdname root_criterion
+#' @param dirname A directory name, without subdirectories
+#' @export
+has_dirname <- function(dirname, subdir = NULL) {
+  force(dirname)
+
+  testfun <- eval(bquote(function(path) {
+    dir.exists(file.path(basename(dirname(path)), .(dirname)))
+  }))
+
+  desc <- paste0("Directory name is '", dirname, "'")
+
+  root_criterion(testfun, desc, subdir = subdir)
+}
+
 #' @export
 is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n = 1L)
 
