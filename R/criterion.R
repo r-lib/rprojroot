@@ -35,7 +35,7 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
     desc,
     if (!is.null(subdir)) paste0(
       " (also look in subdirectories: ",
-      paste(subdir, collapse = ", "),
+      paste0("'", subdir, "'", collapse = ", "),
       ")"
     )
   )
