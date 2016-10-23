@@ -77,7 +77,7 @@ has_dirname <- function(dirname, subdir = NULL) {
   force(dirname)
 
   testfun <- eval(bquote(function(path) {
-    dir.exists(file.path(basename(dirname(path)), .(dirname)))
+    dir.exists(file.path(dirname(path), .(dirname)))
   }))
 
   desc <- paste0("Directory name is '", dirname, "'")
