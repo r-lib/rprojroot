@@ -14,7 +14,7 @@ doc_dir=docs
 
 if [ "$DEPLOY_PAGES" ] && [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ]; then
   R -q -e "travis::deploy(tasks = c('travis::task_install_ssh_keys()'))"
-  ssh git@github.com
+  ssh git@github.com || true
 
   # Query name and e-mail of current author
   # https://gist.github.com/l15n/3103708

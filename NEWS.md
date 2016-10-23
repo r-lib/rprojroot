@@ -1,3 +1,11 @@
+## rprojroot 1.0-7 (2016-10-23)
+
+- New `is_testthat` and `find_testthat_root_file()` that looks for `tests/testthat` root (#14).
+- Improve navbar on project page.
+- Uses `backports` to simplify compatibility with R 3.0.0.
+- New `is_remake_project` and `find_remake_root_file()` that looks for remate project (#17).
+
+
 ## rprojroot 1.0-6 (2016-10-22)
 
 - Travis tests three R versions, and OS X.
