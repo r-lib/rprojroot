@@ -30,6 +30,16 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
   if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
     stop("testfun must be a function with one argument 'path'")
   }
+
+  full_desc <- paste0(
+    desc,
+    if (!is.null(subdir)) paste0(
+      " (also look in subdirectories: ",
+      paste(subdir, collapse = ", "),
+      ")"
+    )
+  )
+
   criterion <- structure(
     list(
       #' @return
@@ -37,7 +47,7 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
       #'   \item{\code{testfun}}{The \code{testfun} argument}
       testfun = testfun,
       #'   \item{\code{desc}}{The \code{desc} argument}
-      desc = desc,
+      desc = full_desc,
       #'   \item{\code{subdir}}{The \code{subdir} argument}
       subdir = subdir
     ),
