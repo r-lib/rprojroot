@@ -13,7 +13,7 @@ find_rstudio_root_file(..., path = ".")
 find_package_root_file(..., path = ".")
 }
 \arguments{
-\item{...}{Additional arguments passed to \code{\link{file.path}}}
+\item{...}{Further path components passed to \code{\link{file.path}}}
 
 \item{criterion}{A criterion, will be coerced using
 \code{\link{as.root_criterion}}}
@@ -21,7 +21,8 @@ find_package_root_file(..., path = ".")
 \item{path}{The start directory}
 }
 \value{
-The normalized path of the root as specified by the search criteria.
+The normalized path of the root as specified by the search criteria,
+  with the additional path components appended.
   Throws an error if no root is found
 }
 \description{
