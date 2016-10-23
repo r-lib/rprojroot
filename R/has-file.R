@@ -73,6 +73,9 @@ is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n =
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
 #' @export
+is_remake_project <- has_file("remake.yml")
+
+#' @export
 from_wd <- root_criterion(function(path) TRUE, "From current working directory")
 
 #' Prespecified criteria
@@ -84,6 +87,7 @@ criteria <- structure(
   list(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
+    is_remake_project = is_remake_project,
     from_wd = from_wd
   ),
   class = "root_criteria")
@@ -107,6 +111,13 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_r_package"
+
+#' @details
+#' \code{is_remake_project} looks for a \code{remake.yml} file.
+#'
+#' @rdname criteria
+#' @export
+"is_remake_project"
 
 #' @details
 #' \code{from_wd} uses the current working directory.

@@ -5,15 +5,18 @@
 \alias{criteria}
 \alias{from_wd}
 \alias{is_r_package}
+\alias{is_remake_project}
 \alias{is_rstudio_project}
 \title{Prespecified criteria}
-\format{An object of class \code{root_criteria} of length 3.}
+\format{An object of class \code{root_criteria} of length 4.}
 \usage{
 criteria
 
 is_rstudio_project
 
 is_r_package
+
+is_remake_project
 
 from_wd
 }
@@ -24,6 +27,8 @@ This is a collection of commonly used root criteria.
 \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
 
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
+
+\code{is_remake_project} looks for a \code{remake.yml} file.
 
 \code{from_wd} uses the current working directory.
 }

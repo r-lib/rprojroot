@@ -2,6 +2,7 @@
 % Please edit documentation in R/file.R, R/shortcut.R
 \name{find_root_file}
 \alias{find_package_root_file}
+\alias{find_remake_root_file}
 \alias{find_root_file}
 \alias{find_rstudio_root_file}
 \title{File paths relative to the root of a directory hierarchy}
@@ -11,6 +12,8 @@ find_root_file(..., criterion, path = ".")
 find_rstudio_root_file(..., path = ".")
 
 find_package_root_file(..., path = ".")
+
+find_remake_root_file(..., path = ".")
 }
 \arguments{
 \item{...}{Further path components passed to \code{\link{file.path}}}
