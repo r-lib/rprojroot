@@ -97,6 +97,9 @@ is_remake_project <- has_file("remake.yml")
 #' @export
 from_wd <- root_criterion(function(path) TRUE, "From current working directory")
 
+#' @export
+is_testthat <- has_dirname("testthat", c("tests/testthat", "testthat"))
+
 #' Prespecified criteria
 #'
 #' This is a collection of commonly used root criteria.
@@ -107,6 +110,7 @@ criteria <- structure(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
+    is_testthat = is_testthat,
     from_wd = from_wd
   ),
   class = "root_criteria")
@@ -137,6 +141,14 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_remake_project"
+
+#' @details
+#' \code{is_testthat} looks for the \code{testthat} directory, works when
+#'   developing, testing, and checking a package.
+#'
+#' @rdname criteria
+#' @export
+"is_testthat"
 
 #' @details
 #' \code{from_wd} uses the current working directory.
