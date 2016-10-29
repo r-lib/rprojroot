@@ -9,6 +9,8 @@
 
 OK
 
+* I don't see the warnings on R-devel with the updated version anymore.
+
 
 ## Reverse dependencies
 
