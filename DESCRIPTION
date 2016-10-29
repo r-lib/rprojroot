@@ -31,3 +31,4 @@ Collate:
     'root.R'
     'rprojroot-package.R'
     'shortcut.R'
+Roxygen: list(markdown = TRUE)
