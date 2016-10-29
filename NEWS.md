@@ -1,44 +1,30 @@
-## rprojroot 1.0-7 (2016-10-23)
+# rprojroot 1.1 (2016-10-29)
 
-- New `is_testthat` and `find_testthat_root_file()` that looks for `tests/testthat` root (#14).
-- Improve navbar on project page.
-- Uses `backports` to simplify compatibility with R 3.0.0.
-- New `is_remake_project` and `find_remake_root_file()` that looks for remate project (#17).
+- Compatibility
+    - Compatible with R >= 3.0.0 with the help of the `backports` package.
 
+- New root criteria
+    - `is_remake_project` and `find_remake_root_file()` look for [remake](https://github.com/richfitz/remake) project (#17).
+    - `is_testthat` and `find_testthat_root_file()` that looks for `tests/testthat` root (#14).
+    - `from_wd`, useful for creating accessors to a known path (#11).
 
-## rprojroot 1.0-6 (2016-10-22)
+- Minor enhancement
+    - Criteria can be combined with the `|` operator (#15).
 
-- Travis tests three R versions, and OS X.
+- Documentation
+    - Add package documentation with a few examples (#13).
+    - Clarify difference between `find_file()` and `make_fix_file()` in vignette (#9).
+    - Remove unexported functions from documentation and examples (#10).
+    - Use `pkgdown` to create website.
 
-
-## rprojroot 1.0-5 (2016-10-22)
-
-- Use Travis instead of wercker.
-- Criteria can be combined with the `|` operator (#15).
-
-
-## rprojroot 1.0-4 (2016-05-30)
-
-- Improve AppVeyor testing.
-- Restore compatibility with R < 3.2.
-- Add package documentation with a few examples (#13).
+- Testing
+    - Use Travis instead of wercker. Travis tests three R versions, and OS X.
+    - Improve AppVeyor testing.
 
 
-## rprojroot 1.0-3 (2016-05-13)
-
-- New root criterion `from_wd`, useful for creating accessors to a known path (#11).
-- Clarify difference between `find_file()` and `make_fix_file()` in vignette (#9).
-- Remove unexported functions from documentation and examples (#10).
-
-
-## rprojroot 1.0-2 (2016-03-28)
+# rprojroot 1.0-2 (2016-03-28)
 
 - Fix test that fails on Windows only on CRAN.
-
-
-## rprojroot 1.0-1 (2016-03-26)
-
-- Updated NEWS.
 
 
 # rprojroot 1.0 (2016-03-26)
