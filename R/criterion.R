@@ -1,19 +1,19 @@
 #' Is a directory the project root?
 #'
-#' Objects of the \code{root_criterion} class decide if a
+#' Objects of the `root_criterion` class decide if a
 #' given directory is a project root.
 #'
-#' Construct criteria using \code{root_criterion} in a very general fashion
-#' by specifying a function with a \code{path} argument, and a description.
+#' Construct criteria using `root_criterion` in a very general fashion
+#' by specifying a function with a `path` argument, and a description.
 #'
-#' @param testfun A function with one parameter that returns \code{TRUE}
+#' @param testfun A function with one parameter that returns `TRUE`
 #'   if the directory specified by this parameter is the project root,
-#'   and \code{FALSE} otherwise
+#'   and `FALSE` otherwise
 #' @param desc A textual description of the test criterion
 #' @param subdir Subdirectories to start the search in, if found
 #'
 #' @return
-#' An S3 object of class \code{root_criterion} wit the following members:
+#' An S3 object of class `root_criterion` wit the following members:
 #'
 #' @include rrmake.R
 #' @export
@@ -44,27 +44,27 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
     list(
       #' @return
       #' \describe{
-      #'   \item{\code{testfun}}{The \code{testfun} argument}
+      #'   \item{`testfun`}{The `testfun` argument}
       testfun = testfun,
-      #'   \item{\code{desc}}{The \code{desc} argument}
+      #'   \item{`desc`}{The `desc` argument}
       desc = full_desc,
-      #'   \item{\code{subdir}}{The \code{subdir} argument}
+      #'   \item{`subdir`}{The `subdir` argument}
       subdir = subdir
     ),
     class = "root_criterion"
   )
 
-  #'   \item{\code{find_file}}{A function with \code{...} argument that returns
+  #'   \item{`find_file`}{A function with `...` argument that returns
   #'     for a path relative to the root specified by this criterion.
-  #'     The optional \code{path} argument specifies the starting directory,
-  #'     which defaults to \code{"."}.
+  #'     The optional `path` argument specifies the starting directory,
+  #'     which defaults to `"."`.
   #'   }
   criterion$find_file <- make_find_root_file(criterion)
-  #'   \item{\code{make_fix_file}}{A function with a \code{path} argument that
+  #'   \item{`make_fix_file`}{A function with a `path` argument that
   #'      returns a function that finds paths relative to the root.  For a
-  #'      criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
-  #'      is identical to \code{cr$find_file(...)}. The function created by
-  #'      \code{make_fix_file} can be saved to a variable to be more independent
+  #'      criterion `cr`, the result of `cr$make_fix_file(".")(...)`
+  #'      is identical to `cr$find_file(...)`. The function created by
+  #'      `make_fix_file` can be saved to a variable to be more independent
   #'      of the current working directory.
   #'   }
   #' }
@@ -86,9 +86,9 @@ is.root_criterion <- function(x) {
 as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
 
 #' @details
-#' The \code{as.root_criterion} function accepts objects of class
-#' \code{root_criterion}, and character values; the latter will be
-#' converted to criteria using \code{has_file}.
+#' The `as.root_criterion` function accepts objects of class
+#' `root_criterion`, and character values; the latter will be
+#' converted to criteria using `has_file`.
 #'
 #' @rdname root_criterion
 #' @export
