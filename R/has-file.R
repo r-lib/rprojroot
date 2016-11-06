@@ -1,5 +1,5 @@
 #' @details
-#' The \code{has_file} function constructs a criterion that checks for the
+#' The `has_file` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
 #' root) with specific contents.
 #'
@@ -33,7 +33,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 }
 
 #' @details
-#' The \code{has_file_pattern} function constructs a criterion that checks for the
+#' The `has_file_pattern` function constructs a criterion that checks for the
 #' existence of a file that matches a pattern, with specific contents.
 #'
 #' @rdname root_criterion
@@ -67,7 +67,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
 }
 
 #' @details
-#' The \code{has_dirname} function constructs a criterion that checks if the
+#' The `has_dirname` function constructs a criterion that checks if the
 #' [base::dirname()] has a specific name.
 #'
 #' @rdname root_criterion
@@ -122,28 +122,28 @@ str.root_criteria <- function(object, ...) {
 }
 
 #' @details
-#' \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
+#' `is_rstudio_project` looks for a file with extension `.Rproj`.
 #'
 #' @rdname criteria
 #' @export
 "is_rstudio_project"
 
 #' @details
-#' \code{is_r_package} looks for a \code{DESCRIPTION} file.
+#' `is_r_package` looks for a `DESCRIPTION` file.
 #'
 #' @rdname criteria
 #' @export
 "is_r_package"
 
 #' @details
-#' \code{is_remake_project} looks for a \code{remake.yml} file.
+#' `is_remake_project` looks for a `remake.yml` file.
 #'
 #' @rdname criteria
 #' @export
 "is_remake_project"
 
 #' @details
-#' \code{is_testthat} looks for the \code{testthat} directory, works when
+#' `is_testthat` looks for the `testthat` directory, works when
 #'   developing, testing, and checking a package.
 #'
 #' @rdname criteria
@@ -151,7 +151,7 @@ str.root_criteria <- function(object, ...) {
 "is_testthat"
 
 #' @details
-#' \code{from_wd} uses the current working directory.
+#' `from_wd` uses the current working directory.
 #'
 #' @rdname criteria
 #' @export
