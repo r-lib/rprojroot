@@ -8,13 +8,13 @@ find_root(criterion, path = ".")
 }
 \arguments{
 \item{criterion}{A criterion, will be coerced using
-\code{\link{as.root_criterion}}}
+\code{\link[=as.root_criterion]{as.root_criterion()}}}
 
 \item{path}{The start directory}
 }
 \value{
 The normalized path of the root as specified by the search criterion.
-  Throws an error if no root is found
+Throws an error if no root is found
 }
 \description{
 A \emph{root} is defined as a directory that contains a regular file
@@ -36,6 +36,6 @@ find_root(glob2rx("DESCRIPTION"), "^Package: ")
 
 }
 \seealso{
-\code{\link[utils]{glob2rx}} \code{\link{file.path}}
+\code{\link[utils]{glob2rx}} \code{\link[=file.path]{file.path()}}
 }
 

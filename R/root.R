@@ -20,7 +20,7 @@
 #' find_root(glob2rx("DESCRIPTION"), "^Package: ")
 #' }
 #'
-#' @seealso \code{\link[utils]{glob2rx}} \code{\link{file.path}}
+#' @seealso \code{\link[utils]{glob2rx}} [file.path()]
 #'
 #' @export
 find_root <- function(criterion, path = ".") {

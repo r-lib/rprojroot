@@ -1,6 +1,6 @@
 #' @details
-#' See the "Value" section in \code{\link{root_criterion}} for documentation
-#' of root criterion objects, and  \code{\link{criteria}} for useful predefined
+#' See the "Value" section in [root_criterion()] for documentation
+#' of root criterion objects, and  [criteria()] for useful predefined
 #' root criteria.
 #'
 #' @examples

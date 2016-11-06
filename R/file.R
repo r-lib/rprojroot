@@ -4,14 +4,14 @@
 #' \code{\link[base]{file.path}}.
 #'
 #' The \code{find_root_file} function is a simple wrapper around
-#' \code{\link{find_root}} that
+#' [find_root()] that
 #' appends an arbitrary number of path components to the root using
 #' \code{\link[base]{file.path}}.
 #'
 #' @param criterion A criterion, will be coerced using
-#'   \code{\link{as.root_criterion}}
+#'   [as.root_criterion()]
 #' @param path The start directory
-#' @param ... Further path components passed to \code{\link{file.path}}
+#' @param ... Further path components passed to [file.path()]
 #' @return The normalized path of the root as specified by the search criteria,
 #'   with the additional path components appended.
 #'   Throws an error if no root is found
@@ -23,7 +23,7 @@
 #' has_file("DESCRIPTION", "^Package: ")$make_fix_file(".")
 #' }
 #'
-#' @seealso \code{\link{find_root}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
+#' @seealso [find_root()] \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
 #'
 #' @export
 find_root_file <- function(..., criterion, path = ".") {
