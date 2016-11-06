@@ -1,4 +1,4 @@
-template:
+templates:
   params:
     bootswatch: flatly # https://bootswatch.com/flatly/
 
