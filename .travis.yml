@@ -21,16 +21,16 @@ addons:
 # Matrix: 3x Linux, 1x OS X
 matrix:
   include:
-    - r: oldrel
     - r: release
       env:
         - DEPLOY_PAGES=true
       r_github_packages:
-        - krlmlr/pkgdown@develop
+        - hadley/pkgdown
         - krlmlr/travis@develop
       r_packages:
         - covr
         - roxygen2
+    - r: oldrel
     - r: devel
     - os: osx
       osx_image: xcode7.2
