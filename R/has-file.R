@@ -68,7 +68,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
 
 #' @details
 #' The \code{has_dirname} function constructs a criterion that checks if the
-#' \code{\link[base]{dirname}} has a specific name.
+#' [base::dirname()] has a specific name.
 #'
 #' @rdname root_criterion
 #' @param dirname A directory name, without subdirectories

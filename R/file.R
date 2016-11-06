@@ -1,12 +1,12 @@
 #' File paths relative to the root of a directory hierarchy
 #'
 #' Append an arbitrary number of path components to the root using
-#' \code{\link[base]{file.path}}.
+#' [base::file.path()].
 #'
 #' The \code{find_root_file} function is a simple wrapper around
 #' [find_root()] that
 #' appends an arbitrary number of path components to the root using
-#' \code{\link[base]{file.path}}.
+#' [base::file.path()].
 #'
 #' @param criterion A criterion, will be coerced using
 #'   [as.root_criterion()]
@@ -23,7 +23,7 @@
 #' has_file("DESCRIPTION", "^Package: ")$make_fix_file(".")
 #' }
 #'
-#' @seealso [find_root()] \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
+#' @seealso [find_root()] [utils::glob2rx()] [base::file.path()]
 #'
 #' @export
 find_root_file <- function(..., criterion, path = ".") {

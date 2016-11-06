@@ -33,13 +33,13 @@ Throws an error if no root is found
 }
 \description{
 Append an arbitrary number of path components to the root using
-\code{\link[base]{file.path}}.
+\code{\link[base:file.path]{base::file.path()}}.
 }
 \details{
 The \code{find_root_file} function is a simple wrapper around
 \code{\link[=find_root]{find_root()}} that
 appends an arbitrary number of path components to the root using
-\code{\link[base]{file.path}}.
+\code{\link[base:file.path]{base::file.path()}}.
 }
 \examples{
 \dontrun{
@@ -50,6 +50,6 @@ has_file("DESCRIPTION", "^Package: ")$make_fix_file(".")
 
 }
 \seealso{
-\code{\link[=find_root]{find_root()}} \code{\link[utils]{glob2rx}} \code{\link[base]{file.path}}
+\code{\link[=find_root]{find_root()}} \code{\link[utils:glob2rx]{utils::glob2rx()}} \code{\link[base:file.path]{base::file.path()}}
 }
 
