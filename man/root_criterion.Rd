@@ -7,6 +7,7 @@
 \alias{as.root_criterion.character}
 \alias{as.root_criterion.root_criterion}
 \alias{has_file}
+\alias{has_dir}
 \alias{has_file_pattern}
 \alias{has_dirname}
 \title{Is a directory the project root?}
@@ -22,6 +23,8 @@ as.root_criterion(x)
 \method{as.root_criterion}{root_criterion}(x)
 
 has_file(filepath, contents = NULL, n = -1L)
+
+has_dir(filepath)
 
 has_file_pattern(pattern, contents = NULL, n = -1L)
 
@@ -86,6 +89,9 @@ converted to criteria using \code{has_file}.
 The \code{has_file} function constructs a criterion that checks for the
 existence of a specific file (which itself can be in a subdirectory of the
 root) with specific contents.
+
+The \code{has_dir} function constructs a criterion that checks for the
+existence of a specific directory.
 
 The \code{has_file_pattern} function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.

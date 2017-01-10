@@ -6,10 +6,13 @@
 \alias{is_rstudio_project}
 \alias{is_r_package}
 \alias{is_remake_project}
+\alias{is_git_root}
+\alias{is_svn_root}
+\alias{is_vcs_root}
 \alias{is_testthat}
 \alias{from_wd}
 \title{Prespecified criteria}
-\format{An object of class \code{root_criteria} of length 5.}
+\format{An object of class \code{root_criteria} of length 8.}
 \usage{
 criteria
 
@@ -18,6 +21,12 @@ is_rstudio_project
 is_r_package
 
 is_remake_project
+
+is_git_root
+
+is_svn_root
+
+is_vcs_root
 
 is_testthat
 
@@ -32,6 +41,13 @@ This is a collection of commonly used root criteria.
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
 
 \code{is_remake_project} looks for a \code{remake.yml} file.
+
+\code{is_git_project} looks for a \code{.git} directory.
+
+\code{is_svn_project} looks for a \code{.svn} directory.
+
+\code{is_vcs_project} looks for the root of a version control
+system, currently only Git and SVN are supported.
 
 \code{is_testthat} looks for the \code{testthat} directory, works when
 developing, testing, and checking a package.

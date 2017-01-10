@@ -33,6 +33,27 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 }
 
 #' @details
+#' The `has_dir` function constructs a criterion that checks for the
+#' existence of a specific directory.
+#'
+#' @rdname root_criterion
+#' @export
+has_dir <- function(filepath) {
+  force(filepath)
+
+  testfun <- eval(bquote(function(path) {
+    testfile <- file.path(path, .(filepath))
+    if (!file.exists(testfile))
+      return(FALSE)
+    is_dir(testfile)
+  }))
+
+  desc <- paste0("Contains a directory '", filepath, "'")
+
+  root_criterion(testfun, desc)
+}
+
+#' @details
 #' The `has_file_pattern` function constructs a criterion that checks for the
 #' existence of a file that matches a pattern, with specific contents.
 #'
@@ -95,10 +116,19 @@ is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 is_remake_project <- has_file("remake.yml")
 
 #' @export
-from_wd <- root_criterion(function(path) TRUE, "From current working directory")
+is_git_root <- has_dir(".git")
+
+#' @export
+is_svn_root <- has_dir(".svn")
+
+#' @export
+is_vcs_root <- is_git_root | is_svn_root
 
 #' @export
 is_testthat <- has_dirname("testthat", c("tests/testthat", "testthat"))
+
+#' @export
+from_wd <- root_criterion(function(path) TRUE, "From current working directory")
 
 #' Prespecified criteria
 #'
@@ -110,6 +140,9 @@ criteria <- structure(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
+    is_git_root = is_git_root,
+    is_svn_root = is_svn_root,
+    is_vcs_root = is_vcs_root,
     is_testthat = is_testthat,
     from_wd = from_wd
   ),
@@ -141,6 +174,28 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_remake_project"
+
+#' @details
+#' `is_git_project` looks for a `.git` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_git_root"
+
+#' @details
+#' `is_svn_project` looks for a `.svn` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_svn_root"
+
+#' @details
+#' `is_vcs_project` looks for the root of a version control
+#' system, currently only Git and SVN are supported.
+#'
+#' @rdname criteria
+#' @export
+"is_vcs_root"
 
 #' @details
 #' `is_testthat` looks for the `testthat` directory, works when

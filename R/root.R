@@ -61,6 +61,7 @@ start_path <- function(path, subdirs) {
 
 # Borrowed from devtools
 is_root <- function(path) {
+  return(FALSE)
   identical(normalizePath(path, winslash = "/"),
             normalizePath(dirname(path), winslash = "/"))
 }
