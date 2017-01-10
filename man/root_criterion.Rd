@@ -102,4 +102,3 @@ is_r_package$find_file
 is_r_package$make_fix_file(".")
 }
 }
-

@@ -39,4 +39,3 @@ developing, testing, and checking a package.
 \code{from_wd} uses the current working directory.
 }
 \keyword{datasets}
-
