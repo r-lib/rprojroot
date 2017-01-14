@@ -111,6 +111,27 @@ test_that("has_dirname", {
   )
 })
 
+test_that("is_svn_root", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "vcs", "svn", "a", "b", "c")[seq_len(n + 2L)])
+  }
+
+  stop_path <- hierarchy(-1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_svn_root, path = path), hierarchy(1L)),
+    expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
+    expect_error(find_root(is_svn_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
+    expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
+    TRUE
+  )
+})
+
 test_that("finds root", {
   skip_on_cran()
   # Checks that search for root actually terminates
