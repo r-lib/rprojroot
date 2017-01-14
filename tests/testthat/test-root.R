@@ -63,6 +63,30 @@ test_that("has_file_pattern", {
   )
 })
 
+test_that("has_dir", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
+  }
+
+  stop_path <- hierarchy(1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L)),
+    expect_equal(find_root_file("c", criterion = has_dir("b"), path = path),
+                 file.path(hierarchy(2L), "c")),
+    expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
+    expect_error(find_root(has_dir("d"), path = path),
+                 "No root directory found.* a directory '.*'"),
+    expect_error(find_root(has_dir("rprojroot.Rproj"), path = path),
+                 "No root directory found.* a directory '.*'"),
+    TRUE
+  )
+})
+
 test_that("has_dirname", {
   wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
