@@ -8,8 +8,9 @@
 - New function
     - `get_root_desc()` returns the description of the criterion that applies to a given root, useful for composite criteria created with `|`.
 
-- Minor enhancement
+- Minor enhancements
     - Improve formatting of alternative criteria (#18).
+    - If root cannot be found, the start path is shown in the error message.
 
 - Internal
     - The `$testfun` member of the `rprojroot` S3 class is now a list of functions instead of a function.
