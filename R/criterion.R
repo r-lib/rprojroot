@@ -107,12 +107,17 @@ as.root_criterion.default <- function(x) {
 
 #' @export
 format.root_criterion <- function(x, ...) {
-  paste("Root criterion:", x$desc)
+  if (length(x$desc) > 1) {
+    c("Root criterion: one of", paste0("- ", x$desc))
+  } else {
+    paste0("Root criterion: ", x$desc)
+  }
 }
 
 #' @export
 print.root_criterion <- function(x, ...) {
-  cat(paste0(format(x), "\n"))
+  cat(format(x), sep = "\n")
+  invisible(x)
 }
 
 #' @export
@@ -121,6 +126,6 @@ print.root_criterion <- function(x, ...) {
 
   root_criterion(
     function(path) x$testfun(path) || y$testfun(path),
-    paste0(x$desc, ", or ", y$desc)
+    c(x$desc, y$desc)
   )
 }
