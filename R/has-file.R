@@ -116,6 +116,9 @@ is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 is_remake_project <- has_file("remake.yml")
 
 #' @export
+is_projectile_project <- has_file(".projectile")
+
+#' @export
 is_git_root <- has_dir(".git")
 
 #' @export
@@ -140,6 +143,7 @@ criteria <- structure(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
+    is_projectile_project = is_projectile_project,
     is_git_root = is_git_root,
     is_svn_root = is_svn_root,
     is_vcs_root = is_vcs_root,
@@ -174,6 +178,13 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_remake_project"
+
+#' @details
+#' `is_projectile_project` looks for a `.projectile` file.
+#'
+#' @rdname criteria
+#' @export
+"is_projectile_project"
 
 #' @details
 #' `is_git_project` looks for a `.git` directory.

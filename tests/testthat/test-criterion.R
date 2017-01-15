@@ -45,5 +45,5 @@ test_that("Combining criteria", {
   expect_match(paste0(format(comb_crit), collapse = "\n"), "\n- .*\n- ")
 
   expect_equal(find_root(comb_crit, "hierarchy"),
-               find_root(is_rstudio_project | is_r_package, "hierarchy/a"))
+               find_root(is_rstudio_project, "hierarchy/a"))
 })
