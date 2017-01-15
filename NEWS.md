@@ -1,3 +1,13 @@
+# rprojroot 1.2 (2017-01-15)
+
+- New root criteria
+    - `is_projectile_project` recognize projectile projects (#21).
+    - `has_dir()` constructs root criteria that check for existence of a directory.
+    - `is_git_root`, `is_svn_root` and `is_vcs_root` look for a version control system root (#19).
+- Minor enhancement
+    - Improve formatting of alternative criteria (#18).
+
+
 # rprojroot 1.1 (2016-10-29)
 
 - Compatibility
