@@ -141,7 +141,7 @@ test_that("is_git_root", {
     do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
   }
 
-  stop_path <- tempdir()
+  stop_path <- normalizePath(tempdir(), winslash = "/")
   path <- hierarchy(4L)
 
   with_mock(
