@@ -37,4 +37,3 @@ Useful links:
 \strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
 
 }
-

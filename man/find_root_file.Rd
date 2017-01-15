@@ -52,4 +52,3 @@ has_file("DESCRIPTION", "^Package: ")$make_fix_file(".")
 \seealso{
 \code{\link[=find_root]{find_root()}} \code{\link[utils:glob2rx]{utils::glob2rx()}} \code{\link[base:file.path]{base::file.path()}}
 }
-

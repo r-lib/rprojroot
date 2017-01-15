@@ -63,6 +63,30 @@ test_that("has_file_pattern", {
   )
 })
 
+test_that("has_dir", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
+  }
+
+  stop_path <- hierarchy(1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L)),
+    expect_equal(find_root_file("c", criterion = has_dir("b"), path = path),
+                 file.path(hierarchy(2L), "c")),
+    expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
+    expect_error(find_root(has_dir("d"), path = path),
+                 "No root directory found.* a directory '.*'"),
+    expect_error(find_root(has_dir("rprojroot.Rproj"), path = path),
+                 "No root directory found.* a directory '.*'"),
+    TRUE
+  )
+})
+
 test_that("has_dirname", {
   wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
@@ -83,6 +107,51 @@ test_that("has_dirname", {
                  "No root directory found.* is '.*'"),
     expect_error(find_root(has_dirname("rprojroot.Rproj"), path = path),
                  "No root directory found.* is '.*'"),
+    TRUE
+  )
+})
+
+test_that("is_svn_root", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "vcs", "svn", "a", "b", "c")[seq_len(n + 2L)])
+  }
+
+  stop_path <- hierarchy(-1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_svn_root, path = path), hierarchy(1L)),
+    expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
+    expect_error(find_root(is_svn_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
+    expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
+    TRUE
+  )
+})
+
+test_that("is_git_root", {
+  temp_dir <- tempfile("git")
+  unzip("vcs/git.zip", exdir = temp_dir)
+  wd <- normalizePath(temp_dir, winslash = "/")
+
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
+  }
+
+  stop_path <- normalizePath(tempdir(), winslash = "/")
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
+    expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
+    expect_error(find_root(is_git_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
+    expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory '.*'"),
     TRUE
   )
 })
