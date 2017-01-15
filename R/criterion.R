@@ -8,8 +8,9 @@
 #'
 #' @param testfun A function with one parameter that returns `TRUE`
 #'   if the directory specified by this parameter is the project root,
-#'   and `FALSE` otherwise
-#' @param desc A textual description of the test criterion
+#'   and `FALSE` otherwise. Can also be a list of such functions.
+#' @param desc A textual description of the test criterion, of the same length
+#'   as `testfun`
 #' @param subdir Subdirectories to start the search in, if found
 #'
 #' @return
@@ -27,9 +28,9 @@
 #' is_r_package$make_fix_file(".")
 #' }
 root_criterion <- function(testfun, desc, subdir = NULL) {
-  if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
-    stop("testfun must be a function with one argument 'path'")
-  }
+  testfun <- check_testfun(testfun)
+
+  stopifnot(length(desc) == length(testfun))
 
   full_desc <- paste0(
     desc,
@@ -72,6 +73,20 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
     function(path = getwd()) make_fix_root_file(criterion, path)
 
   criterion
+}
+
+check_testfun <- function(testfun) {
+  if (is.function(testfun)) {
+    testfun <- list(testfun)
+  }
+
+  for (f in testfun) {
+    if (!isTRUE(all.equal(names(formals(f)), "path"))) {
+      stop("All functions in testfun must have exactly one argument 'path'")
+    }
+  }
+
+  testfun
 }
 
 #' @rdname root_criterion
@@ -125,7 +140,7 @@ print.root_criterion <- function(x, ...) {
   stopifnot(is.root_criterion(y))
 
   root_criterion(
-    function(path) x$testfun(path) || y$testfun(path),
+    c(x$testfun, y$testfun),
     c(x$desc, y$desc)
   )
 }

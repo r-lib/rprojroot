@@ -29,8 +29,10 @@ find_root <- function(criterion, path = ".") {
   path <- start_path(path, criterion$subdir)
 
   for (i in seq_len(.MAX_DEPTH)) {
-    if (criterion$testfun(path)) {
-      return(path)
+    for (f in criterion$testfun) {
+      if (f(path)) {
+        return(path)
+      }
     }
 
     if (is_root(path)) {

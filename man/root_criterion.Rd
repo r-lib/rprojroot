@@ -33,9 +33,10 @@ has_dirname(dirname, subdir = NULL)
 \arguments{
 \item{testfun}{A function with one parameter that returns \code{TRUE}
 if the directory specified by this parameter is the project root,
-and \code{FALSE} otherwise}
+and \code{FALSE} otherwise. Can also be a list of such functions.}
 
-\item{desc}{A textual description of the test criterion}
+\item{desc}{A textual description of the test criterion, of the same length
+as \code{testfun}}
 
 \item{subdir}{Subdirectories to start the search in, if found}
 
