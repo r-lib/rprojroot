@@ -112,12 +112,15 @@ test_that("has_dirname", {
 })
 
 test_that("is_svn_root", {
-  wd <- normalizePath(getwd(), winslash = "/")
+  temp_dir <- tempfile("svn")
+  unzip("vcs/svn.zip", exdir = temp_dir)
+  wd <- normalizePath(temp_dir, winslash = "/")
+
   hierarchy <- function(n = 0L) {
-    do.call(file.path, list(wd, "vcs", "svn", "a", "b", "c")[seq_len(n + 2L)])
+    do.call(file.path, list(wd, "svn", "a", "b", "c")[seq_len(n + 1L)])
   }
 
-  stop_path <- hierarchy(-1L)
+  stop_path <- normalizePath(tempdir(), winslash = "/")
   path <- hierarchy(4L)
 
   with_mock(
