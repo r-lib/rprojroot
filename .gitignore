@@ -5,3 +5,4 @@ inst/doc
 /docs/
 /vignettes/*.html
 /revdep/.cache.rds
+.projectile

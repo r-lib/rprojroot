@@ -117,6 +117,9 @@ test_that("concrete criteria", {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
 
+  # HACK
+  writeLines(character(), file.path(hierarchy(3L), ".projectile"))
+
   stop_path <- hierarchy(0L)
   path <- hierarchy(4L)
 
