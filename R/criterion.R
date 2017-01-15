@@ -136,6 +136,11 @@ print.root_criterion <- function(x, ...) {
 }
 
 #' @export
+#' @rdname root_criterion
+#' @details Root criteria can be combined with the `|` operator. The result is a
+#'   composite root criterion that requires either of the original criteria to
+#'   match.
+#' @param y An object
 `|.root_criterion` <- function(x, y) {
   stopifnot(is.root_criterion(y))
 
