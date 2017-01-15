@@ -110,7 +110,7 @@ The \code{has_dirname} function constructs a criterion that checks if the
 \code{\link[base:dirname]{base::dirname()}} has a specific name.
 }
 \examples{
-root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")
+root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")
 has_file("DESCRIPTION")
 is_r_package
 is_r_package$find_file
