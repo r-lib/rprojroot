@@ -111,6 +111,23 @@ test_that("has_dirname", {
   )
 })
 
+test_that("concrete criteria", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
+  }
+
+  stop_path <- hierarchy(1L)
+  path <- hierarchy(4L)
+
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_remake_project, path = path), hierarchy(2L)),
+    expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L)),
+    TRUE
+  )
+})
+
 test_that("is_svn_root", {
   temp_dir <- tempfile("svn")
   unzip("vcs/svn.zip", exdir = temp_dir)
