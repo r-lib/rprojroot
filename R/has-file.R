@@ -131,7 +131,7 @@ is_vcs_root <- is_git_root | is_svn_root
 is_testthat <- has_dirname("testthat", c("tests/testthat", "testthat"))
 
 #' @export
-from_wd <- root_criterion(function(path) TRUE, "From current working directory")
+from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 
 #' Prespecified criteria
 #'

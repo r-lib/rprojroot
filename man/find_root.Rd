@@ -2,9 +2,12 @@
 % Please edit documentation in R/root.R
 \name{find_root}
 \alias{find_root}
+\alias{get_root_desc}
 \title{Find the root of a directory hierarchy}
 \usage{
 find_root(criterion, path = ".")
+
+get_root_desc(criterion, path)
 }
 \arguments{
 \item{criterion}{A criterion, will be coerced using
@@ -21,6 +24,10 @@ A \emph{root} is defined as a directory that contains a regular file
 whose name matches a given pattern and which optionally contains a given text.
 The search for a root starts at a given directory (the working directory
 by default), and proceeds up the directory hierarchy.
+
+\code{get_root_desc()} returns the description of the criterion
+for a root path. This is especially useful for composite root criteria
+created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
 }
 \details{
 Starting from the working directory, the \code{find_root} function searches

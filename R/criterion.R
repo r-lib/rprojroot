@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-#' root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")
+#' root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")
 #' has_file("DESCRIPTION")
 #' is_r_package
 #' is_r_package$find_file
