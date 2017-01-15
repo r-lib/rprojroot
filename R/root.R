@@ -29,13 +29,15 @@ find_root <- function(criterion, path = ".") {
   path <- start_path(path, criterion$subdir)
 
   for (i in seq_len(.MAX_DEPTH)) {
-    if (criterion$testfun(path)) {
-      return(path)
+    for (f in criterion$testfun) {
+      if (f(path)) {
+        return(path)
+      }
     }
 
     if (is_root(path)) {
-      stop("No root directory found. Test criterion:\n",
-           criterion$desc, call. = FALSE)
+      stop("No root directory found. ",
+           paste(format(criterion), collapse = "\n"), call. = FALSE)
     }
 
     path <- dirname(path)
@@ -63,4 +65,20 @@ start_path <- function(path, subdirs) {
 is_root <- function(path) {
   identical(normalizePath(path, winslash = "/"),
             normalizePath(dirname(path), winslash = "/"))
+}
+
+#' @rdname find_root
+#' @description `get_root_desc()` returns the description of the criterion
+#'   for a root path. This is especially useful for composite root criteria
+#'   created with [|.root_criterion()].
+#' @export
+get_root_desc <- function(criterion, path) {
+  for (i in seq_along(criterion$testfun)) {
+    if (criterion$testfun[[i]](path)) {
+      return(criterion$desc[[i]])
+    }
+  }
+
+  stop("path is not a root. ",
+       paste(format(criterion), collapse = "\n"), call. = FALSE)
 }

@@ -117,11 +117,15 @@ test_that("concrete criteria", {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
 
-  stop_path <- hierarchy(1L)
+  # HACK
+  writeLines(character(), file.path(hierarchy(3L), ".projectile"))
+
+  stop_path <- hierarchy(0L)
   path <- hierarchy(4L)
 
   with_mock(
     `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_rstudio_project, path = path), hierarchy(1L)),
     expect_equal(find_root(is_remake_project, path = path), hierarchy(2L)),
     expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L)),
     TRUE

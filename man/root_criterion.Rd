@@ -6,6 +6,7 @@
 \alias{as.root_criterion}
 \alias{as.root_criterion.character}
 \alias{as.root_criterion.root_criterion}
+\alias{|.root_criterion}
 \alias{has_file}
 \alias{has_dir}
 \alias{has_file_pattern}
@@ -22,6 +23,8 @@ as.root_criterion(x)
 
 \method{as.root_criterion}{root_criterion}(x)
 
+\method{|}{root_criterion}(x, y)
+
 has_file(filepath, contents = NULL, n = -1L)
 
 has_dir(filepath)
@@ -33,13 +36,16 @@ has_dirname(dirname, subdir = NULL)
 \arguments{
 \item{testfun}{A function with one parameter that returns \code{TRUE}
 if the directory specified by this parameter is the project root,
-and \code{FALSE} otherwise}
+and \code{FALSE} otherwise. Can also be a list of such functions.}
 
-\item{desc}{A textual description of the test criterion}
+\item{desc}{A textual description of the test criterion, of the same length
+as \code{testfun}}
 
 \item{subdir}{Subdirectories to start the search in, if found}
 
 \item{x}{An object}
+
+\item{y}{An object}
 
 \item{filepath}{File path (can contain directories)}
 
@@ -85,6 +91,10 @@ by specifying a function with a \code{path} argument, and a description.
 The \code{as.root_criterion} function accepts objects of class
 \code{root_criterion}, and character values; the latter will be
 converted to criteria using \code{has_file}.
+
+Root criteria can be combined with the \code{|} operator. The result is a
+composite root criterion that requires either of the original criteria to
+match.
 
 The \code{has_file} function constructs a criterion that checks for the
 existence of a specific file (which itself can be in a subdirectory of the

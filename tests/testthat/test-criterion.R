@@ -1,8 +1,8 @@
 context("criterion")
 
-test_that(".root_criterion", {
-  expect_error(root_criterion(5, "Bogus"), "must be a function with one argument")
-  expect_error(root_criterion(identity, "Bogus"), "must be a function with one argument")
+test_that("root_criterion", {
+  expect_error(root_criterion(5, "Bogus"), "must have exactly one argument")
+  expect_error(root_criterion(identity, "Bogus"), "must have exactly one argument")
   expect_true(is.root_criterion(root_criterion(function(path) FALSE, "Never")))
 })
 
