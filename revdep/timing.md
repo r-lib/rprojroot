@@ -2,7 +2,8 @@
 
 |   |package      |version | check_time|
 |:--|:------------|:-------|----------:|
-|2  |sparklyr     |0.4     |       34.4|
-|1  |googlesheets |0.2.1   |       33.1|
+|3  |sparklyr     |0.5.1   |       29.4|
+|1  |googlesheets |0.2.1   |       28.4|
+|2  |rmarkdown    |1.3     |       25.3|
 
 
