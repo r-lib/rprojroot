@@ -21,3 +21,4 @@
 ^revdep$
 ^tic\.R$
 ^tests/testthat/hierarchy/a/b/\.projectile$
+^API$
