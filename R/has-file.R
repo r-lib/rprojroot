@@ -1,3 +1,7 @@
+format_lines <- function(n) {
+  if (n == 1) "line" else paste0(n, " lines")
+}
+
 #' @details
 #' The `has_file` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
@@ -26,7 +30,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
     "contains a file `", filepath, "`",
     if (!is.null(contents)) {
       paste0(" with contents matching `", contents, "`",
-             if (n >= 0L) paste(" in the first", n, "lines"))
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
   })
 
   root_criterion(testfun, desc)
@@ -81,7 +85,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
     "contains a file matching `", pattern, "`",
     if (!is.null(contents)) {
       paste0(" with contents matching `", contents, "`",
-             if (n >= 0L) paste(" in the first", n, "lines"))
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
     })
 
   root_criterion(testfun, desc)

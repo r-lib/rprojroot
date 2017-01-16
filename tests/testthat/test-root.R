@@ -27,7 +27,7 @@ test_that("has_file", {
     expect_error(find_root(has_file("e", "f"), path = path),
                  "No root directory found.* file `.*` with contents"),
     expect_error(find_root(has_file("e", "f", 1), path = path),
-                 "No root directory found.* file `.*` with contents .* in the first .* lines")
+                 "No root directory found.* file `.*` with contents .* in the first line")
   )
 })
 
@@ -59,7 +59,7 @@ test_that("has_file_pattern", {
     expect_error(find_root(has_file_pattern(glob2rx("e"), "f"), path = path),
                  "No root directory found.* with contents"),
     expect_error(find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
-                 "No root directory found.* with contents .* in the first .* lines")
+                 "No root directory found.* with contents .* in the first line")
   )
 })
 
