@@ -23,9 +23,9 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
   }))
 
   desc <- paste0(
-    "contains a file '", filepath, "'",
+    "contains a file `", filepath, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching '", contents, "'",
+      paste0(" with contents matching `", contents, "`",
              if (n >= 0L) paste(" in the first", n, "lines"))
   })
 
@@ -48,7 +48,7 @@ has_dir <- function(filepath) {
     is_dir(testfile)
   }))
 
-  desc <- paste0("contains a directory '", filepath, "'")
+  desc <- paste0("contains a directory `", filepath, "`")
 
   root_criterion(testfun, desc)
 }
@@ -78,9 +78,9 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   }))
 
   desc <- paste0(
-    "contains a file matching '", pattern, "'",
+    "contains a file matching `", pattern, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching '", contents, "'",
+      paste0(" with contents matching `", contents, "`",
              if (n >= 0L) paste(" in the first", n, "lines"))
     })
 
@@ -101,7 +101,7 @@ has_dirname <- function(dirname, subdir = NULL) {
     dir.exists(file.path(dirname(path), .(dirname)))
   }))
 
-  desc <- paste0("directory name is '", dirname, "'")
+  desc <- paste0("directory name is `", dirname, "`")
 
   root_criterion(testfun, desc, subdir = subdir)
 }
