@@ -1,0 +1,37 @@
+# API for rprojroot package
+
+## Exported functions
+
+as.root_criterion(x)
+find_package_root_file(..., path = ".")
+find_remake_root_file(..., path = ".")
+find_root(criterion, path = ".")
+find_root_file(..., criterion, path = ".")
+find_rstudio_root_file(..., path = ".")
+find_testthat_root_file(..., path = ".")
+get_root_desc(criterion, path)
+has_dir(filepath)
+has_dirname(dirname, subdir = NULL)
+has_file(filepath, contents = NULL, n = -1L)
+has_file_pattern(pattern, contents = NULL, n = -1L)
+is.root_criterion(x)
+root_criterion(testfun, desc, subdir = NULL)
+
+## S3 methods
+
+as.root_criterion.character(x)
+as.root_criterion.default(x)
+as.root_criterion.root_criterion(x)
+
+## Exported data
+
+criteria: root_criteria (list[9])
+from_wd: root_criterion (list[5])
+is_git_root: root_criterion (list[5])
+is_projectile_project: root_criterion (list[5])
+is_r_package: root_criterion (list[5])
+is_remake_project: root_criterion (list[5])
+is_rstudio_project: root_criterion (list[5])
+is_svn_root: root_criterion (list[5])
+is_testthat: root_criterion (list[5])
+is_vcs_root: root_criterion (list[5])

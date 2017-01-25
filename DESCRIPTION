@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 1.1
+Version: 1.2
 Authors@R: person(given = "Kirill", family = "Müller", role = c("aut",
         "cre"), email = "krlmlr+r@mailbox.org")
 Description: Robust, reliable and flexible paths to files below a
@@ -31,3 +31,4 @@ Collate:
     'root.R'
     'rprojroot-package.R'
     'shortcut.R'
+Roxygen: list(markdown = TRUE)

@@ -4,7 +4,7 @@
 \name{rprojroot-package}
 \alias{rprojroot}
 \alias{rprojroot-package}
-\title{Finding Files in Project Subdirectories}
+\title{rprojroot: Finding Files in Project Subdirectories}
 \description{
 Robust, reliable and flexible paths to files below a
 project root. The 'root' of a project is defined as a directory
@@ -12,8 +12,8 @@ that matches a certain criterion, e.g., it contains a certain
 regular file.
 }
 \details{
-See the "Value" section in \code{\link{root_criterion}} for documentation
-of root criterion objects, and  \code{\link{criteria}} for useful predefined
+See the "Value" section in \code{\link[=root_criterion]{root_criterion()}} for documentation
+of root criterion objects, and  \code{\link[=criteria]{criteria()}} for useful predefined
 root criteria.
 }
 \examples{
@@ -24,4 +24,16 @@ root_fun <- is_r_package$make_fix_file()
 root_fun("NAMESPACE")
 }
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/krlmlr/rprojroot}
+  \item \url{https://krlmlr.github.io/rprojroot}
+  \item Report bugs at \url{https://github.com/krlmlr/rprojroot/issues}
+}
 
+}
+\author{
+\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+
+}
