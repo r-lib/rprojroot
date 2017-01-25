@@ -4,6 +4,7 @@ set -e
 
 old_tag=v1.1
 branch=$(git symbolic-ref --short HEAD)
+remote=$(git rev-parse --symbolic-full-name --abbrev-ref @{u} | cut -d "/" -f 1)
 
 cd $(dirname $0)/..
 
@@ -47,7 +48,7 @@ git commit -m "revdep update for clean state" || true
 
 git fetch --all
 git rebase
-git push
+git push $remote HEAD
 
 R -f revdep/check.R
 #echo $branch >> revdep/README.md
@@ -60,4 +61,4 @@ git commit -m "revdep update with $branch results"
 
 git fetch --all
 git rebase
-git push
+git push $remote HEAD

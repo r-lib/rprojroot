@@ -1,5 +1,6 @@
-template:
-  bootswatch: flatly # https://bootswatch.com/flatly/
+templates:
+  params:
+    bootswatch: flatly # https://bootswatch.com/flatly/
 
 navbar:
   type: default

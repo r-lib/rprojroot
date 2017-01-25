@@ -21,13 +21,13 @@ test_that("has_file", {
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L)),
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: "), path = path), hierarchy(1L)),
     expect_error(find_root("test-root.R", path = path),
-                 "No root directory found.* file '.*'"),
+                 "No root directory found.* file `.*`"),
     expect_error(find_root("rprojroot.Rproj", path = path),
-                 "No root directory found.* file '.*'"),
+                 "No root directory found.* file `.*`"),
     expect_error(find_root(has_file("e", "f"), path = path),
-                 "No root directory found.* file '.*' with contents"),
+                 "No root directory found.* file `.*` with contents"),
     expect_error(find_root(has_file("e", "f", 1), path = path),
-                 "No root directory found.* file '.*' with contents .* in the first .* lines")
+                 "No root directory found.* file `.*` with contents .* in the first line")
   )
 })
 
@@ -59,7 +59,7 @@ test_that("has_file_pattern", {
     expect_error(find_root(has_file_pattern(glob2rx("e"), "f"), path = path),
                  "No root directory found.* with contents"),
     expect_error(find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
-                 "No root directory found.* with contents .* in the first .* lines")
+                 "No root directory found.* with contents .* in the first line")
   )
 })
 
@@ -80,9 +80,9 @@ test_that("has_dir", {
                  file.path(hierarchy(2L), "c")),
     expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
     expect_error(find_root(has_dir("d"), path = path),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     expect_error(find_root(has_dir("rprojroot.Rproj"), path = path),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     TRUE
   )
 })
@@ -104,9 +104,9 @@ test_that("has_dirname", {
                  file.path(hierarchy(3L), "c")),
     expect_equal(find_root(has_dirname("c"), path = path), hierarchy(4L)),
     expect_error(find_root(has_dirname("d"), path = path),
-                 "No root directory found.* is '.*'"),
+                 "No root directory found.* is `.*`"),
     expect_error(find_root(has_dirname("rprojroot.Rproj"), path = path),
-                 "No root directory found.* is '.*'"),
+                 "No root directory found.* is `.*`"),
     TRUE
   )
 })
@@ -149,9 +149,9 @@ test_that("is_svn_root", {
     expect_equal(find_root(is_svn_root, path = path), hierarchy(1L)),
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(find_root(is_svn_root, path = hierarchy(0L)),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     TRUE
   )
 })
@@ -173,9 +173,9 @@ test_that("is_git_root", {
     expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(find_root(is_git_root, path = hierarchy(0L)),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
-                 "No root directory found.* a directory '.*'"),
+                 "No root directory found.* a directory `.*`"),
     TRUE
   )
 })
@@ -183,7 +183,7 @@ test_that("is_git_root", {
 test_that("finds root", {
   skip_on_cran()
   # Checks that search for root actually terminates
-  expect_error(find_root("/"), "No root directory found.* file '.*'")
+  expect_error(find_root("/"), "No root directory found.* file `.*`")
 })
 
 test_that("stops if depth reached", {

@@ -4,8 +4,16 @@
     - `is_projectile_project` recognize projectile projects (#21).
     - `has_dir()` constructs root criteria that check for existence of a directory.
     - `is_git_root`, `is_svn_root` and `is_vcs_root` look for a version control system root (#19).
-- Minor enhancement
+
+- New function
+    - `get_root_desc()` returns the description of the criterion that applies to a given root, useful for composite criteria created with `|`.
+
+- Minor enhancements
     - Improve formatting of alternative criteria (#18).
+    - If root cannot be found, the start path is shown in the error message.
+
+- Internal
+    - The `$testfun` member of the `rprojroot` S3 class is now a list of functions instead of a function.
 
 
 # rprojroot 1.1 (2016-10-29)
