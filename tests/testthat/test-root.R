@@ -178,6 +178,23 @@ test_that("is_git_root", {
                  "No root directory found.* a directory `.*`"),
     TRUE
   )
+
+  # Copy .git dir to a separate location, then make a .git file.
+  # (other_git_folder becomes a bare git repo)
+  old_git_location <- file.path(wd, "git", ".git")
+  new_git_location <- file.path(wd, "other_git_folder")
+  file.rename(old_git_location, new_git_location)
+  writeLines(paste("gitdir:", new_git_location), old_git_location)
+  with_mock(
+    `rprojroot:::is_root` = function(x) x == stop_path,
+    expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
+    expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
+    expect_error(find_root(is_git_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory `.*`"),
+    expect_error(find_root(is_vcs_root, path = hierarchy(0L)),
+                 "No root directory found.* a directory `.*`"),
+    TRUE
+  )
 })
 
 test_that("finds root", {

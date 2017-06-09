@@ -123,7 +123,7 @@ is_remake_project <- has_file("remake.yml")
 is_projectile_project <- has_file(".projectile")
 
 #' @export
-is_git_root <- has_dir(".git")
+is_git_root <- has_dir(".git") | has_file(".git", contents = "^gitdir: ")
 
 #' @export
 is_svn_root <- has_dir(".svn")
