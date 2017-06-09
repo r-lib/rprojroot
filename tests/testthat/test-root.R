@@ -9,8 +9,8 @@ test_that("has_file", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root("a", path = path), hierarchy(3L)),
     expect_equal(find_root("b", path = path), hierarchy(3L)),
     expect_equal(find_root("b/a", path = path), hierarchy(2L)),
@@ -40,8 +40,8 @@ test_that("has_file_pattern", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(has_file_pattern(glob2rx("a")), path = path), hierarchy(3L)),
     expect_equal(find_root(has_file_pattern(glob2rx("b")), path = path), hierarchy(3L)),
     expect_equal(find_root(has_file_pattern("[ab]", "File b"), path = path),
@@ -72,8 +72,8 @@ test_that("has_dir", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L)),
     expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L)),
     expect_equal(find_root_file("c", criterion = has_dir("b"), path = path),
@@ -96,8 +96,8 @@ test_that("has_dirname", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(has_dirname("a"), path = path), hierarchy(2L)),
     expect_equal(find_root(has_dirname("b"), path = path), hierarchy(3L)),
     expect_equal(find_root_file("c", criterion = has_dirname("b"), path = path),
@@ -123,8 +123,8 @@ test_that("concrete criteria", {
   stop_path <- hierarchy(0L)
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(is_rstudio_project, path = path), hierarchy(1L)),
     expect_equal(find_root(is_remake_project, path = path), hierarchy(2L)),
     expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L)),
@@ -144,8 +144,8 @@ test_that("is_svn_root", {
   stop_path <- normalizePath(tempdir(), winslash = "/")
   path <- hierarchy(4L)
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(is_svn_root, path = path), hierarchy(1L)),
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(find_root(is_svn_root, path = hierarchy(0L)),
@@ -156,20 +156,23 @@ test_that("is_svn_root", {
   )
 })
 
-test_that("is_git_root", {
+setup_git_root <- function() {
   temp_dir <- tempfile("git")
   unzip("vcs/git.zip", exdir = temp_dir)
-  wd <- normalizePath(temp_dir, winslash = "/")
+  return(temp_dir)
+}
 
+test_that("is_git_root", {
+  temp_dir <- setup_git_root()
+  wd <- normalizePath(temp_dir, winslash = "/")
   hierarchy <- function(n = 0L) {
     do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
   }
-
-  stop_path <- normalizePath(tempdir(), winslash = "/")
   path <- hierarchy(4L)
+  stop_path <- normalizePath(tempdir(), winslash = "/")
 
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(find_root(is_git_root, path = hierarchy(0L)),
@@ -178,6 +181,16 @@ test_that("is_git_root", {
                  "No root directory found.* a directory `.*`"),
     TRUE
   )
+})
+
+test_that("is_git_root for separated git directory", {
+  temp_dir <- setup_git_root()
+  wd <- normalizePath(temp_dir, winslash = "/")
+  hierarchy <- function(n = 0L) {
+    do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
+  }
+  path <- hierarchy(4L)
+  stop_path <- normalizePath(tempdir(), winslash = "/")
 
   # Copy .git dir to a separate location, then make a .git file.
   # (other_git_folder becomes a bare git repo)
@@ -185,8 +198,8 @@ test_that("is_git_root", {
   new_git_location <- file.path(wd, "other_git_folder")
   file.rename(old_git_location, new_git_location)
   writeLines(paste("gitdir:", new_git_location), old_git_location)
-  with_mock(
-    `rprojroot:::is_root` = function(x) x == stop_path,
+  mockr::with_mock(
+    is_root = function(x) x == stop_path,
     expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(find_root(is_git_root, path = hierarchy(0L)),
