@@ -1,3 +1,8 @@
+## rprojroot 1.2-10 (2017-06-10)
+
+- Detect `.git` directories created with `git clone --separate-git-dir=...` (#24, @karldw).
+
+
 # rprojroot 1.2 (2017-01-15)
 
 - New root criteria
