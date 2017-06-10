@@ -156,18 +156,29 @@ test_that("is_svn_root", {
   )
 })
 
-setup_git_root <- function() {
+setup_git_root <- function(separate_git_dir = FALSE) {
   temp_dir <- tempfile("git")
   unzip("vcs/git.zip", exdir = temp_dir)
-  return(temp_dir)
-}
-
-test_that("is_git_root", {
-  temp_dir <- setup_git_root()
   wd <- normalizePath(temp_dir, winslash = "/")
+
   hierarchy <- function(n = 0L) {
     do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
   }
+
+  if (separate_git_dir) {
+    # Copy .git dir to a separate location, then make a .git file.
+    # (other_git_folder becomes a bare git repo)
+    old_git_location <- file.path(wd, "git", ".git")
+    new_git_location <- file.path(wd, "other_git_folder")
+    file.rename(old_git_location, new_git_location)
+    writeLines(paste("gitdir:", new_git_location), old_git_location)
+  }
+  return(hierarchy)
+}
+
+test_that("is_git_root", {
+  hierarchy <- setup_git_root(separate_git_dir = FALSE)
+
   path <- hierarchy(4L)
   stop_path <- normalizePath(tempdir(), winslash = "/")
 
@@ -184,20 +195,10 @@ test_that("is_git_root", {
 })
 
 test_that("is_git_root for separated git directory", {
-  temp_dir <- setup_git_root()
-  wd <- normalizePath(temp_dir, winslash = "/")
-  hierarchy <- function(n = 0L) {
-    do.call(file.path, list(wd, "git", "a", "b", "c")[seq_len(n + 1L)])
-  }
+  hierarchy <- setup_git_root(separate_git_dir = TRUE)
   path <- hierarchy(4L)
   stop_path <- normalizePath(tempdir(), winslash = "/")
 
-  # Copy .git dir to a separate location, then make a .git file.
-  # (other_git_folder becomes a bare git repo)
-  old_git_location <- file.path(wd, "git", ".git")
-  new_git_location <- file.path(wd, "other_git_folder")
-  file.rename(old_git_location, new_git_location)
-  writeLines(paste("gitdir:", new_git_location), old_git_location)
   mockr::with_mock(
     is_root = function(x) x == stop_path,
     expect_equal(find_root(is_git_root, path = path), hierarchy(1L)),
