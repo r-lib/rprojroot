@@ -149,3 +149,18 @@ print.root_criterion <- function(x, ...) {
     c(x$desc, y$desc)
   )
 }
+
+#' @export
+#' @rdname root_criterion
+#' @details Root criteria can be combined with the `&` operator. The result is a
+#'   composite root criterion that requires both of the original criteria to
+#'   match.
+#' @param y An object
+`&.root_criterion` <- function(x, y) {
+  stopifnot(is.root_criterion(y))
+
+  root_criterion(
+    testfun = function(path) { x$testfun(path) & y$testfun(path) },
+    desc = c(x$desc, y$desc)
+  )
+}
