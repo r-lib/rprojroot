@@ -1,5 +1,9 @@
+format_lines <- function(n) {
+  if (n == 1) "line" else paste0(n, " lines")
+}
+
 #' @details
-#' The \code{has_file} function constructs a criterion that checks for the
+#' The `has_file` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
 #' root) with specific contents.
 #'
@@ -23,17 +27,38 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
   }))
 
   desc <- paste0(
-    "Contains a file '", filepath, "'",
+    "contains a file `", filepath, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching '", contents, "'",
-             if (n >= 0L) paste(" in the first", n, "lines"))
+      paste0(" with contents matching `", contents, "`",
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
   })
 
   root_criterion(testfun, desc)
 }
 
 #' @details
-#' The \code{has_file_pattern} function constructs a criterion that checks for the
+#' The `has_dir` function constructs a criterion that checks for the
+#' existence of a specific directory.
+#'
+#' @rdname root_criterion
+#' @export
+has_dir <- function(filepath) {
+  force(filepath)
+
+  testfun <- eval(bquote(function(path) {
+    testfile <- file.path(path, .(filepath))
+    if (!file.exists(testfile))
+      return(FALSE)
+    is_dir(testfile)
+  }))
+
+  desc <- paste0("contains a directory `", filepath, "`")
+
+  root_criterion(testfun, desc)
+}
+
+#' @details
+#' The `has_file_pattern` function constructs a criterion that checks for the
 #' existence of a file that matches a pattern, with specific contents.
 #'
 #' @rdname root_criterion
@@ -57,13 +82,32 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   }))
 
   desc <- paste0(
-    "Contains a file matching '", pattern, "'",
+    "contains a file matching `", pattern, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching '", contents, "'",
-             if (n >= 0L) paste(" in the first", n, "lines"))
+      paste0(" with contents matching `", contents, "`",
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
     })
 
   root_criterion(testfun, desc)
+}
+
+#' @details
+#' The `has_dirname` function constructs a criterion that checks if the
+#' [base::dirname()] has a specific name.
+#'
+#' @rdname root_criterion
+#' @param dirname A directory name, without subdirectories
+#' @export
+has_dirname <- function(dirname, subdir = NULL) {
+  force(dirname)
+
+  testfun <- eval(bquote(function(path) {
+    dir.exists(file.path(dirname(path), .(dirname)))
+  }))
+
+  desc <- paste0("directory name is `", dirname, "`")
+
+  root_criterion(testfun, desc, subdir = subdir)
 }
 
 #' @export
@@ -73,7 +117,25 @@ is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n =
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
 #' @export
-from_wd <- root_criterion(function(path) TRUE, "From current working directory")
+is_remake_project <- has_file("remake.yml")
+
+#' @export
+is_projectile_project <- has_file(".projectile")
+
+#' @export
+is_git_root <- has_dir(".git") | has_file(".git", contents = "^gitdir: ")
+
+#' @export
+is_svn_root <- has_dir(".svn")
+
+#' @export
+is_vcs_root <- is_git_root | is_svn_root
+
+#' @export
+is_testthat <- has_dirname("testthat", c("tests/testthat", "testthat"))
+
+#' @export
+from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 
 #' Prespecified criteria
 #'
@@ -84,6 +146,12 @@ criteria <- structure(
   list(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
+    is_remake_project = is_remake_project,
+    is_projectile_project = is_projectile_project,
+    is_git_root = is_git_root,
+    is_svn_root = is_svn_root,
+    is_vcs_root = is_vcs_root,
+    is_testthat = is_testthat,
     from_wd = from_wd
   ),
   class = "root_criteria")
@@ -95,21 +163,65 @@ str.root_criteria <- function(object, ...) {
 }
 
 #' @details
-#' \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
+#' `is_rstudio_project` looks for a file with extension `.Rproj`.
 #'
 #' @rdname criteria
 #' @export
 "is_rstudio_project"
 
 #' @details
-#' \code{is_r_package} looks for a \code{DESCRIPTION} file.
+#' `is_r_package` looks for a `DESCRIPTION` file.
 #'
 #' @rdname criteria
 #' @export
 "is_r_package"
 
 #' @details
-#' \code{from_wd} uses the current working directory.
+#' `is_remake_project` looks for a `remake.yml` file.
+#'
+#' @rdname criteria
+#' @export
+"is_remake_project"
+
+#' @details
+#' `is_projectile_project` looks for a `.projectile` file.
+#'
+#' @rdname criteria
+#' @export
+"is_projectile_project"
+
+#' @details
+#' `is_git_project` looks for a `.git` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_git_root"
+
+#' @details
+#' `is_svn_project` looks for a `.svn` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_svn_root"
+
+#' @details
+#' `is_vcs_project` looks for the root of a version control
+#' system, currently only Git and SVN are supported.
+#'
+#' @rdname criteria
+#' @export
+"is_vcs_root"
+
+#' @details
+#' `is_testthat` looks for the `testthat` directory, works when
+#'   developing, testing, and checking a package.
+#'
+#' @rdname criteria
+#' @export
+"is_testthat"
+
+#' @details
+#' `from_wd` uses the current working directory.
 #'
 #' @rdname criteria
 #' @export
@@ -124,7 +236,7 @@ list_files <- function(path, filename) {
 }
 
 is_dir <- function(x) {
-  file.info(x, extra_cols = FALSE)$isdir
+  dir.exists(x)
 }
 
 match_contents <- function(f, contents, n) {

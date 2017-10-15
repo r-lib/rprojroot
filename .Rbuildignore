@@ -1,4 +1,4 @@
-^.*\.Rproj$
+^rprojroot\.Rproj$
 ^\.Rproj\.user$
 ^\.gitignore$
 ^README\.md$
@@ -12,3 +12,13 @@
 ^cran-comments\.md$
 ^inst/web$
 ^inst/staticdocs$
+^\.travis\.yml$
+^\.deploy_key\.pub$
+^\.deploy_key\.enc$
+^scripts/deploy-pages\.sh$
+^docs$
+^_pkgdown\.yml$
+^revdep$
+^tic\.R$
+^tests/testthat/hierarchy/a/b/\.projectile$
+^API$

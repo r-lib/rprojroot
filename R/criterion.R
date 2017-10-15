@@ -1,57 +1,71 @@
 #' Is a directory the project root?
 #'
-#' Objects of the \code{root_criterion} class decide if a
+#' Objects of the `root_criterion` class decide if a
 #' given directory is a project root.
 #'
-#' Construct criteria using \code{root_criterion} in a very general fashion
-#' by specifying a function with a \code{path} argument, and a description.
+#' Construct criteria using `root_criterion` in a very general fashion
+#' by specifying a function with a `path` argument, and a description.
 #'
-#' @param testfun A function with one parameter that returns \code{TRUE}
+#' @param testfun A function with one parameter that returns `TRUE`
 #'   if the directory specified by this parameter is the project root,
-#'   and \code{FALSE} otherwise
-#' @param desc A textual description of the test criterion
+#'   and `FALSE` otherwise. Can also be a list of such functions.
+#' @param desc A textual description of the test criterion, of the same length
+#'   as `testfun`
+#' @param subdir Subdirectories to start the search in, if found
 #'
 #' @return
-#' An S3 object of class \code{root_criterion} wit the following members:
+#' An S3 object of class `root_criterion` wit the following members:
 #'
 #' @include rrmake.R
 #' @export
 #'
 #' @examples
-#' root_criterion(function(path) file.exists(file.path(path, "somefile")), "Has somefile")
+#' root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")
 #' has_file("DESCRIPTION")
 #' is_r_package
 #' is_r_package$find_file
 #' \dontrun{
 #' is_r_package$make_fix_file(".")
 #' }
-root_criterion <- function(testfun, desc) {
-  if (!isTRUE(all.equal(names(formals(testfun)), "path"))) {
-    stop("testfun must be a function with one argument 'path'")
-  }
+root_criterion <- function(testfun, desc, subdir = NULL) {
+  testfun <- check_testfun(testfun)
+
+  stopifnot(length(desc) == length(testfun))
+
+  full_desc <- paste0(
+    desc,
+    if (!is.null(subdir)) paste0(
+      " (also look in subdirectories: ",
+      paste0("`", subdir, "`", collapse = ", "),
+      ")"
+    )
+  )
+
   criterion <- structure(
     list(
       #' @return
       #' \describe{
-      #'   \item{\code{testfun}}{The \code{testfun} argument}
+      #'   \item{`testfun`}{The `testfun` argument}
       testfun = testfun,
-      #'   \item{\code{desc}}{The \code{desc} argument}
-      desc = desc
+      #'   \item{`desc`}{The `desc` argument}
+      desc = full_desc,
+      #'   \item{`subdir`}{The `subdir` argument}
+      subdir = subdir
     ),
     class = "root_criterion"
   )
 
-  #'   \item{\code{find_file}}{A function with \code{...} argument that returns
+  #'   \item{`find_file`}{A function with `...` argument that returns
   #'     for a path relative to the root specified by this criterion.
-  #'     The optional \code{path} argument specifies the starting directory,
-  #'     which defaults to \code{"."}.
+  #'     The optional `path` argument specifies the starting directory,
+  #'     which defaults to `"."`.
   #'   }
   criterion$find_file <- make_find_root_file(criterion)
-  #'   \item{\code{make_fix_file}}{A function with a \code{path} argument that
+  #'   \item{`make_fix_file`}{A function with a `path` argument that
   #'      returns a function that finds paths relative to the root.  For a
-  #'      criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
-  #'      is identical to \code{cr$find_file(...)}. The function created by
-  #'      \code{make_fix_file} can be saved to a variable to be more independent
+  #'      criterion `cr`, the result of `cr$make_fix_file(".")(...)`
+  #'      is identical to `cr$find_file(...)`. The function created by
+  #'      `make_fix_file` can be saved to a variable to be more independent
   #'      of the current working directory.
   #'   }
   #' }
@@ -59,6 +73,20 @@ root_criterion <- function(testfun, desc) {
     function(path = getwd()) make_fix_root_file(criterion, path)
 
   criterion
+}
+
+check_testfun <- function(testfun) {
+  if (is.function(testfun)) {
+    testfun <- list(testfun)
+  }
+
+  for (f in testfun) {
+    if (!isTRUE(all.equal(names(formals(f)), "path"))) {
+      stop("All functions in testfun must have exactly one argument 'path'")
+    }
+  }
+
+  testfun
 }
 
 #' @rdname root_criterion
@@ -73,9 +101,9 @@ is.root_criterion <- function(x) {
 as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
 
 #' @details
-#' The \code{as.root_criterion} function accepts objects of class
-#' \code{root_criterion}, and character values; the latter will be
-#' converted to criteria using \code{has_file}.
+#' The `as.root_criterion` function accepts objects of class
+#' `root_criterion`, and character values; the latter will be
+#' converted to criteria using `has_file`.
 #'
 #' @rdname root_criterion
 #' @export
@@ -94,10 +122,30 @@ as.root_criterion.default <- function(x) {
 
 #' @export
 format.root_criterion <- function(x, ...) {
-  paste("Root criterion:", x$desc)
+  if (length(x$desc) > 1) {
+    c("Root criterion: one of", paste0("- ", x$desc))
+  } else {
+    paste0("Root criterion: ", x$desc)
+  }
 }
 
 #' @export
 print.root_criterion <- function(x, ...) {
-  cat(paste0(format(x), "\n"))
+  cat(format(x), sep = "\n")
+  invisible(x)
+}
+
+#' @export
+#' @rdname root_criterion
+#' @details Root criteria can be combined with the `|` operator. The result is a
+#'   composite root criterion that requires either of the original criteria to
+#'   match.
+#' @param y An object
+`|.root_criterion` <- function(x, y) {
+  stopifnot(is.root_criterion(y))
+
+  root_criterion(
+    c(x$testfun, y$testfun),
+    c(x$desc, y$desc)
+  )
 }

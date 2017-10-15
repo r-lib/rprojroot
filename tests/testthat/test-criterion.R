@@ -1,8 +1,8 @@
 context("criterion")
 
-test_that(".root_criterion", {
-  expect_error(root_criterion(5, "Bogus"), "must be a function with one argument")
-  expect_error(root_criterion(identity, "Bogus"), "must be a function with one argument")
+test_that("root_criterion", {
+  expect_error(root_criterion(5, "Bogus"), "must have exactly one argument")
+  expect_error(root_criterion(identity, "Bogus"), "must have exactly one argument")
   expect_true(is.root_criterion(root_criterion(function(path) FALSE, "Never")))
 })
 
@@ -20,8 +20,10 @@ test_that("Absolute paths are returned", {
 })
 
 test_that("Formatting", {
-  expect_match(format(is_r_package), "^Root criterion: .*DESCRIPTION")
+  expect_match(paste(format(is_r_package), collapse = "\n"),
+               "^Root criterion: .*DESCRIPTION")
   expect_output(print(is_r_package), "^Root criterion: .*DESCRIPTION")
+  expect_output(print(is_vcs_root), "^Root criterion: one of\n- .*[.]git.*\n- .*[.]svn")
 })
 
 test_that("Formatting criteria", {
@@ -31,4 +33,17 @@ test_that("Formatting criteria", {
      str(criteria)
   )
   expect_match(ret[[1]], "^List of ")
+})
+
+test_that("Combining criteria", {
+  skip_on_cran()
+
+  comb_crit <- is_r_package | is_rstudio_project
+
+  expect_true(is.root_criterion(comb_crit))
+
+  expect_match(paste0(format(comb_crit), collapse = "\n"), "\n- .*\n- ")
+
+  expect_equal(find_root(comb_crit, "hierarchy"),
+               find_root(is_rstudio_project, "hierarchy/a"))
 })

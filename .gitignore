@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 inst/doc
-/inst/web
+/docs/
 /vignettes/*.html
-/man
+/revdep/.cache.rds
+.projectile
