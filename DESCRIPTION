@@ -33,5 +33,4 @@ Collate:
     'rprojroot-package.R'
     'shortcut.R'
     'thisfile.R'
-    'zzz-autoroxy.R'
 Roxygen: list(markdown = TRUE)
