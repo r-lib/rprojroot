@@ -35,10 +35,23 @@ test_that("Formatting criteria", {
   expect_match(ret[[1]], "^List of ")
 })
 
-test_that("Combining criteria", {
+test_that("Union of criteria", {
   skip_on_cran()
 
   comb_crit <- is_r_package | is_rstudio_project
+
+  expect_true(is.root_criterion(comb_crit))
+
+  expect_match(paste0(format(comb_crit), collapse = "\n"), "\n- .*\n- ")
+
+  expect_equal(find_root(comb_crit, "hierarchy"),
+               find_root(is_rstudio_project, "hierarchy/a"))
+})
+
+test_that("Conjunction of criteria", {
+  skip_on_cran()
+
+  comb_crit <- is_r_package & is_r_package
 
   expect_true(is.root_criterion(comb_crit))
 
