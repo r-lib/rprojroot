@@ -30,8 +30,6 @@
 root_criterion <- function(testfun, desc, subdir = NULL) {
   testfun <- check_testfun(testfun)
 
-  stopifnot(length(desc) == length(testfun))
-
   full_desc <- paste0(
     desc,
     if (!is.null(subdir)) paste0(
@@ -76,14 +74,12 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
 }
 
 check_testfun <- function(testfun) {
-  if (is.function(testfun)) {
-    testfun <- list(testfun)
+  if (!is.function(testfun)) {
+    stop("testfun must be a function.")
   }
 
-  for (f in testfun) {
-    if (!isTRUE(all.equal(names(formals(f)), "path"))) {
-      stop("All functions in testfun must have exactly one argument 'path'")
-    }
+  if (names(formals(testfun)) != "path") {
+    stop("All functions in testfun must have exactly one argument 'path'")
   }
 
   testfun
@@ -122,11 +118,7 @@ as.root_criterion.default <- function(x) {
 
 #' @export
 format.root_criterion <- function(x, ...) {
-  if (length(x$desc) > 1) {
-    c("Root criterion: one of", paste0("- ", x$desc))
-  } else {
-    paste0("Root criterion: ", x$desc)
-  }
+  paste0("Root criterion: ", x$desc)
 }
 
 #' @export
@@ -145,8 +137,8 @@ print.root_criterion <- function(x, ...) {
   stopifnot(is.root_criterion(y))
 
   root_criterion(
-    c(x$testfun, y$testfun),
-    c(x$desc, y$desc)
+    testfun = function(path) { x$testfun(path) | y$testfun(path) },
+    desc = paste0("(", x$desc, ") or (", y$desc, ")")
   )
 }
 
@@ -161,6 +153,6 @@ print.root_criterion <- function(x, ...) {
 
   root_criterion(
     testfun = function(path) { x$testfun(path) & y$testfun(path) },
-    desc = c(x$desc, y$desc)
+    desc = paste0("(", x$desc, ") and (", y$desc, ")")
   )
 }
