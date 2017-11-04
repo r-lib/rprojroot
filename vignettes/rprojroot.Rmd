@@ -281,6 +281,61 @@ so that it also works when rendering the vignette (*sigh*):
 dir(is_testthat$find_file("hierarchy", path = is_r_package$find_file()))
 ```
 
+### Another example: custom testing utilities
+
+The hassle of using saved data files for testing is made even easier by using `rprojroot` in a utility function. For example, suppose you have a testing file at `tests/testthat/test_myFun.R` which tests the `myFun()` function:
+
+```{r, eval = FALSE}
+my_fun_run <- do.call(myFun,my_args)
+
+testthat::test_that(
+  "myFun() returns expected output",
+  testthat::expect_equal(
+    my_fun_run,
+    expected_output
+  )
+)
+```
+
+There are two pieces of information that you'll need every time `test_myFun.R` is run: `my_args` and `expected_output`. Typically, these objects are saved to `.Rdata` files and saved to the same subdirectory. For example, you could save them to `my_args.Rdata` and `expected_output.Rdata` under the `tests/testthat/testing_data` subdirectory. And, to find them easily in any contexts, you can use `rprojroot`!
+
+Since all of the data files live in the same subdirectory, you can create a utility function `getMyPath()` that will always look in that directory for these types of files. And, since the `testthat` package will look for and source the `tests/testthat/helper.R` file before running any tests, you can place a `getMyPath()` in this file and use it throughout your tests:
+
+```{r, eval = FALSE}
+## saved to tests/testthat/helper.R
+getMyPath <- function(file_name) {
+  rprojroot::find_testthat_root_file(
+    "testing_data", filename
+  )
+}
+```
+
+Now you can ask `getMyPath()` to find your important data files by using the function within your test scripts!
+
+```{r, eval = FALSE}
+## Find the correct path with your custom rprojroot helper function
+path_to_my_args_file <- getMyPath("my_args.Rdata")
+
+## Load the input arguments
+load(file = path_to_my_args_file)
+
+## Run the function with those arguments
+my_fun_run <- do.call(myFun,my_args)
+
+## Load the historical expectation with the helper
+load(file = getMyPath("expected_output.Rdata"))
+
+## Pass all tests and achieve nirvana
+testthat::test_that(
+  "myFun() returns expected output",
+  testthat::expect_equal(
+    my_fun_run,
+    expected_output
+  )
+)
+```
+
+For an example in the wild, see the [`test_sheet()` function](https://github.com/tidyverse/readxl/blob/0d9ad4f570f6580ff716e0e9ba5048447048e9f0/tests/testthat/helper.R#L1-L3) in the `readxl` package.
 
 ## Summary
 
