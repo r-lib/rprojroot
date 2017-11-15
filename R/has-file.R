@@ -3,7 +3,7 @@ format_lines <- function(n) {
 }
 
 #' @details
-#' The `has_file` function constructs a criterion that checks for the
+#' The `has_file()` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
 #' root) with specific contents.
 #'
@@ -37,7 +37,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 }
 
 #' @details
-#' The `has_dir` function constructs a criterion that checks for the
+#' The `has_dir()` function constructs a criterion that checks for the
 #' existence of a specific directory.
 #'
 #' @rdname root_criterion
@@ -58,7 +58,7 @@ has_dir <- function(filepath) {
 }
 
 #' @details
-#' The `has_file_pattern` function constructs a criterion that checks for the
+#' The `has_file_pattern()` function constructs a criterion that checks for the
 #' existence of a file that matches a pattern, with specific contents.
 #'
 #' @rdname root_criterion
@@ -92,7 +92,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
 }
 
 #' @details
-#' The `has_dirname` function constructs a criterion that checks if the
+#' The `has_dirname()` function constructs a criterion that checks if the
 #' [base::dirname()] has a specific name.
 #'
 #' @rdname root_criterion

@@ -36,7 +36,7 @@ Append an arbitrary number of path components to the root using
 \code{\link[base:file.path]{base::file.path()}}.
 }
 \details{
-The \code{find_root_file} function is a simple wrapper around
+The \code{find_root_file()} function is a simple wrapper around
 \code{\link[=find_root]{find_root()}} that
 appends an arbitrary number of path components to the root using
 \code{\link[base:file.path]{base::file.path()}}.

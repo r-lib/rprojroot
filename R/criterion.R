@@ -101,7 +101,7 @@ is.root_criterion <- function(x) {
 as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
 
 #' @details
-#' The `as.root_criterion` function accepts objects of class
+#' The `as.root_criterion()` function accepts objects of class
 #' `root_criterion`, and character values; the latter will be
 #' converted to criteria using `has_file`.
 #'

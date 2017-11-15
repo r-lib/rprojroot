@@ -30,7 +30,7 @@ for a root path. This is especially useful for composite root criteria
 created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
 }
 \details{
-Starting from the working directory, the \code{find_root} function searches
+Starting from the working directory, the \code{find_root()} function searches
 for the root.
 If a root is found, the \code{...} arguments are used to construct a path;
 thus, if no extra arguments are given, the root is returned.

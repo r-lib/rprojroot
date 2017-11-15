@@ -3,7 +3,7 @@
 #' Append an arbitrary number of path components to the root using
 #' [base::file.path()].
 #'
-#' The `find_root_file` function is a simple wrapper around
+#' The `find_root_file()` function is a simple wrapper around
 #' [find_root()] that
 #' appends an arbitrary number of path components to the root using
 #' [base::file.path()].
