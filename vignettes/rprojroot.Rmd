@@ -135,14 +135,80 @@ library(rprojroot)
 # List all files and directories below the root
 dir(find_root(has_file("DESCRIPTION")))
 
-# Find a file relative to the root
-file.exists(find_root_file("R", "root.R", criterion = has_file("DESCRIPTION")))
 ```
 
-Note that the following code produces identical results when building the
-vignette *and* when sourcing the chunk in RStudio,
-provided that the current working directory is the project root
-or anywhere below.
+#### Relative paths to a stable root
+
+Here we illustrate the power of `rprojroot` by demonstrating how to access the same file from two different working directories. Let your project be a package called `pkgname` and consider the desired file `rrmake.R` at `pkgname/R/rrmake.R`. First, we show how to access from the `vignettes` directory, and then from the `tests/testthat` directory.
+
+
+##### Example A: From `vignettes`
+
+When your working directory is `pkgname/vignettes`, you can access the `rrmake.R` file by:
+
+1. Supplying a pathname relative to your working directory. Here's two ways to do that:
+
+```{r, eval = FALSE}
+rel_path_from_vignettes <- "../R/rrmake.R"
+rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ##identical
+
+```
+
+2. Supplying a pathname to the file relative from the root of the package, e.g.,
+
+```{r, eval = FALSE}
+rel_path_from_root <- "R/rrmake.R"
+rel_path_from_root <- file.path("R", "rrmake.R") ##identical
+```
+
+This second method requires finding the root of the package, which can be done with the `has_file()` function:
+
+```{r}
+has_file("DESCRIPTION")
+```
+
+So, using `rprojroot` you can specify the path relative from root in the following manner:
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+```
+
+
+##### Example B: From `tests/testthat`
+
+When your working directory is `pkgname/tests/testthat`, you can access the `rrmake.R` file by:
+
+1. Supplying a pathname relative to your working directory.
+
+```{r, eval = FALSE}
+rel_path_from_testthat <- "../../R/rrmake.R"
+```
+
+Note that this is different than in the previous example! However, the second method is the same...
+
+2. Supplying a pathname to the file relative from the root of the package. With `rprojroot`, this is the exact same as in the previous example.
+
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+```
+
+##### Summary of Examples A and B
+
+Since Examples A and B used different working directories, `rel_path_from_vignettes` and `rel_path_from_testthat` were different. This is an issue when trying to re-use the same code. This issue is solved by using `rprojroot`: the function `find_root_file()` finds a file relative from the root, where the root is determined from checking the criterion with `has_file()`. 
+
+
+Note that the follow code produces identical results when building the vignette *and* when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that `rprojroot` has succesfully determined the correct path:
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+
+# Find a file relative to the root
+file.exists(rel_path_from_root)
+```
 
 
 ### Criteria
