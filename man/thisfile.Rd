@@ -45,7 +45,7 @@ of the parameter passed to \code{Rscript} is returned.
 \url{http://stackoverflow.com/q/1815606/946850}
 }
 \seealso{
-\link\link{base}{source}, \link\link{utils}{Rscript}, \link\link{base}{getwd}
+\code{\link[base:source]{base::source()}}, \code{\link[utils:Rscript]{utils::Rscript()}}, \code{\link[base:getwd]{base::getwd()}}
 }
 \author{
 Kirill Müller, Hadley Wickham, Michael R. Head
