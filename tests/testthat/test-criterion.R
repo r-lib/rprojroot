@@ -1,7 +1,10 @@
 context("criterion")
 
 test_that("root_criterion", {
-  expect_error(root_criterion(5, "Bogus"), "must have exactly one argument")
+  expect_error(
+    suppressWarnings(root_criterion(5, "Bogus")),
+    "must have exactly one argument"
+  )
   expect_error(root_criterion(identity, "Bogus"), "must have exactly one argument")
   expect_true(is.root_criterion(root_criterion(function(path) FALSE, "Never")))
 })
@@ -27,12 +30,10 @@ test_that("Formatting", {
 })
 
 test_that("Formatting criteria", {
-  ret <- character()
-  with_mock(
-    `base::cat` = function(..., sep = "") ret <<- c(ret, paste(..., sep = sep)),
-     str(criteria)
+  expect_output(
+    str(criteria),
+    "^List of "
   )
-  expect_match(ret[[1]], "^List of ")
 })
 
 test_that("Combining criteria", {

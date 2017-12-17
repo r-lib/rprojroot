@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The `rprojroot` package solves a seemingly trivial but annoying problem
+The *rprojroot* package solves a seemingly trivial but annoying problem
 that occurs sooner or later
 in any largish project:
 How to find files in subdirectories?
@@ -92,11 +92,11 @@ pass that absolute path to `root$make_fix_file()`:
 root_file <- root$make_fix_file("C:\\Users\\User Name\\...")
 ```
 
-Get the path of standalone R scripts or vignettes
-using the `thisfile()` function in the `kimisc` package:
+As a last resort, you can get the path of standalone R scripts or vignettes
+using the `thisfile()` function:
 
 ```r
-root_file <- root$make_fix_file(dirname(kimisc::thisfile()))
+root_file <- root$make_fix_file(dirname(thisfile()))
 ```
 
 The remainder of this vignette describes implementation details and advanced features.
@@ -135,14 +135,80 @@ library(rprojroot)
 # List all files and directories below the root
 dir(find_root(has_file("DESCRIPTION")))
 
-# Find a file relative to the root
-file.exists(find_root_file("R", "root.R", criterion = has_file("DESCRIPTION")))
 ```
 
-Note that the following code produces identical results when building the
-vignette *and* when sourcing the chunk in RStudio,
-provided that the current working directory is the project root
-or anywhere below.
+#### Relative paths to a stable root
+
+Here we illustrate the power of *rprojroot* by demonstrating how to access the same file from two different working directories. Let your project be a package called `pkgname` and consider the desired file `rrmake.R` at `pkgname/R/rrmake.R`. First, we show how to access from the `vignettes` directory, and then from the `tests/testthat` directory.
+
+
+##### Example A: From `vignettes`
+
+When your working directory is `pkgname/vignettes`, you can access the `rrmake.R` file by:
+
+1. Supplying a pathname relative to your working directory. Here's two ways to do that:
+
+```{r, eval = FALSE}
+rel_path_from_vignettes <- "../R/rrmake.R"
+rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ##identical
+
+```
+
+2. Supplying a pathname to the file relative from the root of the package, e.g.,
+
+```{r, eval = FALSE}
+rel_path_from_root <- "R/rrmake.R"
+rel_path_from_root <- file.path("R", "rrmake.R") ##identical
+```
+
+This second method requires finding the root of the package, which can be done with the `has_file()` function:
+
+```{r}
+has_file("DESCRIPTION")
+```
+
+So, using *rprojroot* you can specify the path relative from root in the following manner:
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+```
+
+
+##### Example B: From `tests/testthat`
+
+When your working directory is `pkgname/tests/testthat`, you can access the `rrmake.R` file by:
+
+1. Supplying a pathname relative to your working directory.
+
+```{r, eval = FALSE}
+rel_path_from_testthat <- "../../R/rrmake.R"
+```
+
+Note that this is different than in the previous example! However, the second method is the same...
+
+2. Supplying a pathname to the file relative from the root of the package. With *rprojroot*, this is the exact same as in the previous example.
+
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+```
+
+##### Summary of Examples A and B
+
+Since Examples A and B used different working directories, `rel_path_from_vignettes` and `rel_path_from_testthat` were different. This is an issue when trying to re-use the same code. This issue is solved by using *rprojroot*: the function `find_root_file()` finds a file relative from the root, where the root is determined from checking the criterion with `has_file()`. 
+
+
+Note that the follow code produces identical results when building the vignette *and* when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that *rprojroot* has succesfully determined the correct path:
+
+```{r}
+# Specify a path/to/file relative to the root
+rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
+
+# Find a file relative to the root
+file.exists(rel_path_from_root)
+```
 
 
 ### Criteria
@@ -251,8 +317,7 @@ withr::with_dir(
 
 The `make_fix_file()` member function also accepts an optional `path` argument,
 in case you know your project's root but the current working directory is somewhere outside.
-Take a look at the `thisfile()` function in the `kimisc` package for getting
-the path to the current script or `knitr` document.
+The path to the current script or `knitr` document can be obtained using the `thisfile()` function, but it's much easier and much more robust to just run your scripts with the working directory somewhere below your project root.
 
 
 ## `testthat` files
@@ -281,10 +346,65 @@ so that it also works when rendering the vignette (*sigh*):
 dir(is_testthat$find_file("hierarchy", path = is_r_package$find_file()))
 ```
 
+### Another example: custom testing utilities
+
+The hassle of using saved data files for testing is made even easier by using *rprojroot* in a utility function. For example, suppose you have a testing file at `tests/testthat/test_my_fun.R` which tests the `my_fun()` function:
+
+```{r, eval = FALSE}
+my_fun_run <- do.call(my_fun, my_args)
+
+testthat::test_that(
+  "my_fun() returns expected output",
+  testthat::expect_equal(
+    my_fun_run,
+    expected_output
+  )
+)
+```
+
+There are two pieces of information that you'll need every time `test_my_fun.R` is run: `my_args` and `expected_output`. Typically, these objects are saved to `.Rdata` files and saved to the same subdirectory. For example, you could save them to `my_args.Rdata` and `expected_output.Rdata` under the `tests/testthat/testing_data` subdirectory. And, to find them easily in any contexts, you can use *rprojroot*!
+
+Since all of the data files live in the same subdirectory, you can create a utility function `get_my_path()` that will always look in that directory for these types of files. And, since the *testthat* package will look for and source the `tests/testthat/helper.R` file before running any tests, you can place a `get_my_path()` in this file and use it throughout your tests:
+
+```{r, eval = FALSE}
+## saved to tests/testthat/helper.R
+get_my_path <- function(file_name) {
+  rprojroot::find_testthat_root_file(
+    "testing_data", filename
+  )
+}
+```
+
+Now you can ask `get_my_path()` to find your important data files by using the function within your test scripts!
+
+```{r, eval = FALSE}
+## Find the correct path with your custom rprojroot helper function
+path_to_my_args_file <- get_my_path("my_args.Rdata")
+
+## Load the input arguments
+load(file = path_to_my_args_file)
+
+## Run the function with those arguments
+my_fun_run <- do.call(my_fun,my_args)
+
+## Load the historical expectation with the helper
+load(file = get_my_path("expected_output.Rdata"))
+
+## Pass all tests and achieve nirvana
+testthat::test_that(
+  "my_fun() returns expected output",
+  testthat::expect_equal(
+    my_fun_run,
+    expected_output
+  )
+)
+```
+
+For an example in the wild, see the [`test_sheet()` function](https://github.com/tidyverse/readxl/blob/0d9ad4f570f6580ff716e0e9ba5048447048e9f0/tests/testthat/helper.R#L1-L3) in the *readxl* package.
 
 ## Summary
 
-The `rprojroot` package allows easy access to files below a project root
+The *rprojroot* package allows easy access to files below a project root
 if the project root can be identified easily, e.g. if it is the only directory
 in the whole hierarchy that contains a specific file.
 This is a robust solution for finding files in largish projects
