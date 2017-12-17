@@ -7,15 +7,15 @@
 #' solution: if a script needs to know its location, it should be set outside
 #' the context of the script if possible.
 #'
-#' @details This functions currently work only if the script was \code{source}d,
-#'   processed with \code{knitr},
-#'   or run with \code{Rscript} or using the \code{--file} parameter to the
-#'   \code{R} executable.  For code run with \code{Rscript}, the exact value
-#'   of the parameter passed to \code{Rscript} is returned.
+#' @details This functions currently work only if the script was `source`d,
+#'   processed with `knitr`,
+#'   or run with `Rscript` or using the `--file` parameter to the
+#'   `R` executable.  For code run with `Rscript`, the exact value
+#'   of the parameter passed to `Rscript` is returned.
 #' @return The path of the currently running script, NULL if it cannot be
 #'   determined.
-#' @seealso \link[base]{source}, \link[utils]{Rscript}, \link[base]{getwd}
-#' @references \url{http://stackoverflow.com/q/1815606/946850}
+#' @seealso [base::source()], [utils::Rscript()], [base::getwd()]
+#' @references [http://stackoverflow.com/q/1815606/946850]()
 #' @author Kirill Müller, Hadley Wickham, Michael R. Head
 #' @examples
 #' \dontrun{thisfile()}
