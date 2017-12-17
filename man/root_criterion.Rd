@@ -88,7 +88,7 @@ given directory is a project root.
 Construct criteria using \code{root_criterion} in a very general fashion
 by specifying a function with a \code{path} argument, and a description.
 
-The \code{as.root_criterion} function accepts objects of class
+The \code{as.root_criterion()} function accepts objects of class
 \code{root_criterion}, and character values; the latter will be
 converted to criteria using \code{has_file}.
 
@@ -96,17 +96,17 @@ Root criteria can be combined with the \code{|} operator. The result is a
 composite root criterion that requires either of the original criteria to
 match.
 
-The \code{has_file} function constructs a criterion that checks for the
+The \code{has_file()} function constructs a criterion that checks for the
 existence of a specific file (which itself can be in a subdirectory of the
 root) with specific contents.
 
-The \code{has_dir} function constructs a criterion that checks for the
+The \code{has_dir()} function constructs a criterion that checks for the
 existence of a specific directory.
 
-The \code{has_file_pattern} function constructs a criterion that checks for the
+The \code{has_file_pattern()} function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.
 
-The \code{has_dirname} function constructs a criterion that checks if the
+The \code{has_dirname()} function constructs a criterion that checks if the
 \code{\link[base:dirname]{base::dirname()}} has a specific name.
 }
 \examples{
