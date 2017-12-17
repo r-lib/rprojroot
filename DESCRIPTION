@@ -32,4 +32,5 @@ Collate:
     'root.R'
     'rprojroot-package.R'
     'shortcut.R'
+    'thisfile.R'
 Roxygen: list(markdown = TRUE)
