@@ -27,6 +27,9 @@ determined.
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
 cases.
+\strong{CAVEAT}: Use this function only if your workflow does not permit other
+solution: if a script needs to know its location, it should be set outside
+the context of the script if possible.
 }
 \details{
 This functions currently work only if the script was \code{source}d,

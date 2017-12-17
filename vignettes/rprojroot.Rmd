@@ -92,11 +92,11 @@ pass that absolute path to `root$make_fix_file()`:
 root_file <- root$make_fix_file("C:\\Users\\User Name\\...")
 ```
 
-Get the path of standalone R scripts or vignettes
-using the `thisfile()` function in the *kimisc* package:
+As a last resort, you can get the path of standalone R scripts or vignettes
+using the `thisfile()` function:
 
 ```r
-root_file <- root$make_fix_file(dirname(kimisc::thisfile()))
+root_file <- root$make_fix_file(dirname(thisfile()))
 ```
 
 The remainder of this vignette describes implementation details and advanced features.
@@ -317,8 +317,7 @@ withr::with_dir(
 
 The `make_fix_file()` member function also accepts an optional `path` argument,
 in case you know your project's root but the current working directory is somewhere outside.
-Take a look at the `thisfile()` function in the *kimisc* package for getting
-the path to the current script or `knitr` document.
+The path to the current script or `knitr` document can be obtained using the `thisfile()` function, but it's much easier and much more robust to just run your scripts with the working directory somewhere below your project root.
 
 
 ## `testthat` files
