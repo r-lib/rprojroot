@@ -27,7 +27,8 @@ language: r
 sudo: false
 dist: trusty
 #cache: packages # want clean library
-latex: false
+#latex: false
+latex: true
 
 #env
 env:
