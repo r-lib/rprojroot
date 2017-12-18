@@ -1,3 +1,5 @@
+Resumbission upon CRAN's request, to fix brittle tests.
+
 ## Test environments
 * local Ubuntu install, R 3.4.3
 * ubuntu 14.04 (on travis-ci, R devel, release, and oldrel)

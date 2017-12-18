@@ -9,14 +9,14 @@ test_that("thisfile works with Rscript", {
   p <- pipe("Rscript scripts/thisfile-cat.R")
   on.exit(close(p))
   res <- readLines(p)
-  expect_equal("scripts/thisfile-cat.R", res[[1]])
+  expect_equal("scripts/thisfile-cat.R", res[[length(res)]])
 })
 
 test_that("thisfile works with R", {
   p <- pipe("R --slave --vanilla --no-save -f scripts/thisfile-cat.R")
   on.exit(close(p))
   res <- readLines(p)
-  expect_equal("scripts/thisfile-cat.R", res[[1]])
+  expect_equal("scripts/thisfile-cat.R", res[[length(res)]])
 })
 
 test_that("thisfile works with knitr", {

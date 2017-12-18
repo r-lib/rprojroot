@@ -1,11 +1,8 @@
-## rprojroot 1.2-11 (2017-12-18)
+# rprojroot 1.3-1 (2017-12-18)
 
-- New `thisfile()` moved from kimisc (#8).
+- Adapt to testthat 2.0.0.
+- New `thisfile()`, moved from kimisc (#8).
 - Add more examples to vignette (#26, @BarkleyBG).
-
-
-## rprojroot 1.2-10 (2017-06-10)
-
 - Detect `.git` directories created with `git clone --separate-git-dir=...` (#24, @karldw).
 
 
