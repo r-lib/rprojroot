@@ -9,6 +9,6 @@ get_stage("deploy") %>%
 
 if (ci()$get_branch() == "production" && Sys.getenv("BUILD_PKGDOWN") != "") {
   get_stage("deploy") %>%
-    add_step(step_build_pkgdown()) %>%
+    add_step(step_build_pkgdown(examples = FALSE)) %>%
     add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
 }
