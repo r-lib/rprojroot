@@ -21,13 +21,43 @@ if (ci()$get_branch() != "revdep") {
   get_stage("script") %>%
     add_code_step(
       {
-        revdepcheck::revdep_check(dependencies = c()) # initialize
-        revdepcheck::revdep_add(packages = strsplit(Sys.getenv("REVDEP_PKG"), ", *")[[1]])
-        revdepcheck::revdep_check(num_workers = 2)
-        revdepcheck::revdep_report_problems()
+        requireNamespace("remotes")
+        requireNamespace("rcmdcheck")
+
+        check_pkg <- Sys.getenv("REVDEP_PKG")
+        check_path <- download.packages(check_pkg, tempdir())[, 2]
+
+        check_lib <- tempfile()
+        dir.create(check_lib)
+        withr::with_libpaths(check_lib, {
+          print("Installing deps")
+          remotes::install_deps(check_path, dependencies = TRUE)
+        })
+
+        pkg <- desc::desc()$get("Package")
+
+        old_path <- download.packages(pkg, tempdir())[, 2]
+        old_check <- withr::with_libpaths(check_lib, {
+          rcmdcheck::rcmdcheck(check_path)
+        })
+
+        new_lib <- tempfile()
+        dir.create(new_lib)
+        new_check <- withr::with_libpaths(c(new_lib, check_lib), {
+          remotes::install_local(".")
+          rcmdcheck::rcmdcheck(check_path)
+        })
+
+        if (!inherits(old_check, "rcmdcheck") || !inherits(new_check, "rcmdcheck")) {
+          stop("Installation error")
+        } else {
+          cmp <- rcmdcheck::compare_checks(old_check, new_check)
+          print(cmp)
+          if (cmp$status != "+") stop("New errors found")
+        }
       },
       {
-        remotes::install_github("r-lib/revdepcheck")
+        remotes::install_github("r-lib/rcmdcheck")
       }
     )
 }
