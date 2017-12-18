@@ -44,7 +44,7 @@ thisfile_source <- function() {
 #' @export
 thisfile_r <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
-  if (!grepl("^R(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE))
+  if (!grepl("^R(?:|term)(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE))
     return (NULL)
 
   cmd_args_trailing <- commandArgs(trailingOnly = TRUE)
@@ -67,7 +67,7 @@ thisfile_r <- function() {
 #' @export
 thisfile_rscript <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
-  if (!grepl("^Rscript(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE))
+  if (!grepl("^R(?:term|script)(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE))
     return(NULL)
 
   cmd_args_trailing <- commandArgs(trailingOnly = TRUE)
@@ -87,8 +87,9 @@ thisfile_rscript <- function() {
 #' @rdname thisfile
 #' @export
 thisfile_knit <- function() {
-  if (requireNamespace("knitr"))
+  if (requireNamespace("knitr")) {
     return (knitr::current_input(dir = TRUE))
+  }
 
   NULL
 }
