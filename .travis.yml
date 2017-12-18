@@ -40,6 +40,46 @@ matrix:
   include:
   - env:
     - REVDEP_PKG=DBI
+  - env:
+    - REVDEP_PKG=desc
+  - env:
+    - REVDEP_PKG=document
+  - env:
+    - REVDEP_PKG=drake
+  - env:
+    - REVDEP_PKG=excerptr
+  - env:
+    - REVDEP_PKG=fakemake
+  - env:
+    - REVDEP_PKG=ggraptR
+  - env:
+    - REVDEP_PKG=googledrive
+  - env:
+    - REVDEP_PKG=googlesheets
+  - env:
+    - REVDEP_PKG=here
+  - env:
+    - REVDEP_PKG=learnr
+  - env:
+    - REVDEP_PKG=readxl
+  - env:
+    - REVDEP_PKG=repurrrsive
+  - env:
+    - REVDEP_PKG=RMariaDB
+  - env:
+    - REVDEP_PKG=rmarkdown
+  - env:
+    - REVDEP_PKG=secret
+  - env:
+    - REVDEP_PKG=sparklyr
+  - env:
+    - REVDEP_PKG=styler
+  - env:
+    - REVDEP_PKG=teachingApps
+  - env:
+    - REVDEP_PKG=testthis
+  - env:
+    - REVDEP_PKG=usethis
 
 #services
 services:
