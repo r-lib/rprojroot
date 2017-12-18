@@ -38,16 +38,8 @@ env:
 #matrix: 3x Linux, 1x OS X
 matrix:
   include:
-  - r: release
-    env:
-    - BUILD_PKGDOWN=true
-  - r: oldrel
-  - r: devel
-  - os: osx
-    osx_image: xcode7.3
-    r: release
-    latex: false
-
+  - env:
+    - REVDEP_PKG=DBI
 
 #services
 services:
