@@ -1,4 +1,4 @@
-# rprojroot 1.3 (2017-12-18)
+# rprojroot 1.3-1 (2017-12-18)
 
 - Adapt to testthat 2.0.0.
 - New `thisfile()`, moved from kimisc (#8).
