@@ -1,11 +1,13 @@
 context("thisfile")
 
 test_that("thisfile works with source", {
+  skip_on_cran()
   res <- source("scripts/thisfile.R")
   expect_true(grepl("thisfile.R$", res$value))
 })
 
 test_that("thisfile works with Rscript", {
+  skip_on_cran()
   p <- pipe("Rscript scripts/thisfile-cat.R")
   on.exit(close(p))
   res <- readLines(p)
@@ -13,6 +15,7 @@ test_that("thisfile works with Rscript", {
 })
 
 test_that("thisfile works with R", {
+  skip_on_cran()
   p <- pipe("R --slave --vanilla --no-save -f scripts/thisfile-cat.R")
   on.exit(close(p))
   res <- readLines(p)
@@ -20,6 +23,7 @@ test_that("thisfile works with R", {
 })
 
 test_that("thisfile works with knitr", {
+  skip_if_not_installed("knitr")
   out <- tempfile(pattern = "rprojroot", fileext = ".md")
   expect_message(
     knitr::knit("scripts/thisfile.Rmd", output = out, quiet = TRUE),
@@ -29,6 +33,9 @@ test_that("thisfile works with knitr", {
 })
 
 test_that("thisfile works with rmarkdown", {
+  skip_if_not_installed("rmarkdown")
+  skip_if_not(rmarkdown::pandoc_available())
+
   out <- tempfile(pattern = "rprojroot", fileext = ".md")
   expect_message(
     rmarkdown::render(
