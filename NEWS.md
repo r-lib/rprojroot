@@ -1,3 +1,8 @@
+## rprojroot 1.3-2 (2017-12-22)
+
+- Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
+
+
 # rprojroot 1.3-1 (2017-12-18)
 
 - Adapt to testthat 2.0.0.
