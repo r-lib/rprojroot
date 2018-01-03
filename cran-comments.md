@@ -1,4 +1,4 @@
-Resumbission upon CRAN's request, to fix brittle tests.
+Resumbission upon CRAN's request, to fix brittle tests (again).
 
 ## Test environments
 * local Ubuntu install, R 3.4.3
