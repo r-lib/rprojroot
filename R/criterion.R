@@ -70,7 +70,9 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
   #'   }
   #' }
   criterion$make_fix_file <-
-    function(path = getwd()) make_fix_root_file(criterion, path)
+    function(path = getwd(), subdir = NULL) {
+      make_fix_root_file(criterion, path, subdir)
+    }
 
   criterion
 }
