@@ -191,21 +191,21 @@ str.root_criteria <- function(object, ...) {
 "is_projectile_project"
 
 #' @details
-#' `is_git_project` looks for a `.git` directory.
+#' `is_git_root` looks for a `.git` directory.
 #'
 #' @rdname criteria
 #' @export
 "is_git_root"
 
 #' @details
-#' `is_svn_project` looks for a `.svn` directory.
+#' `is_svn_root` looks for a `.svn` directory.
 #'
 #' @rdname criteria
 #' @export
 "is_svn_root"
 
 #' @details
-#' `is_vcs_project` looks for the root of a version control
+#' `is_vcs_root` looks for the root of a version control
 #' system, currently only Git and SVN are supported.
 #'
 #' @rdname criteria

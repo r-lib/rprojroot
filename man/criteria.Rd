@@ -47,11 +47,11 @@ This is a collection of commonly used root criteria.
 
 \code{is_projectile_project} looks for a \code{.projectile} file.
 
-\code{is_git_project} looks for a \code{.git} directory.
+\code{is_git_root} looks for a \code{.git} directory.
 
-\code{is_svn_project} looks for a \code{.svn} directory.
+\code{is_svn_root} looks for a \code{.svn} directory.
 
-\code{is_vcs_project} looks for the root of a version control
+\code{is_vcs_root} looks for the root of a version control
 system, currently only Git and SVN are supported.
 
 \code{is_testthat} looks for the \code{testthat} directory, works when
