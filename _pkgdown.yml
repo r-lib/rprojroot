@@ -1,13 +1,6 @@
 template:
-  params:
-    bootswatch: flatly # https://bootswatch.com/flatly/
+  package: tidytemplate
+  default_assets: false
 
-navbar:
-  type: default
-  left:
-  - text: Documentation
-    href: articles/rprojroot.html
-  - text: Reference
-    href: reference/index.html
-  - text: News
-    href: news/index.html
+home:
+  strip_header: true
