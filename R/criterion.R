@@ -101,6 +101,7 @@ is_root_criterion <- function(x) {
 }
 
 #' @rdname deprecated
+#' @inheritParams is_root_criterion
 #' @export
 is.root_criterion <- function(x) {
   .Deprecated("is_root_criterion")

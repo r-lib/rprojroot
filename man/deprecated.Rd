@@ -10,6 +10,9 @@ is.root_criterion(x)
 
 as.root_criterion(x)
 }
+\arguments{
+\item{x}{An object}
+}
 \description{
 See the "Functions" section for replacements
 }
