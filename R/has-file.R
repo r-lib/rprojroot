@@ -129,6 +129,9 @@ is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 is_remake_project <- has_file("remake.yml")
 
 #' @export
+is_drake_project <- has_dir(".drake")
+
+#' @export
 is_projectile_project <- has_file(".projectile")
 
 #' @export
@@ -192,6 +195,13 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_remake_project"
+
+#' @details
+#' `is_drake_project` looks for a `.drake` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_drake_project"
 
 #' @details
 #' `is_projectile_project` looks for a `.projectile` file.
