@@ -135,12 +135,12 @@ as_root_criterion.root_criterion <- identity
 
 #' @export
 as_root_criterion.default <- function(x) {
-  as.root_criterion(x)
+  stop("Cannot coerce ", x, " to type root_criterion.")
 }
 
 #' @export
 as.root_criterion.default <- function(x) {
-  stop("Cannot coerce ", x, " to type root_criterion.")
+  as_root_criterion(x)
 }
 
 #' @export
