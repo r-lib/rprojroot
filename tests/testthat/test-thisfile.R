@@ -39,8 +39,7 @@ test_that("thisfile works with rmarkdown", {
   out <- tempfile(pattern = "rprojroot", fileext = ".md")
   expect_message(
     rmarkdown::render(
-      "scripts/thisfile.Rmd",
-      output_file = out,
+      "scripts/thisfile.Rmd", output_file = out,
       output_format = "md_document", quiet = TRUE
     ),
     normalizePath("scripts/thisfile.Rmd"),
@@ -59,10 +58,8 @@ test_that("thisfile works with spin", {
 test_that("thisfile works with rendering an R script", {
   skip("TODO")
   out <- tempfile(pattern = "rprojroot", fileext = ".md")
-  rmarkdown::render("scripts/thisfile-cat.R",
-    output_file = out,
-    output_format = "md_document", quiet = TRUE
-  )
+  rmarkdown::render("scripts/thisfile-cat.R", output_file = out,
+                    output_format = "md_document", quiet = TRUE)
   res <- readLines(out)
   expect_equal(normalizePath("scripts/thisfile.Rmd"), normalizePath(res))
 })

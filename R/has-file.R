@@ -19,24 +19,19 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile)) {
+    if (!file.exists(testfile))
       return(FALSE)
-    }
-    if (is_dir(testfile)) {
+    if (is_dir(testfile))
       return(FALSE)
-    }
     match_contents(testfile, .(contents), .(n))
   }))
 
   desc <- paste0(
     "contains a file `", filepath, "`",
     if (!is.null(contents)) {
-      paste0(
-        " with contents matching `", contents, "`",
-        if (n >= 0L) paste0(" in the first ", format_lines(n))
-      )
-    }
-  )
+      paste0(" with contents matching `", contents, "`",
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
+  })
 
   root_criterion(testfun, desc)
 }
@@ -52,9 +47,8 @@ has_dir <- function(filepath) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile)) {
+    if (!file.exists(testfile))
       return(FALSE)
-    }
     is_dir(testfile)
   }))
 
@@ -90,12 +84,9 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   desc <- paste0(
     "contains a file matching `", pattern, "`",
     if (!is.null(contents)) {
-      paste0(
-        " with contents matching `", contents, "`",
-        if (n >= 0L) paste0(" in the first ", format_lines(n))
-      )
-    }
-  )
+      paste0(" with contents matching `", contents, "`",
+             if (n >= 0L) paste0(" in the first ", format_lines(n)))
+    })
 
   root_criterion(testfun, desc)
 }
@@ -163,8 +154,7 @@ criteria <- structure(
     is_testthat = is_testthat,
     from_wd = from_wd
   ),
-  class = "root_criteria"
-)
+  class = "root_criteria")
 
 #' @export
 #' @importFrom utils str

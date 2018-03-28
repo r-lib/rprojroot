@@ -38,9 +38,7 @@ find_root <- function(criterion, path = ".") {
 
     if (is_root(path)) {
       stop("No root directory found in ", start_path, " or its parent directories. ",
-        paste(format(criterion), collapse = "\n"),
-        call. = FALSE
-      )
+           paste(format(criterion), collapse = "\n"), call. = FALSE)
     }
 
     path <- dirname(path)
@@ -66,10 +64,8 @@ get_start_path <- function(path, subdirs) {
 
 # Borrowed from devtools
 is_root <- function(path) {
-  identical(
-    normalizePath(path, winslash = "/"),
-    normalizePath(dirname(path), winslash = "/")
-  )
+  identical(normalizePath(path, winslash = "/"),
+            normalizePath(dirname(path), winslash = "/"))
 }
 
 #' @rdname find_root
@@ -85,7 +81,5 @@ get_root_desc <- function(criterion, path) {
   }
 
   stop("path is not a root. ",
-    paste(format(criterion), collapse = "\n"),
-    call. = FALSE
-  )
+       paste(format(criterion), collapse = "\n"), call. = FALSE)
 }

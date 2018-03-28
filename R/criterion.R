@@ -34,13 +34,11 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
 
   full_desc <- paste0(
     desc,
-    if (!is.null(subdir)) {
-      paste0(
-        " (also look in subdirectories: ",
-        paste0("`", subdir, "`", collapse = ", "),
-        ")"
-      )
-    }
+    if (!is.null(subdir)) paste0(
+      " (also look in subdirectories: ",
+      paste0("`", subdir, "`", collapse = ", "),
+      ")"
+    )
   )
 
   criterion <- structure(
