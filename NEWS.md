@@ -1,4 +1,13 @@
-## rprojroot 1.3-2 (2017-12-22)
+# rprojroot 1.3.2.9000 (2018-03-29)
+
+- Rename `as.` and `is.` functions to `as_` and `is_`, deprecate old versions.
+- New `is_drake_project` criterion (#34).
+- Add `subdir` argument to `make_fix_file()` (#33, @BarkleyBG).
+- Update documentation for version control criteria (#35, @uribo).
+- Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
+
+
+# rprojroot 1.3-2 (2017-12-22)
 
 - Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
 
