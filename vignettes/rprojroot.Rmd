@@ -337,7 +337,7 @@ is_testthat
 ```
 
 The example code below lists all files in the
-[hierarchy](https://github.com/krlmlr/rprojroot/tree/master/tests/testthat/hierarchy)
+[hierarchy](https://github.com/r-lib/rprojroot/tree/master/tests/testthat/hierarchy)
 test directory.
 It uses two project root lookups in total,
 so that it also works when rendering the vignette (*sigh*):

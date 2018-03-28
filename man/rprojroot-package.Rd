@@ -27,9 +27,9 @@ root_fun("NAMESPACE")
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/krlmlr/rprojroot}
-  \item \url{https://krlmlr.github.io/rprojroot}
-  \item Report bugs at \url{https://github.com/krlmlr/rprojroot/issues}
+  \item \url{https://github.com/r-lib/rprojroot}
+  \item \url{https://r-lib.github.io/rprojroot}
+  \item Report bugs at \url{https://github.com/r-lib/rprojroot/issues}
 }
 
 }
