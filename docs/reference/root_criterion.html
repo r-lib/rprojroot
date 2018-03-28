@@ -105,15 +105,15 @@ given directory is a project root.</p>
 
     <pre class="usage">root_criterion(testfun, desc, subdir = NULL)
 
-is.root_criterion(x)
+is_root_criterion(x)
 
-as.root_criterion(x)
+as_root_criterion(x)
 
 # S3 method for character
-as.root_criterion(x)
+as_root_criterion(x)
 
 # S3 method for root_criterion
-as.root_criterion(x)
+as_root_criterion(x)
 
 # S3 method for root_criterion
 |(x, y)
@@ -200,7 +200,7 @@ of the current working directory.</p></dd>
 
     <p>Construct criteria using <code>root_criterion</code> in a very general fashion
 by specifying a function with a <code>path</code> argument, and a description.</p>
-<p>The <code>as.root_criterion()</code> function accepts objects of class
+<p>The <code><a href='deprecated.html'>as.root_criterion()</a></code> function accepts objects of class
 <code>root_criterion</code>, and character values; the latter will be
 converted to criteria using <code>has_file</code>.</p>
 <p>Root criteria can be combined with the <code>|</code> operator. The result is a

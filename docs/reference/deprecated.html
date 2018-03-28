@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find the root of a directory hierarchy — find_root • rprojroot</title>
+<title>Deprecated functions — is.root_criterion • rprojroot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,15 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Find the root of a directory hierarchy — find_root" />
+<meta property="og:title" content="Deprecated functions — is.root_criterion" />
 
-<meta property="og:description" content="A root is defined as a directory that contains a regular file
-whose name matches a given pattern and which optionally contains a given text.
-The search for a root starts at a given directory (the working directory
-by default), and proceeds up the directory hierarchy.
-get_root_desc() returns the description of the criterion
-for a root path. This is especially useful for composite root criteria
-created with |.root_criterion()." />
+<meta property="og:description" content="See the "Functions" section for replacements" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,75 +93,44 @@ created with |.root_criterion()." />
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find the root of a directory hierarchy</h1>
-    <small>Source: <a href='https://github.com/krlmlr/rprojroot/blob/master/R/root.R'><code>R/root.R</code></a></small>
+    <h1>Deprecated functions</h1>
+    <small>Source: <a href='https://github.com/krlmlr/rprojroot/blob/master/R/criterion.R'><code>R/criterion.R</code></a>, <a href='https://github.com/krlmlr/rprojroot/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
     </div>
 
     
-    <p>A <em>root</em> is defined as a directory that contains a regular file
-whose name matches a given pattern and which optionally contains a given text.
-The search for a root starts at a given directory (the working directory
-by default), and proceeds up the directory hierarchy.</p>
-<p><code>get_root_desc()</code> returns the description of the criterion
-for a root path. This is especially useful for composite root criteria
-created with <code><a href='root_criterion.html'>|.root_criterion()</a></code>.</p>
+    <p>See the "Functions" section for replacements</p>
     
 
-    <pre class="usage"><span class='fu'>find_root</span>(<span class='no'>criterion</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>)
+    <pre class="usage"><span class='fu'>is.root_criterion</span>(<span class='no'>x</span>)
 
-<span class='fu'>get_root_desc</span>(<span class='no'>criterion</span>, <span class='no'>path</span>)</pre>
+<span class='fu'>as.root_criterion</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>criterion</th>
-      <td><p>A criterion, will be coerced using
-<code><a href='root_criterion.html'>as_root_criterion()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>The start directory</p></td>
+      <th>x</th>
+      <td><p>An object</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
-    <p>The normalized path of the root as specified by the search criterion.
-Throws an error if no root is found</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Starting from the working directory, the <code>find_root()</code> function searches
-for the root.
-If a root is found, the <code>...</code> arguments are used to construct a path;
-thus, if no extra arguments are given, the root is returned.
-If no root is found, an error is thrown.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p><code><a href='http://www.rdocumentation.org/packages/utils/topics/glob2rx'>utils::glob2rx()</a></code> <code>file.path()</code></p>
+    <ul>
+<li><p><code>as.root_criterion()</code>: Use <code><a href='root_criterion.html'>as_root_criterion()</a></code>  instead.</p></li>
+<li><p><code>is.root_criterion()</code>: Use <code><a href='root_criterion.html'>is_root_criterion()</a></code> instead.</p></li>
+</ul>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>find_root</span>(<span class='fu'>glob2rx</span>(<span class='st'>"DESCRIPTION"</span>), <span class='st'>"^Package: "</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#functions">Functions</a></li>
+          </ul>
 
   </div>
 </div>
