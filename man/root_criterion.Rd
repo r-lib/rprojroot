@@ -2,10 +2,10 @@
 % Please edit documentation in R/criterion.R, R/has-file.R
 \name{root_criterion}
 \alias{root_criterion}
-\alias{is.root_criterion}
-\alias{as.root_criterion}
-\alias{as.root_criterion.character}
-\alias{as.root_criterion.root_criterion}
+\alias{is_root_criterion}
+\alias{as_root_criterion}
+\alias{as_root_criterion.character}
+\alias{as_root_criterion.root_criterion}
 \alias{|.root_criterion}
 \alias{has_file}
 \alias{has_dir}
@@ -15,13 +15,13 @@
 \usage{
 root_criterion(testfun, desc, subdir = NULL)
 
-is.root_criterion(x)
+is_root_criterion(x)
 
-as.root_criterion(x)
+as_root_criterion(x)
 
-\method{as.root_criterion}{character}(x)
+\method{as_root_criterion}{character}(x)
 
-\method{as.root_criterion}{root_criterion}(x)
+\method{as_root_criterion}{root_criterion}(x)
 
 \method{|}{root_criterion}(x, y)
 

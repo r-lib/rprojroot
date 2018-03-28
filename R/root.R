@@ -24,7 +24,7 @@
 #'
 #' @export
 find_root <- function(criterion, path = ".") {
-  criterion <- as.root_criterion(criterion)
+  criterion <- as_root_criterion(criterion)
 
   start_path <- get_start_path(path, criterion$subdir)
   path <- start_path

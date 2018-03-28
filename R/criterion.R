@@ -96,13 +96,27 @@ check_testfun <- function(testfun) {
 #' @rdname root_criterion
 #' @param x An object
 #' @export
-is.root_criterion <- function(x) {
+is_root_criterion <- function(x) {
   inherits(x, "root_criterion")
+}
+
+#' @rdname deprecated
+#' @export
+is.root_criterion <- function(x) {
+  .Deprecated("is_root_criterion")
+  is_root_criterion(x)
 }
 
 #' @rdname root_criterion
 #' @export
-as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
+as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
+
+#' @rdname deprecated
+#' @export
+as.root_criterion <- function(x) {
+  .Deprecated("as_root_criterion")
+  UseMethod("as.root_criterion", x)
+}
 
 #' @details
 #' The `as.root_criterion()` function accepts objects of class
@@ -111,13 +125,18 @@ as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
 #'
 #' @rdname root_criterion
 #' @export
-as.root_criterion.character <- function(x) {
+as_root_criterion.character <- function(x) {
   has_file(x)
 }
 
 #' @rdname root_criterion
 #' @export
-as.root_criterion.root_criterion <- identity
+as_root_criterion.root_criterion <- identity
+
+#' @export
+as_root_criterion.default <- function(x) {
+  as.root_criterion(x)
+}
 
 #' @export
 as.root_criterion.default <- function(x) {
@@ -146,7 +165,7 @@ print.root_criterion <- function(x, ...) {
 #'   match.
 #' @param y An object
 `|.root_criterion` <- function(x, y) {
-  stopifnot(is.root_criterion(y))
+  stopifnot(is_root_criterion(y))
 
   root_criterion(
     c(x$testfun, y$testfun),

@@ -22,7 +22,7 @@ find_testthat_root_file(..., path = ".")
 \item{...}{Further path components passed to \code{\link[=file.path]{file.path()}}}
 
 \item{criterion}{A criterion, will be coerced using
-\code{\link[=as.root_criterion]{as.root_criterion()}}}
+\code{\link[=as_root_criterion]{as_root_criterion()}}}
 
 \item{path}{The start directory}
 }

@@ -6,15 +6,15 @@ test_that("root_criterion", {
     "must have exactly one argument"
   )
   expect_error(root_criterion(identity, "Bogus"), "must have exactly one argument")
-  expect_true(is.root_criterion(root_criterion(function(path) FALSE, "Never")))
+  expect_true(is_root_criterion(root_criterion(function(path) FALSE, "Never")))
 })
 
-test_that("is.root_criterion", {
-  expect_true(is.root_criterion(has_file("DESCRIPTION")))
-  expect_false(is.root_criterion("DESCRIPTION"))
-  expect_true(is.root_criterion(as.root_criterion("DESCRIPTION")))
-  expect_equal(as.root_criterion("x"), has_file("x"))
-  expect_error(as.root_criterion(5), "Cannot coerce")
+test_that("is_root_criterion", {
+  expect_true(is_root_criterion(has_file("DESCRIPTION")))
+  expect_false(is_root_criterion("DESCRIPTION"))
+  expect_true(is_root_criterion(as_root_criterion("DESCRIPTION")))
+  expect_equal(as_root_criterion("x"), has_file("x"))
+  expect_error(as_root_criterion(5), "Cannot coerce")
 })
 
 test_that("Absolute paths are returned", {
@@ -45,7 +45,7 @@ test_that("Combining criteria", {
 
   comb_crit <- is_r_package | is_rstudio_project
 
-  expect_true(is.root_criterion(comb_crit))
+  expect_true(is_root_criterion(comb_crit))
 
   expect_match(paste0(format(comb_crit), collapse = "\n"), "\n- .*\n- ")
 

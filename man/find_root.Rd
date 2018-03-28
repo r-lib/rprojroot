@@ -11,7 +11,7 @@ get_root_desc(criterion, path)
 }
 \arguments{
 \item{criterion}{A criterion, will be coerced using
-\code{\link[=as.root_criterion]{as.root_criterion()}}}
+\code{\link[=as_root_criterion]{as_root_criterion()}}}
 
 \item{path}{The start directory}
 }
