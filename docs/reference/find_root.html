@@ -45,7 +45,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html">Find the root of a directory hierarchy</a>
+        <a class="navbar-brand" href="../index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -84,9 +84,11 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Find the root of a directory hierarchy</h1>
-    <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/root.R'><code>R/root.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/root.R'><code>R/root.R</code></a></small>
+    <div class="hidden name"><code>find_root.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A <em>root</em> is defined as a directory that contains a regular file
 whose name matches a given pattern and which optionally contains a given text.
@@ -96,6 +98,7 @@ by default), and proceeds up the directory hierarchy.</p>
 for a root path. This is especially useful for composite root criteria
 created with <code><a href='root_criterion.html'>|.root_criterion()</a></code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>find_root</span>(<span class='no'>criterion</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>)
 

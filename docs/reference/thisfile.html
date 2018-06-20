@@ -45,7 +45,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html">Determines the path of the currently running script</a>
+        <a class="navbar-brand" href="../index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -84,9 +84,11 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Determines the path of the currently running script</h1>
-    <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/thisfile.R'><code>R/thisfile.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/thisfile.R'><code>R/thisfile.R</code></a></small>
+    <div class="hidden name"><code>thisfile.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><span style="R">R</span> does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
@@ -96,6 +98,7 @@ cases.
 solution: if a script needs to know its location, it should be set outside
 the context of the script if possible.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>thisfile</span>()
 

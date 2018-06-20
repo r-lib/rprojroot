@@ -45,7 +45,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html">Is a directory the project root?</a>
+        <a class="navbar-brand" href="../index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -84,13 +84,16 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Is a directory the project root?</h1>
-    <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/criterion.R'><code>R/criterion.R</code></a>, <a href='https://github.com/r-lib/rprojroot/blob/master/R/has-file.R'><code>R/has-file.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/criterion.R'><code>R/criterion.R</code></a>, <a href='https://github.com/r-lib/rprojroot/blob/master/R/has-file.R'><code>R/has-file.R</code></a></small>
+    <div class="hidden name"><code>root_criterion.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Objects of the <code>root_criterion</code> class decide if a
 given directory is a project root.</p>
     
+    </div>
 
     <pre class="usage">root_criterion(testfun, desc, subdir = NULL)
 
@@ -207,7 +210,11 @@ existence of a file that matches a pattern, with specific contents.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>root_criterion</span>(<span class='kw'>function</span>(<span class='no'>path</span>) <span class='fu'>file.exists</span>(<span class='fu'>file.path</span>(<span class='no'>path</span>, <span class='st'>"somefile"</span>)), <span class='st'>"has somefile"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in root_criterion(function(path) file.exists(file.path(path, "somefile")),     "has somefile"): could not find function "root_criterion"</span></div><div class='input'><span class='fu'>has_file</span>(<span class='st'>"DESCRIPTION"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in has_file("DESCRIPTION"): could not find function "has_file"</span></div><div class='input'><span class='no'>is_r_package</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'is_r_package' not found</span></div><div class='input'><span class='no'>is_r_package</span>$<span class='no'>find_file</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'is_r_package' not found</span></div><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='fu'>root_criterion</span>(<span class='kw'>function</span>(<span class='no'>path</span>) <span class='fu'>file.exists</span>(<span class='fu'>file.path</span>(<span class='no'>path</span>, <span class='st'>"somefile"</span>)), <span class='st'>"has somefile"</span>)</div><div class='output co'>#&gt; Root criterion: has somefile</div><div class='input'><span class='fu'>has_file</span>(<span class='st'>"DESCRIPTION"</span>)</div><div class='output co'>#&gt; Root criterion: contains a file `DESCRIPTION`</div><div class='input'><span class='no'>is_r_package</span></div><div class='output co'>#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</div><div class='input'><span class='no'>is_r_package</span>$<span class='no'>find_file</span></div><div class='output co'>#&gt; function (..., path = ".") 
+#&gt; {
+#&gt;     find_root_file(..., criterion = criterion, path = path)
+#&gt; }
+#&gt; &lt;environment: 0x7fe8c8175e28&gt;</div><span class='co'># NOT RUN {</span>
 <span class='no'>is_r_package</span>$<span class='fu'>make_fix_file</span>(<span class='st'>"."</span>)
 <span class='co'># }</span></pre>
   </div>

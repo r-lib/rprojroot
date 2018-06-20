@@ -26,7 +26,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html"></a>
+        <a class="navbar-brand" href="../index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -68,9 +68,10 @@
       <h1>Finding files in project subdirectories</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2018-04-01</h4>
+            <h4 class="date">2018-06-20</h4>
       
-      <small>Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <div class="hidden name"><code>rprojroot.Rmd</code></div>
 
     </div>
 
@@ -83,7 +84,7 @@
 <li>a subdirectory (when building vignettes),</li>
 <li>again the project root (when executing chunks of a vignette).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">basename</span>(<span class="kw">getwd</span>())</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">basename</span>(<span class="kw">getwd</span>())</a></code></pre></div>
 <pre><code>## [1] "vignettes"</code></pre>
 <p>In some cases, it’s even outside the project root.</p>
 <p>This vignette starts with a very brief summary that helps you get started, followed by a longer description of the features.</p>
@@ -91,35 +92,35 @@
 <h2 class="hasAnchor">
 <a href="#tldr" class="anchor"></a>TL;DR</h2>
 <p>What is your project: An R package?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><a href="../reference/criteria.html">rprojroot::is_r_package</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">rprojroot<span class="op">::</span>is_r_package</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</code></pre>
 <p>Or an RStudio project?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><a href="../reference/criteria.html">rprojroot::is_rstudio_project</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">rprojroot<span class="op">::</span>is_rstudio_project</a></code></pre></div>
 <pre><code>## Root criterion: contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line</code></pre>
 <p>Or something else?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rprojroot::<span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">".git/index"</span>)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">rprojroot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/rprojroot/topics/root_criterion">has_file</a></span>(<span class="st">".git/index"</span>)</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `.git/index`</code></pre>
 <p>For now, we assume it’s an R package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root &lt;-<span class="st"> </span>rprojroot::is_r_package</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">root &lt;-<span class="st"> </span>rprojroot<span class="op">::</span>is_r_package</a></code></pre></div>
 <p>The <code>root</code> object contains a function that helps locating files below the root of your package, regardless of your current working directory. If you are sure that your working directory is somewhere below your project’s root, use the <code>root$find_file()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(root$<span class="kw">find_file</span>(<span class="st">"DESCRIPTION"</span>), <span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">readLines</span>(root<span class="op">$</span><span class="kw">find_file</span>(<span class="st">"DESCRIPTION"</span>), <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
 ## [3] "Version: 1.3.2.9000"</code></pre>
 <p>You can also construct an accessor to your root using the <code>root$make_fix_file()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root_file &lt;-<span class="st"> </span>root$<span class="kw">make_fix_file</span>()</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">root_file &lt;-<span class="st"> </span>root<span class="op">$</span><span class="kw">make_fix_file</span>()</a></code></pre></div>
 <p>Note that <code>root_file()</code> is a <em>function</em> that works just like <code>$find_file()</code> but will find the files even if the current working directory is outside your project:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">withr::<span class="kw">with_dir</span>(
-  <span class="st">"../.."</span>,
-  <span class="kw">readLines</span>(<span class="kw">root_file</span>(<span class="st">"DESCRIPTION"</span>), <span class="dv">3</span>)
-)</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">withr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/withr/topics/with_dir">with_dir</a></span>(</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">  <span class="st">"../.."</span>,</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">  <span class="kw">readLines</span>(<span class="kw">root_file</span>(<span class="st">"DESCRIPTION"</span>), <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">)</a></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
 ## [3] "Version: 1.3.2.9000"</code></pre>
 <p>If you know the absolute path of some directory below your project, but cannot be sure of your current working directory, pass that absolute path to <code>root$make_fix_file()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root_file &lt;-<span class="st"> </span>root$<span class="kw">make_fix_file</span>(<span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">User Name</span><span class="ch">\\</span><span class="st">..."</span>)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">root_file &lt;-<span class="st"> </span>root<span class="op">$</span><span class="kw">make_fix_file</span>(<span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">User Name</span><span class="ch">\\</span><span class="st">..."</span>)</a></code></pre></div>
 <p>As a last resort, you can get the path of standalone R scripts or vignettes using the <code><a href="../reference/thisfile.html">thisfile()</a></code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">root_file &lt;-<span class="st"> </span>root$<span class="kw">make_fix_file</span>(<span class="kw">dirname</span>(<span class="kw"><a href="../reference/thisfile.html">thisfile</a></span>()))</code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">root_file &lt;-<span class="st"> </span>root<span class="op">$</span><span class="kw">make_fix_file</span>(<span class="kw">dirname</span>(<span class="kw"><a href="../reference/thisfile.html">thisfile</a></span>()))</a></code></pre></div>
 <p>The remainder of this vignette describes implementation details and advanced features.</p>
 </div>
 <div id="project-root" class="section level2">
@@ -135,10 +136,10 @@
 <h3 class="hasAnchor">
 <a href="#a-simple-example" class="anchor"></a>A simple example</h3>
 <p>The <code><a href="../reference/find_root.html">find_root()</a></code> function implements the core functionality. It returns the path to the first directory that matches the filtering criteria, or throws an error if there is no such directory. Filtering criteria are constructed in a generic fashion using the <code><a href="../reference/root_criterion.html">root_criterion()</a></code> function, the <code><a href="../reference/root_criterion.html">has_file()</a></code> function constructs a criterion that checks for the presence of a file with a specific name and specific contents.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rprojroot)
-
-<span class="co"># List all files and directories below the root</span>
-<span class="kw">dir</span>(<span class="kw"><a href="../reference/find_root.html">find_root</a></span>(<span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)))</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(rprojroot)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># List all files and directories below the root</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw">dir</span>(<span class="kw"><a href="../reference/find_root.html">find_root</a></span>(<span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)))</a></code></pre></div>
 <pre><code>##  [1] "_pkgdown.yml"     "API"              "appveyor.yml"    
 ##  [4] "cran-comments.md" "DESCRIPTION"      "docs"            
 ##  [7] "inst"             "Makefile"         "man"             
@@ -158,19 +159,19 @@
 <ol style="list-style-type: decimal">
 <li>Supplying a pathname relative to your working directory. Here’s two ways to do that:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rel_path_from_vignettes &lt;-<span class="st"> "../R/rrmake.R"</span>
-rel_path_from_vignettes &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">".."</span>, <span class="st">"R"</span>, <span class="st">"rrmake.R"</span>) ##identical</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">rel_path_from_vignettes &lt;-<span class="st"> "../R/rrmake.R"</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">rel_path_from_vignettes &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">".."</span>, <span class="st">"R"</span>, <span class="st">"rrmake.R"</span>) ##identical</a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Supplying a pathname to the file relative from the root of the package, e.g.,</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rel_path_from_root &lt;-<span class="st"> "R/rrmake.R"</span>
-rel_path_from_root &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>) ##identical</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">rel_path_from_root &lt;-<span class="st"> "R/rrmake.R"</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">rel_path_from_root &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>) ##identical</a></code></pre></div>
 <p>This second method requires finding the root of the package, which can be done with the <code><a href="../reference/root_criterion.html">has_file()</a></code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
 <p>So, using <em>rprojroot</em> you can specify the path relative from root in the following manner:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specify a path/to/file relative to the root</span>
-rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co"># Specify a path/to/file relative to the root</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))</a></code></pre></div>
 </div>
 <div id="example-b-from-teststestthat" class="section level5">
 <h5 class="hasAnchor">
@@ -180,24 +181,24 @@ rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../re
 <ol style="list-style-type: decimal">
 <li>Supplying a pathname relative to your working directory.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rel_path_from_testthat &lt;-<span class="st"> "../../R/rrmake.R"</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">rel_path_from_testthat &lt;-<span class="st"> "../../R/rrmake.R"</span></a></code></pre></div>
 <p>Note that this is different than in the previous example! However, the second method is the same…</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Supplying a pathname to the file relative from the root of the package. With <em>rprojroot</em>, this is the exact same as in the previous example.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specify a path/to/file relative to the root</span>
-rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="co"># Specify a path/to/file relative to the root</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))</a></code></pre></div>
 </div>
 <div id="summary-of-examples-a-and-b" class="section level5">
 <h5 class="hasAnchor">
 <a href="#summary-of-examples-a-and-b" class="anchor"></a>Summary of Examples A and B</h5>
 <p>Since Examples A and B used different working directories, <code>rel_path_from_vignettes</code> and <code>rel_path_from_testthat</code> were different. This is an issue when trying to re-use the same code. This issue is solved by using <em>rprojroot</em>: the function <code><a href="../reference/find_root_file.html">find_root_file()</a></code> finds a file relative from the root, where the root is determined from checking the criterion with <code><a href="../reference/root_criterion.html">has_file()</a></code>.</p>
 <p>Note that the follow code produces identical results when building the vignette <em>and</em> when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that <em>rprojroot</em> has succesfully determined the correct path:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Specify a path/to/file relative to the root</span>
-rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))
-
-<span class="co"># Find a file relative to the root</span>
-<span class="kw">file.exists</span>(rel_path_from_root)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># Specify a path/to/file relative to the root</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../reference/find_root_file.html">find_root_file</a></span>(<span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, <span class="dt">criterion =</span> <span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>))</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co"># Find a file relative to the root</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="kw">file.exists</span>(rel_path_from_root)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
@@ -206,16 +207,13 @@ rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../re
 <h3 class="hasAnchor">
 <a href="#criteria" class="anchor"></a>Criteria</h3>
 <p>The <code><a href="../reference/root_criterion.html">has_file()</a></code> function (and the more general <code><a href="../reference/root_criterion.html">root_criterion()</a></code>) both return an S3 object of class <code>root_criterion</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"DESCRIPTION"</span>)</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
 <p>In addition, character values are coerced to <code>has_file</code> criteria by default, this coercion is applied automatically by <code><a href="../reference/find_root.html">find_root()</a></code>. (This feature is used by the introductory example.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/deprecated.html">as.root_criterion</a></span>(<span class="st">"DESCRIPTION"</span>)</code></pre></div>
-<pre><code>## Warning: 'as.root_criterion' is deprecated.
-## Use 'as_root_criterion' instead.
-## See help("Deprecated")</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="../reference/deprecated.html">as.root_criterion</a></span>(<span class="st">"DESCRIPTION"</span>)</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
 <p>The return value of these functions can be stored and reused; in fact, the package provides 9 such criteria:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">criteria</code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">criteria</a></code></pre></div>
 <pre><code>## $is_rstudio_project
 ## Root criterion: contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line
 ## 
@@ -251,14 +249,14 @@ rel_path_from_root &lt;-<span class="st"> </span><span class="kw"><a href="../re
 ## attr(,"class")
 ## [1] "root_criteria"</code></pre>
 <p>Defining new criteria is easy:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">has_license &lt;-<span class="st"> </span><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"LICENSE"</span>)
-has_license</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">has_license &lt;-<span class="st"> </span><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"LICENSE"</span>)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">has_license</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `LICENSE`</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">is_projecttemplate_project &lt;-<span class="st"> </span><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"config/global.dcf"</span>, <span class="st">"^version: "</span>)
-is_projecttemplate_project</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">is_projecttemplate_project &lt;-<span class="st"> </span><span class="kw"><a href="../reference/root_criterion.html">has_file</a></span>(<span class="st">"config/global.dcf"</span>, <span class="st">"^version: "</span>)</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">is_projecttemplate_project</a></code></pre></div>
 <pre><code>## Root criterion: contains a file `config/global.dcf` with contents matching `^version: `</code></pre>
 <p>You can also combine criteria via the <code>|</code> operator:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">is_r_package |<span class="st"> </span>is_rstudio_project</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">is_r_package <span class="op">|</span><span class="st"> </span>is_rstudio_project</a></code></pre></div>
 <pre><code>## Root criterion: one of
 ## - contains a file `DESCRIPTION` with contents matching `^Package: `
 ## - contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line</code></pre>
@@ -267,8 +265,8 @@ is_projecttemplate_project</code></pre></div>
 <h3 class="hasAnchor">
 <a href="#shortcuts" class="anchor"></a>Shortcuts</h3>
 <p>To avoid specifying the search criteria for the project root every time, shortcut functions can be created. The <code><a href="../reference/find_root_file.html">find_package_root_file()</a></code> is a shortcut for <code><a href="../reference/find_root_file.html">find_root_file(..., criterion = is_r_package)</a></code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Print first lines of the source for this document</span>
-<span class="kw">head</span>(<span class="kw">readLines</span>(<span class="kw"><a href="../reference/find_root_file.html">find_package_root_file</a></span>(<span class="st">"vignettes"</span>, <span class="st">"rprojroot.Rmd"</span>)))</code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="co"># Print first lines of the source for this document</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">readLines</span>(<span class="kw"><a href="../reference/find_root_file.html">find_package_root_file</a></span>(<span class="st">"vignettes"</span>, <span class="st">"rprojroot.Rmd"</span>)))</a></code></pre></div>
 <pre><code>## [1] "---"                                               
 ## [2] "title: \"Finding files in project subdirectories\""
 ## [3] "author: \"Kirill Müller\""                         
@@ -276,38 +274,38 @@ is_projecttemplate_project</code></pre></div>
 ## [5] "output: rmarkdown::html_vignette"                  
 ## [6] "vignette: &gt;"</code></pre>
 <p>To save typing effort, define a shorter alias:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">P &lt;-<span class="st"> </span>find_package_root_file
-
-<span class="co"># Use a shorter alias</span>
-<span class="kw">file.exists</span>(<span class="kw">P</span>(<span class="st">"vignettes"</span>, <span class="st">"rprojroot.Rmd"</span>))</code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">P &lt;-<span class="st"> </span>find_package_root_file</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="co"># Use a shorter alias</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="kw">file.exists</span>(<span class="kw">P</span>(<span class="st">"vignettes"</span>, <span class="st">"rprojroot.Rmd"</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Each criterion actually contains a function that allows finding a file below the root specified by this criterion. As our project does not have a file named <code>LICENSE</code>, querying the root results in an error:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Use the has_license criterion to find the root</span>
-R &lt;-<span class="st"> </span>has_license$find_file
-R</code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># Use the has_license criterion to find the root</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">R &lt;-<span class="st"> </span>has_license<span class="op">$</span>find_file</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">R</a></code></pre></div>
 <pre><code>## function (..., path = ".") 
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x5528c68&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
-<span class="kw">R</span>()</code></pre></div>
-<pre><code>## Error: No root directory found in /home/travis/build/r-lib/rprojroot/vignettes or its parent directories. Root criterion: contains a file `LICENSE`</code></pre>
+## &lt;environment: 0x7fdbd0d33a68&gt;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">R</span>()</a></code></pre></div>
+<pre><code>## Error: No root directory found in /Users/maraaverick/rprojroot/vignettes or its parent directories. Root criterion: contains a file `LICENSE`</code></pre>
 </div>
 <div id="fixed-root" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fixed-root" class="anchor"></a>Fixed root</h3>
 <p>We can also create a function that computes a path relative to the root <em>at creation time</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define a function that computes file paths below the current root</span>
-F &lt;-<span class="st"> </span>is_r_package$<span class="kw">make_fix_file</span>()
-F</code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co"># Define a function that computes file paths below the current root</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2">F &lt;-<span class="st"> </span>is_r_package<span class="op">$</span><span class="kw">make_fix_file</span>()</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">F</a></code></pre></div>
 <pre><code>## function (...) 
 ## {
-##     file.path("/home/travis/build/r-lib/rprojroot", ...)
+##     file.path("/Users/maraaverick/rprojroot", ...)
 ## }
-## &lt;environment: 0x4270148&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Show contents of the NAMESPACE file in our project</span>
-<span class="kw">readLines</span>(<span class="kw">F</span>(<span class="st">"NAMESPACE"</span>))</code></pre></div>
+## &lt;environment: 0x7fdbd11d0628&gt;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># Show contents of the NAMESPACE file in our project</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">readLines</span>(<span class="kw">F</span>(<span class="st">"NAMESPACE"</span>))</a></code></pre></div>
 <pre><code>##  [1] "# Generated by roxygen2: do not edit by hand"
 ##  [2] ""                                            
 ##  [3] "S3method(\"|\",root_criterion)"              
@@ -355,11 +353,11 @@ F</code></pre></div>
 ## [45] "importFrom(utils,tail)"</code></pre>
 <p>This is a more robust alternative to <code>$find_file()</code>, because it <em>fixes</em> the project directory when <code>$make_fix_file()</code> is called, instead of searching for it every time. (For that reason it is also slightly faster, but I doubt this matters in practice.)</p>
 <p>This function can be used even if we later change the working directory to somewhere outside the project:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Print the size of the namespace file, working directory outside the project</span>
-withr::<span class="kw">with_dir</span>(
-  <span class="st">"../.."</span>,
-  <span class="kw">file.size</span>(<span class="kw">F</span>(<span class="st">"NAMESPACE"</span>))
-)</code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="co"># Print the size of the namespace file, working directory outside the project</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">withr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/withr/topics/with_dir">with_dir</a></span>(</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">  <span class="st">"../.."</span>,</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">  <span class="kw">file.size</span>(<span class="kw">F</span>(<span class="st">"NAMESPACE"</span>))</a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">)</a></code></pre></div>
 <pre><code>## [1] 1123</code></pre>
 <p>The <code>make_fix_file()</code> member function also accepts an optional <code>path</code> argument, in case you know your project’s root but the current working directory is somewhere outside. The path to the current script or <code>knitr</code> document can be obtained using the <code><a href="../reference/thisfile.html">thisfile()</a></code> function, but it’s much easier and much more robust to just run your scripts with the working directory somewhere below your project root.</p>
 </div>
@@ -370,58 +368,58 @@ withr::<span class="kw">with_dir</span>(
 <p>Tests run with <a href="https://cran.r-project.org/package=testthat"><code>testthat</code></a> commonly use files that live below the <code>tests/testthat</code> directory. Ideally, this should work in the following situation:</p>
 <ul>
 <li>During package development (working directory: package root)</li>
-<li>When testing with <code>devtools::test()</code> (working directory: <code>tests/testthat</code>)</li>
+<li>When testing with <code><a href="http://www.rdocumentation.org/packages/devtools/topics/test">devtools::test()</a></code> (working directory: <code>tests/testthat</code>)</li>
 <li>When running <code>R CMD check</code> (working directory: a renamed recursive copy of <code>tests</code>)</li>
 </ul>
 <p>The <code>is_testthat</code> criterion allows robust lookup of test files.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">is_testthat</code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">is_testthat</a></code></pre></div>
 <pre><code>## Root criterion: directory name is `testthat` (also look in subdirectories: `tests/testthat`, `testthat`)</code></pre>
 <p>The example code below lists all files in the <a href="https://github.com/r-lib/rprojroot/tree/master/tests/testthat/hierarchy">hierarchy</a> test directory. It uses two project root lookups in total, so that it also works when rendering the vignette (<em>sigh</em>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>(is_testthat$<span class="kw">find_file</span>(<span class="st">"hierarchy"</span>, <span class="dt">path =</span> is_r_package$<span class="kw">find_file</span>()))</code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">dir</span>(is_testthat<span class="op">$</span><span class="kw">find_file</span>(<span class="st">"hierarchy"</span>, <span class="dt">path =</span> is_r_package<span class="op">$</span><span class="kw">find_file</span>()))</a></code></pre></div>
 <pre><code>## [1] "a"               "b"               "c"               "DESCRIPTION"    
 ## [5] "hierarchy.Rproj"</code></pre>
 <div id="another-example-custom-testing-utilities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#another-example-custom-testing-utilities" class="anchor"></a>Another example: custom testing utilities</h3>
 <p>The hassle of using saved data files for testing is made even easier by using <em>rprojroot</em> in a utility function. For example, suppose you have a testing file at <code>tests/testthat/test_my_fun.R</code> which tests the <code>my_fun()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun_run &lt;-<span class="st"> </span><span class="kw">do.call</span>(my_fun, my_args)
-
-testthat::<span class="kw">test_that</span>(
-  <span class="st">"my_fun() returns expected output"</span>,
-  testthat::<span class="kw">expect_equal</span>(
-    my_fun_run,
-    expected_output
-  )
-)</code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">my_fun_run &lt;-<span class="st"> </span><span class="kw">do.call</span>(my_fun, my_args)</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">testthat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(</a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">  <span class="st">"my_fun() returns expected output"</span>,</a>
+<a class="sourceLine" id="cb58-5" data-line-number="5">  testthat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/equality-expectations">expect_equal</a></span>(</a>
+<a class="sourceLine" id="cb58-6" data-line-number="6">    my_fun_run,</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7">    expected_output</a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb58-9" data-line-number="9">)</a></code></pre></div>
 <p>There are two pieces of information that you’ll need every time <code>test_my_fun.R</code> is run: <code>my_args</code> and <code>expected_output</code>. Typically, these objects are saved to <code>.Rdata</code> files and saved to the same subdirectory. For example, you could save them to <code>my_args.Rdata</code> and <code>expected_output.Rdata</code> under the <code>tests/testthat/testing_data</code> subdirectory. And, to find them easily in any contexts, you can use <em>rprojroot</em>!</p>
 <p>Since all of the data files live in the same subdirectory, you can create a utility function <code>get_my_path()</code> that will always look in that directory for these types of files. And, since the <em>testthat</em> package will look for and source the <code>tests/testthat/helper.R</code> file before running any tests, you can place a <code>get_my_path()</code> in this file and use it throughout your tests:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## saved to tests/testthat/helper.R
-get_my_path &lt;-<span class="st"> </span>function(file_name) {
-  rprojroot::<span class="kw"><a href="../reference/find_root_file.html">find_testthat_root_file</a></span>(
-    <span class="st">"testing_data"</span>, filename
-  )
-}</code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">## saved to tests/testthat/helper.R</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2">get_my_path &lt;-<span class="st"> </span><span class="cf">function</span>(file_name) {</a>
+<a class="sourceLine" id="cb59-3" data-line-number="3">  rprojroot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/rprojroot/topics/find_root_file">find_testthat_root_file</a></span>(</a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">    <span class="st">"testing_data"</span>, filename</a>
+<a class="sourceLine" id="cb59-5" data-line-number="5">  )</a>
+<a class="sourceLine" id="cb59-6" data-line-number="6">}</a></code></pre></div>
 <p>Now you can ask <code>get_my_path()</code> to find your important data files by using the function within your test scripts!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Find the correct path with your custom rprojroot helper function
-path_to_my_args_file &lt;-<span class="st"> </span><span class="kw">get_my_path</span>(<span class="st">"my_args.Rdata"</span>)
-
-## Load the input arguments
-<span class="kw">load</span>(<span class="dt">file =</span> path_to_my_args_file)
-
-## Run the function with those arguments
-my_fun_run &lt;-<span class="st"> </span><span class="kw">do.call</span>(my_fun,my_args)
-
-## Load the historical expectation with the helper
-<span class="kw">load</span>(<span class="dt">file =</span> <span class="kw">get_my_path</span>(<span class="st">"expected_output.Rdata"</span>))
-
-## Pass all tests and achieve nirvana
-testthat::<span class="kw">test_that</span>(
-  <span class="st">"my_fun() returns expected output"</span>,
-  testthat::<span class="kw">expect_equal</span>(
-    my_fun_run,
-    expected_output
-  )
-)</code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">## Find the correct path with your custom rprojroot helper function</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">path_to_my_args_file &lt;-<span class="st"> </span><span class="kw">get_my_path</span>(<span class="st">"my_args.Rdata"</span>)</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">## Load the input arguments</a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="kw">load</span>(<span class="dt">file =</span> path_to_my_args_file)</a>
+<a class="sourceLine" id="cb60-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7">## Run the function with those arguments</a>
+<a class="sourceLine" id="cb60-8" data-line-number="8">my_fun_run &lt;-<span class="st"> </span><span class="kw">do.call</span>(my_fun,my_args)</a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb60-10" data-line-number="10">## Load the historical expectation with the helper</a>
+<a class="sourceLine" id="cb60-11" data-line-number="11"><span class="kw">load</span>(<span class="dt">file =</span> <span class="kw">get_my_path</span>(<span class="st">"expected_output.Rdata"</span>))</a>
+<a class="sourceLine" id="cb60-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb60-13" data-line-number="13">## Pass all tests and achieve nirvana</a>
+<a class="sourceLine" id="cb60-14" data-line-number="14">testthat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(</a>
+<a class="sourceLine" id="cb60-15" data-line-number="15">  <span class="st">"my_fun() returns expected output"</span>,</a>
+<a class="sourceLine" id="cb60-16" data-line-number="16">  testthat<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/equality-expectations">expect_equal</a></span>(</a>
+<a class="sourceLine" id="cb60-17" data-line-number="17">    my_fun_run,</a>
+<a class="sourceLine" id="cb60-18" data-line-number="18">    expected_output</a>
+<a class="sourceLine" id="cb60-19" data-line-number="19">  )</a>
+<a class="sourceLine" id="cb60-20" data-line-number="20">)</a></code></pre></div>
 <p>For an example in the wild, see the <a href="https://github.com/tidyverse/readxl/blob/0d9ad4f570f6580ff716e0e9ba5048447048e9f0/tests/testthat/helper.R#L1-L3"><code>test_sheet()</code> function</a> in the <em>readxl</em> package.</p>
 </div>
 </div>
