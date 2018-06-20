@@ -45,7 +45,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../index.html">rprojroot: Finding Files in Project Subdirectories</a>
+        <a class="navbar-brand" href="../index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -84,15 +84,18 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>rprojroot: Finding Files in Project Subdirectories</h1>
-    <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/rprojroot-package.R'><code>R/rprojroot-package.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/rprojroot-package.R'><code>R/rprojroot-package.R</code></a></small>
+    <div class="hidden name"><code>rprojroot-package.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Robust, reliable and flexible paths to files below a
 project root. The 'root' of a project is defined as a directory
 that matches a certain criterion, e.g., it contains a certain
 regular file.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -111,7 +114,40 @@ root criteria.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>criteria</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'criteria' not found</span></div><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='no'>criteria</span></div><div class='output co'>#&gt; $is_rstudio_project
+#&gt; Root criterion: contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line
+#&gt; 
+#&gt; $is_r_package
+#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `
+#&gt; 
+#&gt; $is_remake_project
+#&gt; Root criterion: contains a file `remake.yml`
+#&gt; 
+#&gt; $is_projectile_project
+#&gt; Root criterion: contains a file `.projectile`
+#&gt; 
+#&gt; $is_git_root
+#&gt; Root criterion: one of
+#&gt; - contains a directory `.git`
+#&gt; - contains a file `.git` with contents matching `^gitdir: `
+#&gt; 
+#&gt; $is_svn_root
+#&gt; Root criterion: contains a directory `.svn`
+#&gt; 
+#&gt; $is_vcs_root
+#&gt; Root criterion: one of
+#&gt; - contains a directory `.git`
+#&gt; - contains a file `.git` with contents matching `^gitdir: `
+#&gt; - contains a directory `.svn`
+#&gt; 
+#&gt; $is_testthat
+#&gt; Root criterion: directory name is `testthat` (also look in subdirectories: `tests/testthat`, `testthat`)
+#&gt; 
+#&gt; $from_wd
+#&gt; Root criterion: from current working directory
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "root_criteria"</div><span class='co'># NOT RUN {</span>
 <span class='no'>is_r_package</span>$<span class='fu'>find_file</span>(<span class='st'>"NAMESPACE"</span>)
 <span class='no'>root_fun</span> <span class='kw'>&lt;-</span> <span class='no'>is_r_package</span>$<span class='fu'>make_fix_file</span>()
 <span class='fu'>root_fun</span>(<span class='st'>"NAMESPACE"</span>)

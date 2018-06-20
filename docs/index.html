@@ -26,7 +26,7 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="index.html"></a>
+        <a class="navbar-brand" href="index.html">rprojroot</a>
         <small class="tidyverse">part of the <a href="http://tidyverse.org">tidyverse</a></small>
       </div>
     </div>
@@ -72,23 +72,23 @@
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>The source for this text is in the <a href="https://github.com/r-lib/rprojroot/tree/master/readme"><code>readme</code> subdirectory</a>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">basename</span>(<span class="kw">getwd</span>())
-<span class="co">#&gt; [1] "readme"</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">basename</span>(<span class="kw">getwd</span>())</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; [1] "readme"</span></a></code></pre></div>
 <p>How do we access the package root? In a robust fashion? Easily:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>(rprojroot::<span class="kw"><a href="reference/find_root.html">find_root</a></span>(<span class="st">"DESCRIPTION"</span>))
-<span class="co">#&gt;  [1] "_pkgdown.yml"     "API"              "appveyor.yml"    </span>
-<span class="co">#&gt;  [4] "cran-comments.md" "DESCRIPTION"      "docs"            </span>
-<span class="co">#&gt;  [7] "inst"             "Makefile"         "man"             </span>
-<span class="co">#&gt; [10] "NAMESPACE"        "NEWS.md"          "R"               </span>
-<span class="co">#&gt; [13] "readme"           "README.md"        "revdep"          </span>
-<span class="co">#&gt; [16] "rprojroot.Rproj"  "tests"            "tic.R"           </span>
-<span class="co">#&gt; [19] "vignettes"</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">dir</span>(rprojroot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/rprojroot/topics/find_root">find_root</a></span>(<span class="st">"DESCRIPTION"</span>))</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt;  [1] "_pkgdown.yml"     "API"              "appveyor.yml"    </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;  [4] "cran-comments.md" "DESCRIPTION"      "docs"            </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;  [7] "inst"             "Makefile"         "man"             </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [10] "NAMESPACE"        "NEWS.md"          "R"               </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [13] "readme"           "README.md"        "revdep"          </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; [16] "rprojroot.Rproj"  "tests"            "tic.R"           </span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; [19] "vignettes"</span></a></code></pre></div>
 </div>
 <div id="installation-and-further-reading" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation-and-further-reading" class="anchor"></a>Installation and further reading</h2>
 <p>Install from GitHub:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">"r-lib/rprojroot"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"r-lib/rprojroot"</span>)</a></code></pre></div>
 <p>See the <a href="http://r-lib.github.io/rprojroot/articles/rprojroot.html">documentation</a> for more detail.</p>
 </div>
 </div>
