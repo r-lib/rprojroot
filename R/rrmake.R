@@ -11,6 +11,13 @@ make_fix_root_file <- function(criterion, path, subdir=NULL) {
     root <- file.path(root, subdir)
   }
   eval(bquote(function(...) {
-    file.path(.(root), ...)
+    root <-  .(root)
+    elip <- list(...)
+    if (length(elip) && startsWith(elip[[1]], root)) {
+      file.path(...)
+    }
+    else {
+      file.path(root, ...)
+    }
   }))
 }
