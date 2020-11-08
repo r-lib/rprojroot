@@ -49,7 +49,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/krlmlr/rprojroot/">
+  <a href="https://github.com/r-lib/rprojroot/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -73,7 +73,7 @@
             
             <h4 class="date">2020-11-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/krlmlr/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
 
     </div>
@@ -150,7 +150,7 @@
 <a href="#a-simple-example" class="anchor"></a>A simple example</h3>
 <p>The <code><a href="../reference/find_root.html">find_root()</a></code> function implements the core functionality. It returns the path to the first directory that matches the filtering criteria, or throws an error if there is no such directory. Filtering criteria are constructed in a generic fashion using the <code><a href="../reference/root_criterion.html">root_criterion()</a></code> function, the <code><a href="../reference/root_criterion.html">has_file()</a></code> function constructs a criterion that checks for the presence of a file with a specific name and specific contents.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/krlmlr/rprojroot">rprojroot</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rprojroot.r-lib.org">rprojroot</a></span><span class="op">)</span>
 
 <span class="co"># List all files and directories below the root</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -315,7 +315,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x55cba5cf95d0&gt;</code></pre>
+## &lt;environment: 0x55a156fef598&gt;</code></pre>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -333,7 +333,7 @@
 ## {
 ##     file.path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x55cba60137f8&gt;</code></pre>
+## &lt;environment: 0x55a1573097c0&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>

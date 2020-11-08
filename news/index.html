@@ -89,7 +89,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/krlmlr/rprojroot/">
+  <a href="https://github.com/r-lib/rprojroot/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -108,7 +108,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/krlmlr/rprojroot/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="rprojroot-13-2-2017-12-22" class="section level2">
@@ -124,9 +124,9 @@
 </h1>
 <ul>
 <li>Adapt to testthat 2.0.0.</li>
-<li>New <code><a href="../reference/thisfile.html">thisfile()</a></code>, moved from kimisc (<a href='https://github.com/krlmlr/rprojroot/issues/8'>#8</a>).</li>
-<li>Add more examples to vignette (<a href='https://github.com/krlmlr/rprojroot/issues/26'>#26</a>, <a href='https://github.com/BarkleyBG'>@BarkleyBG</a>).</li>
-<li>Detect <code>.git</code> directories created with <code>git clone --separate-git-dir=...</code> (<a href='https://github.com/krlmlr/rprojroot/issues/24'>#24</a>, <a href='https://github.com/karldw'>@karldw</a>).</li>
+<li>New <code><a href="../reference/thisfile.html">thisfile()</a></code>, moved from kimisc (<a href='https://github.com/r-lib/rprojroot/issues/8'>#8</a>).</li>
+<li>Add more examples to vignette (<a href='https://github.com/r-lib/rprojroot/issues/26'>#26</a>, <a href='https://github.com/BarkleyBG'>@BarkleyBG</a>).</li>
+<li>Detect <code>.git</code> directories created with <code>git clone --separate-git-dir=...</code> (<a href='https://github.com/r-lib/rprojroot/issues/24'>#24</a>, <a href='https://github.com/karldw'>@karldw</a>).</li>
 </ul>
 </div>
     <div id="rprojroot-12-2017-01-15" class="section level1">
@@ -137,11 +137,11 @@
 <li>New root criteria
 <ul>
 <li>
-<code>is_projectile_project</code> recognize projectile projects (<a href='https://github.com/krlmlr/rprojroot/issues/21'>#21</a>).</li>
+<code>is_projectile_project</code> recognize projectile projects (<a href='https://github.com/r-lib/rprojroot/issues/21'>#21</a>).</li>
 <li>
 <code><a href="../reference/root_criterion.html">has_dir()</a></code> constructs root criteria that check for existence of a directory.</li>
 <li>
-<code>is_git_root</code>, <code>is_svn_root</code> and <code>is_vcs_root</code> look for a version control system root (<a href='https://github.com/krlmlr/rprojroot/issues/19'>#19</a>).</li>
+<code>is_git_root</code>, <code>is_svn_root</code> and <code>is_vcs_root</code> look for a version control system root (<a href='https://github.com/r-lib/rprojroot/issues/19'>#19</a>).</li>
 </ul>
 </li>
 <li>New function
@@ -152,7 +152,7 @@
 </li>
 <li>Minor enhancements
 <ul>
-<li>Improve formatting of alternative criteria (<a href='https://github.com/krlmlr/rprojroot/issues/18'>#18</a>).</li>
+<li>Improve formatting of alternative criteria (<a href='https://github.com/r-lib/rprojroot/issues/18'>#18</a>).</li>
 <li>If root cannot be found, the start path is shown in the error message.</li>
 </ul>
 </li>
@@ -176,23 +176,23 @@
 <li>New root criteria
 <ul>
 <li>
-<code>is_remake_project</code> and <code><a href="../reference/find_root_file.html">find_remake_root_file()</a></code> look for <a href="https://github.com/richfitz/remake">remake</a> project (<a href='https://github.com/krlmlr/rprojroot/issues/17'>#17</a>).</li>
+<code>is_remake_project</code> and <code><a href="../reference/find_root_file.html">find_remake_root_file()</a></code> look for <a href="https://github.com/richfitz/remake">remake</a> project (<a href='https://github.com/r-lib/rprojroot/issues/17'>#17</a>).</li>
 <li>
-<code>is_testthat</code> and <code><a href="../reference/find_root_file.html">find_testthat_root_file()</a></code> that looks for <code>tests/testthat</code> root (<a href='https://github.com/krlmlr/rprojroot/issues/14'>#14</a>).</li>
+<code>is_testthat</code> and <code><a href="../reference/find_root_file.html">find_testthat_root_file()</a></code> that looks for <code>tests/testthat</code> root (<a href='https://github.com/r-lib/rprojroot/issues/14'>#14</a>).</li>
 <li>
-<code>from_wd</code>, useful for creating accessors to a known path (<a href='https://github.com/krlmlr/rprojroot/issues/11'>#11</a>).</li>
+<code>from_wd</code>, useful for creating accessors to a known path (<a href='https://github.com/r-lib/rprojroot/issues/11'>#11</a>).</li>
 </ul>
 </li>
 <li>Minor enhancement
 <ul>
-<li>Criteria can be combined with the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> operator (<a href='https://github.com/krlmlr/rprojroot/issues/15'>#15</a>).</li>
+<li>Criteria can be combined with the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> operator (<a href='https://github.com/r-lib/rprojroot/issues/15'>#15</a>).</li>
 </ul>
 </li>
 <li>Documentation
 <ul>
-<li>Add package documentation with a few examples (<a href='https://github.com/krlmlr/rprojroot/issues/13'>#13</a>).</li>
-<li>Clarify difference between <code>find_file()</code> and <code>make_fix_file()</code> in vignette (<a href='https://github.com/krlmlr/rprojroot/issues/9'>#9</a>).</li>
-<li>Remove unexported functions from documentation and examples (<a href='https://github.com/krlmlr/rprojroot/issues/10'>#10</a>).</li>
+<li>Add package documentation with a few examples (<a href='https://github.com/r-lib/rprojroot/issues/13'>#13</a>).</li>
+<li>Clarify difference between <code>find_file()</code> and <code>make_fix_file()</code> in vignette (<a href='https://github.com/r-lib/rprojroot/issues/9'>#9</a>).</li>
+<li>Remove unexported functions from documentation and examples (<a href='https://github.com/r-lib/rprojroot/issues/10'>#10</a>).</li>
 <li>Use <code>pkgdown</code> to create website.</li>
 </ul>
 </li>
