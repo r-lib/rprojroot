@@ -16,7 +16,7 @@ test_that("thisfile works with Rscript", {
 
 test_that("thisfile works with R", {
   skip_on_cran()
-  p <- pipe(shQuote(paste0(file.path(R.home("bin"), "R"))), " --slave --vanilla --no-save -f scripts/thisfile-cat.R")
+  p <- pipe(shQuote(paste0(file.path(R.home("bin"), "R")), " --slave --vanilla --no-save -f scripts/thisfile-cat.R"))
   on.exit(close(p))
   res <- readLines(p)
   expect_equal("scripts/thisfile-cat.R", res[[length(res)]])
