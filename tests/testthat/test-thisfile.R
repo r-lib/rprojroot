@@ -8,6 +8,7 @@ test_that("thisfile works with source", {
 
 test_that("thisfile works with Rscript", {
   skip_on_cran()
+  skip_if(.Platform$OS.type == "windows" && getRversion() < "4.0")
   rscript_path <- shQuote(file.path(R.home("bin"), "Rscript"), if (.Platform$OS.type == "windows") "cmd" else "sh")
   p <- pipe(paste0(rscript_path, " scripts/thisfile-cat.R"))
   on.exit(close(p))
