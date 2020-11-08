@@ -46,7 +46,7 @@ find_root <- function(criterion, path = ".") {
     path <- dirname(path)
   }
 
-  stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path)
+  stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
 }
 
 .MAX_DEPTH <- 100L
