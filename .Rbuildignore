@@ -5,8 +5,8 @@
 ^docs$
 ^_pkgdown\.yml$
 ^revdep$
-^tic\.R$
 ^tests/testthat/hierarchy/a/b/\.projectile$
 ^LICENSE\.md$
 ^\.github$
 ^README\.Rmd$
+^TODO\.md$
