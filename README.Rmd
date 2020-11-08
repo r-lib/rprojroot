@@ -68,3 +68,10 @@ install.package("rprojroot")
 ```
 
 See the [documentation](https://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
+
+---
+
+## Code of Conduct
+
+Please note that the rprojroot project is released with a [Contributor Code of Conduct](https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
