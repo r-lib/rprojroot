@@ -2,7 +2,7 @@
 [rprojroot](https://krlmlr.github.io/rprojroot)
 ===============================================
 
-[![Travis-CI Build Status](https://travis-ci.org/krlmlr/rprojroot.svg?branch=master)](https://travis-ci.org/krlmlr/rprojroot) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/rprojroot?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/rprojroot) [![codecov.io](https://codecov.io/github/krlmlr/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/krlmlr/rprojroot?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot)
+[![Travis-CI Build Status](https://travis-ci.org/krlmlr/rprojroot.svg?branch=master)](https://travis-ci.org/krlmlr/rprojroot) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/rprojroot?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/rprojroot) [![codecov.io](https://codecov.io/github/krlmlr/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/krlmlr/rprojroot?branch=master) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot)
 
 This package helps accessing files relative to a *project root* to [stop the working directory insanity](https://gist.github.com/jennybc/362f52446fe1ebc4c49f).
 
@@ -38,4 +38,4 @@ Install from GitHub:
 devtools::install_github("krlmlr/rprojroot")
 ```
 
-See the [documentation](http://krlmlr.github.io/rprojroot/articles/rprojroot.html) for more detail.
+See the [documentation](https://krlmlr.github.io/rprojroot/articles/rprojroot.html) for more detail.
