@@ -153,6 +153,8 @@ from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 #'
 #' This is a collection of commonly used root criteria.
 #'
+#' @format NULL
+#'
 #' @export
 criteria <- structure(
   list(
@@ -178,6 +180,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_rstudio_project` looks for a file with extension `.Rproj`.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_rstudio_project"
@@ -185,6 +188,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_r_package` looks for a `DESCRIPTION` file.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_r_package"
@@ -192,6 +196,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_remake_project` looks for a `remake.yml` file.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_remake_project"
@@ -199,6 +204,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_drake_project` looks for a `.drake` directory.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_drake_project"
@@ -206,6 +212,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_projectile_project` looks for a `.projectile` file.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_projectile_project"
@@ -213,6 +220,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_git_root` looks for a `.git` directory.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_git_root"
@@ -220,6 +228,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `is_svn_root` looks for a `.svn` directory.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_svn_root"
@@ -228,6 +237,7 @@ str.root_criteria <- function(object, ...) {
 #' `is_vcs_root` looks for the root of a version control
 #' system, currently only Git and SVN are supported.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_vcs_root"
@@ -236,6 +246,7 @@ str.root_criteria <- function(object, ...) {
 #' `is_testthat` looks for the `testthat` directory, works when
 #'   developing, testing, and checking a package.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "is_testthat"
@@ -243,6 +254,7 @@ str.root_criteria <- function(object, ...) {
 #' @details
 #' `from_wd` uses the current working directory.
 #'
+#' @format NULL
 #' @rdname criteria
 #' @export
 "from_wd"

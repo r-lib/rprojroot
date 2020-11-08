@@ -22,7 +22,7 @@ LazyData: true
 Encoding: UTF-8
 URL: https://rprojroot.r-lib.org/, https://github.com/r-lib/rprojroot
 BugReports: https://github.com/r-lib/rprojroot/issues
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 7.1.1.9000
 Collate: 
     'rrmake.R'
     'criterion.R'

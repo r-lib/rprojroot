@@ -14,7 +14,6 @@
 \alias{is_testthat}
 \alias{from_wd}
 \title{Prespecified criteria}
-\format{An object of class \code{root_criteria} of length 9.}
 \usage{
 criteria
 
