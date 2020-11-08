@@ -9,3 +9,4 @@
 ^tests/testthat/hierarchy/a/b/\.projectile$
 ^LICENSE\.md$
 ^\.github$
+^README\.Rmd$
