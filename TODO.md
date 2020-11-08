@@ -12,13 +12,16 @@
 
 - [x] Use GitHub Actions
 - [x] Disable tic
-- [ ] Disable Travis CI and AppVeyor
-- [x] Tweak README, use `downlit::readme_document` and `load_all()` if possible
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [x] Disable Travis CI and AppVeyor
+- [ ] Tweak README
+
+    - use `downlit::readme_document` and `load_all()` if possible
+
+- [ ] Update roxygen2
+- [ ] Use `@examplesIf` where appropriate
+- [ ] Add pkgdown reference index
+- [ ] Consider open pull requests
+- [ ] Close open issues
 - [ ] Deprecate functions that have moved somewhere else
+- [ ] Synchronize with own downstream packages
+- [ ] Release to CRAN
