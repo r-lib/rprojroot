@@ -102,6 +102,11 @@ test_that("has_dir", {
       find_root_file("c", criterion = has_dir("b"), path = path),
       file.path(hierarchy(2L), "c")
     ),
+    # Absolute paths are stripped
+    expect_equal(
+      find_root_file(hierarchy(3L), "c", criterion = has_dir("b"), path = path),
+      hierarchy(4L)
+    ),
     expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
     expect_error(
       find_root(has_dir("d"), path = path),
