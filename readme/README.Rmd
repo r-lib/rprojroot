@@ -47,4 +47,4 @@ Install from GitHub:
 devtools::install_github("r-lib/rprojroot")
 ```
 
-See the [documentation](http://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
+See the [documentation](https://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
