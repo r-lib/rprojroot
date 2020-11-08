@@ -30,13 +30,3 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9000
-Collate: 
-    'rrmake.R'
-    'criterion.R'
-    'deprecated.R'
-    'file.R'
-    'has-file.R'
-    'root.R'
-    'rprojroot-package.R'
-    'shortcut.R'
-    'thisfile.R'
