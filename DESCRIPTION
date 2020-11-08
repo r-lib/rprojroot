@@ -20,7 +20,7 @@ VignetteBuilder: knitr
 License: MIT + file LICENSE
 LazyData: true
 Encoding: UTF-8
-URL: https://github.com/r-lib/rprojroot, https://r-lib.github.io/rprojroot
+URL: https://rprojroot.r-lib.org, https://github.com/r-lib/rprojroot
 BugReports: https://github.com/r-lib/rprojroot/issues
 RoxygenNote: 6.0.1.9000
 Collate: 
