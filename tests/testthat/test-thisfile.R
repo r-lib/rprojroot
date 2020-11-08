@@ -18,6 +18,7 @@ test_that("thisfile works with Rscript", {
 
 test_that("thisfile works with R", {
   skip_on_cran()
+  skip_if(.Platform$OS.type == "windows" && getRversion() < "4.0")
   r_path <- shQuote(file.path(R.home("bin"), "R"), if (.Platform$OS.type == "windows") "cmd" else "sh")
   p <- pipe(paste0(r_path, " --slave --vanilla --no-save -f scripts/thisfile-cat.R"))
   on.exit(close(p))
