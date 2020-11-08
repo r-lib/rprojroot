@@ -20,6 +20,7 @@
 - [x] Update roxygen2
 - [x] Use `@examplesIf` where appropriate
 - [x] `styler::style_pkg()`
+- [x] Remove `Collate:`
 - [ ] Add pkgdown reference index
 - [ ] Consider open pull requests
 - [ ] Close open issues
