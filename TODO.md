@@ -13,12 +13,13 @@
 - [x] Use GitHub Actions
 - [x] Disable tic
 - [x] Disable Travis CI and AppVeyor
-- [ ] Tweak README
+- [x] Tweak README
 
     - use `downlit::readme_document` and `load_all()` if possible
 
-- [ ] Update roxygen2
-- [ ] Use `@examplesIf` where appropriate
+- [x] Update roxygen2
+- [x] Use `@examplesIf` where appropriate
+- [ ] `styler::style_pkg()`
 - [ ] Add pkgdown reference index
 - [ ] Consider open pull requests
 - [ ] Close open issues
