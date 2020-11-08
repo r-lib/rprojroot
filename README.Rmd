@@ -38,25 +38,28 @@ Let's create a package for demonstration.
 ```{r}
 dir <- tempfile()
 pkg <- usethis::create_package(dir)
-usethis::proj_set(pkg)
 ```
 
 R packages satisfy the `is_r_package` criterion.
-A criterion is an object that contains a `find_file()` function:
+A criterion is an object that contains a `find_file()` function.
+With `pkg` as working directory, the function works like `file.path()`, rooted at the working directory:
 
 ```{r}
+setwd(pkg)
 is_r_package
-is_r_package$find_file(pkg)
-is_r_package$find_file(pkg, "tests", "testthat")
+is_r_package$find_file()
+is_r_package$find_file("tests", "testthat")
 ```
 
-This also works when starting from a subdirectory:
+This works identically when starting from a subdirectory:
 
 ```{r}
-is_r_package$find_file(file.path(pkg, "tests", "testthat"))
+setwd(file.path(pkg, "R"))
+is_r_package$find_file()
+is_r_package$find_file("tests", "testthat")
 ```
 
-As long as you are sure that you have a path somewhere inside a project, you can retrieve the project root.
+As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.
 
 
 ## Installation and further reading

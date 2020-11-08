@@ -20,11 +20,11 @@ The rprojroot package works best when you have a “project”: all related file
 <pre class='chroma'>
 <span class='nv'>dir</span> <span class='o'>&lt;-</span> <span class='nf'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='o'>(</span><span class='o'>)</span>
 <span class='nv'>pkg</span> <span class='o'>&lt;-</span> <span class='nf'>usethis</span><span class='nf'>::</span><span class='nf'><a href='https://usethis.r-lib.org/reference/create_package.html'>create_package</a></span><span class='o'>(</span><span class='nv'>dir</span><span class='o'>)</span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'/tmp/Rtmpc87yZm/file107b5412f6c0/'</span></span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'/tmp/Rtmpc87yZm/file107b5412f6c0'</span></span>
+<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'/tmp/RtmpG04Wy1/file2d4962962cd9/'</span></span>
+<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'/tmp/RtmpG04Wy1/file2d4962962cd9'</span></span>
 <span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'R/'</span></span>
 <span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Writing </span><span style='color: #0000BB;'>'DESCRIPTION'</span></span>
-<span class='c'>#&gt; <span style='color: #0000BB;'>Package</span><span>: file107b5412f6c0</span></span>
+<span class='c'>#&gt; <span style='color: #0000BB;'>Package</span><span>: file2d4962962cd9</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Title</span><span>: What the Package Does (One Line, Title Case)</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Version</span><span>: 0.0.0.9000</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Date</span><span>: 2020-11-08</span></span>
@@ -40,27 +40,29 @@ The rprojroot package works best when you have a “project”: all related file
 <span class='c'>#&gt; <span style='color: #0000BB;'>Roxygen</span><span>: list(markdown = TRUE)</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>RoxygenNote</span><span>: 7.1.1.9000</span></span>
 <span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Writing </span><span style='color: #0000BB;'>'NAMESPACE'</span></span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'&lt;no active project&gt;'</span></span>
-<span class='nf'>usethis</span><span class='nf'>::</span><span class='nf'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='o'>(</span><span class='nv'>pkg</span><span class='o'>)</span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'/tmp/Rtmpc87yZm/file107b5412f6c0'</span></span></pre>
+<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'&lt;no active project&gt;'</span></span></pre>
 
-R packages satisfy the `is_r_package` criterion. A criterion is an object that contains a `find_file()` function:
+R packages satisfy the `is_r_package` criterion. A criterion is an object that contains a `find_file()` function. With `pkg` as working directory, the function works like [`file.path()`](https://rdrr.io/r/base/file.path.html), rooted at the working directory:
 
 <pre class='chroma'>
+<span class='nf'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='o'>(</span><span class='nv'>pkg</span><span class='o'>)</span>
 <span class='nv'>is_r_package</span>
 <span class='c'>#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</span>
-<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='nv'>pkg</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/home/kirill/git/R/rprojroot//tmp/Rtmpc87yZm/file107b5412f6c0"</span>
-<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='nv'>pkg</span>, <span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/home/kirill/git/R/rprojroot//tmp/Rtmpc87yZm/file107b5412f6c0/tests/testthat"</span></pre>
+<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='o'>)</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9"</span>
+<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9/tests/testthat"</span></pre>
 
-This also works when starting from a subdirectory:
+This works identically when starting from a subdirectory:
 
 <pre class='chroma'>
-<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='o'>(</span><span class='nv'>pkg</span>, <span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/home/kirill/git/R/rprojroot//tmp/Rtmpc87yZm/file107b5412f6c0/tests/testthat"</span></pre>
+<span class='nf'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='o'>(</span><span class='nv'>pkg</span>, <span class='s'>"R"</span><span class='o'>)</span><span class='o'>)</span>
+<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='o'>)</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9"</span>
+<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9/tests/testthat"</span></pre>
 
-As long as you are sure that you have a path somewhere inside a project, you can retrieve the project root.
+As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.
 
 ## Installation and further reading
 
@@ -70,3 +72,9 @@ Install the package from CRAN:
 <span class='nf'>install.package</span><span class='o'>(</span><span class='s'>"rprojroot"</span><span class='o'>)</span></pre>
 
 See the [documentation](https://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
+
+------------------------------------------------------------------------
+
+## Code of Conduct
+
+Please note that the rprojroot project is released with a [Contributor Code of Conduct](https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
