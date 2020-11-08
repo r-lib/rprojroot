@@ -1,13 +1,6 @@
-template:
-  params:
-    bootswatch: flatly # https://bootswatch.com/flatly/
+development:
+  mode: auto
 
-navbar:
-  type: default
-  left:
-  - text: Documentation
-    href: articles/rprojroot.html
-  - text: Reference
-    href: reference/index.html
-  - text: News
-    href: news/index.html
+authors:
+  Kirill Müller:
+    href: http://krlmlr.info
