@@ -5,6 +5,7 @@
 - Add `subdir` argument to `make_fix_file()` (#33, @BarkleyBG).
 - Update documentation for version control criteria (#35, @uribo).
 - Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
+- rprojroot has been re-licensed as MIT (#50).
 
 
 # rprojroot 1.3-2 (2017-12-22)
