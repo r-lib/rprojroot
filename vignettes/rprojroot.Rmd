@@ -66,6 +66,26 @@ use the `root$find_file()` function:
 readLines(root$find_file("DESCRIPTION"), 3)
 ```
 
+This works identically when starting from a subdirectory:
+
+```{r}
+withr::with_dir(
+  "R",
+  readLines(root$find_file(path, "DESCRIPTION"), 3)
+)
+```
+
+There is one exception: if the first component passed to `find_file()` is already an absolute path.
+This allows safely applying this function to paths that may be absolute or relative:
+
+```{r}
+path <- root_file("DESCRIPTION")
+withr::with_dir(
+  "R",
+  readLines(root$find_file(path, "DESCRIPTION"), 3)
+)
+```
+
 You can also
 construct an accessor to your root using the `root$make_fix_file()` function:
 

@@ -11,7 +11,7 @@
 This package helps accessing files relative to a *project root* to [stop the working directory insanity](https://gist.github.com/jennybc/362f52446fe1ebc4c49f). It is a low-level helper package for the [here](https://here.r-lib.org/) package.
 
 <pre class='chroma'>
-<span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://github.com/r-lib/rprojroot'>rprojroot</a></span><span class='o'>)</span></pre>
+<span class='kr'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='o'>(</span><span class='nv'><a href='https://rprojroot.r-lib.org/'>rprojroot</a></span><span class='o'>)</span></pre>
 
 ## Example
 
@@ -20,11 +20,11 @@ The rprojroot package works best when you have a “project”: all related file
 <pre class='chroma'>
 <span class='nv'>dir</span> <span class='o'>&lt;-</span> <span class='nf'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='o'>(</span><span class='o'>)</span>
 <span class='nv'>pkg</span> <span class='o'>&lt;-</span> <span class='nf'>usethis</span><span class='nf'>::</span><span class='nf'><a href='https://usethis.r-lib.org/reference/create_package.html'>create_package</a></span><span class='o'>(</span><span class='nv'>dir</span><span class='o'>)</span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'/tmp/RtmpG04Wy1/file2d4962962cd9/'</span></span>
-<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'/tmp/RtmpG04Wy1/file2d4962962cd9'</span></span>
+<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'/tmp/RtmpBLE08t/file294c3c8acca7/'</span></span>
+<span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Setting active project to </span><span style='color: #0000BB;'>'/tmp/RtmpBLE08t/file294c3c8acca7'</span></span>
 <span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Creating </span><span style='color: #0000BB;'>'R/'</span></span>
 <span class='c'>#&gt; <span style='color: #00BB00;'>✓</span><span> Writing </span><span style='color: #0000BB;'>'DESCRIPTION'</span></span>
-<span class='c'>#&gt; <span style='color: #0000BB;'>Package</span><span>: file2d4962962cd9</span></span>
+<span class='c'>#&gt; <span style='color: #0000BB;'>Package</span><span>: file294c3c8acca7</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Title</span><span>: What the Package Does (One Line, Title Case)</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Version</span><span>: 0.0.0.9000</span></span>
 <span class='c'>#&gt; <span style='color: #0000BB;'>Date</span><span>: 2020-11-08</span></span>
@@ -49,18 +49,26 @@ R packages satisfy the `is_r_package` criterion. A criterion is an object that c
 <span class='nv'>is_r_package</span>
 <span class='c'>#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</span>
 <span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9"</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7"</span>
 <span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9/tests/testthat"</span></pre>
+<span class='c'>#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
 
 This works identically when starting from a subdirectory:
 
 <pre class='chroma'>
 <span class='nf'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='o'>(</span><span class='nv'>pkg</span>, <span class='s'>"R"</span><span class='o'>)</span><span class='o'>)</span>
 <span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9"</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7"</span>
 <span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
-<span class='c'>#&gt; [1] "/tmp/RtmpG04Wy1/file2d4962962cd9/tests/testthat"</span></pre>
+<span class='c'>#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
+
+There is one exception: if the first component passed to `find_file()` is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:
+
+<pre class='chroma'>
+<span class='nf'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='o'>(</span><span class='nf'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='o'>(</span><span class='nv'>pkg</span>, <span class='s'>"R"</span><span class='o'>)</span><span class='o'>)</span>
+<span class='nv'>path</span> <span class='o'>&lt;-</span> <span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='o'>)</span>
+<span class='nv'>is_r_package</span><span class='o'>$</span><span class='nf'>find_file</span><span class='o'>(</span><span class='nv'>path</span>, <span class='s'>"tests"</span>, <span class='s'>"testthat"</span><span class='o'>)</span>
+<span class='c'>#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
 
 As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.
 

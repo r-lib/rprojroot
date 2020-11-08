@@ -1,12 +1,14 @@
 #' File paths relative to the root of a directory hierarchy
 #'
-#' Append an arbitrary number of path components to the root using
-#' [base::file.path()].
-#'
-#' The `find_root_file()` function is a simple wrapper around
-#' [find_root()] that
+#' `find_root_file()` is a wrapper around [find_root()] that
 #' appends an arbitrary number of path components to the root using
 #' [base::file.path()].
+#'
+#' This function operates on the notion of relative paths.
+#' The `...` argument is expected to contain a path relative to the root.
+#' If the first path component passed to `...` is already an absolute path,
+#' the `criterion` and `path` arguments are ignored,
+#' and `...` is forwarded to [file.path()].
 #'
 #' @param criterion A criterion, will be coerced using
 #'   [as_root_criterion()]
@@ -27,6 +29,10 @@
 #'
 #' @export
 find_root_file <- function(..., criterion, path = ".") {
+  if (!missing(..1) && is_absolute_path(..1)) {
+    return(file.path(...))
+  }
+
   root <- find_root(criterion = criterion, path = path)
   file.path(root, ...)
 }
