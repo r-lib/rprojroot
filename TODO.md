@@ -19,10 +19,11 @@
 
 - [x] Update roxygen2
 - [x] Use `@examplesIf` where appropriate
-- [ ] `styler::style_pkg()`
+- [x] `styler::style_pkg()`
 - [ ] Add pkgdown reference index
 - [ ] Consider open pull requests
 - [ ] Close open issues
 - [ ] Deprecate functions that have moved somewhere else
 - [ ] Synchronize with own downstream packages
 - [ ] Release to CRAN
+
