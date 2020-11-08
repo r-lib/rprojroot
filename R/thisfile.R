@@ -18,7 +18,9 @@
 #' @references [https://stackoverflow.com/q/1815606/946850]()
 #' @author Kirill Müller, Hadley Wickham, Michael R. Head
 #' @examples
-#' \dontrun{thisfile()}
+#' \dontrun{
+#' thisfile()
+#' }
 #' @export
 thisfile <- function() {
   if (!is.null(res <- thisfile_source())) {

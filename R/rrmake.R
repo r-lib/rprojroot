@@ -5,7 +5,7 @@ make_find_root_file <- function(criterion) {
   }))
 }
 
-make_fix_root_file <- function(criterion, path, subdir=NULL) {
+make_fix_root_file <- function(criterion, path, subdir = NULL) {
   root <- find_root(criterion = criterion, path = path)
   if (!is.null(subdir)) {
     root <- file.path(root, subdir)
