@@ -17,6 +17,7 @@ rlang::local_interactive(FALSE)
 # [rprojroot](https://r-lib.github.io/rprojroot)
 
 <!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![rcc](https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg)](https://github.com/r-lib/rprojroot/actions)
 [![codecov.io](https://codecov.io/github/r-lib/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/r-lib/rprojroot?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot)
