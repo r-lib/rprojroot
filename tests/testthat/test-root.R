@@ -115,7 +115,7 @@ test_that("has_dir", {
   )
 })
 
-test_that("has_dirname", {
+test_that("has_basename", {
   wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
@@ -126,19 +126,19 @@ test_that("has_dirname", {
 
   mockr::with_mock(
     is_root = function(x) x == stop_path,
-    expect_equal(find_root(has_dirname("a"), path = path), hierarchy(2L)),
-    expect_equal(find_root(has_dirname("b"), path = path), hierarchy(3L)),
+    expect_equal(find_root(has_basename("a"), path = path), hierarchy(2L)),
+    expect_equal(find_root(has_basename("b"), path = path), hierarchy(3L)),
     expect_equal(
-      find_root_file("c", criterion = has_dirname("b"), path = path),
+      find_root_file("c", criterion = has_basename("b"), path = path),
       file.path(hierarchy(3L), "c")
     ),
-    expect_equal(find_root(has_dirname("c"), path = path), hierarchy(4L)),
+    expect_equal(find_root(has_basename("c"), path = path), hierarchy(4L)),
     expect_error(
-      find_root(has_dirname("d"), path = path),
+      find_root(has_basename("d"), path = path),
       "No root directory found.* is `.*`"
     ),
     expect_error(
-      find_root(has_dirname("rprojroot.Rproj"), path = path),
+      find_root(has_basename("rprojroot.Rproj"), path = path),
       "No root directory found.* is `.*`"
     ),
     TRUE
