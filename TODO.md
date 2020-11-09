@@ -22,6 +22,8 @@
 - [x] `styler::style_pkg()`
 - [x] Remove `Collate:`
 - [ ] Add pkgdown reference index
+- [ ] Adapt tests to testthat 3e
+- [ ] Import rlang where appropriate
 - [ ] Consider open pull requests
 - [ ] Close open issues
 - [ ] Deprecate functions that have moved somewhere else

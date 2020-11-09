@@ -99,7 +99,7 @@ check_testfun <- function(testfun) {
   }
 
   if (names(formals(testfun)) != "path") {
-    stop("All functions in testfun must have exactly one argument 'path'")
+    stop("All functions in testfun must have exactly one argument 'path'", call. = FALSE)
   }
 
   testfun
@@ -148,7 +148,7 @@ as_root_criterion.root_criterion <- identity
 
 #' @export
 as_root_criterion.default <- function(x) {
-  stop("Cannot coerce ", x, " to type root_criterion.")
+  stop("Cannot coerce ", x, " to type root_criterion.", call. = FALSE)
 }
 
 #' @export
