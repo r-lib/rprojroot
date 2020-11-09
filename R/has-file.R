@@ -111,6 +111,9 @@ has_dirname <- function(dirname, subdir = NULL) {
   force(dirname)
 
   testfun <- eval(bquote(function(path) {
+    # basename(path) == .(dirname)
+    # The implementation works better for case insensitive
+    # file systems.
     dir.exists(file.path(dirname(path), .(dirname)))
   }))
 
