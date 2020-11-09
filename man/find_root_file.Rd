@@ -19,17 +19,18 @@ find_remake_root_file(..., path = ".")
 find_testthat_root_file(..., path = ".")
 }
 \arguments{
-\item{...}{Further path components passed to \code{\link[=file.path]{file.path()}}}
+\item{...}{Further path components passed to \code{\link[=file.path]{file.path()}}.}
 
-\item{criterion}{A criterion, will be coerced using
-\code{\link[=as_root_criterion]{as_root_criterion()}}}
+\item{criterion}{A criterion, one of the predefined \link{criteria}
+or created by \code{\link[=root_criterion]{root_criterion()}}.
+Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
 
-\item{path}{The start directory}
+\item{path}{The start directory.}
 }
 \value{
 The normalized path of the root as specified by the search criteria,
 with the additional path components appended.
-Throws an error if no root is found
+Throws an error if no root is found.
 }
 \description{
 Append an arbitrary number of path components to the root using
