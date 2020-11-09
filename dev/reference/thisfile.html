@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Determines the path of the currently running script — thisfile" />
-<meta property="og:description" content="R does not store nor export the path of the currently running
+<meta property="og:description" content="
+R does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
 cases.
@@ -126,7 +127,8 @@ the context of the script if possible." />
     </div>
 
     <div class="ref-description">
-    <p><span style="R">R</span> does not store nor export the path of the currently running
+    <p><img src='figures/lifecycle-soft-deprecated.svg' alt='Soft-deprecated lifecycle' /></p>
+<p><span style="R">R</span> does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
 cases.
@@ -157,6 +159,12 @@ processed with <code>knitr</code>,
 or run with <code>Rscript</code> or using the <code>--file</code> parameter to the
 <code>R</code> executable.  For code run with <code>Rscript</code>, the exact value
 of the parameter passed to <code>Rscript</code> is returned.</p>
+    <h2 class="hasAnchor" id="life-cycle"><a class="anchor" href="#life-cycle"></a>Life cycle</h2>
+
+    
+
+
+<p>These functions are now available in the <span class="pkg">whereami</span> package.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p><a href='https://stackoverflow.com/q/1815606/946850'>https://stackoverflow.com/q/1815606/946850</a></p>
