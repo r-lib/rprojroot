@@ -12,7 +12,7 @@ Robust, reliable and flexible paths to files below
 }
 \details{
 See the "Value" section in \code{\link[=root_criterion]{root_criterion()}} for documentation
-of root criterion objects, and  \code{\link[=criteria]{criteria()}} for useful predefined
+of root criterion objects, and  \link{criteria} for useful predefined
 root criteria.
 }
 \examples{
