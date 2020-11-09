@@ -8,13 +8,14 @@
 #' appends an arbitrary number of path components to the root using
 #' [base::file.path()].
 #'
-#' @param criterion A criterion, will be coerced using
-#'   [as_root_criterion()]
-#' @param path The start directory
-#' @param ... Further path components passed to [file.path()]
+#' @param criterion A criterion, one of the predefined [criteria]
+#'   or created by [root_criterion()].
+#'   Will be coerced using [as_root_criterion()].
+#' @param path The start directory.
+#' @param ... Further path components passed to [file.path()].
 #' @return The normalized path of the root as specified by the search criteria,
 #'   with the additional path components appended.
-#'   Throws an error if no root is found
+#'   Throws an error if no root is found.
 #'
 #' @examples
 #' \dontrun{
