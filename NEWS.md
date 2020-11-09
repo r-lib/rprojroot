@@ -1,3 +1,11 @@
+# rprojroot 1.3.2.9001 (2020-11-09)
+
+- `has_basename()` replaces `has_dirname()` to avoid confusion (#63).
+- The `is_dirname()` criterion no longer considers sibling directories (#44).
+- Move to GitHub Actions (#52).
+- Re-license as MIT (#50).
+
+
 # rprojroot 1.3.2.9000 (2018-03-29)
 
 - Rename `as.` and `is.` functions to `as_` and `is_`, deprecate old versions.
@@ -5,7 +13,6 @@
 - Add `subdir` argument to `make_fix_file()` (#33, @BarkleyBG).
 - Update documentation for version control criteria (#35, @uribo).
 - Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
-- rprojroot has been re-licensed as MIT (#50).
 
 
 # rprojroot 1.3-2 (2017-12-22)
