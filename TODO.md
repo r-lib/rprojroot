@@ -21,11 +21,13 @@
 - [x] Use `@examplesIf` where appropriate
 - [x] `styler::style_pkg()`
 - [x] Remove `Collate:`
+- [x] `usethis::use_lifecycle_badge()`
+- [ ] `usethis::use_lifecycle()`
 - [ ] Add pkgdown reference index
 - [ ] Adapt tests to testthat 3e
 - [ ] Import rlang where appropriate
-- [ ] Consider open pull requests
-- [ ] Close open issues
+- [x] Consider open pull requests
+- [x] Close open issues
 - [ ] Deprecate functions that have moved somewhere else
 - [ ] Synchronize with own downstream packages
 - [ ] Release to CRAN
