@@ -1,6 +1,8 @@
-template:
-  package: tidytemplate
-  default_assets: false
+url: https://rprojroot.r-lib.org/
 
-home:
-  strip_header: true
+development:
+  mode: auto
+
+authors:
+  Kirill Müller:
+    href: http://krlmlr.info

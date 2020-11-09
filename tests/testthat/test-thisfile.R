@@ -8,7 +8,9 @@ test_that("thisfile works with source", {
 
 test_that("thisfile works with Rscript", {
   skip_on_cran()
-  p <- pipe("Rscript scripts/thisfile-cat.R")
+  skip_on_os("windows")
+  rscript_path <- shQuote(file.path(R.home("bin"), "Rscript"), if (.Platform$OS.type == "windows") "cmd" else "sh")
+  p <- pipe(paste0(rscript_path, " scripts/thisfile-cat.R"))
   on.exit(close(p))
   res <- readLines(p)
   expect_equal("scripts/thisfile-cat.R", res[[length(res)]])
@@ -16,7 +18,9 @@ test_that("thisfile works with Rscript", {
 
 test_that("thisfile works with R", {
   skip_on_cran()
-  p <- pipe("R --slave --vanilla --no-save -f scripts/thisfile-cat.R")
+  skip_on_os("windows")
+  r_path <- shQuote(file.path(R.home("bin"), "R"), if (.Platform$OS.type == "windows") "cmd" else "sh")
+  p <- pipe(paste0(r_path, " --slave --vanilla --no-save -f scripts/thisfile-cat.R"))
   on.exit(close(p))
   res <- readLines(p)
   expect_equal("scripts/thisfile-cat.R", res[[length(res)]])

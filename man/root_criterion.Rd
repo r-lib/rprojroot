@@ -107,7 +107,7 @@ The \code{has_file_pattern()} function constructs a criterion that checks for th
 existence of a file that matches a pattern, with specific contents.
 
 The \code{has_dirname()} function constructs a criterion that checks if the
-\code{\link[base:dirname]{base::dirname()}} has a specific name.
+\code{\link[base:basename]{base::dirname()}} has a specific name.
 }
 \examples{
 root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")
