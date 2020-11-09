@@ -19,10 +19,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile)) {
-      return(FALSE)
-    }
-    if (is_dir(testfile)) {
+    if (dir.exists(testfile)) {
       return(FALSE)
     }
     match_contents(testfile, .(contents), .(n))
@@ -52,10 +49,7 @@ has_dir <- function(filepath) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile)) {
-      return(FALSE)
-    }
-    is_dir(testfile)
+    dir.exists(testfile)
   }))
 
   desc <- paste0("contains a directory `", filepath, "`")
@@ -262,13 +256,9 @@ str.root_criteria <- function(object, ...) {
 
 list_files <- function(path, filename) {
   files <- dir(path = path, pattern = filename, all.files = TRUE, full.names = TRUE)
-  dirs <- is_dir(files)
+  dirs <- dir.exists(files)
   files <- files[!dirs]
   files
-}
-
-is_dir <- function(x) {
-  dir.exists(x)
 }
 
 match_contents <- function(f, contents, n) {
