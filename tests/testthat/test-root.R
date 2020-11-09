@@ -104,7 +104,7 @@ test_that("has_dir", {
     ),
     expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
     expect_error(
-      find_root(has_dir("d"), path = path),
+      find_root(has_dir("e"), path = path),
       "No root directory found.* a directory `.*`"
     ),
     expect_error(
