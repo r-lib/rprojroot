@@ -19,6 +19,9 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
+    if (!file.exists(testfile)) {
+      return(FALSE)
+    }
     if (dir.exists(testfile)) {
       return(FALSE)
     }
