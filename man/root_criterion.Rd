@@ -88,7 +88,7 @@ given directory is a project root.
 Construct criteria using \code{root_criterion} in a very general fashion
 by specifying a function with a \code{path} argument, and a description.
 
-The \code{as.root_criterion()} function accepts objects of class
+The \code{as_root_criterion()} function accepts objects of class
 \code{root_criterion}, and character values; the latter will be
 converted to criteria using \code{has_file}.
 

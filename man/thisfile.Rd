@@ -23,6 +23,8 @@ The path of the currently running script, NULL if it cannot be
 determined.
 }
 \description{
+\ifelse{html}{\figure{lifecycle-soft-deprecated.svg}{options: alt='Soft-deprecated lifecycle'}}{\strong{Soft-deprecated}}
+
 \R does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
@@ -38,6 +40,12 @@ or run with \code{Rscript} or using the \code{--file} parameter to the
 \code{R} executable.  For code run with \code{Rscript}, the exact value
 of the parameter passed to \code{Rscript} is returned.
 }
+\section{Life cycle}{
+
+
+These functions are now available in the \pkg{whereami} package.
+}
+
 \examples{
 \dontrun{
 thisfile()
@@ -52,3 +60,4 @@ thisfile()
 \author{
 Kirill Müller, Hadley Wickham, Michael R. Head
 }
+\keyword{internal}

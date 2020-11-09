@@ -224,7 +224,7 @@ In addition, character values are coerced to `has_file` criteria by default, thi
 (This feature is used by the introductory example.)
 
 ```{r}
-as.root_criterion("DESCRIPTION")
+as_root_criterion("DESCRIPTION")
 ```
 
 The return value of these functions can be stored and reused;

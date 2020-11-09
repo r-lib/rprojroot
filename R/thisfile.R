@@ -1,5 +1,9 @@
-#' @title Determines the path of the currently running script
-#' @description \R does not store nor export the path of the currently running
+#' Determines the path of the currently running script
+#'
+#' @description
+#' `r lifecycle::badge("soft-deprecated")`
+#'
+#' \R does not store nor export the path of the currently running
 #'   script.  This is an attempt to circumvent this limitation by applying
 #'   heuristics (such as call stack and argument inspection) that work in many
 #'   cases.
@@ -12,17 +16,29 @@
 #'   or run with `Rscript` or using the `--file` parameter to the
 #'   `R` executable.  For code run with `Rscript`, the exact value
 #'   of the parameter passed to `Rscript` is returned.
+#'
+#' @section Life cycle:
+#'
+#' These functions are now available in the \pkg{whereami} package.
+#'
 #' @return The path of the currently running script, NULL if it cannot be
 #'   determined.
 #' @seealso [base::source()], [utils::Rscript()], [base::getwd()]
 #' @references [https://stackoverflow.com/q/1815606/946850]()
 #' @author Kirill Müller, Hadley Wickham, Michael R. Head
+#' @keywords internal
 #' @examples
 #' \dontrun{
 #' thisfile()
 #' }
 #' @export
 thisfile <- function() {
+  lifecycle::deprecate_soft(
+    "2.0.0",
+    "rprojroot::thisfile()",
+    "whereami::thisfile()"
+  )
+
   if (!is.null(res <- thisfile_source())) {
     res
   } else if (!is.null(res <- thisfile_r())) {
@@ -39,6 +55,12 @@ thisfile <- function() {
 #' @rdname thisfile
 #' @export
 thisfile_source <- function() {
+  lifecycle::deprecate_soft(
+    "2.0.0",
+    "rprojroot::thisfile_source()",
+    "whereami::thisfile_source()"
+  )
+
   for (i in -(1:sys.nframe())) {
     if (identical(args(sys.function(i)), args(base::source))) {
       return(normalizePath(sys.frame(i)$ofile))
@@ -52,6 +74,12 @@ thisfile_source <- function() {
 #' @importFrom utils tail
 #' @export
 thisfile_r <- function() {
+  lifecycle::deprecate_soft(
+    "2.0.0",
+    "rprojroot::thisfile_r()",
+    "whereami::thisfile_r()"
+  )
+
   cmd_args <- commandArgs(trailingOnly = FALSE)
   if (!grepl("^R(?:|term)(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE)) {
     return(NULL)
@@ -77,6 +105,12 @@ thisfile_r <- function() {
 #' @importFrom utils tail
 #' @export
 thisfile_rscript <- function() {
+  lifecycle::deprecate_soft(
+    "2.0.0",
+    "rprojroot::thisfile_rscript()",
+    "whereami::thisfile_rscript()"
+  )
+
   cmd_args <- commandArgs(trailingOnly = FALSE)
   if (!grepl("^R(?:term|script)(?:|[.]exe)$", basename(cmd_args[[1L]]), ignore.case = TRUE)) {
     return(NULL)
@@ -100,6 +134,12 @@ thisfile_rscript <- function() {
 #' @rdname thisfile
 #' @export
 thisfile_knit <- function() {
+  lifecycle::deprecate_soft(
+    "2.0.0",
+    "rprojroot::thisfile_knit()",
+    "whereami::thisfile_knit()"
+  )
+
   if (requireNamespace("knitr")) {
     return(knitr::current_input(dir = TRUE))
   }

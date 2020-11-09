@@ -1,6 +1,6 @@
 #' @details
 #' See the "Value" section in [root_criterion()] for documentation
-#' of root criterion objects, and  [criteria()] for useful predefined
+#' of root criterion objects, and  [criteria] for useful predefined
 #' root criteria.
 #'
 #' @examples
@@ -11,5 +11,4 @@
 #' root_fun("NAMESPACE")
 #' }
 #' @import backports
-#' @api
 "_PACKAGE"
