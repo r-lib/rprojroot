@@ -11,5 +11,4 @@
 #' root_fun("NAMESPACE")
 #' }
 #' @import backports
-#' @api
 "_PACKAGE"
