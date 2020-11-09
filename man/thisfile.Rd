@@ -52,3 +52,4 @@ thisfile()
 \author{
 Kirill Müller, Hadley Wickham, Michael R. Head
 }
+\keyword{internal}
