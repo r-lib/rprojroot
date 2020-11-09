@@ -124,27 +124,12 @@ is_root_criterion <- function(x) {
   inherits(x, "root_criterion")
 }
 
-#' @rdname deprecated
-#' @inheritParams is_root_criterion
-#' @export
-is.root_criterion <- function(x) {
-  .Deprecated("is_root_criterion")
-  is_root_criterion(x)
-}
-
 #' @rdname root_criterion
 #' @export
 as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
 
-#' @rdname deprecated
-#' @export
-as.root_criterion <- function(x) {
-  .Deprecated("as_root_criterion")
-  UseMethod("as.root_criterion", x)
-}
-
 #' @details
-#' The `as.root_criterion()` function accepts objects of class
+#' The `as_root_criterion()` function accepts objects of class
 #' `root_criterion`, and character values; the latter will be
 #' converted to criteria using `has_file`.
 #'
@@ -161,11 +146,6 @@ as_root_criterion.root_criterion <- identity
 #' @export
 as_root_criterion.default <- function(x) {
   stop("Cannot coerce ", x, " to type root_criterion.", call. = FALSE)
-}
-
-#' @export
-as.root_criterion.default <- function(x) {
-  as_root_criterion(x)
 }
 
 #' @export

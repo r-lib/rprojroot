@@ -10,7 +10,7 @@
 \alias{has_file}
 \alias{has_dir}
 \alias{has_file_pattern}
-\alias{has_dirname}
+\alias{has_basename}
 \title{Is a directory the project root?}
 \usage{
 root_criterion(testfun, desc, subdir = NULL)
@@ -31,7 +31,7 @@ has_dir(filepath)
 
 has_file_pattern(pattern, contents = NULL, n = -1L)
 
-has_dirname(dirname, subdir = NULL)
+has_basename(basename, subdir = NULL)
 }
 \arguments{
 \item{testfun}{A function with one parameter that returns \code{TRUE}
@@ -57,7 +57,7 @@ as \code{testfun}}
 
 \item{pattern}{Regular expression to match the file name}
 
-\item{dirname}{A directory name, without subdirectories}
+\item{basename}{A directory name, without subdirectories}
 }
 \value{
 An S3 object of class \code{root_criterion} wit the following members:
@@ -88,7 +88,7 @@ given directory is a project root.
 Construct criteria using \code{root_criterion} in a very general fashion
 by specifying a function with a \code{path} argument, and a description.
 
-The \code{as.root_criterion()} function accepts objects of class
+The \code{as_root_criterion()} function accepts objects of class
 \code{root_criterion}, and character values; the latter will be
 converted to criteria using \code{has_file}.
 
@@ -106,8 +106,9 @@ existence of a specific directory.
 The \code{has_file_pattern()} function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.
 
-The \code{has_dirname()} function constructs a criterion that checks if the
-\code{\link[base:basename]{base::dirname()}} has a specific name.
+The \code{has_basename()} function constructs a criterion that checks if the
+\code{\link[base:basename]{base::basename()}} of the root directory has a specific name,
+with support for case-insensitive file systems.
 }
 \examples{
 root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")

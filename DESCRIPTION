@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 1.3.2.9000
+Version: 1.3.2.9001
 Authors@R: 
     person(given = "Kirill",
            family = "M\u00fcller",
@@ -20,6 +20,7 @@ Imports:
     backports
 Suggests:
     knitr,
+    lifecycle,
     mockr,
     rmarkdown,
     testthat,

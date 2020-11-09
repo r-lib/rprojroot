@@ -13,6 +13,7 @@
 - [x] Use GitHub Actions
 - [x] Disable tic
 - [x] Disable Travis CI and AppVeyor
+- [x] Consider open pull requests
 - [x] Tweak README
 
     - use `downlit::readme_document` and `load_all()` if possible
@@ -21,12 +22,13 @@
 - [x] Use `@examplesIf` where appropriate
 - [x] `styler::style_pkg()`
 - [x] Remove `Collate:`
-- [ ] Add pkgdown reference index
+- [x] `usethis::use_lifecycle_badge()`
+- [x] `usethis::use_lifecycle()`
+- [x] Add pkgdown reference index
 - [ ] Adapt tests to testthat 3e
-- [ ] Import rlang where appropriate
-- [ ] Consider open pull requests
-- [ ] Close open issues
-- [ ] Deprecate functions that have moved somewhere else
-- [ ] Synchronize with own downstream packages
+- [x] Import rlang where appropriate
+- [x] Close open issues
+- [x] Deprecate functions that have moved somewhere else
+- [x] Avoid `iris`
+- [x] Synchronize with own downstream packages
 - [ ] Release to CRAN
-

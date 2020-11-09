@@ -1,5 +1,18 @@
 url: https://rprojroot.r-lib.org/
 
+reference:
+- title: Finding the root
+  contents:
+  - find_root
+  - find_root_file
+- title: Criteria
+  contents:
+  - criteria
+  - root_criterion
+- title: Package documentation
+  contents:
+  - '`rprojroot-package`'
+
 development:
   mode: auto
 
