@@ -140,16 +140,17 @@ base::file.path()." />
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Further path components passed to <code><a href='https://rdrr.io/r/base/file.path.html'>file.path()</a></code></p></td>
+      <td><p>Further path components passed to <code><a href='https://rdrr.io/r/base/file.path.html'>file.path()</a></code>.</p></td>
     </tr>
     <tr>
       <th>criterion</th>
-      <td><p>A criterion, will be coerced using
-<code><a href='root_criterion.html'>as_root_criterion()</a></code></p></td>
+      <td><p>A criterion, one of the predefined <a href='criteria.html'>criteria</a>
+or created by <code><a href='root_criterion.html'>root_criterion()</a></code>.
+Will be coerced using <code><a href='root_criterion.html'>as_root_criterion()</a></code>.</p></td>
     </tr>
     <tr>
       <th>path</th>
-      <td><p>The start directory</p></td>
+      <td><p>The start directory.</p></td>
     </tr>
     </table>
 
@@ -157,7 +158,7 @@ base::file.path()." />
 
     <p>The normalized path of the root as specified by the search criteria,
 with the additional path components appended.
-Throws an error if no root is found</p>
+Throws an error if no root is found.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>find_root_file()</code> function is a simple wrapper around
