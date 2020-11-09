@@ -16,6 +16,11 @@
 #'   or run with `Rscript` or using the `--file` parameter to the
 #'   `R` executable.  For code run with `Rscript`, the exact value
 #'   of the parameter passed to `Rscript` is returned.
+#'
+#' @section Life cycle:
+#'
+#' These functions are now available in the \pkg{whereami} package.
+#'
 #' @return The path of the currently running script, NULL if it cannot be
 #'   determined.
 #' @seealso [base::source()], [utils::Rscript()], [base::getwd()]

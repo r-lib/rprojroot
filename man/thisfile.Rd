@@ -40,6 +40,12 @@ or run with \code{Rscript} or using the \code{--file} parameter to the
 \code{R} executable.  For code run with \code{Rscript}, the exact value
 of the parameter passed to \code{Rscript} is returned.
 }
+\section{Life cycle}{
+
+
+These functions are now available in the \pkg{whereami} package.
+}
+
 \examples{
 \dontrun{
 thisfile()
