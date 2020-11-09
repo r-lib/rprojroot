@@ -60,30 +60,20 @@ root <- rprojroot::is_r_package
 The `root` object contains a function that helps locating files below the root
 of your package, regardless of your current working directory.
 If you are sure that your working directory is somewhere below your project's root,
-use the `root$find_file()` function:
+use the `root$find_file()` function.
+In this example here, we're starting in the `vignettes` subdirectory and find the original `DESCRIPTION` file:
 
 ```{r}
+basename(getwd())
 readLines(root$find_file("DESCRIPTION"), 3)
-```
-
-This works identically when starting from a subdirectory:
-
-```{r}
-withr::with_dir(
-  "R",
-  readLines(root$find_file(path, "DESCRIPTION"), 3)
-)
 ```
 
 There is one exception: if the first component passed to `find_file()` is already an absolute path.
 This allows safely applying this function to paths that may be absolute or relative:
 
 ```{r}
-path <- root_file("DESCRIPTION")
-withr::with_dir(
-  "R",
-  readLines(root$find_file(path, "DESCRIPTION"), 3)
-)
+path <- root$find_file()
+readLines(root$find_file(path, "DESCRIPTION"), 3)
 ```
 
 You can also
