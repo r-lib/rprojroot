@@ -146,7 +146,7 @@ has_dir(filepath)
 
 has_file_pattern(pattern, contents = NULL, n = -1L)
 
-has_dirname(dirname, subdir = NULL)</pre>
+has_basename(basename, subdir = NULL)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,7 +193,7 @@ as <code>testfun</code></p></td>
       <td><p>Regular expression to match the file name</p></td>
     </tr>
     <tr>
-      <th>dirname</th>
+      <th>basename</th>
       <td><p>A directory name, without subdirectories</p></td>
     </tr>
     </table>
@@ -235,8 +235,9 @@ root) with specific contents.</p>
 existence of a specific directory.</p>
 <p>The <code>has_file_pattern()</code> function constructs a criterion that checks for the
 existence of a file that matches a pattern, with specific contents.</p>
-<p>The <code>has_dirname()</code> function constructs a criterion that checks if the
-<code><a href='https://rdrr.io/r/base/basename.html'>base::dirname()</a></code> has a specific name.</p>
+<p>The <code>has_basename()</code> function constructs a criterion that checks if the
+<code><a href='https://rdrr.io/r/base/basename.html'>base::basename()</a></code> of the root directory has a specific name,
+with support for case-insensitive file systems.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>root_criterion</span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>path</span>, <span class='st'>"somefile"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"has somefile"</span><span class='op'>)</span>
@@ -247,8 +248,8 @@ existence of a file that matches a pattern, with specific contents.</p>
 #&gt; {
 #&gt;     find_root_file(..., criterion = criterion, path = path)
 #&gt; }
-#&gt; &lt;bytecode: 0x5574ddd14408&gt;
-#&gt; &lt;environment: 0x5574ddd12088&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+#&gt; &lt;bytecode: 0x55c3760a0300&gt;
+#&gt; &lt;environment: 0x55c3760a1d40&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
