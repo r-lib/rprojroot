@@ -6,6 +6,7 @@
 \alias{is_rstudio_project}
 \alias{is_r_package}
 \alias{is_remake_project}
+\alias{is_drake_project}
 \alias{is_projectile_project}
 \alias{is_git_root}
 \alias{is_svn_root}
@@ -22,6 +23,8 @@ is_rstudio_project
 is_r_package
 
 is_remake_project
+
+is_drake_project
 
 is_projectile_project
 
@@ -45,13 +48,15 @@ This is a collection of commonly used root criteria.
 
 \code{is_remake_project} looks for a \code{remake.yml} file.
 
+\code{is_drake_project} looks for a \code{.drake} directory.
+
 \code{is_projectile_project} looks for a \code{.projectile} file.
 
-\code{is_git_project} looks for a \code{.git} directory.
+\code{is_git_root} looks for a \code{.git} directory.
 
-\code{is_svn_project} looks for a \code{.svn} directory.
+\code{is_svn_root} looks for a \code{.svn} directory.
 
-\code{is_vcs_project} looks for the root of a version control
+\code{is_vcs_root} looks for the root of a version control
 system, currently only Git and SVN are supported.
 
 \code{is_testthat} looks for the \code{testthat} directory, works when

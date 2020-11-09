@@ -1,8 +1,7 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 1.2-10
-Authors@R: person(given = "Kirill", family = "Müller", role = c("aut",
-        "cre"), email = "krlmlr+r@mailbox.org")
+Version: 1.3.2.9000
+Authors@R: person("Kirill", "M\u00fcller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org", comment = c(ORCID = "0000-0002-1416-3412"))
 Description: Robust, reliable and flexible paths to files below a
     project root. The 'root' of a project is defined as a directory
     that matches a certain criterion, e.g., it contains a certain
@@ -21,15 +20,17 @@ VignetteBuilder: knitr
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
-URL: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
-BugReports: https://github.com/krlmlr/rprojroot/issues
-RoxygenNote: 6.0.1
-Collate:
+URL: https://github.com/r-lib/rprojroot, https://r-lib.github.io/rprojroot
+BugReports: https://github.com/r-lib/rprojroot/issues
+RoxygenNote: 6.0.1.9000
+Collate: 
     'rrmake.R'
     'criterion.R'
+    'deprecated.R'
     'file.R'
     'has-file.R'
     'root.R'
     'rprojroot-package.R'
     'shortcut.R'
-Roxygen: list(markdown = TRUE)
+    'thisfile.R'
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate", "pkgapi::api_roclet"))

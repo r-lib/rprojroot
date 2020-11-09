@@ -32,11 +32,13 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
 
   full_desc <- paste0(
     desc,
-    if (!is.null(subdir)) paste0(
-      " (also look in subdirectories: ",
-      paste0("`", subdir, "`", collapse = ", "),
-      ")"
-    )
+    if (!is.null(subdir)) {
+      paste0(
+        " (also look in subdirectories: ",
+        paste0("`", subdir, "`", collapse = ", "),
+        ")"
+      )
+    }
   )
 
   criterion <- structure(
@@ -68,7 +70,9 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
   #'   }
   #' }
   criterion$make_fix_file <-
-    function(path = getwd()) make_fix_root_file(criterion, path)
+    function(path = getwd(), subdir = NULL) {
+      make_fix_root_file(criterion, path, subdir)
+    }
 
   criterion
 }
@@ -88,32 +92,52 @@ check_testfun <- function(testfun) {
 #' @rdname root_criterion
 #' @param x An object
 #' @export
-is.root_criterion <- function(x) {
+is_root_criterion <- function(x) {
   inherits(x, "root_criterion")
+}
+
+#' @rdname deprecated
+#' @inheritParams is_root_criterion
+#' @export
+is.root_criterion <- function(x) {
+  .Deprecated("is_root_criterion")
+  is_root_criterion(x)
 }
 
 #' @rdname root_criterion
 #' @export
-as.root_criterion <- function(x) UseMethod("as.root_criterion", x)
+as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
+
+#' @rdname deprecated
+#' @export
+as.root_criterion <- function(x) {
+  .Deprecated("as_root_criterion")
+  UseMethod("as.root_criterion", x)
+}
 
 #' @details
-#' The `as.root_criterion` function accepts objects of class
+#' The `as.root_criterion()` function accepts objects of class
 #' `root_criterion`, and character values; the latter will be
 #' converted to criteria using `has_file`.
 #'
 #' @rdname root_criterion
 #' @export
-as.root_criterion.character <- function(x) {
+as_root_criterion.character <- function(x) {
   has_file(x)
 }
 
 #' @rdname root_criterion
 #' @export
-as.root_criterion.root_criterion <- identity
+as_root_criterion.root_criterion <- identity
+
+#' @export
+as_root_criterion.default <- function(x) {
+  stop("Cannot coerce ", x, " to type root_criterion.")
+}
 
 #' @export
 as.root_criterion.default <- function(x) {
-  stop("Cannot coerce ", x, " to type root_criterion.")
+  as_root_criterion(x)
 }
 
 #' @export
@@ -134,7 +158,7 @@ print.root_criterion <- function(x, ...) {
 #'   match.
 #' @param y An object
 `|.root_criterion` <- function(x, y) {
-  stopifnot(is.root_criterion(y))
+  stopifnot(is_root_criterion(y))
 
   root_criterion(
     testfun = function(path) { x$testfun(path) | y$testfun(path) },

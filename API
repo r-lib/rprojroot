@@ -16,12 +16,24 @@ has_file(filepath, contents = NULL, n = -1L)
 has_file_pattern(pattern, contents = NULL, n = -1L)
 is.root_criterion(x)
 root_criterion(testfun, desc, subdir = NULL)
+thisfile()
+thisfile_knit()
+thisfile_r()
+thisfile_rscript()
+thisfile_source()
 
-## S3 methods
+## Own S3 methods
 
 as.root_criterion.character(x)
 as.root_criterion.default(x)
 as.root_criterion.root_criterion(x)
+
+## Foreign S3 methods
+
+format.root_criterion(x, ...)
+print.root_criterion(x, ...)
+str.root_criteria(object, ...)
+|.root_criterion(x, y)
 
 ## Exported data
 

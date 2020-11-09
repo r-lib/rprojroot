@@ -5,7 +5,7 @@
 #' The search for a root starts at a given directory (the working directory
 #' by default), and proceeds up the directory hierarchy.
 #'
-#' Starting from the working directory, the `find_root` function searches
+#' Starting from the working directory, the `find_root()` function searches
 #' for the root.
 #' If a root is found, the `...` arguments are used to construct a path;
 #' thus, if no extra arguments are given, the root is returned.
@@ -24,7 +24,7 @@
 #'
 #' @export
 find_root <- function(criterion, path = ".") {
-  criterion <- as.root_criterion(criterion)
+  criterion <- as_root_criterion(criterion)
 
   start_path <- get_start_path(path, criterion$subdir)
   path <- start_path
@@ -38,7 +38,9 @@ find_root <- function(criterion, path = ".") {
 
     if (is_root(path)) {
       stop("No root directory found in ", start_path, " or its parent directories. ",
-           paste(format(criterion), collapse = "\n"), call. = FALSE)
+        paste(format(criterion), collapse = "\n"),
+        call. = FALSE
+      )
     }
 
     path <- dirname(path)
@@ -64,8 +66,10 @@ get_start_path <- function(path, subdirs) {
 
 # Borrowed from devtools
 is_root <- function(path) {
-  identical(normalizePath(path, winslash = "/"),
-            normalizePath(dirname(path), winslash = "/"))
+  identical(
+    normalizePath(path, winslash = "/"),
+    normalizePath(dirname(path), winslash = "/")
+  )
 }
 
 #' @rdname find_root
@@ -81,5 +85,7 @@ get_root_desc <- function(criterion, path) {
   }
 
   stop("path is not a root. ",
-       paste(format(criterion), collapse = "\n"), call. = FALSE)
+    paste(format(criterion), collapse = "\n"),
+    call. = FALSE
+  )
 }

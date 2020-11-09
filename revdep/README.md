@@ -1,59 +1,54 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.3.2 (2016-10-31) |
+|version  |R version 3.4.3 (2017-11-30) |
+|os       |Ubuntu 17.10                 |
 |system   |x86_64, linux-gnu            |
 |ui       |X11                          |
-|language |(EN)                         |
+|language |en_US                        |
 |collate  |en_US.UTF-8                  |
-|tz       |Zulu                         |
-|date     |2017-01-15                   |
+|tz       |Europe/Busingen              |
+|date     |2017-12-18                   |
 
-## Packages
+# Dependencies
 
-|package   |*  |version    |date       |source                           |
-|:---------|:--|:----------|:----------|:--------------------------------|
-|backports |   |1.0.4      |2016-10-24 |cran (@1.0.4)                    |
-|knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
-|rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
-|rprojroot |   |1.1        |2016-10-29 |cran (@1.1)                      |
-|testthat  |   |1.0.2.9000 |2016-12-24 |Github (hadley/testthat@3b2f225) |
-|withr     |   |1.0.2      |2016-06-20 |CRAN (R 3.3.1)                   |
+|package   |old   |new    |Δ  |
+|:---------|:-----|:------|:--|
+|rprojroot |1.2   |1.2-11 |*  |
+|backports |1.1.2 |1.1.2  |   |
 
-# Check results
+# Revdeps
 
-3 packages
+## Broken (1)
 
-|package      |version | errors| warnings| notes|
-|:------------|:-------|------:|--------:|-----:|
-|googlesheets |0.2.1   |      0|        0|     0|
-|rmarkdown    |1.3     |      0|        0|     1|
-|sparklyr     |0.5.1   |      0|        0|     0|
+|package                          |version |error    |warning |note |
+|:--------------------------------|:-------|:--------|:-------|:----|
+|[excerptr](problems.md#excerptr) |1.4.0   |1 __+1__ |        |     |
 
-## googlesheets (0.2.1)
-Maintainer: Jennifer Bryan <jenny@stat.ubc.ca>  
-Bug reports: https://github.com/jennybc/googlesheets/issues
+## All (21)
 
-0 errors | 0 warnings | 0 notes
-
-## rmarkdown (1.3)
-Maintainer: JJ Allaire <jj@rstudio.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  6.6Mb
-  sub-directories of 1Mb or more:
-    rmd   6.1Mb
-```
-
-## sparklyr (0.5.1)
-Maintainer: Javier Luraschi <javier@rstudio.com>  
-Bug reports: https://github.com/rstudio/sparklyr/issues
-
-0 errors | 0 warnings | 0 notes
+|package                                  |version |error    |warning |note |
+|:----------------------------------------|:-------|:--------|:-------|:----|
+|DBI                                      |0.7     |         |        |     |
+|desc                                     |1.1.1   |         |        |     |
+|[document](problems.md#document)         |2.2.0   |1        |        |     |
+|drake                                    |4.4.0   |         |        |     |
+|[excerptr](problems.md#excerptr)         |1.4.0   |1 __+1__ |        |     |
+|[fakemake](problems.md#fakemake)         |1.0.2   |         |        |1    |
+|[ggraptR](problems.md#ggraptr)           |1.0     |         |        |1    |
+|googledrive                              |0.1.1   |         |        |     |
+|googlesheets                             |0.2.2   |         |        |     |
+|here                                     |0.1     |         |        |     |
+|learnr                                   |0.9.1   |         |        |     |
+|[readxl](problems.md#readxl)             |1.0.0   |         |        |1    |
+|[repurrrsive](problems.md#repurrrsive)   |0.1.0   |         |        |1    |
+|RMariaDB                                 |1.0-4   |         |        |     |
+|[rmarkdown](problems.md#rmarkdown)       |1.8     |         |        |1    |
+|secret                                   |1.0.0   |         |        |     |
+|sparklyr                                 |0.6.4   |         |        |     |
+|styler                                   |1.0.0   |         |        |     |
+|[teachingApps](problems.md#teachingapps) |1.0.2   |         |        |2    |
+|[testthis](problems.md#testthis)         |1.0.2   |         |1       |1    |
+|usethis                                  |1.1.0   |         |        |     |
 

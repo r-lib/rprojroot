@@ -22,7 +22,7 @@ find_testthat_root_file(..., path = ".")
 \item{...}{Further path components passed to \code{\link[=file.path]{file.path()}}}
 
 \item{criterion}{A criterion, will be coerced using
-\code{\link[=as.root_criterion]{as.root_criterion()}}}
+\code{\link[=as_root_criterion]{as_root_criterion()}}}
 
 \item{path}{The start directory}
 }
@@ -36,7 +36,7 @@ Append an arbitrary number of path components to the root using
 \code{\link[base:file.path]{base::file.path()}}.
 }
 \details{
-The \code{find_root_file} function is a simple wrapper around
+The \code{find_root_file()} function is a simple wrapper around
 \code{\link[=find_root]{find_root()}} that
 appends an arbitrary number of path components to the root using
 \code{\link[base:file.path]{base::file.path()}}.

@@ -3,7 +3,7 @@ format_lines <- function(n) {
 }
 
 #' @details
-#' The `has_file` function constructs a criterion that checks for the
+#' The `has_file()` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
 #' root) with specific contents.
 #'
@@ -19,25 +19,30 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile))
+    if (!file.exists(testfile)) {
       return(FALSE)
-    if (is_dir(testfile))
+    }
+    if (is_dir(testfile)) {
       return(FALSE)
+    }
     match_contents(testfile, .(contents), .(n))
   }))
 
   desc <- paste0(
     "contains a file `", filepath, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching `", contents, "`",
-             if (n >= 0L) paste0(" in the first ", format_lines(n)))
-  })
+      paste0(
+        " with contents matching `", contents, "`",
+        if (n >= 0L) paste0(" in the first ", format_lines(n))
+      )
+    }
+  )
 
   root_criterion(testfun, desc)
 }
 
 #' @details
-#' The `has_dir` function constructs a criterion that checks for the
+#' The `has_dir()` function constructs a criterion that checks for the
 #' existence of a specific directory.
 #'
 #' @rdname root_criterion
@@ -47,8 +52,9 @@ has_dir <- function(filepath) {
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
-    if (!file.exists(testfile))
+    if (!file.exists(testfile)) {
       return(FALSE)
+    }
     is_dir(testfile)
   }))
 
@@ -58,7 +64,7 @@ has_dir <- function(filepath) {
 }
 
 #' @details
-#' The `has_file_pattern` function constructs a criterion that checks for the
+#' The `has_file_pattern()` function constructs a criterion that checks for the
 #' existence of a file that matches a pattern, with specific contents.
 #'
 #' @rdname root_criterion
@@ -84,15 +90,18 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   desc <- paste0(
     "contains a file matching `", pattern, "`",
     if (!is.null(contents)) {
-      paste0(" with contents matching `", contents, "`",
-             if (n >= 0L) paste0(" in the first ", format_lines(n)))
-    })
+      paste0(
+        " with contents matching `", contents, "`",
+        if (n >= 0L) paste0(" in the first ", format_lines(n))
+      )
+    }
+  )
 
   root_criterion(testfun, desc)
 }
 
 #' @details
-#' The `has_dirname` function constructs a criterion that checks if the
+#' The `has_dirname()` function constructs a criterion that checks if the
 #' [base::dirname()] has a specific name.
 #'
 #' @rdname root_criterion
@@ -118,6 +127,9 @@ is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
 #' @export
 is_remake_project <- has_file("remake.yml")
+
+#' @export
+is_drake_project <- has_dir(".drake")
 
 #' @export
 is_projectile_project <- has_file(".projectile")
@@ -154,7 +166,8 @@ criteria <- structure(
     is_testthat = is_testthat,
     from_wd = from_wd
   ),
-  class = "root_criteria")
+  class = "root_criteria"
+)
 
 #' @export
 #' @importFrom utils str
@@ -184,6 +197,13 @@ str.root_criteria <- function(object, ...) {
 "is_remake_project"
 
 #' @details
+#' `is_drake_project` looks for a `.drake` directory.
+#'
+#' @rdname criteria
+#' @export
+"is_drake_project"
+
+#' @details
 #' `is_projectile_project` looks for a `.projectile` file.
 #'
 #' @rdname criteria
@@ -191,21 +211,21 @@ str.root_criteria <- function(object, ...) {
 "is_projectile_project"
 
 #' @details
-#' `is_git_project` looks for a `.git` directory.
+#' `is_git_root` looks for a `.git` directory.
 #'
 #' @rdname criteria
 #' @export
 "is_git_root"
 
 #' @details
-#' `is_svn_project` looks for a `.svn` directory.
+#' `is_svn_root` looks for a `.svn` directory.
 #'
 #' @rdname criteria
 #' @export
 "is_svn_root"
 
 #' @details
-#' `is_vcs_project` looks for the root of a version control
+#' `is_vcs_root` looks for the root of a version control
 #' system, currently only Git and SVN are supported.
 #'
 #' @rdname criteria

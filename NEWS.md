@@ -1,5 +1,22 @@
-## rprojroot 1.2-10 (2017-06-10)
+# rprojroot 1.3.2.9000 (2018-03-29)
 
+- Rename `as.` and `is.` functions to `as_` and `is_`, deprecate old versions.
+- New `is_drake_project` criterion (#34).
+- Add `subdir` argument to `make_fix_file()` (#33, @BarkleyBG).
+- Update documentation for version control criteria (#35, @uribo).
+- Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
+
+
+# rprojroot 1.3-2 (2017-12-22)
+
+- Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
+
+
+# rprojroot 1.3-1 (2017-12-18)
+
+- Adapt to testthat 2.0.0.
+- New `thisfile()`, moved from kimisc (#8).
+- Add more examples to vignette (#26, @BarkleyBG).
 - Detect `.git` directories created with `git clone --separate-git-dir=...` (#24, @karldw).
 
 

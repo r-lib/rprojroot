@@ -1,0 +1,3 @@
+```{r echo=FALSE, results='markup', comment="", message=FALSE}
+message(normalizePath(rprojroot::thisfile_knit()))
+```
