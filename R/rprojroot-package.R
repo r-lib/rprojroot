@@ -1,3 +1,6 @@
+#' @description
+#' `r lifecycle::badge("stable")`
+#'
 #' @details
 #' See the "Value" section in [root_criterion()] for documentation
 #' of root criterion objects, and  [criteria()] for useful predefined

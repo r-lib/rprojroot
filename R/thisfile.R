@@ -1,5 +1,8 @@
 #' Determines the path of the currently running script
 #'
+#' @description
+#' `r lifecycle::badge("soft-deprecated")`
+#'
 #' \R does not store nor export the path of the currently running
 #'   script.  This is an attempt to circumvent this limitation by applying
 #'   heuristics (such as call stack and argument inspection) that work in many
