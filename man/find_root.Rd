@@ -10,11 +10,13 @@ find_root(criterion, path = ".")
 get_root_desc(criterion, path)
 }
 \arguments{
-\item{criterion}{A criterion, one of the predefined \link{criteria}
+\item{criterion}{\verb{[root_criterion]}\cr
+A criterion, one of the predefined \link{criteria}
 or created by \code{\link[=root_criterion]{root_criterion()}}.
 Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
 
-\item{path}{The start directory.}
+\item{path}{\verb{[character(1)]}\cr
+The start directory.}
 }
 \value{
 The normalized path of the root as specified by the search criterion.

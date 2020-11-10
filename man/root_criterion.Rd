@@ -34,30 +34,40 @@ has_file_pattern(pattern, contents = NULL, n = -1L)
 has_basename(basename, subdir = NULL)
 }
 \arguments{
-\item{testfun}{A function with one parameter that returns \code{TRUE}
+\item{testfun}{\verb{[function|list(function)]}\cr
+A function with one parameter that returns \code{TRUE}
 if the directory specified by this parameter is the project root,
 and \code{FALSE} otherwise. Can also be a list of such functions.}
 
-\item{desc}{A textual description of the test criterion, of the same length
-as \code{testfun}}
+\item{desc}{\verb{[character]}\cr
+A textual description of the test criterion, of the same length
+as \code{testfun}.}
 
-\item{subdir}{Subdirectories to start the search in, if found}
+\item{subdir}{\verb{[character]}\cr
+Subdirectories to start the search in, if found}
 
-\item{x}{An object}
+\item{x}{\verb{[object]}\cr
+An object.}
 
-\item{y}{An object}
+\item{y}{\verb{[object]}\cr
+An object.}
 
-\item{filepath}{File path (can contain directories)}
+\item{filepath}{\verb{[character(1)]}\cr
+File path (can contain directories).}
 
-\item{contents}{Regular expression to match the file contents}
+\item{contents}{\verb{[character(1)]}\cr
+If not \code{NULL}, a regular expression.
+File contents are checked for lines matching this regular expression.}
 
-\item{n}{integer.  The (maximal) number of lines to
-    read.  Negative values indicate that one should read up to the end of
-    input on the connection.}
+\item{n}{\verb{[integerish(1)]}\cr
+Number of lines to read to check for regular expression
+given in the \code{contents} argument.}
 
-\item{pattern}{Regular expression to match the file name}
+\item{pattern}{\verb{[character(1)]}\cr
+Regular expression to match the file name against.}
 
-\item{basename}{A directory name, without subdirectories}
+\item{basename}{\verb{[character(1)]}\cr
+The required name of the root directory.}
 }
 \value{
 An S3 object of class \code{root_criterion} wit the following members:

@@ -33,12 +33,15 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 #' Construct criteria using `root_criterion` in a very general fashion
 #' by specifying a function with a `path` argument, and a description.
 #'
-#' @param testfun A function with one parameter that returns `TRUE`
+#' @param testfun `[function|list(function)]`\cr
+#'   A function with one parameter that returns `TRUE`
 #'   if the directory specified by this parameter is the project root,
 #'   and `FALSE` otherwise. Can also be a list of such functions.
-#' @param desc A textual description of the test criterion, of the same length
-#'   as `testfun`
-#' @param subdir Subdirectories to start the search in, if found
+#' @param desc `[character]`\cr
+#'   A textual description of the test criterion, of the same length
+#'   as `testfun`.
+#' @param subdir `[character]`\cr
+#'   Subdirectories to start the search in, if found
 #'
 #' @return
 #' An S3 object of class `root_criterion` wit the following members:

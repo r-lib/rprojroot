@@ -10,11 +10,15 @@
 #' the `criterion` and `path` arguments are ignored,
 #' and `...` is forwarded to [file.path()].
 #'
-#' @param criterion A criterion, one of the predefined [criteria]
+#' @param criterion `[root_criterion]`\cr
+#'   A criterion, one of the predefined [criteria]
 #'   or created by [root_criterion()].
 #'   Will be coerced using [as_root_criterion()].
-#' @param path The start directory.
-#' @param ... Further path components passed to [file.path()].
+#' @param path `[character(1)]`\cr
+#'   The start directory.
+#' @param ... `[character]`\cr
+#'   Further path components passed to [file.path()].
+#'   All arguments must be the same length or length one.
 #' @return The normalized path of the root as specified by the search criteria,
 #'   with the additional path components appended.
 #'   Throws an error if no root is found.

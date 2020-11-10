@@ -25,14 +25,14 @@
 - [x] `usethis::use_lifecycle_badge()`
 - [x] `usethis::use_lifecycle()`
 - [x] Add pkgdown reference index
-- [ ] Adapt tests to testthat 3e
-- [ ] Ensure that dependency between source files is cycle-free, as in https://github.com/yonicd/foreman/issues/2
-- [ ] Ensure that source files correspond to test files via `devtools::test_coverage_file()`
+- [x] Adapt tests to testthat 3e
+- [x] Ensure that dependency between source files is cycle-free, as in https://github.com/yonicd/foreman/issues/2
+- [x] Ensure that source files correspond to test files via `devtools::test_coverage_file()`
 - [x] Import rlang where appropriate
 - [x] Close open issues
 - [x] Deprecate functions that have moved somewhere else
 - [x] Avoid `iris`
 - [x] Synchronize with own downstream packages
-- [ ] Add type to documentation of function arguments, as in `?here::here`
-- [ ] Check `goodpractice::gp()`
+- [x] Add type to documentation of function arguments, as in `?here::here`
+- [x] Check `goodpractice::gp()`
 - [ ] Release to CRAN
