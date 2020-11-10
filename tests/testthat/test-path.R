@@ -7,6 +7,7 @@ describe("path", {
 
   it("returns paths UTF-8 encoded 2", {
     skip_on_os("solaris")
+    skip_on_os("windows")
     expect_equal(Encoding(path("\U4F60\U597D.R")), "UTF-8")
   })
 
