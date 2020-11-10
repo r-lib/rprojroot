@@ -66,16 +66,20 @@ An S3 object of class \code{root_criterion} wit the following members:
 \item{\code{testfun}}{The \code{testfun} argument}
 \item{\code{desc}}{The \code{desc} argument}
 \item{\code{subdir}}{The \code{subdir} argument}
-\item{\code{find_file}}{A function with \code{...} argument that returns
-for a path relative to the root specified by this criterion.
+\item{\code{find_file}}{A function with \code{...} and \code{path} arguments
+that returns a path relative to the root,
+as specified by this criterion.
 The optional \code{path} argument specifies the starting directory,
 which defaults to \code{"."}.
+The function forwards to \code{\link[=find_root_file]{find_root_file()}},
+which passes \code{...} directly to \code{file.path()}
+if the first argument is an absolute path.
 }
 \item{\code{make_fix_file}}{A function with a \code{path} argument that
 returns a function that finds paths relative to the root.  For a
 criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
 is identical to \code{cr$find_file(...)}. The function created by
-\code{make_fix_file} can be saved to a variable to be more independent
+\code{make_fix_file()} can be saved to a variable to be more independent
 of the current working directory.
 }
 }
