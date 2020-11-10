@@ -30,10 +30,16 @@
 #'
 #' @export
 find_root_file <- function(..., criterion, path = ".") {
-  if (!missing(..1) && is_absolute_path(..1)) {
-    return(file.path(...))
+  if (!missing(..1)) {
+    abs <- is_absolute_path(..1)
+    if (all(abs)) {
+      return(path(...))
+    }
+    if (any(abs)) {
+      stop("Combination of absolute and relative paths not supported.", call. = FALSE)
+    }
   }
 
   root <- find_root(criterion = criterion, path = path)
-  file.path(root, ...)
+  path(root, ...)
 }

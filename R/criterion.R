@@ -11,11 +11,17 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
     root <- file.path(root, subdir)
   }
   eval(bquote(function(...) {
-    if (!missing(..1) && is_absolute_path(..1)) {
-      file.path(...)
-    } else {
-      file.path(.(root), ...)
+    if (!missing(..1)) {
+      abs <- is_absolute_path(..1)
+      if (all(abs)) {
+        return(path(...))
+      }
+      if (any(abs)) {
+        stop("Combination of absolute and relative paths not supported.", call. = FALSE)
+      }
     }
+
+    path(.(root), ...)
   }))
 }
 
