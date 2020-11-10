@@ -33,14 +33,16 @@ with the additional path components appended.
 Throws an error if no root is found.
 }
 \description{
-Append an arbitrary number of path components to the root using
+\code{find_root_file()} is a wrapper around \code{\link[=find_root]{find_root()}} that
+appends an arbitrary number of path components to the root using
 \code{\link[base:file.path]{base::file.path()}}.
 }
 \details{
-The \code{find_root_file()} function is a simple wrapper around
-\code{\link[=find_root]{find_root()}} that
-appends an arbitrary number of path components to the root using
-\code{\link[base:file.path]{base::file.path()}}.
+This function operates on the notion of relative paths.
+The \code{...} argument is expected to contain a path relative to the root.
+If the first path component passed to \code{...} is already an absolute path,
+the \code{criterion} and \code{path} arguments are ignored,
+and \code{...} is forwarded to \code{\link[=file.path]{file.path()}}.
 }
 \examples{
 \dontrun{
