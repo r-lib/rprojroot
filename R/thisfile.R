@@ -1,3 +1,4 @@
+# nocov start
 #' Determines the path of the currently running script
 #'
 #' @description
@@ -146,3 +147,4 @@ thisfile_knit <- function() {
 
   NULL
 }
+# nocov end
