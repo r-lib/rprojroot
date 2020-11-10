@@ -1,7 +1,3 @@
-format_lines <- function(n) {
-  if (n == 1) "line" else paste0(n, " lines")
-}
-
 #' @details
 #' The `has_file()` function constructs a criterion that checks for the
 #' existence of a specific file (which itself can be in a subdirectory of the
@@ -257,20 +253,3 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "from_wd"
-
-
-list_files <- function(path, filename) {
-  files <- dir(path = path, pattern = filename, all.files = TRUE, full.names = TRUE)
-  dirs <- dir.exists(files)
-  files <- files[!dirs]
-  files
-}
-
-match_contents <- function(f, contents, n) {
-  if (is.null(contents)) {
-    return(TRUE)
-  }
-
-  fc <- readLines(f, n)
-  any(grepl(contents, fc))
-}
