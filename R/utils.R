@@ -1,7 +1,3 @@
-format_lines <- function(n) {
-  if (n == 1) "line" else paste0(n, " lines")
-}
-
 list_files <- function(path, filename) {
   files <- dir(path = path, pattern = filename, all.files = TRUE, full.names = TRUE)
   dirs <- dir.exists(files)
