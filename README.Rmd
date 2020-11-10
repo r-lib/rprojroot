@@ -60,6 +60,16 @@ is_r_package$find_file()
 is_r_package$find_file("tests", "testthat")
 ```
 
+There is one exception: if the first component passed to `find_file()` is already an absolute path.
+This allows safely applying this function to paths that may be absolute or relative:
+
+```{r}
+setwd(file.path(pkg, "R"))
+path <- is_r_package$find_file()
+is_r_package$find_file(path, "tests", "testthat")
+```
+
+
 As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.
 
 

@@ -7,11 +7,17 @@ test_that("Shortcuts", {
   )
 
   R <- make_fix_root_file("testthat.R", getwd())
-  oldwd <- setwd("~")
-  on.exit(setwd(oldwd))
+
+  oldwd <- withr::local_dir("~")
 
   expect_equal(
     normalizePath(R("testthat"), mustWork = TRUE),
+    normalizePath(oldwd, mustWork = TRUE)
+  )
+
+  path <- R()
+  expect_equal(
+    normalizePath(R(path, "testthat"), mustWork = TRUE),
     normalizePath(oldwd, mustWork = TRUE)
   )
 })

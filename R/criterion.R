@@ -11,7 +11,11 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
     root <- file.path(root, subdir)
   }
   eval(bquote(function(...) {
-    file.path(.(root), ...)
+    if (!missing(..1) && is_absolute_path(..1)) {
+      file.path(...)
+    } else {
+      file.path(.(root), ...)
+    }
   }))
 }
 
@@ -73,17 +77,21 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
     class = "root_criterion"
   )
 
-  #'   \item{`find_file`}{A function with `...` argument that returns
-  #'     for a path relative to the root specified by this criterion.
+  #'   \item{`find_file`}{A function with `...` and `path` arguments
+  #'     that returns a path relative to the root,
+  #'     as specified by this criterion.
   #'     The optional `path` argument specifies the starting directory,
   #'     which defaults to `"."`.
+  #'     The function forwards to [find_root_file()],
+  #'     which passes `...` directly to `file.path()`
+  #'     if the first argument is an absolute path.
   #'   }
   criterion$find_file <- make_find_root_file(criterion)
   #'   \item{`make_fix_file`}{A function with a `path` argument that
   #'      returns a function that finds paths relative to the root.  For a
   #'      criterion `cr`, the result of `cr$make_fix_file(".")(...)`
   #'      is identical to `cr$find_file(...)`. The function created by
-  #'      `make_fix_file` can be saved to a variable to be more independent
+  #'      `make_fix_file()` can be saved to a variable to be more independent
   #'      of the current working directory.
   #'   }
   #' }
