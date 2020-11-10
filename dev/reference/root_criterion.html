@@ -205,15 +205,19 @@ as <code>testfun</code></p></td>
 <dt><code>testfun</code></dt><dd><p>The <code>testfun</code> argument</p></dd>
 <dt><code>desc</code></dt><dd><p>The <code>desc</code> argument</p></dd>
 <dt><code>subdir</code></dt><dd><p>The <code>subdir</code> argument</p></dd>
-<dt><code>find_file</code></dt><dd><p>A function with <code>...</code> argument that returns
-for a path relative to the root specified by this criterion.
+<dt><code>find_file</code></dt><dd><p>A function with <code>...</code> and <code>path</code> arguments
+that returns a path relative to the root,
+as specified by this criterion.
 The optional <code>path</code> argument specifies the starting directory,
-which defaults to <code>"."</code>.</p></dd>
+which defaults to <code>"."</code>.
+The function forwards to <code><a href='find_root_file.html'>find_root_file()</a></code>,
+which passes <code>...</code> directly to <code><a href='https://rdrr.io/r/base/file.path.html'>file.path()</a></code>
+if the first argument is an absolute path.</p></dd>
 <dt><code>make_fix_file</code></dt><dd><p>A function with a <code>path</code> argument that
 returns a function that finds paths relative to the root.  For a
 criterion <code>cr</code>, the result of <code>cr$make_fix_file(".")(...)</code>
 is identical to <code>cr$find_file(...)</code>. The function created by
-<code>make_fix_file</code> can be saved to a variable to be more independent
+<code>make_fix_file()</code> can be saved to a variable to be more independent
 of the current working directory.</p></dd>
 
 </dl>
@@ -248,8 +252,8 @@ with support for case-insensitive file systems.</p>
 #&gt; {
 #&gt;     find_root_file(..., criterion = criterion, path = path)
 #&gt; }
-#&gt; &lt;bytecode: 0x55ae43b7fc78&gt;
-#&gt; &lt;environment: 0x55ae43b7b968&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+#&gt; &lt;bytecode: 0x555bc146b300&gt;
+#&gt; &lt;environment: 0x555bc1468f10&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
