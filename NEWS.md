@@ -1,3 +1,12 @@
+# rprojroot 1.3.2.9002 (2020-11-10)
+
+- Use testthat 3e (#70).
+- `find_root_file()` propagates `NA` values in path components. Using tidyverse recycling rules (#66).
+- The backports package is no longer imported (#68).
+- In `find_root_file()`, if the first path component is already an absolute path, the path is returned unchanged without referring to the root. This allows using both root-relative and absolute paths in `here::here()`. Mixing root-relative and absolute paths in the same call returns an error (#59).
+- `thisfile()` and related functions are soft-deprecated, now available in the whereami package (#43).
+
+
 # rprojroot 1.3.2.9001 (2020-11-09)
 
 - `has_basename()` replaces `has_dirname()` to avoid confusion (#63).
