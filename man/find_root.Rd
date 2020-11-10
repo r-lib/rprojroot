@@ -10,7 +10,7 @@ find_root(criterion, path = ".")
 get_root_desc(criterion, path)
 }
 \arguments{
-\item{criterion}{\verb{[root_criterion]}\rc
+\item{criterion}{\verb{[root_criterion]}\cr
 A criterion, one of the predefined \link{criteria}
 or created by \code{\link[=root_criterion]{root_criterion()}}.
 Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}

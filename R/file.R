@@ -10,7 +10,7 @@
 #' the `criterion` and `path` arguments are ignored,
 #' and `...` is forwarded to [file.path()].
 #'
-#' @param criterion `[root_criterion]`\rc
+#' @param criterion `[root_criterion]`\cr
 #'   A criterion, one of the predefined [criteria]
 #'   or created by [root_criterion()].
 #'   Will be coerced using [as_root_criterion()].

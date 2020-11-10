@@ -23,7 +23,7 @@ find_testthat_root_file(..., path = ".")
 Further path components passed to \code{\link[=file.path]{file.path()}}.
 All arguments must be the same length or length one.}
 
-\item{criterion}{\verb{[root_criterion]}\rc
+\item{criterion}{\verb{[root_criterion]}\cr
 A criterion, one of the predefined \link{criteria}
 or created by \code{\link[=root_criterion]{root_criterion()}}.
 Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
