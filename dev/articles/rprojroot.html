@@ -332,7 +332,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x55f118fc5d60&gt;</code></pre>
+## &lt;environment: 0x562dae36f558&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -348,14 +348,19 @@
 <span class="cn">F</span></code></pre></div>
 <pre><code>## function (...) 
 ## {
-##     if (!missing(..1) &amp;&amp; is_absolute_path(..1)) {
-##         file.path(...)
+##     if (!missing(..1)) {
+##         abs &lt;- is_absolute_path(..1)
+##         if (all(abs)) {
+##             return(path(...))
+##         }
+##         if (any(abs)) {
+##             stop("Combination of absolute and relative paths not supported.", 
+##                 call. = FALSE)
+##         }
 ##     }
-##     else {
-##         file.path("/home/runner/work/rprojroot/rprojroot", ...)
-##     }
+##     path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x55f1190ecee0&gt;</code></pre>
+## &lt;environment: 0x562dad59c280&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
