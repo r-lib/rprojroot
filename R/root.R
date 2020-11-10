@@ -1,5 +1,6 @@
 #' @rdname root_criterion
-#' @param x An object
+#' @param x `[object]`\cr
+#'   An object.
 #' @export
 is_root_criterion <- function(x) {
   inherits(x, "root_criterion")
@@ -49,7 +50,8 @@ print.root_criterion <- function(x, ...) {
 #' @details Root criteria can be combined with the `|` operator. The result is a
 #'   composite root criterion that requires either of the original criteria to
 #'   match.
-#' @param y An object
+#' @param y `[object]`\cr
+#'   An object.
 `|.root_criterion` <- function(x, y) {
   stopifnot(is_root_criterion(y))
 
@@ -162,14 +164,24 @@ format_lines <- function(n) {
 #' root) with specific contents.
 #'
 #' @rdname root_criterion
-#' @param filepath File path (can contain directories)
-#' @param contents Regular expression to match the file contents
-#' @inheritParams base::readLines
+#' @param filepath `[character(1)]`\cr
+#'   File path (can contain directories).
+#' @param contents `[character(1)]`\cr
+#'   If not `NULL`, a regular expression.
+#'   File contents are checked for lines matching this regular expression.
+#' @param n `[integerish(1)]`\cr
+#'   Number of lines to read to check for regular expression
+#'   given in the `contents` argument.
 #' @export
 has_file <- function(filepath, contents = NULL, n = -1L) {
   force(filepath)
+  stopifnot(is.character(filepath), length(filepath) == 1)
   force(contents)
+  if (!is.null(contents)) {
+    stopifnot(is.character(contents), length(contents) == 1)
+  }
   force(n)
+  stopifnot(length(n) == 1)
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
@@ -203,6 +215,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
 #' @export
 has_dir <- function(filepath) {
   force(filepath)
+  stopifnot(is.character(filepath), length(filepath) == 1)
 
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
@@ -219,13 +232,18 @@ has_dir <- function(filepath) {
 #' existence of a file that matches a pattern, with specific contents.
 #'
 #' @rdname root_criterion
-#' @param pattern Regular expression to match the file name
-#' @inheritParams base::readLines
+#' @param pattern `[character(1)]`\cr
+#'   Regular expression to match the file name against.
 #' @export
 has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   force(pattern)
+  stopifnot(is.character(pattern), length(pattern) == 1)
   force(contents)
+  if (!is.null(contents)) {
+    stopifnot(is.character(contents), length(contents) == 1)
+  }
   force(n)
+  stopifnot(length(n) == 1)
 
   testfun <- eval(bquote(function(path) {
     files <- list_files(path, .(pattern))
@@ -257,7 +275,8 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
 #' with support for case-insensitive file systems.
 #'
 #' @rdname root_criterion
-#' @param basename A directory name, without subdirectories
+#' @param basename `[character(1)]`\cr
+#'   The required name of the root directory.
 #' @export
 has_basename <- function(basename, subdir = NULL) {
   force(basename)
