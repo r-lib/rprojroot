@@ -16,8 +16,6 @@ URL: https://rprojroot.r-lib.org/,
 BugReports: https://github.com/r-lib/rprojroot/issues
 Depends:
     R (>= 3.0.0)
-Imports:
-    backports
 Suggests:
     knitr,
     lifecycle,

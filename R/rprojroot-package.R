@@ -10,5 +10,4 @@
 #' root_fun <- is_r_package$make_fix_file()
 #' root_fun("NAMESPACE")
 #' }
-#' @import backports
 "_PACKAGE"
