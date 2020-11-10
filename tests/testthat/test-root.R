@@ -1,4 +1,47 @@
-context("root")
+
+test_that("is_root_criterion", {
+  expect_true(is_root_criterion(has_file("DESCRIPTION")))
+  expect_false(is_root_criterion("DESCRIPTION"))
+  expect_true(is_root_criterion(as_root_criterion("DESCRIPTION")))
+})
+
+test_that("as_root_criterion", {
+  reset_env <- function(x) {
+    if (is.function(x)) {
+      environment(x) <- .GlobalEnv
+    } else if (is.list(x)) {
+      x <- lapply(x, reset_env)
+    }
+    x
+  }
+
+  expect_equal(
+    lapply(as_root_criterion("x"), reset_env),
+    lapply(has_file("x"), reset_env)
+  )
+  expect_error(as_root_criterion(5), "Cannot coerce")
+})
+
+test_that("Formatting", {
+  expect_snapshot(format(is_r_package))
+  expect_snapshot(is_r_package)
+  expect_snapshot(is_vcs_root)
+  expect_snapshot(criteria)
+  expect_snapshot(str(criteria))
+})
+
+test_that("Combining criteria", {
+  comb_crit <- is_r_package | is_rstudio_project
+
+  expect_true(is_root_criterion(comb_crit))
+
+  expect_snapshot(comb_crit)
+
+  expect_equal(
+    find_root(comb_crit, "hierarchy"),
+    find_root(is_rstudio_project, "hierarchy/a")
+  )
+})
 
 test_that("has_file", {
   wd <- normalizePath(getwd(), winslash = "/")
@@ -14,22 +57,6 @@ test_that("has_file", {
     expect_equal(find_root("a", path = path), hierarchy(3L)),
     expect_equal(find_root("b", path = path), hierarchy(3L)),
     expect_equal(find_root("b/a", path = path), hierarchy(2L)),
-    expect_equal(
-      find_root_file("c", criterion = "b/a", path = path),
-      file.path(hierarchy(2L), "c")
-    ),
-    expect_equal(
-      find_root_file("/x", "y", criterion = "b/a", path = path),
-      file.path("/x", "y")
-    ),
-    expect_identical(
-      find_root_file("c", NA, criterion = "b/a", path = path),
-      NA_character_
-    ),
-    expect_identical(
-      find_root_file("c", character(), criterion = "b/a", path = path),
-      character()
-    ),
     expect_equal(find_root("c", path = path), hierarchy(1L)),
     expect_equal(find_root("d", path = path), hierarchy(4L)),
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L)),
@@ -49,16 +76,6 @@ test_that("has_file", {
     expect_error(
       find_root(has_file("e", "f", 1), path = path),
       "No root directory found.* file `.*` with contents .* in the first line"
-    ),
-    expect_error(
-      find_root_file(letters[1:2], letters[1:3], criterion = "a", path = path)
-    ),
-    expect_error(
-      find_root_file(letters[1:2], character(), criterion = "a", path = path)
-    ),
-    expect_error(
-      find_root_file(c("b", "/x"), "c", criterion = "a", path = path),
-      "absolute and relative"
     )
   )
 })
@@ -120,15 +137,6 @@ test_that("has_dir", {
     is_root = function(x) x == stop_path,
     expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L)),
     expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L)),
-    expect_equal(
-      find_root_file("c", criterion = has_dir("b"), path = path),
-      file.path(hierarchy(2L), "c")
-    ),
-    # Absolute paths are stripped
-    expect_equal(
-      find_root_file(hierarchy(3L), "c", criterion = has_dir("b"), path = path),
-      hierarchy(4L)
-    ),
     expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
     expect_error(
       find_root(has_dir("e"), path = path),
@@ -155,10 +163,6 @@ test_that("has_basename", {
     is_root = function(x) x == stop_path,
     expect_equal(find_root(has_basename("a"), path = path), hierarchy(2L)),
     expect_equal(find_root(has_basename("b"), path = path), hierarchy(3L)),
-    expect_equal(
-      find_root_file("c", criterion = has_basename("b"), path = path),
-      file.path(hierarchy(3L), "c")
-    ),
     expect_equal(find_root(has_basename("c"), path = path), hierarchy(4L)),
     expect_error(
       find_root(has_basename("d"), path = path),

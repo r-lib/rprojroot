@@ -13,11 +13,14 @@ path <- function(...) {
   }
 
   # Side effect: check recycling rules
-  components <- as.data.frame(dots, stringsAsFactors = FALSE)
+  component_df <- as.data.frame(dots, stringsAsFactors = FALSE)
 
-  missing <- apply(is.na(components), 1, any)
+  missing <- apply(is.na(component_df), 1, any)
+
+  components <- lapply(component_df, function(x) enc2utf8(as.character(x)))
 
   out <- do.call(file.path, components)
   out[missing] <- NA_character_
+  Encoding(out) <- "UTF-8"
   out
 }
