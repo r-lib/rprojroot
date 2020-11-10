@@ -1,5 +1,3 @@
-context("thisfile")
-
 test_that("thisfile works with source", {
   skip_on_cran()
   res <- source("scripts/thisfile.R")

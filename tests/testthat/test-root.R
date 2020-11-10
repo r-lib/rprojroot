@@ -1,5 +1,3 @@
-context("root")
-
 test_that("has_file", {
   wd <- normalizePath(getwd(), winslash = "/")
   hierarchy <- function(n = 0L) {

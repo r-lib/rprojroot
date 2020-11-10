@@ -1,5 +1,3 @@
-context("make")
-
 test_that("Shortcuts", {
   expect_equal(
     make_find_root_file("testthat.R")("testthat"),

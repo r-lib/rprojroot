@@ -1,5 +1,3 @@
-context("testthat")
-
 test_that("is_testthat", {
   expect_match(
     paste(format(is_testthat), collapse = "\n"),

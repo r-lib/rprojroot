@@ -1,5 +1,3 @@
-context("criterion")
-
 test_that("root_criterion", {
   expect_error(
     suppressWarnings(root_criterion(5, "Bogus")),
