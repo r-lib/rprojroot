@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.2.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.2.9002</span>
       </span>
     </div>
 
@@ -117,6 +117,20 @@
       <small>Source: <a href='https://github.com/r-lib/rprojroot/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="rprojroot-1329002-2020-11-10" class="section level1">
+<h1 class="page-header" data-toc-text="1.3.2.9002">
+<a href="#rprojroot-1329002-2020-11-10" class="anchor"></a>rprojroot 1.3.2.9002 (2020-11-10)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Use testthat 3e (<a href='https://github.com/r-lib/rprojroot/issues/70'>#70</a>).</li>
+<li>
+<code><a href="../reference/find_root_file.html">find_root_file()</a></code> propagates <code>NA</code> values in path components. Using tidyverse recycling rules (<a href='https://github.com/r-lib/rprojroot/issues/66'>#66</a>).</li>
+<li>The backports package is no longer imported (<a href='https://github.com/r-lib/rprojroot/issues/68'>#68</a>).</li>
+<li>In <code><a href="../reference/find_root_file.html">find_root_file()</a></code>, if the first path component is already an absolute path, the path is returned unchanged without referring to the root. This allows using both root-relative and absolute paths in <code>here::here()</code>. Mixing root-relative and absolute paths in the same call returns an error (<a href='https://github.com/r-lib/rprojroot/issues/59'>#59</a>).</li>
+<li>
+<code><a href="../reference/thisfile.html">thisfile()</a></code> and related functions are soft-deprecated, now available in the whereami package (<a href='https://github.com/r-lib/rprojroot/issues/43'>#43</a>).</li>
+</ul>
+</div>
     <div id="rprojroot-1329001-2020-11-09" class="section level1">
 <h1 class="page-header" data-toc-text="1.3.2.9001">
 <a href="#rprojroot-1329001-2020-11-09" class="anchor"></a>rprojroot 1.3.2.9001 (2020-11-09)<small> Unreleased </small>
