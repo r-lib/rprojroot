@@ -11,7 +11,22 @@ test_that("is_root_criterion", {
   expect_true(is_root_criterion(has_file("DESCRIPTION")))
   expect_false(is_root_criterion("DESCRIPTION"))
   expect_true(is_root_criterion(as_root_criterion("DESCRIPTION")))
-  expect_equal(as_root_criterion("x"), has_file("x"))
+})
+
+test_that("as_root_criterion", {
+  reset_env <- function(x) {
+    if (is.function(x)) {
+      environment(x) <- .GlobalEnv
+    } else if (is.list(x)) {
+      x <- lapply(x, reset_env)
+    }
+    x
+  }
+
+  expect_equal(
+    lapply(as_root_criterion("x"), reset_env),
+    lapply(has_file("x"), reset_env)
+  )
   expect_error(as_root_criterion(5), "Cannot coerce")
 })
 
