@@ -21,5 +21,6 @@ path <- function(...) {
 
   out <- do.call(file.path, components)
   out[missing] <- NA_character_
+  Encoding(out) <- "UTF-8"
   out
 }
