@@ -18,6 +18,10 @@ test_that("has_file", {
       find_root_file("c", criterion = "b/a", path = path),
       file.path(hierarchy(2L), "c")
     ),
+    expect_equal(
+      find_root_file("/x", "y", criterion = "b/a", path = path),
+      file.path("/x", "y")
+    ),
     expect_identical(
       find_root_file("c", NA, criterion = "b/a", path = path),
       NA_character_
@@ -45,6 +49,16 @@ test_that("has_file", {
     expect_error(
       find_root(has_file("e", "f", 1), path = path),
       "No root directory found.* file `.*` with contents .* in the first line"
+    ),
+    expect_error(
+      find_root_file(letters[1:2], letters[1:3], criterion = "a", path = path)
+    ),
+    expect_error(
+      find_root_file(letters[1:2], character(), criterion = "a", path = path)
+    ),
+    expect_error(
+      find_root_file(c("b", "/x"), "c", criterion = "a", path = path),
+      "absolute and relative"
     )
   )
 })
