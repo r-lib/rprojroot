@@ -31,9 +31,9 @@
 #' @export
 find_root_file <- function(..., criterion, path = ".") {
   if (!missing(..1) && is_absolute_path(..1)) {
-    return(file.path(...))
+    return(path(...))
   }
 
   root <- find_root(criterion = criterion, path = path)
-  file.path(root, ...)
+  path(root, ...)
 }

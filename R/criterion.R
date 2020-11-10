@@ -12,9 +12,9 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
   }
   eval(bquote(function(...) {
     if (!missing(..1) && is_absolute_path(..1)) {
-      file.path(...)
+      path(...)
     } else {
-      file.path(.(root), ...)
+      path(.(root), ...)
     }
   }))
 }
