@@ -1,3 +1,64 @@
+#' @rdname root_criterion
+#' @param x An object
+#' @export
+is_root_criterion <- function(x) {
+  inherits(x, "root_criterion")
+}
+
+#' @rdname root_criterion
+#' @export
+as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
+
+#' @details
+#' The `as_root_criterion()` function accepts objects of class
+#' `root_criterion`, and character values; the latter will be
+#' converted to criteria using `has_file`.
+#'
+#' @rdname root_criterion
+#' @export
+as_root_criterion.character <- function(x) {
+  has_file(x)
+}
+
+#' @rdname root_criterion
+#' @export
+as_root_criterion.root_criterion <- identity
+
+#' @export
+as_root_criterion.default <- function(x) {
+  stop("Cannot coerce ", x, " to type root_criterion.", call. = FALSE)
+}
+
+#' @export
+format.root_criterion <- function(x, ...) {
+  if (length(x$desc) > 1) {
+    c("Root criterion: one of", paste0("- ", x$desc))
+  } else {
+    paste0("Root criterion: ", x$desc)
+  }
+}
+
+#' @export
+print.root_criterion <- function(x, ...) {
+  cat(format(x), sep = "\n")
+  invisible(x)
+}
+
+#' @export
+#' @rdname root_criterion
+#' @details Root criteria can be combined with the `|` operator. The result is a
+#'   composite root criterion that requires either of the original criteria to
+#'   match.
+#' @param y An object
+`|.root_criterion` <- function(x, y) {
+  stopifnot(is_root_criterion(y))
+
+  root_criterion(
+    c(x$testfun, y$testfun),
+    c(x$desc, y$desc)
+  )
+}
+
 #' Find the root of a directory hierarchy
 #'
 #' A \emph{root} is defined as a directory that contains a regular file
