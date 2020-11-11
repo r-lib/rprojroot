@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prespecified criteria — criteria • rprojroot</title>
+<title>Steps for adopting older packages to new development standards • rprojroot</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script>
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,14 +33,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Prespecified criteria — criteria" />
-<meta property="og:description" content="This is a collection of commonly used root criteria." />
+<meta property="og:title" content="Steps for adopting older packages to new development standards" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -71,7 +70,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">rprojroot</a>
+        <a class="navbar-link" href="index.html">rprojroot</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2.9002</span>
       </span>
     </div>
@@ -79,19 +78,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/rprojroot.html">Get started</a>
+  <a href="articles/rprojroot.html">Get started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -112,62 +111,104 @@
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Prespecified criteria</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/rprojroot/blob/master/R/root.R'><code>R/root.R</code></a></small>
-    <div class="hidden name"><code>criteria.Rd</code></div>
+      <h1>Steps for adopting older packages to new development standards</h1>
     </div>
 
-    <div class="ref-description">
-    <p>This is a collection of commonly used root criteria.</p>
-    </div>
+<div id="steps-for-adopting-older-packages-to-new-development-standards" class="section level1">
 
-    <pre class="usage"><span class='va'>criteria</span>
-
-<span class='va'>is_rstudio_project</span>
-
-<span class='va'>is_r_package</span>
-
-<span class='va'>is_remake_project</span>
-
-<span class='va'>is_drake_project</span>
-
-<span class='va'>is_projectile_project</span>
-
-<span class='va'>is_git_root</span>
-
-<span class='va'>is_svn_root</span>
-
-<span class='va'>is_vcs_root</span>
-
-<span class='va'>is_testthat</span>
-
-<span class='va'>from_wd</span></pre>
-
-
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>is_rstudio_project</code> looks for a file with extension <code>.Rproj</code>.</p>
-<p><code>is_r_package</code> looks for a <code>DESCRIPTION</code> file.</p>
-<p><code>is_remake_project</code> looks for a <code>remake.yml</code> file.</p>
-<p><code>is_drake_project</code> looks for a <code>.drake</code> directory.</p>
-<p><code>is_projectile_project</code> looks for a <code>.projectile</code> file.</p>
-<p><code>is_git_root</code> looks for a <code>.git</code> directory.</p>
-<p><code>is_svn_root</code> looks for a <code>.svn</code> directory.</p>
-<p><code>is_vcs_root</code> looks for the root of a version control
-system, currently only Git and SVN are supported.</p>
-<p><code>is_testthat</code> looks for the <code>testthat</code> directory, works when
-developing, testing, and checking a package.</p>
-<p><code>from_wd</code> uses the current working directory.</p>
+<div id="docs-branch" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docs-branch" class="anchor"></a><code>docs</code> branch</h2>
+<ul>
+<li>
+<input type="checkbox" disabled checked>
+Create from last released tag</li>
+<li>
+<input type="checkbox" disabled checked>
+Copy <code>.github/workflows/pkgdown.yaml</code> there</li>
+<li>
+<input type="checkbox" disabled checked>
+Fix URL in DESCRIPTION, don’t forget trailing slash</li>
+<li>
+<input type="checkbox" disabled checked>
+Tweak <code>_pkgdown.yml</code>
+</li>
+<li>
+<input type="checkbox" disabled checked>
+Set source of GitHub Pages to branch</li>
+</ul>
+</div>
+<div id="separate-pull-requests" class="section level2">
+<h2 class="hasAnchor">
+<a href="#separate-pull-requests" class="anchor"></a>Separate pull requests</h2>
+<ul>
+<li><p><input type="checkbox" disabled checked>
+Use GitHub Actions</p></li>
+<li><p><input type="checkbox" disabled checked>
+Disable tic</p></li>
+<li><p><input type="checkbox" disabled checked>
+Disable Travis CI and AppVeyor</p></li>
+<li><p><input type="checkbox" disabled checked><code>usethis::use_coverage()</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Consider open pull requests</p></li>
+<li>
+<p><input type="checkbox" disabled checked>
+Tweak README</p>
+<ul>
+<li>use <code>downlit::readme_document</code> and <code>load_all()</code> if possible</li>
+</ul>
+</li>
+<li><p><input type="checkbox" disabled checked>
+Update roxygen2</p></li>
+<li><p><input type="checkbox" disabled checked>
+Use <code>@examplesIf</code> where appropriate</p></li>
+<li><p><input type="checkbox" disabled checked><code>styler::style_pkg()</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Remove <code>Collate:</code></p></li>
+<li><p><input type="checkbox" disabled checked><code>usethis::use_lifecycle_badge()</code></p></li>
+<li><p><input type="checkbox" disabled checked><code>usethis::use_lifecycle()</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Add pkgdown reference index</p></li>
+<li><p><input type="checkbox" disabled checked>
+Adapt tests to testthat 3e</p></li>
+<li><p><input type="checkbox" disabled checked>
+Ensure that dependency between source files is cycle-free, as in <a href="https://github.com/yonicd/foreman/issues/2" class="uri">https://github.com/yonicd/foreman/issues/2</a></p></li>
+<li><p><input type="checkbox" disabled checked>
+Ensure that source files correspond to test files via <code>devtools::test_coverage_file()</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Import rlang where appropriate</p></li>
+<li><p><input type="checkbox" disabled checked>
+Close open issues</p></li>
+<li><p><input type="checkbox" disabled checked>
+Deprecate functions that have moved somewhere else</p></li>
+<li><p><input type="checkbox" disabled checked>
+Avoid <code>iris</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Synchronize with own downstream packages</p></li>
+<li><p><input type="checkbox" disabled checked>
+Add type to documentation of function arguments, as in <code>?here::here</code></p></li>
+<li><p><input type="checkbox" disabled checked>
+Check <code>goodpractice::gp()</code></p></li>
+<li><p><input type="checkbox" disabled>
+Switch pkgdown to dev mode “auto”</p></li>
+<li><p><input type="checkbox" disabled>
+Release to CRAN</p></li>
+</ul>
+</div>
+</div>
 
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
+
 
 
       <footer>

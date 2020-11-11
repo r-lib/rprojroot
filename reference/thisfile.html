@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Determines the path of the currently running script — thisfile" />
-<meta property="og:description" content="R does not store nor export the path of the currently running
+<meta property="og:description" content="
+R does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
 cases.
@@ -78,7 +79,7 @@ the context of the script if possible." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3-2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2.9002</span>
       </span>
     </div>
 
@@ -126,7 +127,8 @@ the context of the script if possible." />
     </div>
 
     <div class="ref-description">
-    <p><span style="R">R</span> does not store nor export the path of the currently running
+    <p><img src='figures/lifecycle-soft-deprecated.svg' alt='Soft-deprecated lifecycle' /></p>
+<p><span style="R">R</span> does not store nor export the path of the currently running
 script.  This is an attempt to circumvent this limitation by applying
 heuristics (such as call stack and argument inspection) that work in many
 cases.
@@ -157,9 +159,15 @@ processed with <code>knitr</code>,
 or run with <code>Rscript</code> or using the <code>--file</code> parameter to the
 <code>R</code> executable.  For code run with <code>Rscript</code>, the exact value
 of the parameter passed to <code>Rscript</code> is returned.</p>
+    <h2 class="hasAnchor" id="life-cycle"><a class="anchor" href="#life-cycle"></a>Life cycle</h2>
+
+    
+
+
+<p>These functions are now available in the <span class="pkg">whereami</span> package.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p><a href='http://stackoverflow.com/q/1815606/946850'>http://stackoverflow.com/q/1815606/946850</a></p>
+    <p><a href='https://stackoverflow.com/q/1815606/946850'>https://stackoverflow.com/q/1815606/946850</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/source.html'>base::source()</a></code>, <code><a href='https://rdrr.io/r/utils/Rscript.html'>utils::Rscript()</a></code>, <code><a href='https://rdrr.io/r/base/getwd.html'>base::getwd()</a></code></p></div>
@@ -168,7 +176,9 @@ of the parameter passed to <code>Rscript</code> is returned.</p>
     <p>Kirill Müller, Hadley Wickham, Michael R. Head</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>thisfile</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>thisfile</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
