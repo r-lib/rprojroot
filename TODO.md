@@ -13,6 +13,7 @@
 - [x] Use GitHub Actions
 - [x] Disable tic
 - [x] Disable Travis CI and AppVeyor
+- [x] `usethis::use_coverage()`
 - [x] Consider open pull requests
 - [x] Tweak README
 
@@ -35,4 +36,5 @@
 - [x] Synchronize with own downstream packages
 - [x] Add type to documentation of function arguments, as in `?here::here`
 - [x] Check `goodpractice::gp()`
+- [ ] Switch pkgdown to dev mode "auto"
 - [ ] Release to CRAN
