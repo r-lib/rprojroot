@@ -1,3 +1,8 @@
+# rprojroot 2.0.0.9000 (2020-11-12)
+
+- Internal changes only.
+
+
 # rprojroot 2.0.0 (2020-11-12)
 
 - Same as previous version.
