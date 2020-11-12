@@ -1,17 +1,17 @@
-Resumbission upon CRAN's request, to fix brittle tests (again).
+rprojroot 1.3.3
 
-## Test environments
-* local Ubuntu install, R 3.4.3
-* ubuntu 14.04 (on travis-ci, R devel, release, and oldrel)
-* OS X (on travis-ci, R release)
-* win-builder (devel and release)
+## Cran Repository Policy
 
+- [x] Reviewed CRP last edited 2020-10-29.
 
 ## R CMD check results
 
-* "Subdirectories" is spelled correctly.
+- [x] Checked locally, R 4.0.3
+- [ ] Checked on CI system, R 4.0.3
+- [ ] Checked on win-builder, R devel
 
+Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
 
-## Reverse dependencies
+## Current CRAN check results
 
-* I have run R CMD check on the 21 downstream dependencies, same check results for current CRAN version and release candidate.
+- [x] Checked on 2020-11-12, no problems found.
