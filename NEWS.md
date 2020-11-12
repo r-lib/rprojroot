@@ -1,3 +1,8 @@
+# rprojroot 1.3.3 (2020-11-12)
+
+- Internal changes only.
+
+
 # rprojroot 1.3.2.9002 (2020-11-10)
 
 - Use testthat 3e (#70).
