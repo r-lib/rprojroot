@@ -17,6 +17,7 @@ BugReports: https://github.com/r-lib/rprojroot/issues
 Depends:
     R (>= 3.0.0)
 Suggests:
+    covr,
     knitr,
     lifecycle,
     mockr,

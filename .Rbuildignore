@@ -11,3 +11,4 @@
 ^README\.Rmd$
 ^TODO\.md$
 ^CRAN-RELEASE$
+^codecov\.yml$

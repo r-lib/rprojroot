@@ -4,8 +4,7 @@
 
 <!-- badges: start -->
 
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![rcc](https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg)](https://github.com/r-lib/rprojroot/actions) [![codecov.io](https://codecov.io/github/r-lib/rprojroot/coverage.svg?branch=master)](https://codecov.io/github/r-lib/rprojroot?branch=master) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable) [![rcc](https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg)](https://github.com/r-lib/rprojroot/actions) [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot) [![Codecov test coverage](https://codecov.io/gh/r-lib/rprojroot/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/rprojroot?branch=master)
 
 <!-- badges: end -->
 
