@@ -170,11 +170,11 @@
 
 <span class="co"># List all files and directories below the root</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "_pkgdown.yml"     "cran-comments.md" "DESCRIPTION"      "inst"            
-##  [5] "LICENSE"          "LICENSE.md"       "man"              "NAMESPACE"       
-##  [9] "NEWS.md"          "R"                "README.md"        "README.Rmd"      
-## [13] "revdep"           "rprojroot.Rproj"  "tests"            "TODO.md"         
-## [17] "vignettes"</code></pre>
+<pre><code>##  [1] "_pkgdown.yml"     "codecov.yml"      "cran-comments.md" "DESCRIPTION"     
+##  [5] "inst"             "LICENSE"          "LICENSE.md"       "man"             
+##  [9] "NAMESPACE"        "NEWS.md"          "R"                "README.md"       
+## [13] "README.Rmd"       "revdep"           "rprojroot.Rproj"  "tests"           
+## [17] "TODO.md"          "vignettes"</code></pre>
 <div id="relative-paths-to-a-stable-root" class="section level4">
 <h4 class="hasAnchor">
 <a href="#relative-paths-to-a-stable-root" class="anchor"></a>Relative paths to a stable root</h4>
@@ -331,7 +331,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x5634faf98d98&gt;</code></pre>
+## &lt;environment: 0x562374604498&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -359,7 +359,7 @@
 ##     }
 ##     path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x5634fa0e06a0&gt;</code></pre>
+## &lt;environment: 0x56237374be80&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
