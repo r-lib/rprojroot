@@ -77,7 +77,7 @@
       <h1 data-toc-skip>Finding files in project subdirectories</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2020-11-12</h4>
+            <h4 class="date">2020-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
@@ -227,7 +227,7 @@
 <h5 class="hasAnchor">
 <a href="#summary-of-examples-a-and-b" class="anchor"></a>Summary of Examples A and B</h5>
 <p>Since Examples A and B used different working directories, <code>rel_path_from_vignettes</code> and <code>rel_path_from_testthat</code> were different. This is an issue when trying to re-use the same code. This issue is solved by using <em>rprojroot</em>: the function <code><a href="../reference/find_root_file.html">find_root_file()</a></code> finds a file relative from the root, where the root is determined from checking the criterion with <code><a href="../reference/root_criterion.html">has_file()</a></code>.</p>
-<p>Note that the follow code produces identical results when building the vignette <em>and</em> when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that <em>rprojroot</em> has succesfully determined the correct path:</p>
+<p>Note that the follow code produces identical results when building the vignette <em>and</em> when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that <em>rprojroot</em> has successfully determined the correct path:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Specify a path/to/file relative to the root</span>
 <span class="va">rel_path_from_root</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/find_root_file.html">find_root_file</a></span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"rrmake.R"</span>, criterion <span class="op">=</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span>
@@ -331,7 +331,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x562374604498&gt;</code></pre>
+## &lt;environment: 0x55d5a315a988&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -359,7 +359,7 @@
 ##     }
 ##     path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x56237374be80&gt;</code></pre>
+## &lt;environment: 0x55d5a22a83a8&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
