@@ -18,7 +18,7 @@
 
 - `has_file()` and `has_dir()` now throw an error if the `filepath` argument is an absolute path (#74).
 - `has_basename()` replaces `has_dirname()` to avoid confusion (#63).
-- `as_root_criterion()` and `is_root_criterion()` replace `as.` and `is.`, respectively.
+- `as_root_criterion()` and `is_root_criterion()` replace `as.` and `is.`, respectively. The latter are soft-deprecated.
 - `thisfile()` and related functions are soft-deprecated, now available in the whereami package (#43).
 
 ## Bug fixes
