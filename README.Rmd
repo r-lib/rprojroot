@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 rlang::local_interactive(FALSE)
 ```
 
-# [rprojroot](https://r-lib.github.io/rprojroot)
+# [rprojroot](https://rprojroot.r-lib.org/)
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
@@ -81,7 +81,7 @@ Install the package from CRAN:
 install.package("rprojroot")
 ```
 
-See the [documentation](https://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
+See the [documentation](https://rprojroot.r-lib.org/articles/rprojroot.html) for more detail.
 
 ---
 

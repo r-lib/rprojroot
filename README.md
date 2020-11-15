@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# [rprojroot](https://r-lib.github.io/rprojroot)
+# [rprojroot](https://rprojroot.r-lib.org/)
 
 <!-- badges: start -->
 
@@ -79,7 +79,7 @@ Install the package from CRAN:
 <pre class='chroma'>
 <span class='nf'>install.package</span><span class='o'>(</span><span class='s'>"rprojroot"</span><span class='o'>)</span></pre>
 
-See the [documentation](https://r-lib.github.io/rprojroot/articles/rprojroot.html) for more detail.
+See the [documentation](https://rprojroot.r-lib.org/articles/rprojroot.html) for more detail.
 
 ------------------------------------------------------------------------
 
