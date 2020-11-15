@@ -76,7 +76,9 @@ test_that("has_file", {
     expect_error(
       find_root(has_file("e", "f", 1), path = path),
       "No root directory found.* file `.*` with contents .* in the first line"
-    )
+    ),
+    expect_error(has_file("/a"), "absolute"),
+    TRUE
   )
 })
 
@@ -120,7 +122,8 @@ test_that("has_file_pattern", {
     expect_error(
       find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
       "No root directory found.* with contents .* in the first line"
-    )
+    ),
+    TRUE
   )
 })
 
@@ -146,6 +149,7 @@ test_that("has_dir", {
       find_root(has_dir("rprojroot.Rproj"), path = path),
       "No root directory found.* a directory `.*`"
     ),
+    expect_error(has_dir("/a"), "absolute"),
     TRUE
   )
 })
@@ -291,7 +295,10 @@ test_that("is_git_root for separated git directory", {
 test_that("finds root", {
   skip_on_cran()
   # Checks that search for root actually terminates
-  expect_error(find_root("/"), "No root directory found.* file `.*`")
+  expect_error(
+    find_root("9259cfa7884bf51eb9dd80b52c26dcdf9cd28e82"),
+    "No root directory found.* file `.*`"
+  )
 })
 
 test_that("stops if depth reached", {

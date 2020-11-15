@@ -183,6 +183,8 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
   force(n)
   stopifnot(length(n) == 1)
 
+  check_relative(filepath)
+
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
     if (!file.exists(testfile)) {
@@ -217,6 +219,8 @@ has_dir <- function(filepath) {
   force(filepath)
   stopifnot(is.character(filepath), length(filepath) == 1)
 
+  check_relative(filepath)
+
   testfun <- eval(bquote(function(path) {
     testfile <- file.path(path, .(filepath))
     dir.exists(testfile)
@@ -225,6 +229,12 @@ has_dir <- function(filepath) {
   desc <- paste0("contains a directory `", filepath, "`")
 
   root_criterion(testfun, desc)
+}
+
+check_relative <- function(filepath) {
+  if (is_absolute_path(filepath)) {
+    stop("filepath must be a file or a relative path, not an absolute path.", call. = FALSE)
+  }
 }
 
 #' @details
