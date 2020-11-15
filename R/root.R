@@ -166,14 +166,15 @@ format_lines <- function(n) {
 #' @rdname root_criterion
 #' @param filepath `[character(1)]`\cr
 #'   File path (can contain directories).
-#' @param contents `[character(1)]`\cr
-#'   If not `NULL`, a regular expression.
-#'   File contents are checked for lines matching this regular expression.
+#' @param contents,fixed `[character(1)]`\cr
+#'   If `contents` is `NULL` (the default), file contents are not checked.
+#'   Otherwise, `contents` is a regular expression
+#'   (if `fixed` is `FALSE`) or a search string (if `fixed` is `TRUE`), and
+#'   file contents are checked matching lines.
 #' @param n `[integerish(1)]`\cr
-#'   Number of lines to read to check for regular expression
-#'   given in the `contents` argument.
+#'   Maximum number of lines to read to check file contents.
 #' @export
-has_file <- function(filepath, contents = NULL, n = -1L) {
+has_file <- function(filepath, contents = NULL, n = -1L, fixed = FALSE) {
   force(filepath)
   stopifnot(is.character(filepath), length(filepath) == 1)
   force(contents)
@@ -193,7 +194,7 @@ has_file <- function(filepath, contents = NULL, n = -1L) {
     if (dir.exists(testfile)) {
       return(FALSE)
     }
-    match_contents(testfile, .(contents), .(n))
+    match_contents(testfile, .(contents), .(n), .(fixed))
   }))
 
   desc <- paste0(
@@ -245,7 +246,7 @@ check_relative <- function(filepath) {
 #' @param pattern `[character(1)]`\cr
 #'   Regular expression to match the file name against.
 #' @export
-has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
+has_file_pattern <- function(pattern, contents = NULL, n = -1L, fixed = FALSE) {
   force(pattern)
   stopifnot(is.character(pattern), length(pattern) == 1)
   force(contents)
@@ -258,7 +259,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L) {
   testfun <- eval(bquote(function(path) {
     files <- list_files(path, .(pattern))
     for (f in files) {
-      if (!match_contents(f, .(contents), .(n))) {
+      if (!match_contents(f, .(contents), .(n), .(fixed))) {
         next
       }
       return(TRUE)
