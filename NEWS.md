@@ -1,3 +1,8 @@
+# rprojroot 2.0.1 (2020-11-15)
+
+- Internal changes only.
+
+
 # rprojroot 2.0.0.9001 (2020-11-15)
 
 - `has_file()` and `has_file_pattern()` gain `fixed` argument (#75).
