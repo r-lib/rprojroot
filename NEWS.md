@@ -1,3 +1,9 @@
+# rprojroot 2.0.0.9001 (2020-11-15)
+
+- `has_file()` and `has_file_pattern()` gain `fixed` argument (#75).
+- `has_file()` and `has_dir()` throw an error if the `filepath` argument is an absolute path (#74).
+
+
 # rprojroot 2.0.0.9000 (2020-11-12)
 
 - Internal changes only.
