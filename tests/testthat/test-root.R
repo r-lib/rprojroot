@@ -26,6 +26,8 @@ test_that("Formatting", {
   expect_snapshot(format(is_r_package))
   expect_snapshot(is_r_package)
   expect_snapshot(is_vcs_root)
+  expect_snapshot(has_file("a", contents = "foo", fixed = TRUE))
+  expect_snapshot(has_file_pattern("a.*b", contents = "foo", fixed = TRUE))
   expect_snapshot(criteria)
   expect_snapshot(str(criteria))
 })
@@ -61,21 +63,22 @@ test_that("has_file", {
     expect_equal(find_root("d", path = path), hierarchy(4L)),
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L)),
     expect_equal(find_root(has_file("DESCRIPTION", "^Package: "), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file("DESCRIPTION", "package* does", fixed = TRUE), path = path), hierarchy(1L)),
     expect_error(
       find_root("test-root.R", path = path),
-      "No root directory found.* file `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root("rprojroot.Rproj", path = path),
-      "No root directory found.* file `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(has_file("e", "f"), path = path),
-      "No root directory found.* file `.*` with contents"
+      "No root directory found"
     ),
     expect_error(
       find_root(has_file("e", "f", 1), path = path),
-      "No root directory found.* file `.*` with contents .* in the first line"
+      "No root directory found"
     ),
     expect_error(has_file("/a"), "absolute"),
     TRUE
@@ -105,23 +108,24 @@ test_that("has_file_pattern", {
     ),
     expect_equal(find_root(has_file_pattern(glob2rx("c")), path = path), hierarchy(1L)),
     expect_equal(find_root(has_file_pattern(glob2rx("d")), path = path), hierarchy(4L)),
-    expect_equal(find_root(has_file_pattern(glob2rx("DESCRIPTION"), "^Package: ", 1), path = path), hierarchy(1L)),
-    expect_equal(find_root(has_file_pattern(glob2rx("DESCRIPTION"), "^Package: "), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file_pattern(glob2rx("DES*ION"), "^Package: ", 1), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file_pattern(glob2rx("DESCRI?TION"), "^Package: "), path = path), hierarchy(1L)),
+    expect_equal(find_root(has_file_pattern(glob2rx("D?SCRIPTI?N"), "package* does", fixed = TRUE), path = path), hierarchy(1L)),
     expect_error(
       find_root(has_file_pattern(glob2rx("test-root.R")), path = path),
-      "No root directory found.* file matching "
+      "No root directory found"
     ),
     expect_error(
       find_root(has_file_pattern(glob2rx("rprojroot.Rproj")), path = path),
-      "No root directory found.* file matching "
+      "No root directory found"
     ),
     expect_error(
       find_root(has_file_pattern(glob2rx("e"), "f"), path = path),
-      "No root directory found.* with contents"
+      "No root directory found"
     ),
     expect_error(
       find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
-      "No root directory found.* with contents .* in the first line"
+      "No root directory found"
     ),
     TRUE
   )
@@ -143,11 +147,11 @@ test_that("has_dir", {
     expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L)),
     expect_error(
       find_root(has_dir("e"), path = path),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(has_dir("rprojroot.Rproj"), path = path),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     expect_error(has_dir("/a"), "absolute"),
     TRUE
@@ -170,11 +174,11 @@ test_that("has_basename", {
     expect_equal(find_root(has_basename("c"), path = path), hierarchy(4L)),
     expect_error(
       find_root(has_basename("d"), path = path),
-      "No root directory found.* is `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(has_basename("rprojroot.Rproj"), path = path),
-      "No root directory found.* is `.*`"
+      "No root directory found"
     ),
     TRUE
   )
@@ -219,11 +223,11 @@ test_that("is_svn_root", {
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(
       find_root(is_svn_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(is_vcs_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     TRUE
   )
@@ -261,11 +265,11 @@ test_that("is_git_root", {
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(
       find_root(is_git_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(is_vcs_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     TRUE
   )
@@ -282,11 +286,11 @@ test_that("is_git_root for separated git directory", {
     expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L)),
     expect_error(
       find_root(is_git_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     expect_error(
       find_root(is_vcs_root, path = hierarchy(0L)),
-      "No root directory found.* a directory `.*`"
+      "No root directory found"
     ),
     TRUE
   )
@@ -297,7 +301,7 @@ test_that("finds root", {
   # Checks that search for root actually terminates
   expect_error(
     find_root("9259cfa7884bf51eb9dd80b52c26dcdf9cd28e82"),
-    "No root directory found.* file `.*`"
+    "No root directory found"
   )
 })
 
