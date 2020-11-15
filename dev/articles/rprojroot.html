@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.0.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.0.2.9000</span>
       </span>
     </div>
 
@@ -125,14 +125,14 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.1.9000"</code></pre>
+## [3] "Version: 2.0.2.9000"</code></pre>
 <p>There is one exception: if the first component passed to <code>find_file()</code> is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">path</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.1.9000"</code></pre>
+## [3] "Version: 2.0.2.9000"</code></pre>
 <p>You can also construct an accessor to your root using the <code>root$make_fix_file()</code> function:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">root_file</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -144,7 +144,7 @@
 <span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.1.9000"</code></pre>
+## [3] "Version: 2.0.2.9000"</code></pre>
 <p>If you know the absolute path of some directory below your project, but cannot be sure of your current working directory, pass that absolute path to <code>root$make_fix_file()</code>:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">root_file</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"C:\\Users\\User Name\\..."</span><span class="op">)</span></code></pre></div>
@@ -332,7 +332,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x556d06d415c0&gt;</code></pre>
+## &lt;environment: 0x564486d028d0&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -360,7 +360,7 @@
 ##     }
 ##     path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x556d05e48e90&gt;</code></pre>
+## &lt;environment: 0x564485e0a248&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
