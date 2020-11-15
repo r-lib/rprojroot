@@ -5,58 +5,32 @@
 
 # rprojroot 2.0.1 (2020-11-15)
 
-- Internal changes only.
+## Features
 
-
-# rprojroot 2.0.0.9001 (2020-11-15)
-
-- `has_file()` and `has_file_pattern()` gain `fixed` argument (#75).
-- `has_file()` and `has_dir()` throw an error if the `filepath` argument is an absolute path (#74).
-
-
-# rprojroot 2.0.0.9000 (2020-11-12)
-
-- Internal changes only.
-
-
-# rprojroot 2.0.0 (2020-11-12)
-
-- Same as previous version.
-
-
-# rprojroot 1.3.3.9000 (2020-11-12)
-
-- Internal changes only.
-
-
-# rprojroot 1.3.3 (2020-11-12)
-
-- Internal changes only.
-
-
-# rprojroot 1.3.2.9002 (2020-11-10)
-
-- Use testthat 3e (#70).
-- `find_root_file()` propagates `NA` values in path components. Using tidyverse recycling rules (#66).
-- The backports package is no longer imported (#68).
 - In `find_root_file()`, if the first path component is already an absolute path, the path is returned unchanged without referring to the root. This allows using both root-relative and absolute paths in `here::here()`. Mixing root-relative and absolute paths in the same call returns an error (#59).
-- `thisfile()` and related functions are soft-deprecated, now available in the whereami package (#43).
-
-
-# rprojroot 1.3.2.9001 (2020-11-09)
-
-- `has_basename()` replaces `has_dirname()` to avoid confusion (#63).
-- The `is_dirname()` criterion no longer considers sibling directories (#44).
-- Move to GitHub Actions (#52).
-- Re-license as MIT (#50).
-
-
-# rprojroot 1.3.2.9000 (2018-03-29)
-
-- Rename `as.` and `is.` functions to `as_` and `is_`, deprecate old versions.
+- `find_root_file()` propagates `NA` values in path components. Using tidyverse recycling rules for path components of length different from one (#66).
+- `has_file()` and `has_file_pattern()` gain `fixed` argument (#75).
 - New `is_drake_project` criterion (#34).
 - Add `subdir` argument to `make_fix_file()` (#33, @BarkleyBG).
 - Update documentation for version control criteria (#35, @uribo).
+
+## Breaking changes
+
+- `has_file()` and `has_dir()` now throw an error if the `filepath` argument is an absolute path (#74).
+- `has_basename()` replaces `has_dirname()` to avoid confusion (#63).
+- `as_root_criterion()` and `is_root_criterion()` replace `as.` and `is.`, respectively.
+- `thisfile()` and related functions are soft-deprecated, now available in the whereami package (#43).
+
+## Bug fixes
+
+- The `is_dirname()` criterion no longer considers sibling directories (#44).
+
+## Internal
+
+- Use testthat 3e (#70).
+- The backports package is no longer imported (#68).
+- Re-license as MIT (#50).
+- Move checks to GitHub Actions (#52).
 - Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.
 
 
