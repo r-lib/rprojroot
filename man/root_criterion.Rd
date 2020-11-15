@@ -25,11 +25,11 @@ as_root_criterion(x)
 
 \method{|}{root_criterion}(x, y)
 
-has_file(filepath, contents = NULL, n = -1L)
+has_file(filepath, contents = NULL, n = -1L, fixed = FALSE)
 
 has_dir(filepath)
 
-has_file_pattern(pattern, contents = NULL, n = -1L)
+has_file_pattern(pattern, contents = NULL, n = -1L, fixed = FALSE)
 
 has_basename(basename, subdir = NULL)
 }
@@ -55,13 +55,14 @@ An object.}
 \item{filepath}{\verb{[character(1)]}\cr
 File path (can contain directories).}
 
-\item{contents}{\verb{[character(1)]}\cr
-If not \code{NULL}, a regular expression.
-File contents are checked for lines matching this regular expression.}
+\item{contents, fixed}{\verb{[character(1)]}\cr
+If \code{contents} is \code{NULL} (the default), file contents are not checked.
+Otherwise, \code{contents} is a regular expression
+(if \code{fixed} is \code{FALSE}) or a search string (if \code{fixed} is \code{TRUE}), and
+file contents are checked matching lines.}
 
 \item{n}{\verb{[integerish(1)]}\cr
-Number of lines to read to check for regular expression
-given in the \code{contents} argument.}
+Maximum number of lines to read to check file contents.}
 
 \item{pattern}{\verb{[character(1)]}\cr
 Regular expression to match the file name against.}

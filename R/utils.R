@@ -5,11 +5,11 @@ list_files <- function(path, filename) {
   files
 }
 
-match_contents <- function(f, contents, n) {
+match_contents <- function(f, contents, n, fixed) {
   if (is.null(contents)) {
     return(TRUE)
   }
 
   fc <- readLines(f, n)
-  any(grepl(contents, fc))
+  any(grepl(contents, fc, fixed = fixed))
 }
