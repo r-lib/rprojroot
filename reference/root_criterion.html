@@ -73,7 +73,7 @@ given directory is a project root." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -140,11 +140,11 @@ as_root_criterion(x)
 # S3 method for root_criterion
 |(x, y)
 
-has_file(filepath, contents = NULL, n = -1L)
+has_file(filepath, contents = NULL, n = -1L, fixed = FALSE)
 
 has_dir(filepath)
 
-has_file_pattern(pattern, contents = NULL, n = -1L)
+has_file_pattern(pattern, contents = NULL, n = -1L, fixed = FALSE)
 
 has_basename(basename, subdir = NULL)</pre>
 
@@ -185,16 +185,17 @@ An object.</p></td>
 File path (can contain directories).</p></td>
     </tr>
     <tr>
-      <th>contents</th>
+      <th>contents, fixed</th>
       <td><p><code>[character(1)]</code><br />
-If not <code>NULL</code>, a regular expression.
-File contents are checked for lines matching this regular expression.</p></td>
+If <code>contents</code> is <code>NULL</code> (the default), file contents are not checked.
+Otherwise, <code>contents</code> is a regular expression
+(if <code>fixed</code> is <code>FALSE</code>) or a search string (if <code>fixed</code> is <code>TRUE</code>), and
+file contents are checked matching lines.</p></td>
     </tr>
     <tr>
       <th>n</th>
       <td><p><code>[integerish(1)]</code><br />
-Number of lines to read to check for regular expression
-given in the <code>contents</code> argument.</p></td>
+Maximum number of lines to read to check file contents.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
@@ -256,14 +257,14 @@ with support for case-insensitive file systems.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>root_criterion</span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>path</span>, <span class='st'>"somefile"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"has somefile"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Root criterion: has somefile</div><div class='input'><span class='fu'>has_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Root criterion: contains a file `DESCRIPTION`</div><div class='input'><span class='va'>is_r_package</span>
-</div><div class='output co'>#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</div><div class='input'><span class='va'>is_r_package</span><span class='op'>$</span><span class='va'>find_file</span>
+</div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION"</div><div class='input'><span class='va'>is_r_package</span>
+</div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</div><div class='input'><span class='va'>is_r_package</span><span class='op'>$</span><span class='va'>find_file</span>
 </div><div class='output co'>#&gt; function (..., path = ".") 
 #&gt; {
 #&gt;     find_root_file(..., criterion = criterion, path = path)
 #&gt; }
-#&gt; &lt;bytecode: 0x56265d29aef8&gt;
-#&gt; &lt;environment: 0x56265d29c938&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+#&gt; &lt;bytecode: 0x55e200218fb8&gt;
+#&gt; &lt;environment: 0x55e200216c00&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>

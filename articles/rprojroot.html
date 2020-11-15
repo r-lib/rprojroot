@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -77,7 +77,7 @@
       <h1 data-toc-skip>Finding files in project subdirectories</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2020-11-13</h4>
+            <h4 class="date">2020-11-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
@@ -104,15 +104,15 @@
 <p>What is your project: An R package?</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_r_package</a></span></code></pre></div>
-<pre><code>## Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</code></pre>
+<pre><code>## Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</code></pre>
 <p>Or an RStudio project?</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_rstudio_project</a></span></code></pre></div>
-<pre><code>## Root criterion: contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line</code></pre>
+<pre><code>## Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</code></pre>
 <p>Or something else?</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rprojroot</span><span class="fu">::</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">".git/index"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `.git/index`</code></pre>
+<pre><code>## Root criterion: contains a file ".git/index"</code></pre>
 <p>For now, we assume it’s an R package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">root</span> <span class="op">&lt;-</span> <span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_r_package</a></span></code></pre></div>
@@ -124,14 +124,14 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.0"</code></pre>
+## [3] "Version: 2.0.1"</code></pre>
 <p>There is one exception: if the first component passed to <code>find_file()</code> is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">path</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.0"</code></pre>
+## [3] "Version: 2.0.1"</code></pre>
 <p>You can also construct an accessor to your root using the <code>root$make_fix_file()</code> function:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">root_file</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -143,7 +143,7 @@
 <span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Package: rprojroot"                            
 ## [2] "Title: Finding Files in Project Subdirectories"
-## [3] "Version: 2.0.0"</code></pre>
+## [3] "Version: 2.0.1"</code></pre>
 <p>If you know the absolute path of some directory below your project, but cannot be sure of your current working directory, pass that absolute path to <code>root$make_fix_file()</code>:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">root_file</span> <span class="op">&lt;-</span> <span class="va">root</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"C:\\Users\\User Name\\..."</span><span class="op">)</span></code></pre></div>
@@ -199,7 +199,7 @@
 <p>This second method requires finding the root of the package, which can be done with the <code><a href="../reference/root_criterion.html">has_file()</a></code> function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
+<pre><code>## Root criterion: contains a file "DESCRIPTION"</code></pre>
 <p>So, using <em>rprojroot</em> you can specify the path relative from root in the following manner:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Specify a path/to/file relative to the root</span>
@@ -244,42 +244,42 @@
 <p>The <code><a href="../reference/root_criterion.html">has_file()</a></code> function (and the more general <code><a href="../reference/root_criterion.html">root_criterion()</a></code>) both return an S3 object of class <code>root_criterion</code>:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
+<pre><code>## Root criterion: contains a file "DESCRIPTION"</code></pre>
 <p>In addition, character values are coerced to <code>has_file</code> criteria by default, this coercion is applied automatically by <code><a href="../reference/find_root.html">find_root()</a></code>. (This feature is used by the introductory example.)</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/root_criterion.html">as_root_criterion</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `DESCRIPTION`</code></pre>
+<pre><code>## Root criterion: contains a file "DESCRIPTION"</code></pre>
 <p>The return value of these functions can be stored and reused; in fact, the package provides 9 such criteria:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">criteria</span></code></pre></div>
 <pre><code>## $is_rstudio_project
-## Root criterion: contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line
+## Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line
 ## 
 ## $is_r_package
-## Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `
+## Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "
 ## 
 ## $is_remake_project
-## Root criterion: contains a file `remake.yml`
+## Root criterion: contains a file "remake.yml"
 ## 
 ## $is_projectile_project
-## Root criterion: contains a file `.projectile`
+## Root criterion: contains a file ".projectile"
 ## 
 ## $is_git_root
 ## Root criterion: one of
-## - contains a directory `.git`
-## - contains a file `.git` with contents matching `^gitdir: `
+## - contains a directory ".git"
+## - contains a file ".git" with contents matching "^gitdir: "
 ## 
 ## $is_svn_root
-## Root criterion: contains a directory `.svn`
+## Root criterion: contains a directory ".svn"
 ## 
 ## $is_vcs_root
 ## Root criterion: one of
-## - contains a directory `.git`
-## - contains a file `.git` with contents matching `^gitdir: `
-## - contains a directory `.svn`
+## - contains a directory ".git"
+## - contains a file ".git" with contents matching "^gitdir: "
+## - contains a directory ".svn"
 ## 
 ## $is_testthat
-## Root criterion: directory name is `testthat` (also look in subdirectories: `tests/testthat`, `testthat`)
+## Root criterion: directory name is "testthat" (also look in subdirectories: `tests/testthat`, `testthat`)
 ## 
 ## $from_wd
 ## Root criterion: from current working directory
@@ -290,17 +290,17 @@
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">has_license</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"LICENSE"</span><span class="op">)</span>
 <span class="va">has_license</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `LICENSE`</code></pre>
+<pre><code>## Root criterion: contains a file "LICENSE"</code></pre>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">is_projecttemplate_project</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"config/global.dcf"</span>, <span class="st">"^version: "</span><span class="op">)</span>
 <span class="va">is_projecttemplate_project</span></code></pre></div>
-<pre><code>## Root criterion: contains a file `config/global.dcf` with contents matching `^version: `</code></pre>
+<pre><code>## Root criterion: contains a file "config/global.dcf" with contents matching "^version: "</code></pre>
 <p>You can also combine criteria via the <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> operator:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">is_r_package</span> <span class="op">|</span> <span class="va">is_rstudio_project</span></code></pre></div>
 <pre><code>## Root criterion: one of
-## - contains a file `DESCRIPTION` with contents matching `^Package: `
-## - contains a file matching `[.]Rproj$` with contents matching `^Version: ` in the first line</code></pre>
+## - contains a file "DESCRIPTION" with contents matching "^Package: "
+## - contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</code></pre>
 </div>
 <div id="shortcuts" class="section level3">
 <h3 class="hasAnchor">
@@ -331,7 +331,7 @@
 ## {
 ##     find_root_file(..., criterion = criterion, path = path)
 ## }
-## &lt;environment: 0x55d5a315a988&gt;</code></pre>
+## &lt;environment: 0x55c4612d3af0&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -359,7 +359,7 @@
 ##     }
 ##     path("/home/runner/work/rprojroot/rprojroot", ...)
 ## }
-## &lt;environment: 0x55d5a22a83a8&gt;</code></pre>
+## &lt;environment: 0x55c4603cc878&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -428,7 +428,7 @@
 <p>The <code>is_testthat</code> criterion allows robust lookup of test files.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">is_testthat</span></code></pre></div>
-<pre><code>## Root criterion: directory name is `testthat` (also look in subdirectories: `tests/testthat`, `testthat`)</code></pre>
+<pre><code>## Root criterion: directory name is "testthat" (also look in subdirectories: `tests/testthat`, `testthat`)</code></pre>
 <p>The example code below lists all files in the <a href="https://github.com/r-lib/rprojroot/tree/master/tests/testthat/hierarchy">hierarchy</a> test directory. It uses two project root lookups in total, so that it also works when rendering the vignette (<em>sigh</em>):</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="va">is_testthat</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"hierarchy"</span>, path <span class="op">=</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
