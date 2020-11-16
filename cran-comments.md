@@ -1,4 +1,4 @@
-rprojroot 2.0.1
+rprojroot 2.0.2
 
 ## Cran Repository Policy
 
@@ -12,4 +12,4 @@ rprojroot 2.0.1
 
 ## Current CRAN check results
 
-- [x] Checked on 2020-11-12, no problems found.
+- [x] Checked on 2020-11-15, no problems found.
