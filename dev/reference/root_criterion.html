@@ -59,9 +59,15 @@ given directory is a project root." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -255,12 +261,11 @@ with support for case-insensitive file systems.</p>
 </div><div class='output co'>#&gt; Root criterion: has somefile</div><div class='input'><span class='fu'>has_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION"</div><div class='input'><span class='va'>is_r_package</span>
 </div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</div><div class='input'><span class='va'>is_r_package</span><span class='op'>$</span><span class='va'>find_file</span>
-</div><div class='output co'>#&gt; function (..., path = ".") 
-#&gt; {
+</div><div class='output co'>#&gt; function(..., path = ".") {
 #&gt;     find_root_file(..., criterion = criterion, path = path)
-#&gt; }
-#&gt; &lt;bytecode: 0x55bc0537aa80&gt;
-#&gt; &lt;environment: 0x55bc0537c648&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+#&gt;   }
+#&gt; &lt;bytecode: 0x56442e807390&gt;
+#&gt; &lt;environment: 0x56442f1cd2e8&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
@@ -275,11 +280,11 @@ with support for case-insensitive file systems.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://krlmlr.info'>Kirill Müller</a>.</p>
+  <p><p>Developed by <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -287,6 +292,8 @@ with support for case-insensitive file systems.</p>
 
   
 
+
+  
 
   </body>
 </html>

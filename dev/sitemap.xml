@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rprojroot.r-lib.org//index.html</loc>
+    <loc>https://rprojroot.r-lib.org/index.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/criteria.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/criteria.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/deprecated.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/deprecated.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/find_root.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/find_root.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/find_root_file.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/find_root_file.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/root_criterion.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/root_criterion.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/rprojroot-package.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/rprojroot-package.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//reference/thisfile.html</loc>
+    <loc>https://rprojroot.r-lib.org/reference/thisfile.html</loc>
   </url>
   <url>
-    <loc>https://rprojroot.r-lib.org//articles/rprojroot.html</loc>
+    <loc>https://rprojroot.r-lib.org/articles/rprojroot.html</loc>
   </url>
 </urlset>
