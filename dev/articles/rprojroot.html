@@ -73,7 +73,7 @@
       <h1 data-toc-skip>Finding files in project subdirectories</h1>
                         <h4 data-toc-skip class="author">Kirill Müller</h4>
             
-            <h4 data-toc-skip class="date">2021-04-20</h4>
+            <h4 data-toc-skip class="date">2021-05-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
@@ -96,7 +96,7 @@
 <p>This vignette starts with a very brief summary that helps you get started, followed by a longer description of the features.</p>
 <div id="tldr" class="section level2">
 <h2 class="hasAnchor">
-<a href="#tldr" class="anchor"></a>TL;DR</h2>
+<a href="#tldr" class="anchor" aria-hidden="true"></a>TL;DR</h2>
 <p>What is your project: An R package?</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_r_package</a></span></code></pre></div>
@@ -150,7 +150,7 @@
 </div>
 <div id="project-root" class="section level2">
 <h2 class="hasAnchor">
-<a href="#project-root" class="anchor"></a>Project root</h2>
+<a href="#project-root" class="anchor" aria-hidden="true"></a>Project root</h2>
 <p>We assume a self-contained project where all files and directories are located below a common <em>root</em> directory. Also, there should be a way to unambiguously identify this root directory. (Often, the root contains a regular file whose name matches a given pattern, and/or whose contents match another pattern.) In this case, the following method reliably finds our project root:</p>
 <ul>
 <li>Start the search in any subdirectory of our project</li>
@@ -159,7 +159,7 @@
 <p>The Git version control system (and probably many other tools) use a similar approach: A Git command can be executed from within any subdirectory of a repository.</p>
 <div id="a-simple-example" class="section level3">
 <h3 class="hasAnchor">
-<a href="#a-simple-example" class="anchor"></a>A simple example</h3>
+<a href="#a-simple-example" class="anchor" aria-hidden="true"></a>A simple example</h3>
 <p>The <code><a href="../reference/find_root.html">find_root()</a></code> function implements the core functionality. It returns the path to the first directory that matches the filtering criteria, or throws an error if there is no such directory. Filtering criteria are constructed in a generic fashion using the <code><a href="../reference/root_criterion.html">root_criterion()</a></code> function, the <code><a href="../reference/root_criterion.html">has_file()</a></code> function constructs a criterion that checks for the presence of a file with a specific name and specific contents.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rprojroot.r-lib.org/">rprojroot</a></span><span class="op">)</span>
@@ -173,11 +173,11 @@
 ## [17] "TODO.md"          "vignettes"</code></pre>
 <div id="relative-paths-to-a-stable-root" class="section level4">
 <h4 class="hasAnchor">
-<a href="#relative-paths-to-a-stable-root" class="anchor"></a>Relative paths to a stable root</h4>
+<a href="#relative-paths-to-a-stable-root" class="anchor" aria-hidden="true"></a>Relative paths to a stable root</h4>
 <p>Here we illustrate the power of <em>rprojroot</em> by demonstrating how to access the same file from two different working directories. Let your project be a package called <code>pkgname</code> and consider the desired file <code>rrmake.R</code> at <code>pkgname/R/rrmake.R</code>. First, we show how to access from the <code>vignettes</code> directory, and then from the <code>tests/testthat</code> directory.</p>
 <div id="example-a-from-vignettes" class="section level5">
 <h5 class="hasAnchor">
-<a href="#example-a-from-vignettes" class="anchor"></a>Example A: From <code>vignettes</code>
+<a href="#example-a-from-vignettes" class="anchor" aria-hidden="true"></a>Example A: From <code>vignettes</code>
 </h5>
 <p>When your working directory is <code>pkgname/vignettes</code>, you can access the <code>rrmake.R</code> file by:</p>
 <ol style="list-style-type: decimal">
@@ -203,7 +203,7 @@
 </div>
 <div id="example-b-from-teststestthat" class="section level5">
 <h5 class="hasAnchor">
-<a href="#example-b-from-teststestthat" class="anchor"></a>Example B: From <code>tests/testthat</code>
+<a href="#example-b-from-teststestthat" class="anchor" aria-hidden="true"></a>Example B: From <code>tests/testthat</code>
 </h5>
 <p>When your working directory is <code>pkgname/tests/testthat</code>, you can access the <code>rrmake.R</code> file by:</p>
 <ol style="list-style-type: decimal">
@@ -221,7 +221,7 @@
 </div>
 <div id="summary-of-examples-a-and-b" class="section level5">
 <h5 class="hasAnchor">
-<a href="#summary-of-examples-a-and-b" class="anchor"></a>Summary of Examples A and B</h5>
+<a href="#summary-of-examples-a-and-b" class="anchor" aria-hidden="true"></a>Summary of Examples A and B</h5>
 <p>Since Examples A and B used different working directories, <code>rel_path_from_vignettes</code> and <code>rel_path_from_testthat</code> were different. This is an issue when trying to re-use the same code. This issue is solved by using <em>rprojroot</em>: the function <code><a href="../reference/find_root_file.html">find_root_file()</a></code> finds a file relative from the root, where the root is determined from checking the criterion with <code><a href="../reference/root_criterion.html">has_file()</a></code>.</p>
 <p>Note that the follow code produces identical results when building the vignette <em>and</em> when sourcing the chunk in RStudio, provided that the current working directory is the project root or anywhere below. So, we can check to make sure that <em>rprojroot</em> has successfully determined the correct path:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
@@ -236,7 +236,7 @@
 </div>
 <div id="criteria" class="section level3">
 <h3 class="hasAnchor">
-<a href="#criteria" class="anchor"></a>Criteria</h3>
+<a href="#criteria" class="anchor" aria-hidden="true"></a>Criteria</h3>
 <p>The <code><a href="../reference/root_criterion.html">has_file()</a></code> function (and the more general <code><a href="../reference/root_criterion.html">root_criterion()</a></code>) both return an S3 object of class <code>root_criterion</code>:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></code></pre></div>
@@ -291,7 +291,7 @@
 <code class="sourceCode R"><span class="va">is_projecttemplate_project</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"config/global.dcf"</span>, <span class="st">"^version: "</span><span class="op">)</span>
 <span class="va">is_projecttemplate_project</span></code></pre></div>
 <pre><code>## Root criterion: contains a file "config/global.dcf" with contents matching "^version: "</code></pre>
-<p>You can also combine criteria via the <code><a href="https://rdrr.io/r/base/Logic.html" class="external-link">|</a></code> operator:</p>
+<p>You can also combine criteria via the <code>|</code> operator:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">is_r_package</span> <span class="op">|</span> <span class="va">is_rstudio_project</span></code></pre></div>
 <pre><code>## Root criterion: one of
@@ -300,8 +300,8 @@
 </div>
 <div id="shortcuts" class="section level3">
 <h3 class="hasAnchor">
-<a href="#shortcuts" class="anchor"></a>Shortcuts</h3>
-<p>To avoid specifying the search criteria for the project root every time, shortcut functions can be created. The <code><a href="../reference/find_root_file.html">find_package_root_file()</a></code> is a shortcut for <code><a href="../reference/find_root_file.html">find_root_file(..., criterion = is_r_package)</a></code>:</p>
+<a href="#shortcuts" class="anchor" aria-hidden="true"></a>Shortcuts</h3>
+<p>To avoid specifying the search criteria for the project root every time, shortcut functions can be created. The <code><a href="../reference/find_root_file.html">find_package_root_file()</a></code> is a shortcut for <code>find_root_file(..., criterion = is_r_package)</code>:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Print first lines of the source for this document</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root_file.html">find_package_root_file</a></span><span class="op">(</span><span class="st">"vignettes"</span>, <span class="st">"rprojroot.Rmd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -326,7 +326,7 @@
 <pre><code>## function(..., path = ".") {
 ##     find_root_file(..., criterion = criterion, path = path)
 ##   }
-## &lt;environment: 0x5571a18fbce8&gt;</code></pre>
+## &lt;environment: 0x5556abc78ee8&gt;</code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -334,7 +334,7 @@
 </div>
 <div id="fixed-root" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixed-root" class="anchor"></a>Fixed root</h3>
+<a href="#fixed-root" class="anchor" aria-hidden="true"></a>Fixed root</h3>
 <p>We can also create a function that computes a path relative to the root <em>at creation time</em>.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Define a function that computes file paths below the current root</span>
@@ -353,7 +353,7 @@
 ## 
 ##     path(.(root), ...)
 ##   }
-## &lt;environment: 0x5571a076fb60&gt;</code></pre>
+## &lt;environment: 0x5556ac797710&gt;</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -414,7 +414,7 @@
 </div>
 <div id="testthat-files" class="section level2">
 <h2 class="hasAnchor">
-<a href="#testthat-files" class="anchor"></a><code>testthat</code> files</h2>
+<a href="#testthat-files" class="anchor" aria-hidden="true"></a><code>testthat</code> files</h2>
 <p>Tests run with <a href="https://cran.r-project.org/package=testthat" class="external-link"><code>testthat</code></a> commonly use files that live below the <code>tests/testthat</code> directory. Ideally, this should work in the following situation:</p>
 <ul>
 <li>During package development (working directory: package root)</li>
@@ -432,7 +432,7 @@
 ## [5] "hierarchy.Rproj"</code></pre>
 <div id="another-example-custom-testing-utilities" class="section level3">
 <h3 class="hasAnchor">
-<a href="#another-example-custom-testing-utilities" class="anchor"></a>Another example: custom testing utilities</h3>
+<a href="#another-example-custom-testing-utilities" class="anchor" aria-hidden="true"></a>Another example: custom testing utilities</h3>
 <p>The hassle of using saved data files for testing is made even easier by using <em>rprojroot</em> in a utility function. For example, suppose you have a testing file at <code>tests/testthat/test_my_fun.R</code> which tests the <code>my_fun()</code> function:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_fun_run</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">my_fun</span>, <span class="va">my_args</span><span class="op">)</span>
@@ -480,12 +480,12 @@
 </div>
 <div id="summary" class="section level2">
 <h2 class="hasAnchor">
-<a href="#summary" class="anchor"></a>Summary</h2>
+<a href="#summary" class="anchor" aria-hidden="true"></a>Summary</h2>
 <p>The <em>rprojroot</em> package allows easy access to files below a project root if the project root can be identified easily, e.g. if it is the only directory in the whole hierarchy that contains a specific file. This is a robust solution for finding files in largish projects with a subdirectory hierarchy if the current working directory cannot be assumed fixed. (However, at least initially, the current working directory must be somewhere below the project root.)</p>
 </div>
 <div id="acknowledgement" class="section level2">
 <h2 class="hasAnchor">
-<a href="#acknowledgement" class="anchor"></a>Acknowledgement</h2>
+<a href="#acknowledgement" class="anchor" aria-hidden="true"></a>Acknowledgement</h2>
 <p>This package was inspired by the gist <a href="https://gist.github.com/jennybc/362f52446fe1ebc4c49f" class="external-link">“Stop the working directory insanity”</a> by Jennifer Bryan, and by the way Git knows where its files are.</p>
 </div>
   </div>

@@ -60,8 +60,6 @@ base::file.path()." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -132,7 +130,7 @@ appends an arbitrary number of path components to the root using
 <code><a href='https://rdrr.io/r/base/file.path.html'>base::file.path()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>find_root_file</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>criterion</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>find_root_file</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>criterion</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span>
 
 <span class='fu'>find_rstudio_root_file</span><span class='op'>(</span><span class='va'>...</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span>
 
@@ -140,7 +138,7 @@ appends an arbitrary number of path components to the root using
 
 <span class='fu'>find_remake_root_file</span><span class='op'>(</span><span class='va'>...</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span>
 
-<span class='fu'>find_testthat_root_file</span><span class='op'>(</span><span class='va'>...</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span></pre>
+<span class='fu'>find_testthat_root_file</span><span class='op'>(</span><span class='va'>...</span>, path <span class='op'>=</span> <span class='st'>"."</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,13 +180,13 @@ and <code>...</code> is forwarded to <code><a href='https://rdrr.io/r/base/file.
     <div class='dont-index'><p><code><a href='find_root.html'>find_root()</a></code> <code><a href='https://rdrr.io/r/utils/glob2rx.html'>utils::glob2rx()</a></code> <code><a href='https://rdrr.io/r/base/file.path.html'>base::file.path()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>find_package_root_file</span><span class='op'>(</span><span class='st'>"tests"</span>, <span class='st'>"testthat.R"</span><span class='op'>)</span>
-<span class='fu'><a href='root_criterion.html'>has_file</a></span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span>, <span class='st'>"^Package: "</span><span class='op'>)</span><span class='op'>$</span><span class='va'>find_file</span>
-<span class='fu'><a href='root_criterion.html'>has_file</a></span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span>, <span class='st'>"^Package: "</span><span class='op'>)</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>find_package_root_file</span><span class='op'>(</span><span class='st'>"tests"</span>, <span class='st'>"testthat.R"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='root_criterion.html'>has_file</a></span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span>, <span class='st'>"^Package: "</span><span class='op'>)</span><span class='op'>$</span><span class='va'>find_file</span></span>
+<span class='r-in'><span class='fu'><a href='root_criterion.html'>has_file</a></span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span>, <span class='st'>"^Package: "</span><span class='op'>)</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

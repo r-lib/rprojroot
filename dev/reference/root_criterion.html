@@ -59,8 +59,6 @@ given directory is a project root." />
 
 
 
-<!-- dependencies from examples -->
-
 
   
 
@@ -130,7 +128,7 @@ given directory is a project root." />
 given directory is a project root.</p>
     </div>
 
-    <pre class="usage">root_criterion(testfun, desc, subdir = NULL)
+    <div class="ref-usage sourceCode"><pre><code>root_criterion(testfun, desc, subdir = NULL)
 
 is_root_criterion(x)
 
@@ -151,7 +149,7 @@ has_dir(filepath)
 
 has_file_pattern(pattern, contents = NULL, n = -1L, fixed = FALSE)
 
-has_basename(basename, subdir = NULL)</pre>
+has_basename(basename, subdir = NULL)</code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -245,7 +243,7 @@ by specifying a function with a <code>path</code> argument, and a description.</
 <p>The <code>as_root_criterion()</code> function accepts objects of class
 <code>root_criterion</code>, and character values; the latter will be
 converted to criteria using <code>has_file</code>.</p>
-<p>Root criteria can be combined with the <code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code> operator. The result is a
+<p>Root criteria can be combined with the <code>|</code> operator. The result is a
 composite root criterion that requires either of the original criteria to
 match.</p>
 <p>The <code>has_file()</code> function constructs a criterion that checks for the
@@ -260,18 +258,22 @@ existence of a file that matches a pattern, with specific contents.</p>
 with support for case-insensitive file systems.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>root_criterion</span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>path</span>, <span class='st'>"somefile"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"has somefile"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Root criterion: has somefile</div><div class='input'><span class='fu'>has_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION"</div><div class='input'><span class='va'>is_r_package</span>
-</div><div class='output co'>#&gt; Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</div><div class='input'><span class='va'>is_r_package</span><span class='op'>$</span><span class='va'>find_file</span>
-</div><div class='output co'>#&gt; function(..., path = ".") {
-#&gt;     find_root_file(..., criterion = criterion, path = path)
-#&gt;   }
-#&gt; &lt;bytecode: 0x55b4737ba170&gt;
-#&gt; &lt;environment: 0x55b4737b8120&gt;</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>root_criterion</span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>path</span>, <span class='st'>"somefile"</span><span class='op'>)</span><span class='op'>)</span>, <span class='st'>"has somefile"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Root criterion: has somefile</span>
+<span class='r-in'><span class='fu'>has_file</span><span class='op'>(</span><span class='st'>"DESCRIPTION"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Root criterion: contains a file "DESCRIPTION"</span>
+<span class='r-in'><span class='va'>is_r_package</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span>
+<span class='r-in'><span class='va'>is_r_package</span><span class='op'>$</span><span class='va'>find_file</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> function(..., path = ".") {</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     find_root_file(..., criterion = criterion, path = path)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   }</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;bytecode: 0x55d08bfee640&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;environment: 0x55d08bfe97d0&gt;</span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>is_r_package</span><span class='op'>$</span><span class='fu'>make_fix_file</span><span class='op'>(</span><span class='st'>"."</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
