@@ -319,6 +319,9 @@ is_remake_project <- has_file("remake.yml")
 is_drake_project <- has_dir(".drake")
 
 #' @export
+is_pkgdown_project <- has_file("_pkgdown.yml") | has_file("_pkgdown.yaml") | has_file("pkgdown/_pkgdown.yml") | has_file("inst/_pkgdown.yml")
+
+#' @export
 is_projectile_project <- has_file(".projectile")
 
 #' @export
@@ -348,6 +351,7 @@ criteria <- structure(
     is_rstudio_project = is_rstudio_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
+    is_pkgdown_project = is_pkgdown_project,
     is_projectile_project = is_projectile_project,
     is_git_root = is_git_root,
     is_svn_root = is_svn_root,
@@ -395,6 +399,14 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_drake_project"
+
+#' @details
+#' `is_pkgdown_project` looks for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_pkgdown_project"
 
 #' @details
 #' `is_projectile_project` looks for a `.projectile` file.
