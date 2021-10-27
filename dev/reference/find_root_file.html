@@ -49,7 +49,7 @@ base::file.path()."><meta name="robots" content="noindex"><!-- mathjax --><scrip
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>File paths relative to the root of a directory hierarchy</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/master/R/file.R" class="external-link"><code>R/file.R</code></a>, <a href="https://github.com/r-lib/rprojroot/blob/master/R/shortcut.R" class="external-link"><code>R/shortcut.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/HEAD/R/file.R" class="external-link"><code>R/file.R</code></a>, <a href="https://github.com/r-lib/rprojroot/blob/HEAD/R/shortcut.R" class="external-link"><code>R/shortcut.R</code></a></small>
     <div class="hidden name"><code>find_root_file.Rd</code></div>
     </div>
 
@@ -72,16 +72,17 @@ appends an arbitrary number of path components to the root using
     <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>...</dt><dd><p><code>[character]</code><br>
+    <dl><dt>...</dt>
+<dd><p><code>[character]</code><br>
 Further path components passed to <code><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path()</a></code>.
 All arguments must be the same length or length one.</p></dd>
-</dl><dl><dt>criterion</dt><dd><p><code>[root_criterion]</code><br>
+<dt>criterion</dt>
+<dd><p><code>[root_criterion]</code><br>
 A criterion, one of the predefined <a href="criteria.html">criteria</a>
 or created by <code><a href="root_criterion.html">root_criterion()</a></code>.
 Will be coerced using <code><a href="root_criterion.html">as_root_criterion()</a></code>.</p></dd>
-</dl><dl><dt>path</dt><dd><p><code>[character(1)]</code><br>
+<dt>path</dt>
+<dd><p><code>[character(1)]</code><br>
 The start directory.</p></dd>
 </dl></div>
     <div id="value">
