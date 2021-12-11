@@ -301,7 +301,7 @@ R()
 We can also create a function
 that computes a path relative to the root *at creation time*.
 
-```{r}
+```{r eval = (Sys.getenv("IN_PKGDOWN") != "")}
 # Define a function that computes file paths below the current root
 F <- is_r_package$make_fix_file()
 F
@@ -317,7 +317,7 @@ in practice.)
 
 This function can be used even if we later change the working directory to somewhere outside the project:
 
-```{r}
+```{r eval = (Sys.getenv("IN_PKGDOWN") != "")}
 # Print the size of the namespace file, working directory outside the project
 withr::with_dir(
   "../..",
