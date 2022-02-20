@@ -129,8 +129,8 @@ with support for case-insensitive file systems.
 root_criterion(function(path) file.exists(file.path(path, "somefile")), "has somefile")
 has_file("DESCRIPTION")
 is_r_package
-is_r_package$find_file
 \dontrun{
+is_r_package$find_file
 is_r_package$make_fix_file(".")
 }
 }

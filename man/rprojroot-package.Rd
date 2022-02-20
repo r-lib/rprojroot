@@ -6,9 +6,7 @@
 \alias{rprojroot-package}
 \title{rprojroot: Finding Files in Project Subdirectories}
 \description{
-Robust, reliable and flexible paths to files below
-    a project root. The 'root' of a project is defined as a directory that
-    matches a certain criterion, e.g., it contains a certain regular file.
+Robust, reliable and flexible paths to files below a project root. The 'root' of a project is defined as a directory that matches a certain criterion, e.g., it contains a certain regular file.
 }
 \details{
 See the "Value" section in \code{\link[=root_criterion]{root_criterion()}} for documentation
