@@ -155,9 +155,35 @@ get_root_desc <- function(criterion, path) {
   )
 }
 
-
 format_lines <- function(n) {
   if (n == 1) "line" else paste0(n, " lines")
+}
+
+#' @rdname find_root
+#' @description `has_root()` returns `TRUE` or `FALSE` depending on whether
+#'   `path` or any of its parents fulfills the specified root `criterion`.
+#' @export
+has_root <- function(criterion, path = ".") {
+  criterion <- as_root_criterion(criterion)
+
+  start_path <- get_start_path(path, criterion$subdir)
+  path <- start_path
+
+  for (i in seq_len(.MAX_DEPTH)) {
+    for (f in criterion$testfun) {
+      if (f(path)) {
+        return(TRUE)
+      }
+    }
+
+    if (is_root(path)) {
+      return(FALSE)
+    }
+
+    path <- dirname(path)
+  }
+
+  FALSE
 }
 
 #' @details

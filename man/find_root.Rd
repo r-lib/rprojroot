@@ -3,11 +3,14 @@
 \name{find_root}
 \alias{find_root}
 \alias{get_root_desc}
+\alias{has_root}
 \title{Find the root of a directory hierarchy}
 \usage{
 find_root(criterion, path = ".")
 
 get_root_desc(criterion, path)
+
+has_root(criterion, path = ".")
 }
 \arguments{
 \item{criterion}{\verb{[root_criterion]}\cr
@@ -31,6 +34,9 @@ by default), and proceeds up the directory hierarchy.
 \code{get_root_desc()} returns the description of the criterion
 for a root path. This is especially useful for composite root criteria
 created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
+
+\code{has_root()} returns \code{TRUE} or \code{FALSE} depending on whether
+\code{path} or any of its parents fulfills the specified root \code{criterion}.
 }
 \details{
 Starting from the working directory, the \code{find_root()} function searches
