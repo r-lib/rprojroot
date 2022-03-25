@@ -73,7 +73,7 @@
       <h1 data-toc-skip>Finding files in project subdirectories</h1>
                         <h4 data-toc-skip class="author">Kirill Müller</h4>
             
-            <h4 data-toc-skip class="date">2022-03-04</h4>
+            <h4 data-toc-skip class="date">2022-03-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/HEAD/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
@@ -243,7 +243,7 @@
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/root_criterion.html">as_root_criterion</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></code></pre>
-<p>The return value of these functions can be stored and reused; in fact, the package provides 9 such criteria:</p>
+<p>The return value of these functions can be stored and reused; in fact, the package provides 10 such criteria:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">criteria</span></code></pre></div>
 <pre><code><span class="co">## $is_rstudio_project</span>
@@ -254,6 +254,13 @@
 <span class="co">## </span>
 <span class="co">## $is_remake_project</span>
 <span class="co">## Root criterion: contains a file "remake.yml"</span>
+<span class="co">## </span>
+<span class="co">## $is_pkgdown_project</span>
+<span class="co">## Root criterion: one of</span>
+<span class="co">## - contains a file "_pkgdown.yml"</span>
+<span class="co">## - contains a file "_pkgdown.yaml"</span>
+<span class="co">## - contains a file "pkgdown/_pkgdown.yml"</span>
+<span class="co">## - contains a file "inst/_pkgdown.yml"</span>
 <span class="co">## </span>
 <span class="co">## $is_projectile_project</span>
 <span class="co">## Root criterion: contains a file ".projectile"</span>
@@ -324,7 +331,7 @@
 <pre><code><span class="co">## function(..., path = ".") {</span>
 <span class="co">##     find_root_file(..., criterion = criterion, path = path)</span>
 <span class="co">##   }</span>
-<span class="co">## &lt;environment: 0x56261b0a5338&gt;</span></code></pre>
+<span class="co">## &lt;environment: 0x559d83015678&gt;</span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span>
 <span class="fu">R</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -351,7 +358,7 @@
 <span class="co">## </span>
 <span class="co">##     path(.(root), ...)</span>
 <span class="co">##   }</span>
-<span class="co">## &lt;environment: 0x56261bd8f450&gt;</span></code></pre>
+<span class="co">## &lt;environment: 0x559d83d016b0&gt;</span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Show contents of the NAMESPACE file in our project</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -382,22 +389,23 @@
 <span class="co">## [25] "export(is.root_criterion)"                   </span>
 <span class="co">## [26] "export(is_drake_project)"                    </span>
 <span class="co">## [27] "export(is_git_root)"                         </span>
-<span class="co">## [28] "export(is_projectile_project)"               </span>
-<span class="co">## [29] "export(is_r_package)"                        </span>
-<span class="co">## [30] "export(is_remake_project)"                   </span>
-<span class="co">## [31] "export(is_root_criterion)"                   </span>
-<span class="co">## [32] "export(is_rstudio_project)"                  </span>
-<span class="co">## [33] "export(is_svn_root)"                         </span>
-<span class="co">## [34] "export(is_testthat)"                         </span>
-<span class="co">## [35] "export(is_vcs_root)"                         </span>
-<span class="co">## [36] "export(root_criterion)"                      </span>
-<span class="co">## [37] "export(thisfile)"                            </span>
-<span class="co">## [38] "export(thisfile_knit)"                       </span>
-<span class="co">## [39] "export(thisfile_r)"                          </span>
-<span class="co">## [40] "export(thisfile_rscript)"                    </span>
-<span class="co">## [41] "export(thisfile_source)"                     </span>
-<span class="co">## [42] "importFrom(utils,str)"                       </span>
-<span class="co">## [43] "importFrom(utils,tail)"</span></code></pre>
+<span class="co">## [28] "export(is_pkgdown_project)"                  </span>
+<span class="co">## [29] "export(is_projectile_project)"               </span>
+<span class="co">## [30] "export(is_r_package)"                        </span>
+<span class="co">## [31] "export(is_remake_project)"                   </span>
+<span class="co">## [32] "export(is_root_criterion)"                   </span>
+<span class="co">## [33] "export(is_rstudio_project)"                  </span>
+<span class="co">## [34] "export(is_svn_root)"                         </span>
+<span class="co">## [35] "export(is_testthat)"                         </span>
+<span class="co">## [36] "export(is_vcs_root)"                         </span>
+<span class="co">## [37] "export(root_criterion)"                      </span>
+<span class="co">## [38] "export(thisfile)"                            </span>
+<span class="co">## [39] "export(thisfile_knit)"                       </span>
+<span class="co">## [40] "export(thisfile_r)"                          </span>
+<span class="co">## [41] "export(thisfile_rscript)"                    </span>
+<span class="co">## [42] "export(thisfile_source)"                     </span>
+<span class="co">## [43] "importFrom(utils,str)"                       </span>
+<span class="co">## [44] "importFrom(utils,tail)"</span></code></pre>
 <p>This is a more robust alternative to <code>$find_file()</code>, because it <em>fixes</em> the project directory when <code>$make_fix_file()</code> is called, instead of searching for it every time. (For that reason it is also slightly faster, but I doubt this matters in practice.)</p>
 <p>This function can be used even if we later change the working directory to somewhere outside the project:</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
@@ -406,7 +414,7 @@
   <span class="st">"../.."</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.size</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] 1070</span></code></pre>
+<pre><code><span class="co">## [1] 1097</span></code></pre>
 <p>The <code>make_fix_file()</code> member function also accepts an optional <code>path</code> argument, in case you know your project’s root but the current working directory is somewhere outside. The path to the current script or <code>knitr</code> document can be obtained using the <code><a href="../reference/thisfile.html">thisfile()</a></code> function, but it’s much easier and much more robust to just run your scripts with the working directory somewhere below your project root.</p>
 </div>
 </div>
