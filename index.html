@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/rprojroot.html">Get started</a>
 </li>
@@ -57,8 +53,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-lib/rprojroot/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/r-lib/rprojroot/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -74,23 +70,23 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rprojroot" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rprojroot" class="anchor"></a><a href="https://rprojroot.r-lib.org/">rprojroot</a>
+<div class="section level1">
+<div class="page-header"><h1 id="rprojroot">
+<a href="https://rprojroot.r-lib.org/">rprojroot</a><a class="anchor" aria-label="anchor" href="#rprojroot"></a>
 </h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>This package helps accessing files relative to a <em>project root</em> to <a href="https://gist.github.com/jennybc/362f52446fe1ebc4c49f">stop the working directory insanity</a>. It is a low-level helper package for the <a href="https://here.r-lib.org/">here</a> package.</p>
+<p>This package helps accessing files relative to a <em>project root</em> to <a href="https://gist.github.com/jennybc/362f52446fe1ebc4c49f" class="external-link">stop the working directory insanity</a>. It is a low-level helper package for the <a href="https://here.r-lib.org/" class="external-link">here</a> package.</p>
 <pre class="chroma">
-<span class="kr"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="o">(</span><span class="nv"><a href="https://rprojroot.r-lib.org/">rprojroot</a></span><span class="o">)</span></pre>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<span class="kr"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="o">(</span><span class="nv"><a href="https://rprojroot.r-lib.org/">rprojroot</a></span><span class="o">)</span></pre>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>The rprojroot package works best when you have a “project”: all related files contained in a subdirectory that can be categorized using a strict criterion. Let’s create a package for demonstration.</p>
 <pre class="chroma">
-<span class="nv">dir</span> <span class="o">&lt;-</span> <span class="nf"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="o">(</span><span class="o">)</span>
-<span class="nv">pkg</span> <span class="o">&lt;-</span> <span class="nf">usethis</span><span class="nf">::</span><span class="nf"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="o">(</span><span class="nv">dir</span><span class="o">)</span>
+<span class="nv">dir</span> <span class="o">&lt;-</span> <span class="nf"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="o">(</span><span class="o">)</span>
+<span class="nv">pkg</span> <span class="o">&lt;-</span> <span class="nf">usethis</span><span class="nf">::</span><span class="nf"><a href="https://usethis.r-lib.org/reference/create_package.html" class="external-link">create_package</a></span><span class="o">(</span><span class="nv">dir</span><span class="o">)</span>
 <span class="c">#&gt; <span style="color: #00BB00;">✓</span><span> Creating </span><span style="color: #0000BB;">'/tmp/RtmpBLE08t/file294c3c8acca7/'</span></span>
 <span class="c">#&gt; <span style="color: #00BB00;">✓</span><span> Setting active project to </span><span style="color: #0000BB;">'/tmp/RtmpBLE08t/file294c3c8acca7'</span></span>
 <span class="c">#&gt; <span style="color: #00BB00;">✓</span><span> Creating </span><span style="color: #0000BB;">'R/'</span></span>
@@ -112,9 +108,9 @@
 <span class="c">#&gt; <span style="color: #0000BB;">RoxygenNote</span><span>: 7.1.1.9000</span></span>
 <span class="c">#&gt; <span style="color: #00BB00;">✓</span><span> Writing </span><span style="color: #0000BB;">'NAMESPACE'</span></span>
 <span class="c">#&gt; <span style="color: #00BB00;">✓</span><span> Setting active project to </span><span style="color: #0000BB;">'&lt;no active project&gt;'</span></span></pre>
-<p>R packages satisfy the <code>is_r_package</code> criterion. A criterion is an object that contains a <code>find_file()</code> function. With <code>pkg</code> as working directory, the function works like <a href="https://rdrr.io/r/base/file.path.html"><code>file.path()</code></a>, rooted at the working directory:</p>
+<p>R packages satisfy the <code>is_r_package</code> criterion. A criterion is an object that contains a <code>find_file()</code> function. With <code>pkg</code> as working directory, the function works like <a href="https://rdrr.io/r/base/file.path.html" class="external-link"><code>file.path()</code></a>, rooted at the working directory:</p>
 <pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="o">(</span><span class="nv">pkg</span><span class="o">)</span>
+<span class="nf"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="o">(</span><span class="nv">pkg</span><span class="o">)</span>
 <span class="nv">is_r_package</span>
 <span class="c">#&gt; Root criterion: contains a file `DESCRIPTION` with contents matching `^Package: `</span>
 <span class="nv">is_r_package</span><span class="o">$</span><span class="nf">find_file</span><span class="o">(</span><span class="o">)</span>
@@ -123,31 +119,31 @@
 <span class="c">#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
 <p>This works identically when starting from a subdirectory:</p>
 <pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="o">(</span><span class="nv">pkg</span>, <span class="s">"R"</span><span class="o">)</span><span class="o">)</span>
+<span class="nf"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="o">(</span><span class="nv">pkg</span>, <span class="s">"R"</span><span class="o">)</span><span class="o">)</span>
 <span class="nv">is_r_package</span><span class="o">$</span><span class="nf">find_file</span><span class="o">(</span><span class="o">)</span>
 <span class="c">#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7"</span>
 <span class="nv">is_r_package</span><span class="o">$</span><span class="nf">find_file</span><span class="o">(</span><span class="s">"tests"</span>, <span class="s">"testthat"</span><span class="o">)</span>
 <span class="c">#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
 <p>There is one exception: if the first component passed to <code>find_file()</code> is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:</p>
 <pre class="chroma">
-<span class="nf"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="o">(</span><span class="nv">pkg</span>, <span class="s">"R"</span><span class="o">)</span><span class="o">)</span>
+<span class="nf"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="o">(</span><span class="nf"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="o">(</span><span class="nv">pkg</span>, <span class="s">"R"</span><span class="o">)</span><span class="o">)</span>
 <span class="nv">path</span> <span class="o">&lt;-</span> <span class="nv">is_r_package</span><span class="o">$</span><span class="nf">find_file</span><span class="o">(</span><span class="o">)</span>
 <span class="nv">is_r_package</span><span class="o">$</span><span class="nf">find_file</span><span class="o">(</span><span class="nv">path</span>, <span class="s">"tests"</span>, <span class="s">"testthat"</span><span class="o">)</span>
 <span class="c">#&gt; [1] "/tmp/RtmpBLE08t/file294c3c8acca7/tests/testthat"</span></pre>
 <p>As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.</p>
 </div>
-<div id="installation-and-further-reading" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-and-further-reading" class="anchor"></a>Installation and further reading</h2>
+<div class="section level2">
+<h2 id="installation-and-further-reading">Installation and further reading<a class="anchor" aria-label="anchor" href="#installation-and-further-reading"></a>
+</h2>
 <p>Install the package from CRAN:</p>
 <pre class="chroma">
 <span class="nf">install.package</span><span class="o">(</span><span class="s">"rprojroot"</span><span class="o">)</span></pre>
 <p>See the <a href="https://rprojroot.r-lib.org/articles/rprojroot.html">documentation</a> for more detail.</p>
 <hr>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
 <p>Please note that the rprojroot project is released with a <a href="https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -155,56 +151,66 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rprojroot">https://​cloud.r-project.org/​package=rprojroot</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/r-lib/rprojroot/">https://​github.com/​r-lib/​rprojroot/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/r-lib/rprojroot/issues">https://​github.com/​r-lib/​rprojroot/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=rprojroot" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/r-lib/rprojroot/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/r-lib/rprojroot/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing rprojroot</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://github.com/r-lib/rprojroot/actions"><img src="https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg" alt="rcc"></a></li>
-<li><a href="https://cran.r-project.org/package=rprojroot"><img src="https://www.r-pkg.org/badges/version/rprojroot" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://codecov.io/gh/r-lib/rprojroot?branch=master"><img src="https://codecov.io/gh/r-lib/rprojroot/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li>
+<a href="https://krlmlr.info" class="external-link">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://github.com/r-lib/rprojroot/actions" class="external-link"><img src="https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg" alt="rcc"></a></li>
+<li><a href="https://cran.r-project.org/package=rprojroot" class="external-link"><img src="https://www.r-pkg.org/badges/version/rprojroot" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://codecov.io/gh/r-lib/rprojroot?branch=main" class="external-link"><img src="https://codecov.io/gh/r-lib/rprojroot/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://krlmlr.info">Kirill Müller</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer>
@@ -212,6 +218,8 @@
 
   
 
+
+  
 
   </body>
 </html>
