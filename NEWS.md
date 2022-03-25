@@ -1,8 +1,6 @@
-# rprojroot 2.0.2.9000 (2021-02-23)
+# rprojroot 2.0.2.9000 (2020-11-15)
 
-## Features
-
--   Add `is_pkgdown_project` root criterion looking for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file
+- Internal changes only.
 
 
 # rprojroot 2.0.2 (2020-11-15)
