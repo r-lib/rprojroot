@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# rprojroot 2.0.3.9000 (2022-03-25)
+
+- Same as previous version.
+
+
 # rprojroot 2.0.3 (2022-03-25)
 
 - Same as previous version.
