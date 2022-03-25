@@ -2,18 +2,8 @@
 
 # rprojroot 2.0.3 (2022-03-25)
 
-- Same as previous version.
-
-
-# rprojroot 2.0.2.9001 (2022-03-25)
-
 - Add `is_pkgdown_project` root criterion looking for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file (#79, @salim-b).
 - Avoid `LazyData` in `DESCRIPTION`.
-
-
-# rprojroot 2.0.2.9000 (2020-11-15)
-
-- Internal changes only.
 
 
 # rprojroot 2.0.2 (2020-11-15)
