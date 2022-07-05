@@ -69,12 +69,14 @@ print.root_criterion <- function(x, ...) {
 #' by default), and proceeds up the directory hierarchy.
 #'
 #' Starting from the working directory, the `find_root()` function searches
-#' for the root.
-#' If a root is found, the `...` arguments are used to construct a path;
-#' thus, if no extra arguments are given, the root is returned.
-#' If no root is found, an error is thrown.
+#' for the root. If no extra arguments are given, the root path is returned,
+#' and if no root is found, an error is thrown. No error occurs if
+#' `logical = TRUE`, and instead a boolean is returned (`FALSE` if no root is
+#' found).
 #'
 #' @inheritParams find_root_file
+#' @param logical Whether or not to return `TRUE`/`FALSE` instead of a path, depending on whether `path` or any of its parents fulfills the specified root
+#'   `criterion` or not.
 #' @return The normalized path of the root as specified by the search criterion.
 #'   Throws an error if no root is found
 #'
@@ -88,7 +90,7 @@ print.root_criterion <- function(x, ...) {
 #' @seealso [utils::glob2rx()] [file.path()]
 #'
 #' @export
-find_root <- function(criterion, path = ".") {
+find_root <- function(criterion, path = ".", logical = FALSE) {
   criterion <- as_root_criterion(criterion)
 
   start_path <- get_start_path(path, criterion$subdir)
@@ -97,11 +99,18 @@ find_root <- function(criterion, path = ".") {
   for (i in seq_len(.MAX_DEPTH)) {
     for (f in criterion$testfun) {
       if (f(path)) {
-        return(path)
+        if (logical) {
+          return(TRUE)
+        } else {
+          return(path)
+        }
       }
     }
 
     if (is_root(path)) {
+      if (logical) {
+        return(FALSE)
+      }
       stop("No root directory found in ", start_path, " or its parent directories. ",
         paste(format(criterion), collapse = "\n"),
         call. = FALSE
@@ -157,33 +166,6 @@ get_root_desc <- function(criterion, path) {
 
 format_lines <- function(n) {
   if (n == 1) "line" else paste0(n, " lines")
-}
-
-#' @rdname find_root
-#' @description `has_root()` returns `TRUE` or `FALSE` depending on whether
-#'   `path` or any of its parents fulfills the specified root `criterion`.
-#' @export
-has_root <- function(criterion, path = ".") {
-  criterion <- as_root_criterion(criterion)
-
-  start_path <- get_start_path(path, criterion$subdir)
-  path <- start_path
-
-  for (i in seq_len(.MAX_DEPTH)) {
-    for (f in criterion$testfun) {
-      if (f(path)) {
-        return(TRUE)
-      }
-    }
-
-    if (is_root(path)) {
-      return(FALSE)
-    }
-
-    path <- dirname(path)
-  }
-
-  FALSE
 }
 
 #' @details

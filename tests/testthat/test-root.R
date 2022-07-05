@@ -42,6 +42,11 @@ test_that("Combining criteria", {
     find_root(comb_crit, "hierarchy"),
     find_root(is_rstudio_project, "hierarchy/a")
   )
+
+  expect_equal(
+    find_root(comb_crit, "hierarchy", logical = TRUE),
+    find_root(is_rstudio_project, "hierarchy/a", logical = TRUE)
+  )
 })
 
 test_that("has_file", {

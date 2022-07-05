@@ -3,14 +3,11 @@
 \name{find_root}
 \alias{find_root}
 \alias{get_root_desc}
-\alias{has_root}
 \title{Find the root of a directory hierarchy}
 \usage{
-find_root(criterion, path = ".")
+find_root(criterion, path = ".", logical = FALSE)
 
 get_root_desc(criterion, path)
-
-has_root(criterion, path = ".")
 }
 \arguments{
 \item{criterion}{\verb{[root_criterion]}\cr
@@ -20,6 +17,9 @@ Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
 
 \item{path}{\verb{[character(1)]}\cr
 The start directory.}
+
+\item{logical}{Whether or not to return \code{TRUE}/\code{FALSE} instead of a path, depending on whether \code{path} or any of its parents fulfills the specified root
+\code{criterion} or not.}
 }
 \value{
 The normalized path of the root as specified by the search criterion.
@@ -34,16 +34,13 @@ by default), and proceeds up the directory hierarchy.
 \code{get_root_desc()} returns the description of the criterion
 for a root path. This is especially useful for composite root criteria
 created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
-
-\code{has_root()} returns \code{TRUE} or \code{FALSE} depending on whether
-\code{path} or any of its parents fulfills the specified root \code{criterion}.
 }
 \details{
 Starting from the working directory, the \code{find_root()} function searches
-for the root.
-If a root is found, the \code{...} arguments are used to construct a path;
-thus, if no extra arguments are given, the root is returned.
-If no root is found, an error is thrown.
+for the root. If no extra arguments are given, the root path is returned,
+and if no root is found, an error is thrown. No error occurs if
+\code{logical = TRUE}, and instead a boolean is returned (\code{FALSE} if no root is
+found).
 }
 \examples{
 \dontrun{
