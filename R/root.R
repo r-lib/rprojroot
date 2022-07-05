@@ -80,7 +80,8 @@ print.root_criterion <- function(x, ...) {
 #'
 #' @examples
 #' \dontrun{
-#' find_root(glob2rx("DESCRIPTION"), "^Package: ")
+#' find_root(has_file_pattern(pattern = glob2rx("DESCRIPTION"),
+#'                            contents = "^Package: "))
 #' }
 #'
 #' @seealso [utils::glob2rx()] [file.path()]
