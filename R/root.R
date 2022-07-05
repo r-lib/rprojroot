@@ -92,51 +92,52 @@ print.root_criterion <- function(x, ...) {
 #' @export
 find_root <- function(criterion, path = ".", logical = FALSE) {
   criterion <- as_root_criterion(criterion)
+  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
+  start_paths <- path
+  if (length(criterion$subdir)) {
+    start_paths <- file.path(path, criterion$subdir)
+  }
+  start_paths <- start_paths[dir.exists(start_paths)]
+  root <- NULL
 
-  start_path <- get_start_path(path, criterion$subdir)
-  path <- start_path
+  for (s in start_paths) {
+    path <- s
 
-  for (i in seq_len(.MAX_DEPTH)) {
-    for (f in criterion$testfun) {
-      if (f(path)) {
-        if (logical) {
-          return(TRUE)
-        } else {
-          return(path)
+    for (i in seq_len(.MAX_DEPTH)) {
+      for (f in criterion$testfun) {
+        if (f(path)) {
+          root <- path
+          break;
         }
       }
-    }
 
-    if (is_root(path)) {
-      if (logical) {
-        return(FALSE)
+      if (length(root)) {
+        break;
       }
-      stop("No root directory found in ", start_path, " or its parent directories. ",
-        paste(format(criterion), collapse = "\n"),
-        call. = FALSE
-      )
+
+      path <- dirname(path)
     }
 
-    path <- dirname(path)
+    if (length(root)) {
+      break;
+    }
+
+    stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
   }
 
-  stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
+  if (logical) {
+    return(length(root) > 0L)
+  } else if (length(root)) {
+    return(path)
+  }
+
+  stop("No root directory found in ", paste0(start_paths, collapse = ", "), " or ", ifelse(length(start_paths) > 1L, "their", "its"), " parent directories. ",
+       paste(format(criterion), collapse = "\n"),
+       call. = FALSE
+  )
 }
 
 .MAX_DEPTH <- 100L
-
-get_start_path <- function(path, subdirs) {
-  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
-
-  for (subdir in subdirs) {
-    subdir_path <- file.path(path, subdir)
-    if (dir.exists(subdir_path)) {
-      return(subdir_path)
-    }
-  }
-
-  path
-}
 
 # Borrowed from devtools
 is_root <- function(path) {
