@@ -342,7 +342,7 @@ is_svn_root <- has_dir(".svn")
 is_vcs_root <- is_git_root | is_svn_root
 
 #' @export
-is_testthat <- has_basename("testthat", c("tests/testthat", "testthat"))
+is_testthat <- has_basename("testthat", c("tests/testthat", "testthat", "tests_i386/testthat", "tests_x64/testthat"))
 
 #' @export
 from_wd <- root_criterion(function(path) TRUE, "from current working directory")
