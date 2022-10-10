@@ -89,41 +89,65 @@ has_basename(basename, subdir = NULL)</code></pre></div>
 A function with one parameter that returns <code>TRUE</code>
 if the directory specified by this parameter is the project root,
 and <code>FALSE</code> otherwise. Can also be a list of such functions.</p></dd>
+
+
 <dt>desc</dt>
 <dd><p><code>[character]</code><br>
 A textual description of the test criterion, of the same length
 as <code>testfun</code>.</p></dd>
+
+
 <dt>subdir</dt>
 <dd><p><code>[character]</code><br>
 Subdirectories to start the search in, if found</p></dd>
+
+
 <dt>x</dt>
 <dd><p><code>[object]</code><br>
 An object.</p></dd>
+
+
 <dt>y</dt>
 <dd><p><code>[object]</code><br>
 An object.</p></dd>
+
+
 <dt>filepath</dt>
 <dd><p><code>[character(1)]</code><br>
 File path (can contain directories).</p></dd>
+
+
 <dt>contents, fixed</dt>
 <dd><p><code>[character(1)]</code><br>
 If <code>contents</code> is <code>NULL</code> (the default), file contents are not checked.
 Otherwise, <code>contents</code> is a regular expression
 (if <code>fixed</code> is <code>FALSE</code>) or a search string (if <code>fixed</code> is <code>TRUE</code>), and
 file contents are checked matching lines.</p></dd>
+
+
 <dt>n</dt>
 <dd><p><code>[integerish(1)]</code><br>
 Maximum number of lines to read to check file contents.</p></dd>
+
+
 <dt>pattern</dt>
 <dd><p><code>[character(1)]</code><br>
 Regular expression to match the file name against.</p></dd>
+
+
 <dt>basename</dt>
 <dd><p><code>[character(1)]</code><br>
 The required name of the root directory.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An S3 object of class <code>root_criterion</code> wit the following members:</p><dl><dt><code>testfun</code></dt>
+    
+
+<p>An S3 object of class <code>root_criterion</code> wit the following members:</p>
+
+
+<dl><dt><code>testfun</code></dt>
 <dd><p>The <code>testfun</code> argument</p></dd>
 
 <dt><code>desc</code></dt>
@@ -176,16 +200,16 @@ with support for case-insensitive file systems.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">root_criterion</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"somefile"</span><span class="op">)</span><span class="op">)</span>, <span class="st">"has somefile"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">root_criterion</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"somefile"</span><span class="op">)</span><span class="op">)</span>, <span class="st">"has somefile"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: has somefile</span>
-<span class="r-in"><span class="fu">has_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">has_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "DESCRIPTION"</span>
-<span class="r-in"><span class="va">is_r_package</span></span>
+<span class="r-in"><span><span class="va">is_r_package</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">is_r_package</span><span class="op">$</span><span class="va">find_file</span></span>
-<span class="r-in"><span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">is_r_package</span><span class="op">$</span><span class="va">find_file</span></span></span>
+<span class="r-in"><span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -200,7 +224,7 @@ with support for case-insensitive file systems.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

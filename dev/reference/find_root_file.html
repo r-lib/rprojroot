@@ -60,15 +60,15 @@ appends an arbitrary number of path components to the root using
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">find_root_file</span><span class="op">(</span><span class="va">...</span>, <span class="va">criterion</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-
-<span class="fu">find_rstudio_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-
-<span class="fu">find_package_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-
-<span class="fu">find_remake_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-
-<span class="fu">find_testthat_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">find_root_file</span><span class="op">(</span><span class="va">...</span>, <span class="va">criterion</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">find_rstudio_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">find_package_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">find_remake_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">find_testthat_root_file</span><span class="op">(</span><span class="va">...</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -77,18 +77,25 @@ appends an arbitrary number of path components to the root using
 <dd><p><code>[character]</code><br>
 Further path components passed to <code><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path()</a></code>.
 All arguments must be the same length or length one.</p></dd>
+
+
 <dt>criterion</dt>
 <dd><p><code>[root_criterion]</code><br>
 A criterion, one of the predefined <a href="criteria.html">criteria</a>
 or created by <code><a href="root_criterion.html">root_criterion()</a></code>.
 Will be coerced using <code><a href="root_criterion.html">as_root_criterion()</a></code>.</p></dd>
+
+
 <dt>path</dt>
 <dd><p><code>[character(1)]</code><br>
 The start directory.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The normalized path of the root as specified by the search criteria,
+    
+
+<p>The normalized path of the root as specified by the search criteria,
 with the additional path components appended.
 Throws an error if no root is found.</p>
     </div>
@@ -107,12 +114,12 @@ and <code>...</code> is forwarded to <code><a href="https://rdrr.io/r/base/file.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">find_package_root_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat.R"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span>, <span class="st">"^Package: "</span><span class="op">)</span><span class="op">$</span><span class="va">find_file</span></span>
-<span class="r-in"><span class="fu"><a href="root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span>, <span class="st">"^Package: "</span><span class="op">)</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">find_package_root_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat.R"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span>, <span class="st">"^Package: "</span><span class="op">)</span><span class="op">$</span><span class="va">find_file</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span>, <span class="st">"^Package: "</span><span class="op">)</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -127,7 +134,7 @@ and <code>...</code> is forwarded to <code><a href="https://rdrr.io/r/base/file.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>
