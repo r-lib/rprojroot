@@ -52,7 +52,8 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="2.0.3.9000" id="rprojroot-2039000-2022-03-25">rprojroot 2.0.3.9000 (2022-03-25)<a class="anchor" aria-label="anchor" href="#rprojroot-2039000-2022-03-25"></a></h2>
-<ul><li>Same as previous version.</li></ul></div>
+<ul><li>Same as previous version.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="2.0.3" id="rprojroot-203-2022-03-25">rprojroot 2.0.3 (2022-03-25)<small>2022-04-02</small><a class="anchor" aria-label="anchor" href="#rprojroot-203-2022-03-25"></a></h2>
 <ul><li>Add <code>is_pkgdown_project</code> root criterion looking for a <code>_pkgdown.yml</code>, <code>_pkgdown.yaml</code>, <code>pkgdown/_pkgdown.yml</code> and/or <code>inst/_pkgdown.yml</code> file (<a href="https://github.com/r-lib/rprojroot/issues/79" class="external-link">#79</a>, <a href="https://github.com/salim-b" class="external-link">@salim-b</a>).</li>
@@ -84,7 +85,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-2-0-2">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-2-0-2"></a></h3>
-<ul><li>The <code>is_dirname()</code> criterion no longer considers sibling directories (<a href="https://github.com/r-lib/rprojroot/issues/44" class="external-link">#44</a>).</li></ul></div>
+<ul><li>The <code>is_dirname()</code> criterion no longer considers sibling directories (<a href="https://github.com/r-lib/rprojroot/issues/44" class="external-link">#44</a>).</li>
+</ul></div>
 <div class="section level3">
 <h3 id="internal-2-0-2">Internal<a class="anchor" aria-label="anchor" href="#internal-2-0-2"></a></h3>
 <ul><li>Use testthat 3e (<a href="https://github.com/r-lib/rprojroot/issues/70" class="external-link">#70</a>).</li>
@@ -96,7 +98,8 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.3-2" id="rprojroot-13-2-2017-12-22">rprojroot 1.3-2 (2017-12-22)<small>2018-01-03</small><a class="anchor" aria-label="anchor" href="#rprojroot-13-2-2017-12-22"></a></h2>
-<ul><li>Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.</li></ul></div>
+<ul><li>Availability of suggested packages knitr and rmarkdown, and pandoc, is now checked before running the corresponding tests.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.3-1" id="rprojroot-13-1-2017-12-18">rprojroot 1.3-1 (2017-12-18)<small>2017-12-18</small><a class="anchor" aria-label="anchor" href="#rprojroot-13-1-2017-12-18"></a></h2>
 <ul><li>Adapt to testthat 2.0.0.</li>
@@ -106,61 +109,79 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.2" id="rprojroot-12-2017-01-15">rprojroot 1.2 (2017-01-15)<small>2017-01-16</small><a class="anchor" aria-label="anchor" href="#rprojroot-12-2017-01-15"></a></h2>
-<ul><li>New root criteria<ul><li>
+<ul><li>New root criteria
+<ul><li>
 <code>is_projectile_project</code> recognize projectile projects (<a href="https://github.com/r-lib/rprojroot/issues/21" class="external-link">#21</a>).</li>
 <li>
 <code><a href="../reference/root_criterion.html">has_dir()</a></code> constructs root criteria that check for existence of a directory.</li>
 <li>
 <code>is_git_root</code>, <code>is_svn_root</code> and <code>is_vcs_root</code> look for a version control system root (<a href="https://github.com/r-lib/rprojroot/issues/19" class="external-link">#19</a>).</li>
 </ul></li>
-<li>New function<ul><li>
-<code><a href="../reference/find_root.html">get_root_desc()</a></code> returns the description of the criterion that applies to a given root, useful for composite criteria created with <code>|</code>.</li></ul></li>
-<li>Minor enhancements<ul><li>Improve formatting of alternative criteria (<a href="https://github.com/r-lib/rprojroot/issues/18" class="external-link">#18</a>).</li>
+<li>New function
+<ul><li>
+<code><a href="../reference/find_root.html">get_root_desc()</a></code> returns the description of the criterion that applies to a given root, useful for composite criteria created with <code>|</code>.</li>
+</ul></li>
+<li>Minor enhancements
+<ul><li>Improve formatting of alternative criteria (<a href="https://github.com/r-lib/rprojroot/issues/18" class="external-link">#18</a>).</li>
 <li>If root cannot be found, the start path is shown in the error message.</li>
 </ul></li>
-<li>Internal<ul><li>The <code>$testfun</code> member of the <code>rprojroot</code> S3 class is now a list of functions instead of a function.</li></ul></li>
+<li>Internal
+<ul><li>The <code>$testfun</code> member of the <code>rprojroot</code> S3 class is now a list of functions instead of a function.</li>
+</ul></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.1" id="rprojroot-11-2016-10-29">rprojroot 1.1 (2016-10-29)<small>2016-10-29</small><a class="anchor" aria-label="anchor" href="#rprojroot-11-2016-10-29"></a></h2>
-<ul><li>Compatibility<ul><li>Compatible with R &gt;= 3.0.0 with the help of the <code>backports</code> package.</li></ul></li>
-<li>New root criteria<ul><li>
+<ul><li>Compatibility
+<ul><li>Compatible with R &gt;= 3.0.0 with the help of the <code>backports</code> package.</li>
+</ul></li>
+<li>New root criteria
+<ul><li>
 <code>is_remake_project</code> and <code><a href="../reference/find_root_file.html">find_remake_root_file()</a></code> look for <a href="https://github.com/richfitz/remake" class="external-link">remake</a> project (<a href="https://github.com/r-lib/rprojroot/issues/17" class="external-link">#17</a>).</li>
 <li>
 <code>is_testthat</code> and <code><a href="../reference/find_root_file.html">find_testthat_root_file()</a></code> that looks for <code>tests/testthat</code> root (<a href="https://github.com/r-lib/rprojroot/issues/14" class="external-link">#14</a>).</li>
 <li>
 <code>from_wd</code>, useful for creating accessors to a known path (<a href="https://github.com/r-lib/rprojroot/issues/11" class="external-link">#11</a>).</li>
 </ul></li>
-<li>Minor enhancement<ul><li>Criteria can be combined with the <code>|</code> operator (<a href="https://github.com/r-lib/rprojroot/issues/15" class="external-link">#15</a>).</li></ul></li>
-<li>Documentation<ul><li>Add package documentation with a few examples (<a href="https://github.com/r-lib/rprojroot/issues/13" class="external-link">#13</a>).</li>
+<li>Minor enhancement
+<ul><li>Criteria can be combined with the <code>|</code> operator (<a href="https://github.com/r-lib/rprojroot/issues/15" class="external-link">#15</a>).</li>
+</ul></li>
+<li>Documentation
+<ul><li>Add package documentation with a few examples (<a href="https://github.com/r-lib/rprojroot/issues/13" class="external-link">#13</a>).</li>
 <li>Clarify difference between <code>find_file()</code> and <code>make_fix_file()</code> in vignette (<a href="https://github.com/r-lib/rprojroot/issues/9" class="external-link">#9</a>).</li>
 <li>Remove unexported functions from documentation and examples (<a href="https://github.com/r-lib/rprojroot/issues/10" class="external-link">#10</a>).</li>
 <li>Use <code>pkgdown</code> to create website.</li>
 </ul></li>
-<li>Testing<ul><li>Use Travis instead of wercker. Travis tests three R versions, and OS X.</li>
+<li>Testing
+<ul><li>Use Travis instead of wercker. Travis tests three R versions, and OS X.</li>
 <li>Improve AppVeyor testing.</li>
 </ul></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0-2" id="rprojroot-10-2-2016-03-28">rprojroot 1.0-2 (2016-03-28)<small>2016-03-28</small><a class="anchor" aria-label="anchor" href="#rprojroot-10-2-2016-03-28"></a></h2>
-<ul><li>Fix test that fails on Windows only on CRAN.</li></ul></div>
+<ul><li>Fix test that fails on Windows only on CRAN.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0" id="rprojroot-10-2016-03-26">rprojroot 1.0 (2016-03-26)<small>2016-03-26</small><a class="anchor" aria-label="anchor" href="#rprojroot-10-2016-03-26"></a></h2>
 <p>Initial CRAN release.</p>
-<ul><li>S3 class <code>root_criterion</code>:<ul><li>Member functions: <code>find_file()</code> and <code>make_fix_file()</code>
+<ul><li>S3 class <code>root_criterion</code>:
+<ul><li>Member functions: <code>find_file()</code> and <code>make_fix_file()</code>
 </li>
 <li><code><a href="../reference/root_criterion.html">root_criterion()</a></code></li>
 <li><code><a href="../reference/deprecated.html">as.root_criterion()</a></code></li>
 <li><code><a href="../reference/deprecated.html">is.root_criterion()</a></code></li>
 <li><code><a href="../reference/root_criterion.html">has_file()</a></code></li>
 <li><code><a href="../reference/root_criterion.html">has_file_pattern()</a></code></li>
-<li>Built-in criteria:<ul><li><code>is_r_package</code></li>
+<li>Built-in criteria:
+<ul><li><code>is_r_package</code></li>
 <li><code>is_rstudio_project</code></li>
 </ul></li>
 </ul></li>
-<li>Getting started:<ul><li><code><a href="../reference/find_root_file.html">find_package_root_file()</a></code></li>
+<li>Getting started:
+<ul><li><code><a href="../reference/find_root_file.html">find_package_root_file()</a></code></li>
 <li><code><a href="../reference/find_root_file.html">find_rstudio_root_file()</a></code></li>
 </ul></li>
-<li>Use a custom notion of a project root:<ul><li><code><a href="../reference/find_root.html">find_root()</a></code></li>
+<li>Use a custom notion of a project root:
+<ul><li><code><a href="../reference/find_root.html">find_root()</a></code></li>
 <li><code><a href="../reference/find_root_file.html">find_root_file()</a></code></li>
 </ul></li>
 <li>Vignette</li>
