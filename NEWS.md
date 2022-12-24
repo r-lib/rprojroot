@@ -1,5 +1,15 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# rprojroot 2.0.3.9001 (2022-12-24)
+
+- Harmonize yaml formatting.
+
+- Revert changes to matrix section.
+
+- Merged cran-2.0.3 into main.
+
+
+
 # rprojroot 2.0.3.9000 (2022-03-25)
 
 - Same as previous version.
