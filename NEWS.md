@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# rprojroot 2.0.3.9002 (2022-12-30)
+
+- Internal changes only.
+
+
 # rprojroot 2.0.3.9001 (2022-12-24)
 
 - Harmonize yaml formatting.
