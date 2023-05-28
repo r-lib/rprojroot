@@ -92,7 +92,7 @@ print.root_criterion <- function(x, ...) {
 #' @export
 find_root <- function(criterion, path = ".", logical = FALSE) {
   criterion <- as_root_criterion(criterion)
-  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
+  path <- normalizePath(path, winslash = "/", mustWork = !logical)
   start_paths <- path
   if (length(criterion$subdir)) {
     start_paths <- file.path(path, criterion$subdir)
@@ -107,19 +107,19 @@ find_root <- function(criterion, path = ".", logical = FALSE) {
       for (f in criterion$testfun) {
         if (f(path)) {
           root <- path
-          break;
+          break
         }
       }
 
       if (length(root)) {
-        break;
+        break
       }
 
       path <- dirname(path)
     }
 
-    if (length(root)) {
-      break;
+    if (length(root) || logical) {
+      break
     }
 
     stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
