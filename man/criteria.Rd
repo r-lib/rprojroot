@@ -9,6 +9,7 @@
 \alias{is_drake_project}
 \alias{is_pkgdown_project}
 \alias{is_projectile_project}
+\alias{is_quarto_project}
 \alias{is_git_root}
 \alias{is_svn_root}
 \alias{is_vcs_root}
@@ -29,6 +30,8 @@ is_drake_project
 is_pkgdown_project
 
 is_projectile_project
+
+is_quarto_project
 
 is_git_root
 
@@ -55,6 +58,8 @@ This is a collection of commonly used root criteria.
 \code{is_pkgdown_project} looks for a \verb{_pkgdown.yml}, \verb{_pkgdown.yaml}, \verb{pkgdown/_pkgdown.yml} and/or \verb{inst/_pkgdown.yml} file.
 
 \code{is_projectile_project} looks for a \code{.projectile} file.
+
+\code{is_quarto_project} looks for a \verb{_quarto.yml} file.
 
 \code{is_git_root} looks for a \code{.git} directory.
 
