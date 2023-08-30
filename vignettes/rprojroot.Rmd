@@ -144,7 +144,6 @@ library(rprojroot)
 
 # List all files and directories below the root
 dir(find_root(has_file("DESCRIPTION")))
-
 ```
 
 #### Relative paths to a stable root
@@ -160,15 +159,14 @@ When your working directory is `pkgname/vignettes`, you can access the `rrmake.R
 
 ```{r, eval = FALSE}
 rel_path_from_vignettes <- "../R/rrmake.R"
-rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ##identical
-
+rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ## identical
 ```
 
 2. Supplying a pathname to the file relative from the root of the package, e.g.,
 
 ```{r, eval = FALSE}
 rel_path_from_root <- "R/rrmake.R"
-rel_path_from_root <- file.path("R", "rrmake.R") ##identical
+rel_path_from_root <- file.path("R", "rrmake.R") ## identical
 ```
 
 This second method requires finding the root of the package, which can be done with the `has_file()` function:
@@ -395,7 +393,7 @@ path_to_my_args_file <- get_my_path("my_args.Rdata")
 load(file = path_to_my_args_file)
 
 ## Run the function with those arguments
-my_fun_run <- do.call(my_fun,my_args)
+my_fun_run <- do.call(my_fun, my_args)
 
 ## Load the historical expectation with the helper
 load(file = get_my_path("expected_output.Rdata"))

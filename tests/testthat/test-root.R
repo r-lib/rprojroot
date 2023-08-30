@@ -1,4 +1,3 @@
-
 test_that("is_root_criterion", {
   expect_true(is_root_criterion(has_file("DESCRIPTION")))
   expect_false(is_root_criterion("DESCRIPTION"))
