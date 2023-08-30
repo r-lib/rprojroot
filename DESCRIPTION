@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Kirill",
            family = "M\u00fcller",
            role = c("aut", "cre"),
-           email = "krlmlr+r@mailbox.org",
+           email = "kirill@cynkra.com",
            comment = c(ORCID = "0000-0002-1416-3412"))
 Description: Robust, reliable and flexible paths to files below
     a project root. The 'root' of a project is defined as a directory that
