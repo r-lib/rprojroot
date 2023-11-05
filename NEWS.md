@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.3.9006 (2023-11-05)
+
+## Features
+
+- Add `is_renv_project` criterion looking for an `renv.lock` file (@gadenbuie, #86).
+
+- Add `is_quarto_project` criterion (@olivroy, #91, #92).
+
+## Chore
+
+- Add Aviator configuration.
+
+## Testing
+
+- Wrap `::` to skip if not installed in tests (#94).
+
+
 # rprojroot 2.0.3.9005 (2023-10-09)
 
 ## Chore
