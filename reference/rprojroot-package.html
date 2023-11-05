@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.4</span>
       </span>
     </div>
 
@@ -71,12 +71,12 @@ root criteria.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p><strong>Maintainer</strong>: Kirill Müller <a href="mailto:krlmlr+r@mailbox.org">krlmlr+r@mailbox.org</a> (<a href="https://orcid.org/0000-0002-1416-3412" class="external-link">ORCID</a>)</p>
+    <p><strong>Maintainer</strong>: Kirill Müller <a href="mailto:kirill@cynkra.com">kirill@cynkra.com</a> (<a href="https://orcid.org/0000-0002-1416-3412" class="external-link">ORCID</a>)</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">criteria</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">criteria</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_rstudio_project</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -93,8 +93,14 @@ root criteria.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "pkgdown/_pkgdown.yml"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "inst/_pkgdown.yml"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $is_renv_project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_projectile_project</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file ".projectile"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $is_quarto_project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "_quarto.yml"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_git_root</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: one of</span>
@@ -118,11 +124,11 @@ root criteria.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "root_criteria"</span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">root_fun</span> <span class="op">&lt;-</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">root_fun</span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">root_fun</span> <span class="op">&lt;-</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">root_fun</span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +143,7 @@ root criteria.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
       </footer></div>

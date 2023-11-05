@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.4</span>
       </span>
     </div>
 
@@ -56,29 +56,33 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">criteria</span>
-
-<span class="va">is_rstudio_project</span>
-
-<span class="va">is_r_package</span>
-
-<span class="va">is_remake_project</span>
-
-<span class="va">is_drake_project</span>
-
-<span class="va">is_pkgdown_project</span>
-
-<span class="va">is_projectile_project</span>
-
-<span class="va">is_git_root</span>
-
-<span class="va">is_svn_root</span>
-
-<span class="va">is_vcs_root</span>
-
-<span class="va">is_testthat</span>
-
-<span class="va">from_wd</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">criteria</span></span>
+<span></span>
+<span><span class="va">is_rstudio_project</span></span>
+<span></span>
+<span><span class="va">is_r_package</span></span>
+<span></span>
+<span><span class="va">is_remake_project</span></span>
+<span></span>
+<span><span class="va">is_drake_project</span></span>
+<span></span>
+<span><span class="va">is_pkgdown_project</span></span>
+<span></span>
+<span><span class="va">is_renv_project</span></span>
+<span></span>
+<span><span class="va">is_projectile_project</span></span>
+<span></span>
+<span><span class="va">is_quarto_project</span></span>
+<span></span>
+<span><span class="va">is_git_root</span></span>
+<span></span>
+<span><span class="va">is_svn_root</span></span>
+<span></span>
+<span><span class="va">is_vcs_root</span></span>
+<span></span>
+<span><span class="va">is_testthat</span></span>
+<span></span>
+<span><span class="va">from_wd</span></span></code></pre></div>
     </div>
 
     <div id="details">
@@ -88,7 +92,9 @@
 <p><code>is_remake_project</code> looks for a <code>remake.yml</code> file.</p>
 <p><code>is_drake_project</code> looks for a <code>.drake</code> directory.</p>
 <p><code>is_pkgdown_project</code> looks for a <code>_pkgdown.yml</code>, <code>_pkgdown.yaml</code>, <code>pkgdown/_pkgdown.yml</code> and/or <code>inst/_pkgdown.yml</code> file.</p>
+<p><code>is_renv_project</code> looks for an <code>renv.lock</code> file.</p>
 <p><code>is_projectile_project</code> looks for a <code>.projectile</code> file.</p>
+<p><code>is_quarto_project</code> looks for a <code>_quarto.yml</code> file.</p>
 <p><code>is_git_root</code> looks for a <code>.git</code> directory.</p>
 <p><code>is_svn_root</code> looks for a <code>.svn</code> directory.</p>
 <p><code>is_vcs_root</code> looks for the root of a version control
@@ -110,7 +116,7 @@ developing, testing, and checking a package.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
       </footer></div>
