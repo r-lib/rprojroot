@@ -325,6 +325,9 @@ is_pkgdown_project <- has_file("_pkgdown.yml") | has_file("_pkgdown.yaml") | has
 is_projectile_project <- has_file(".projectile")
 
 #' @export
+is_quarto_project <- has_file("_quarto.yml")
+
+#' @export
 is_git_root <- has_dir(".git") | has_file(".git", contents = "^gitdir: ")
 
 #' @export
@@ -353,6 +356,7 @@ criteria <- structure(
     is_remake_project = is_remake_project,
     is_pkgdown_project = is_pkgdown_project,
     is_projectile_project = is_projectile_project,
+    is_quarto_project = is_quarto_project,
     is_git_root = is_git_root,
     is_svn_root = is_svn_root,
     is_vcs_root = is_vcs_root,
@@ -415,6 +419,14 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_projectile_project"
+
+#' @details
+#' `is_quarto_project` looks for a `_quarto.yml` file.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_quarto_project"
 
 #' @details
 #' `is_git_root` looks for a `.git` directory.
