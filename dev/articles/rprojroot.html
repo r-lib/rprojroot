@@ -308,7 +308,7 @@ example.)</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/root_criterion.html">as_root_criterion</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></span></code></pre>
 <p>The return value of these functions can be stored and reused; in
-fact, the package provides 11 such criteria:</p>
+fact, the package provides 12 such criteria:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">criteria</span></span></code></pre></div>
 <pre><code><span><span class="co">## $is_rstudio_project</span></span>
@@ -326,6 +326,9 @@ fact, the package provides 11 such criteria:</p>
 <span><span class="co">## - contains a file "_pkgdown.yaml"</span></span>
 <span><span class="co">## - contains a file "pkgdown/_pkgdown.yml"</span></span>
 <span><span class="co">## - contains a file "inst/_pkgdown.yml"</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $is_renv_project</span></span>
+<span><span class="co">## Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_projectile_project</span></span>
 <span><span class="co">## Root criterion: contains a file ".projectile"</span></span>
@@ -405,7 +408,7 @@ error:</p>
 <pre><code><span><span class="co">## function(..., path = ".") {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55f0c871e4b0&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55afca51c3a0&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -433,7 +436,7 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##     path(.(root), ...)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55f0c971b3e0&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55afcb50e2e8&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -469,19 +472,20 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## [30] "export(is_quarto_project)"                   </span></span>
 <span><span class="co">## [31] "export(is_r_package)"                        </span></span>
 <span><span class="co">## [32] "export(is_remake_project)"                   </span></span>
-<span><span class="co">## [33] "export(is_root_criterion)"                   </span></span>
-<span><span class="co">## [34] "export(is_rstudio_project)"                  </span></span>
-<span><span class="co">## [35] "export(is_svn_root)"                         </span></span>
-<span><span class="co">## [36] "export(is_testthat)"                         </span></span>
-<span><span class="co">## [37] "export(is_vcs_root)"                         </span></span>
-<span><span class="co">## [38] "export(root_criterion)"                      </span></span>
-<span><span class="co">## [39] "export(thisfile)"                            </span></span>
-<span><span class="co">## [40] "export(thisfile_knit)"                       </span></span>
-<span><span class="co">## [41] "export(thisfile_r)"                          </span></span>
-<span><span class="co">## [42] "export(thisfile_rscript)"                    </span></span>
-<span><span class="co">## [43] "export(thisfile_source)"                     </span></span>
-<span><span class="co">## [44] "importFrom(utils,str)"                       </span></span>
-<span><span class="co">## [45] "importFrom(utils,tail)"</span></span></code></pre>
+<span><span class="co">## [33] "export(is_renv_project)"                     </span></span>
+<span><span class="co">## [34] "export(is_root_criterion)"                   </span></span>
+<span><span class="co">## [35] "export(is_rstudio_project)"                  </span></span>
+<span><span class="co">## [36] "export(is_svn_root)"                         </span></span>
+<span><span class="co">## [37] "export(is_testthat)"                         </span></span>
+<span><span class="co">## [38] "export(is_vcs_root)"                         </span></span>
+<span><span class="co">## [39] "export(root_criterion)"                      </span></span>
+<span><span class="co">## [40] "export(thisfile)"                            </span></span>
+<span><span class="co">## [41] "export(thisfile_knit)"                       </span></span>
+<span><span class="co">## [42] "export(thisfile_r)"                          </span></span>
+<span><span class="co">## [43] "export(thisfile_rscript)"                    </span></span>
+<span><span class="co">## [44] "export(thisfile_source)"                     </span></span>
+<span><span class="co">## [45] "importFrom(utils,str)"                       </span></span>
+<span><span class="co">## [46] "importFrom(utils,tail)"</span></span></code></pre>
 <p>This is a more robust alternative to <code>$find_file()</code>,
 because it <em>fixes</em> the project directory when
 <code>$make_fix_file()</code> is called, instead of searching for it
@@ -495,7 +499,7 @@ directory to somewhere outside the project:</p>
 <span>  <span class="st">"../.."</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.size</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1123</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1147</span></span></code></pre>
 <p>The <code>make_fix_file()</code> member function also accepts an
 optional <code>path</code> argument, in case you know your project’s
 root but the current working directory is somewhere outside. The path to
