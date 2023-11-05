@@ -1,61 +1,19 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# rprojroot 2.0.3.9006 (2023-11-05)
+# rprojroot 2.0.4 (2023-11-05)
 
 ## Features
 
 - Add `is_renv_project` criterion looking for an `renv.lock` file (@gadenbuie, #86).
-
-- Add `is_quarto_project` criterion (@olivroy, #91, #92).
-
-## Chore
-
-- Add Aviator configuration.
-
-## Testing
-
-- Wrap `::` to skip if not installed in tests (#94).
-
-
-# rprojroot 2.0.3.9005 (2023-10-09)
+- Add `is_quarto_project` criterion looking for a Quarto project (@olivroy, #91, #92).
 
 ## Chore
 
 - Update maintainer e-mail address.
 
-## Uncategorized
+## Testing
 
-- Merge pull request #93 from r-lib/b-tests.
-
-
-# rprojroot 2.0.3.9004 (2023-03-24)
-
-- Internal changes only.
-
-
-# rprojroot 2.0.3.9003 (2023-02-17)
-
-- Internal changes only.
-
-
-# rprojroot 2.0.3.9002 (2022-12-30)
-
-- Internal changes only.
-
-
-# rprojroot 2.0.3.9001 (2022-12-24)
-
-- Harmonize yaml formatting.
-
-- Revert changes to matrix section.
-
-- Merged cran-2.0.3 into main.
-
-
-
-# rprojroot 2.0.3.9000 (2022-03-25)
-
-- Same as previous version.
+- Wrap `::` to skip if not installed in tests (#94).
 
 
 # rprojroot 2.0.3 (2022-03-25)
