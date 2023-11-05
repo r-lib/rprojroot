@@ -5,25 +5,15 @@
 ## Features
 
 - Add `is_renv_project` criterion looking for an `renv.lock` file (@gadenbuie, #86).
-- Add `is_quarto_project` criterion (@olivroy, #91, #92).
+- Add `is_quarto_project` criterion looking for a Quarto project (@olivroy, #91, #92).
 
 ## Chore
 
-- Add Aviator configuration.
 - Update maintainer e-mail address.
 
 ## Testing
 
 - Wrap `::` to skip if not installed in tests (#94).
-
-## Uncategorized
-
-- Merge pull request #93 from r-lib/b-tests.
-- Internal changes only.
-- Harmonize yaml formatting.
-- Revert changes to matrix section.
-- Merged cran-2.0.3 into main.
-- Same as previous version.
 
 
 # rprojroot 2.0.3 (2022-03-25)
