@@ -57,6 +57,9 @@
       - contains a file "pkgdown/_pkgdown.yml"
       - contains a file "inst/_pkgdown.yml"
       
+      $is_renv_project
+      Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"
+      
       $is_projectile_project
       Root criterion: contains a file ".projectile"
       
@@ -91,11 +94,12 @@
     Code
       str(criteria)
     Output
-      List of 11
+      List of 12
        $ is_rstudio_project   : chr "Root criterion: contains a file matching \"[.]Rproj$\" with contents matching \"^Version: \" in the first line"
        $ is_r_package         : chr "Root criterion: contains a file \"DESCRIPTION\" with contents matching \"^Package: \""
        $ is_remake_project    : chr "Root criterion: contains a file \"remake.yml\""
        $ is_pkgdown_project   : chr [1:5] "Root criterion: one of" "- contains a file \"_pkgdown.yml\"" "- contains a file \"_pkgdown.yaml\"" "- contains a file \"pkgdown/_pkgdown.yml\"" ...
+       $ is_renv_project      : chr "Root criterion: contains a file \"renv.lock\" with contents matching \"\"Packages\":\\s*\\{\""
        $ is_projectile_project: chr "Root criterion: contains a file \".projectile\""
        $ is_quarto_project    : chr "Root criterion: contains a file \"_quarto.yml\""
        $ is_git_root          : chr [1:3] "Root criterion: one of" "- contains a directory \".git\"" "- contains a file \".git\" with contents matching \"^gitdir: \""

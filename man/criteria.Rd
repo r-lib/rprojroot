@@ -8,6 +8,7 @@
 \alias{is_remake_project}
 \alias{is_drake_project}
 \alias{is_pkgdown_project}
+\alias{is_renv_project}
 \alias{is_projectile_project}
 \alias{is_quarto_project}
 \alias{is_git_root}
@@ -28,6 +29,8 @@ is_remake_project
 is_drake_project
 
 is_pkgdown_project
+
+is_renv_project
 
 is_projectile_project
 
@@ -56,6 +59,8 @@ This is a collection of commonly used root criteria.
 \code{is_drake_project} looks for a \code{.drake} directory.
 
 \code{is_pkgdown_project} looks for a \verb{_pkgdown.yml}, \verb{_pkgdown.yaml}, \verb{pkgdown/_pkgdown.yml} and/or \verb{inst/_pkgdown.yml} file.
+
+\code{is_renv_project} looks for an \code{renv.lock} file.
 
 \code{is_projectile_project} looks for a \code{.projectile} file.
 

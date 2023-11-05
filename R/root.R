@@ -322,6 +322,9 @@ is_drake_project <- has_dir(".drake")
 is_pkgdown_project <- has_file("_pkgdown.yml") | has_file("_pkgdown.yaml") | has_file("pkgdown/_pkgdown.yml") | has_file("inst/_pkgdown.yml")
 
 #' @export
+is_renv_project <- has_file("renv.lock", contents = '"Packages":\\s*\\{')
+
+#' @export
 is_projectile_project <- has_file(".projectile")
 
 #' @export
@@ -355,6 +358,7 @@ criteria <- structure(
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
     is_pkgdown_project = is_pkgdown_project,
+    is_renv_project = is_renv_project,
     is_projectile_project = is_projectile_project,
     is_quarto_project = is_quarto_project,
     is_git_root = is_git_root,
@@ -411,6 +415,14 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_pkgdown_project"
+
+#' @details
+#' `is_renv_project` looks for an `renv.lock` file.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_renv_project"
 
 #' @details
 #' `is_projectile_project` looks for a `.projectile` file.
