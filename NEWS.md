@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9000 (2023-11-06)
+
+- Merge branch 'cran-2.0.4'.
+
+
 # rprojroot 2.0.4 (2023-11-05)
 
 ## Features
