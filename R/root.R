@@ -93,12 +93,17 @@ print.root_criterion <- function(x, ...) {
 find_root <- function(criterion, path = ".", logical = FALSE) {
   criterion <- as_root_criterion(criterion)
   path <- normalizePath(path, winslash = "/", mustWork = !logical)
-  start_paths <- path
-  if (length(criterion$subdir)) {
-    start_paths <- file.path(path, criterion$subdir)
+  start_paths <- path[dir.exists(path)]
+  if (length(criterion$subdir) > 0L) {
+    sub_paths <- file.path(path, criterion$subdir)
+    sub_paths <- sub_paths[dir.exists(sub_paths)]
+    if (length(sub_paths) > 0L) {
+      start_paths <- sub_paths
+    }
   }
-  start_paths <- start_paths[dir.exists(start_paths)]
   root <- NULL
+  max_depth_reached <- FALSE
+  max_depth_path <- NULL
 
   for (s in start_paths) {
     path <- s
@@ -111,24 +116,31 @@ find_root <- function(criterion, path = ".", logical = FALSE) {
         }
       }
 
-      if (length(root)) {
+      if (length(root) > 0L || is_root(path)) {
         break
+      }
+
+      if (i == .MAX_DEPTH) {
+        max_depth_reached <- TRUE
+        max_depth_path <- path
       }
 
       path <- dirname(path)
     }
 
-    if (length(root) || logical) {
+    if (length(root) > 0L) {
       break
     }
-
-    stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
   }
 
   if (logical) {
     return(length(root) > 0L)
   } else if (length(root)) {
     return(path)
+  }
+
+  if (max_depth_reached) {
+    stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", max_depth_path, call. = FALSE)
   }
 
   stop("No root directory found in ", paste0(start_paths, collapse = ", "), " or ", ifelse(length(start_paths) > 1L, "their", "its"), " parent directories. ",
