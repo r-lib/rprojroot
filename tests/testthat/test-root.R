@@ -53,37 +53,33 @@ test_that("has_file", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root("a", path = path), hierarchy(3L))
-      expect_equal(find_root("b", path = path), hierarchy(3L))
-      expect_equal(find_root("b/a", path = path), hierarchy(2L))
-      expect_equal(find_root("c", path = path), hierarchy(1L))
-      expect_equal(find_root("d", path = path), hierarchy(4L))
-      expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L))
-      expect_equal(find_root(has_file("DESCRIPTION", "^Package: "), path = path), hierarchy(1L))
-      expect_equal(find_root(has_file("DESCRIPTION", "package* does", fixed = TRUE), path = path), hierarchy(1L))
-      expect_error(
-        find_root("test-root.R", path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root("rprojroot.Rproj", path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_file("e", "f"), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_file("e", "f", 1), path = path),
-        "No root directory found"
-      )
-      expect_error(has_file("/a"), "absolute")
-      TRUE
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root("a", path = path), hierarchy(3L))
+  expect_equal(find_root("b", path = path), hierarchy(3L))
+  expect_equal(find_root("b/a", path = path), hierarchy(2L))
+  expect_equal(find_root("c", path = path), hierarchy(1L))
+  expect_equal(find_root("d", path = path), hierarchy(4L))
+  expect_equal(find_root(has_file("DESCRIPTION", "^Package: ", 1), path = path), hierarchy(1L))
+  expect_equal(find_root(has_file("DESCRIPTION", "^Package: "), path = path), hierarchy(1L))
+  expect_equal(find_root(has_file("DESCRIPTION", "package* does", fixed = TRUE), path = path), hierarchy(1L))
+  expect_error(
+    find_root("test-root.R", path = path),
+    "No root directory found"
   )
+  expect_error(
+    find_root("rprojroot.Rproj", path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_file("e", "f"), path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_file("e", "f", 1), path = path),
+    "No root directory found"
+  )
+  expect_error(has_file("/a"), "absolute")
 })
 
 test_that("has_file_pattern", {
@@ -95,41 +91,38 @@ test_that("has_file_pattern", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(has_file_pattern(glob2rx("a")), path = path), hierarchy(3L))
-      expect_equal(find_root(has_file_pattern(glob2rx("b")), path = path), hierarchy(3L))
-      expect_equal(
-        find_root(has_file_pattern("[ab]", "File b"), path = path),
-        hierarchy(3L)
-      )
-      expect_equal(
-        find_root(has_file_pattern("[ab]", "File b in root"), path = path),
-        hierarchy(1L)
-      )
-      expect_equal(find_root(has_file_pattern(glob2rx("c")), path = path), hierarchy(1L))
-      expect_equal(find_root(has_file_pattern(glob2rx("d")), path = path), hierarchy(4L))
-      expect_equal(find_root(has_file_pattern(glob2rx("DES*ION"), "^Package: ", 1), path = path), hierarchy(1L))
-      expect_equal(find_root(has_file_pattern(glob2rx("DESCRI?TION"), "^Package: "), path = path), hierarchy(1L))
-      expect_equal(find_root(has_file_pattern(glob2rx("D?SCRIPTI?N"), "package* does", fixed = TRUE), path = path), hierarchy(1L))
-      expect_error(
-        find_root(has_file_pattern(glob2rx("test-root.R")), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_file_pattern(glob2rx("rprojroot.Rproj")), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_file_pattern(glob2rx("e"), "f"), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
-        "No root directory found"
-      )
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(has_file_pattern(glob2rx("a")), path = path), hierarchy(3L))
+  expect_equal(find_root(has_file_pattern(glob2rx("b")), path = path), hierarchy(3L))
+  expect_equal(
+    find_root(has_file_pattern("[ab]", "File b"), path = path),
+    hierarchy(3L)
+  )
+  expect_equal(
+    find_root(has_file_pattern("[ab]", "File b in root"), path = path),
+    hierarchy(1L)
+  )
+  expect_equal(find_root(has_file_pattern(glob2rx("c")), path = path), hierarchy(1L))
+  expect_equal(find_root(has_file_pattern(glob2rx("d")), path = path), hierarchy(4L))
+  expect_equal(find_root(has_file_pattern(glob2rx("DES*ION"), "^Package: ", 1), path = path), hierarchy(1L))
+  expect_equal(find_root(has_file_pattern(glob2rx("DESCRI?TION"), "^Package: "), path = path), hierarchy(1L))
+  expect_equal(find_root(has_file_pattern(glob2rx("D?SCRIPTI?N"), "package* does", fixed = TRUE), path = path), hierarchy(1L))
+  expect_error(
+    find_root(has_file_pattern(glob2rx("test-root.R")), path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_file_pattern(glob2rx("rprojroot.Rproj")), path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_file_pattern(glob2rx("e"), "f"), path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_file_pattern(glob2rx("e"), "f", 1), path = path),
+    "No root directory found"
   )
 })
 
@@ -142,23 +135,20 @@ test_that("has_dir", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L))
-      expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L))
-      expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L))
-      expect_error(
-        find_root(has_dir("e"), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_dir("rprojroot.Rproj"), path = path),
-        "No root directory found"
-      )
-      expect_error(has_dir("/a"), "absolute")
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(has_dir("a"), path = path), hierarchy(1L))
+  expect_equal(find_root(has_dir("b"), path = path), hierarchy(2L))
+  expect_equal(find_root(has_dir("c"), path = path), hierarchy(3L))
+  expect_error(
+    find_root(has_dir("e"), path = path),
+    "No root directory found"
   )
+  expect_error(
+    find_root(has_dir("rprojroot.Rproj"), path = path),
+    "No root directory found"
+  )
+  expect_error(has_dir("/a"), "absolute")
 })
 
 test_that("has_basename", {
@@ -170,21 +160,18 @@ test_that("has_basename", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(has_basename("a"), path = path), hierarchy(2L))
-      expect_equal(find_root(has_basename("b"), path = path), hierarchy(3L))
-      expect_equal(find_root(has_basename("c"), path = path), hierarchy(4L))
-      expect_error(
-        find_root(has_basename("d"), path = path),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(has_basename("rprojroot.Rproj"), path = path),
-        "No root directory found"
-      )
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(has_basename("a"), path = path), hierarchy(2L))
+  expect_equal(find_root(has_basename("b"), path = path), hierarchy(3L))
+  expect_equal(find_root(has_basename("c"), path = path), hierarchy(4L))
+  expect_error(
+    find_root(has_basename("d"), path = path),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(has_basename("rprojroot.Rproj"), path = path),
+    "No root directory found"
   )
 })
 
@@ -200,14 +187,11 @@ test_that("concrete criteria", {
   stop_path <- hierarchy(0L)
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(is_rstudio_project, path = path), hierarchy(1L))
-      expect_equal(find_root(is_remake_project, path = path), hierarchy(2L))
-      expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L))
-    }
-  )
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(is_rstudio_project, path = path), hierarchy(1L))
+  expect_equal(find_root(is_remake_project, path = path), hierarchy(2L))
+  expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L))
 })
 
 test_that("is_svn_root", {
@@ -222,20 +206,17 @@ test_that("is_svn_root", {
   stop_path <- normalizePath(tempdir(), winslash = "/")
   path <- hierarchy(4L)
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(is_svn_root, path = path), hierarchy(1L))
-      expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
-      expect_error(
-        find_root(is_svn_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(is_vcs_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(is_svn_root, path = path), hierarchy(1L))
+  expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
+  expect_error(
+    find_root(is_svn_root, path = hierarchy(0L)),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(is_vcs_root, path = hierarchy(0L)),
+    "No root directory found"
   )
 })
 
@@ -265,20 +246,17 @@ test_that("is_git_root", {
   path <- hierarchy(4L)
   stop_path <- normalizePath(tempdir(), winslash = "/")
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(is_git_root, path = path), hierarchy(1L))
-      expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
-      expect_error(
-        find_root(is_git_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(is_vcs_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(is_git_root, path = path), hierarchy(1L))
+  expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
+  expect_error(
+    find_root(is_git_root, path = hierarchy(0L)),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(is_vcs_root, path = hierarchy(0L)),
+    "No root directory found"
   )
 })
 
@@ -287,20 +265,17 @@ test_that("is_git_root for separated git directory", {
   path <- hierarchy(4L)
   stop_path <- normalizePath(tempdir(), winslash = "/")
 
-  mockr::with_mock(
-    is_root = function(x) x == stop_path,
-    {
-      expect_equal(find_root(is_git_root, path = path), hierarchy(1L))
-      expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
-      expect_error(
-        find_root(is_git_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-      expect_error(
-        find_root(is_vcs_root, path = hierarchy(0L)),
-        "No root directory found"
-      )
-    }
+  local_mocked_bindings(is_root = function(x) x == stop_path)
+
+  expect_equal(find_root(is_git_root, path = path), hierarchy(1L))
+  expect_equal(find_root(is_vcs_root, path = path), hierarchy(1L))
+  expect_error(
+    find_root(is_git_root, path = hierarchy(0L)),
+    "No root directory found"
+  )
+  expect_error(
+    find_root(is_vcs_root, path = hierarchy(0L)),
+    "No root directory found"
   )
 })
 
