@@ -41,8 +41,10 @@ If no root is found, an error is thrown.
 }
 \examples{
 \dontrun{
-find_root(glob2rx("DESCRIPTION"), "^Package: ")
-}
+find_root(has_file_pattern(
+  pattern = glob2rx("DESCRIPTION"),
+  contents = "^Package: ")
+)}
 
 }
 \seealso{
