@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9001 (2023-11-20)
+
+## Bug fixes
+
+- Fix example for `find_root()` (@salim-b, #98).
+
+## Testing
+
+- Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
+
+
 # rprojroot 2.0.4.9000 (2023-11-06)
 
 - Merge branch 'cran-2.0.4'.
