@@ -21,4 +21,3 @@ describe("is_absolute_path", {
     expect_true(is_absolute_path("~/foo/bar"))
   })
 })
-
