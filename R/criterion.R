@@ -44,7 +44,7 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 #'   Subdirectories to start the search in, if found
 #'
 #' @return
-#' An S3 object of class `root_criterion` wit the following members:
+#' An S3 object of class `root_criterion` with the following members:
 #'
 #' @export
 #'
