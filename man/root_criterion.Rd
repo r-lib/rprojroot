@@ -71,7 +71,7 @@ Regular expression to match the file name against.}
 The required name of the root directory.}
 }
 \value{
-An S3 object of class \code{root_criterion} wit the following members:
+An S3 object of class \code{root_criterion} with the following members:
 
 \describe{
 \item{\code{testfun}}{The \code{testfun} argument}
