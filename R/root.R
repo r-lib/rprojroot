@@ -116,7 +116,7 @@ find_root <- function(criterion, path = ".") {
         }
       }
 
-      if (length(root) > 0L || is_root(cur_path)) {
+      if (length(root) > 0L || is_fs_root(cur_path)) {
         break
       }
 
