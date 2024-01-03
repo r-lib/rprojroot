@@ -90,44 +90,64 @@ print.root_criterion <- function(x, ...) {
 #' @export
 find_root <- function(criterion, path = ".") {
   criterion <- as_root_criterion(criterion)
+  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
+  start_paths <- path[dir.exists(path)]
 
-  start_path <- get_start_path(path, criterion$subdir)
-  path <- start_path
-
-  for (i in seq_len(.MAX_DEPTH)) {
-    for (f in criterion$testfun) {
-      if (f(path)) {
-        return(path)
-      }
+  if (length(criterion$subdir) > 0L) {
+    sub_paths <- file.path(path, criterion$subdir)
+    sub_paths <- sub_paths[dir.exists(sub_paths)]
+    if (length(sub_paths) > 0L) {
+      start_paths <- sub_paths
     }
-
-    if (is_fs_root(path)) {
-      stop("No root directory found in ", start_path, " or its parent directories. ",
-        paste(format(criterion), collapse = "\n"),
-        call. = FALSE
-      )
-    }
-
-    path <- dirname(path)
   }
 
-  stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", path, call. = FALSE)
+  root <- NULL
+  max_depth_reached <- FALSE
+  max_depth_path <- NULL
+
+  for (start_path in start_paths) {
+    cur_path <- start_path
+
+    for (i in seq_len(.MAX_DEPTH)) {
+      for (fn in criterion$testfun) {
+        if (fn(cur_path)) {
+          root <- cur_path
+          break
+        }
+      }
+
+      if (length(root) > 0L || is_root(cur_path)) {
+        break
+      }
+
+      if (i == .MAX_DEPTH) {
+        max_depth_reached <- TRUE
+        max_depth_path <- cur_path
+      }
+
+      cur_path <- dirname(cur_path)
+    }
+
+    if (length(root) > 0L) {
+      break
+    }
+  }
+
+  if (length(root) > 0L) {
+    return(root)
+  }
+
+  if (max_depth_reached) {
+    stop("Maximum search of ", .MAX_DEPTH, " exceeded. Last path: ", max_depth_path, call. = FALSE)
+  }
+
+  stop("No root directory found in ", paste0(start_paths, collapse = ", "), " or ", ifelse(length(start_paths) > 1L, "their", "its"), " parent directories. ",
+       paste(format(criterion), collapse = "\n"),
+       call. = FALSE
+  )
 }
 
 .MAX_DEPTH <- 100L
-
-get_start_path <- function(path, subdirs) {
-  path <- normalizePath(path, winslash = "/", mustWork = TRUE)
-
-  for (subdir in subdirs) {
-    subdir_path <- file.path(path, subdir)
-    if (dir.exists(subdir_path)) {
-      return(subdir_path)
-    }
-  }
-
-  path
-}
 
 # Borrowed from devtools
 is_fs_root <- function(path) {
