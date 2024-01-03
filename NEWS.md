@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9002 (2024-01-03)
+
+## Documentation
+
+- Fix typo (@salim-b, #99).
+
+
 # rprojroot 2.0.4.9001 (2023-11-20)
 
 ## Bug fixes
