@@ -7,7 +7,7 @@ test_that("has_file", {
   stop_path <- hierarchy(1L)
   path <- hierarchy(4L)
 
-  local_mocked_bindings(is_root = function(x) x == stop_path)
+  local_mocked_bindings(is_fs_root = function(x) x == stop_path)
 
   expect_equal(
     find_root_file("c", criterion = "b/a", path = path),
