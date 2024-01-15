@@ -40,8 +40,8 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 #' @param desc `[character]`\cr
 #'   A textual description of the test criterion, of the same length
 #'   as `testfun`.
-#' @param subdir `[character]`\cr
-#'   Subdirectories to start the search in, if found
+#' @param subdir `[character(1)]`\cr
+#'   Subdirectory to start the search in, if found.
 #'
 #' @return
 #' An S3 object of class `root_criterion` with the following members:
@@ -60,15 +60,12 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
   testfun <- check_testfun(testfun)
 
   stopifnot(length(desc) == length(testfun))
+  stopifnot(is.null(subdir) || length(subdir) == 1)
 
   full_desc <- paste0(
     desc,
     if (!is.null(subdir)) {
-      paste0(
-        " (also look in subdirectories: ",
-        paste0("`", subdir, "`", collapse = ", "),
-        ")"
-      )
+      paste0(" (also look in subdirectory `", subdir, "`)")
     }
   )
 

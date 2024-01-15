@@ -81,7 +81,7 @@
       - contains a directory ".svn"
       
       $is_testthat
-      Root criterion: directory name is "testthat" (also look in subdirectories: `tests/testthat`, `testthat`)
+      Root criterion: directory name is "testthat" (also look in subdirectory `tests/testthat`)
       
       $from_wd
       Root criterion: from current working directory
@@ -105,7 +105,7 @@
        $ is_git_root          : chr [1:3] "Root criterion: one of" "- contains a directory \".git\"" "- contains a file \".git\" with contents matching \"^gitdir: \""
        $ is_svn_root          : chr "Root criterion: contains a directory \".svn\""
        $ is_vcs_root          : chr [1:4] "Root criterion: one of" "- contains a directory \".git\"" "- contains a file \".git\" with contents matching \"^gitdir: \"" "- contains a directory \".svn\""
-       $ is_testthat          : chr "Root criterion: directory name is \"testthat\" (also look in subdirectories: `tests/testthat`, `testthat`)"
+       $ is_testthat          : chr "Root criterion: directory name is \"testthat\" (also look in subdirectory `tests/testthat`)"
        $ from_wd              : chr "Root criterion: from current working directory"
 
 # Combining criteria
