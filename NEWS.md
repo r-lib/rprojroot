@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9003 (2024-01-15)
+
+## Chore
+
+- Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
+
+- Add Aviator configuration.
+
+
 # rprojroot 2.0.4.9002 (2024-01-03)
 
 ## Documentation
