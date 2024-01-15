@@ -44,7 +44,12 @@ A textual description of the test criterion, of the same length
 as \code{testfun}.}
 
 \item{subdir}{\verb{[character]}\cr
-Subdirectories to start the search in, if found}
+If given, the criterion will also be tested in the subdirectories
+defined by this argument, in the order given.
+The first existing directory will be used as a starting point.
+This is used for the \link{is_testthat} criterion that needs to
+\emph{descend} into \code{tests/testthat} if starting at the package root,
+but stay inside \code{tests/testthat} if called from a testthat test.}
 
 \item{x}{\verb{[object]}\cr
 An object.}
