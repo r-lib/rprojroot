@@ -18,7 +18,7 @@ given directory is a project root."><meta name="robots" content="noindex"><!-- m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rprojroot</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.0.4.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">2.0.4.9003</span>
       </span>
     </div>
 
@@ -99,7 +99,12 @@ as <code>testfun</code>.</p></dd>
 
 <dt>subdir</dt>
 <dd><p><code>[character]</code><br>
-Subdirectories to start the search in, if found</p></dd>
+If given, the criterion will also be tested in the subdirectories
+defined by this argument, in the order given.
+The first existing directory will be used as a starting point.
+This is used for the <a href="criteria.html">is_testthat</a> criterion that needs to
+<em>descend</em> into <code>tests/testthat</code> if starting at the package root,
+but stay inside <code>tests/testthat</code> if called from a testthat test.</p></dd>
 
 
 <dt>x</dt>
