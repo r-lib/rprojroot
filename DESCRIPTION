@@ -29,4 +29,4 @@ VignetteBuilder:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, load = "source")
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.0.9000
