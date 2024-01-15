@@ -43,8 +43,8 @@ and \code{FALSE} otherwise. Can also be a list of such functions.}
 A textual description of the test criterion, of the same length
 as \code{testfun}.}
 
-\item{subdir}{\verb{[character]}\cr
-Subdirectories to start the search in, if found}
+\item{subdir}{\verb{[character(1)]}\cr
+Subdirectory to start the search in, if found.}
 
 \item{x}{\verb{[object]}\cr
 An object.}
