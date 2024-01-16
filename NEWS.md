@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9004 (2024-01-16)
+
+## Documentation
+
+- Clarify `subdir` argument (#103).
+
+
 # rprojroot 2.0.4.9003 (2024-01-15)
 
 ## Chore
