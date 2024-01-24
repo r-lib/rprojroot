@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9005 (2024-01-24)
+
+- Internal changes only.
+
+
 # rprojroot 2.0.4.9004 (2024-01-16)
 
 ## Documentation
