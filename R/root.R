@@ -132,8 +132,8 @@ get_start_path <- function(path, subdirs) {
 # Borrowed from devtools
 is_fs_root <- function(path) {
   identical(
-    normalizePath(path, winslash = "/"),
-    normalizePath(dirname(path), winslash = "/")
+    normalizePath(path, winslash = "/", mustWork = FALSE),
+    normalizePath(dirname(path), winslash = "/", mustWork = FALSE)
   )
 }
 
