@@ -321,7 +321,13 @@ is_remake_project <- has_file("remake.yml")
 is_drake_project <- has_dir(".drake")
 
 #' @export
-is_pkgdown_project <- has_file("_pkgdown.yml") | has_file("_pkgdown.yaml") | has_file("pkgdown/_pkgdown.yml") | has_file("inst/_pkgdown.yml")
+is_pkgdown_project <-
+  has_file("_pkgdown.yml") |
+  has_file("_pkgdown.yaml") |
+  has_file("pkgdown/_pkgdown.yml") |
+  has_file("pkgdown/_pkgdown.yaml") |
+  has_file("inst/_pkgdown.yml") |
+  has_file("inst/_pkgdown.yaml")
 
 #' @export
 is_renv_project <- has_file("renv.lock", contents = '"Packages":\\s*\\{')
