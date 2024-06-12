@@ -11,5 +11,5 @@ match_contents <- function(f, contents, n, fixed) {
   }
 
   fc <- readLines(f, n)
-  any(grepl(contents, fc, fixed = fixed))
+  any(grepl(contents, fc, fixed = fixed, useBytes = TRUE))
 }
