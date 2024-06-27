@@ -1,10 +1,9 @@
 pandoc: 3.1.11
 pkgdown: 2.0.9.9000
-pkgdown_sha: c76d8daed6ff2b57361747bd1795e0ea0a03b06b
+pkgdown_sha: 34ee692e4ce10c8abfb863cc782da771838558f7
 articles:
   rprojroot: rprojroot.html
-last_built: 2024-05-11T08:08Z
+last_built: 2024-06-27T06:17Z
 urls:
   reference: https://rprojroot.r-lib.org/reference
   article: https://rprojroot.r-lib.org/articles
-
