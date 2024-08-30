@@ -73,7 +73,7 @@
                         <h4 data-toc-skip class="author">Kirill
 Müller</h4>
             
-            <h4 data-toc-skip class="date">2024-08-16</h4>
+            <h4 data-toc-skip class="date">2024-08-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
@@ -200,11 +200,11 @@ with a specific name and specific contents.</p>
 <span></span>
 <span><span class="co"># List all files and directories below the root</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "codecov.yml"      "cran-comments.md" "DESCRIPTION"     </span></span>
-<span><span class="co">##  [5] "inst"             "LICENSE"          "LICENSE.md"       "man"             </span></span>
-<span><span class="co">##  [9] "NAMESPACE"        "NEWS.md"          "R"                "README.md"       </span></span>
-<span><span class="co">## [13] "README.Rmd"       "revdep"           "rprojroot.Rproj"  "tests"           </span></span>
-<span><span class="co">## [17] "TODO.md"          "vignettes"</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "check"            "codecov.yml"      "cran-comments.md"</span></span>
+<span><span class="co">##  [5] "DESCRIPTION"      "inst"             "LICENSE"          "LICENSE.md"      </span></span>
+<span><span class="co">##  [9] "man"              "NAMESPACE"        "NEWS.md"          "R"               </span></span>
+<span><span class="co">## [13] "README.md"        "README.Rmd"       "revdep"           "rprojroot.Rproj" </span></span>
+<span><span class="co">## [17] "tests"            "TODO.md"          "vignettes"</span></span></code></pre>
 <div class="section level4">
 <h4 id="relative-paths-to-a-stable-root">Relative paths to a stable root<a class="anchor" aria-label="anchor" href="#relative-paths-to-a-stable-root"></a>
 </h4>
@@ -324,9 +324,7 @@ fact, the package provides 12 such criteria:</p>
 <span><span class="co">## - contains a file "_pkgdown.yml"</span></span>
 <span><span class="co">## - contains a file "_pkgdown.yaml"</span></span>
 <span><span class="co">## - contains a file "pkgdown/_pkgdown.yml"</span></span>
-<span><span class="co">## - contains a file "pkgdown/_pkgdown.yaml"</span></span>
 <span><span class="co">## - contains a file "inst/_pkgdown.yml"</span></span>
-<span><span class="co">## - contains a file "inst/_pkgdown.yaml"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_renv_project</span></span>
 <span><span class="co">## Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"</span></span>
@@ -406,10 +404,11 @@ error:</p>
 <code class="sourceCode R"><span><span class="co"># Use the has_license criterion to find the root</span></span>
 <span><span class="va">R</span> <span class="op">&lt;-</span> <span class="va">has_license</span><span class="op">$</span><span class="va">find_file</span></span>
 <span><span class="va">R</span></span></code></pre></div>
-<pre><code><span><span class="co">## function(..., path = ".") {</span></span>
+<pre><code><span><span class="co">## function (..., path = ".") </span></span>
+<span><span class="co">## {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
-<span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x56519b0795c8&gt;</span></span></code></pre>
+<span><span class="co">## }</span></span>
+<span><span class="co">## &lt;environment: 0x55da1c7e3d90&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -424,20 +423,21 @@ root <em>at creation time</em>.</p>
 <code class="sourceCode R"><span><span class="co"># Define a function that computes file paths below the current root</span></span>
 <span><span class="cn">F</span> <span class="op">&lt;-</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="cn">F</span></span></code></pre></div>
-<pre><code><span><span class="co">## function(...) {</span></span>
+<pre><code><span><span class="co">## function (...) </span></span>
+<span><span class="co">## {</span></span>
 <span><span class="co">##     if (!missing(..1)) {</span></span>
-<span><span class="co">##       abs &lt;- is_absolute_path(..1)</span></span>
-<span><span class="co">##       if (all(abs)) {</span></span>
-<span><span class="co">##         return(path(...))</span></span>
-<span><span class="co">##       }</span></span>
-<span><span class="co">##       if (any(abs)) {</span></span>
-<span><span class="co">##         stop("Combination of absolute and relative paths not supported.", call. = FALSE)</span></span>
-<span><span class="co">##       }</span></span>
+<span><span class="co">##         abs &lt;- is_absolute_path(..1)</span></span>
+<span><span class="co">##         if (all(abs)) {</span></span>
+<span><span class="co">##             return(path(...))</span></span>
+<span><span class="co">##         }</span></span>
+<span><span class="co">##         if (any(abs)) {</span></span>
+<span><span class="co">##             stop("Combination of absolute and relative paths not supported.", </span></span>
+<span><span class="co">##                 call. = FALSE)</span></span>
+<span><span class="co">##         }</span></span>
 <span><span class="co">##     }</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##     path(.(root), ...)</span></span>
-<span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x565198478828&gt;</span></span></code></pre>
+<span><span class="co">##     path("/home/runner/work/rprojroot/rprojroot", ...)</span></span>
+<span><span class="co">## }</span></span>
+<span><span class="co">## &lt;environment: 0x55da19b6f2f0&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -637,7 +637,7 @@ knows where its files are.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
