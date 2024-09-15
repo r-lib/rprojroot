@@ -297,3 +297,32 @@ test_that("stops if depth reached", {
   # Checks that search for root terminates for very deep hierarchies
   expect_error(find_root_mocked(""), "Maximum search of [0-9]+ exceeded")
 })
+
+test_that("all criterion subdirs are checked", {
+  wd <- normalizePath(getwd(), winslash = "/")
+  criterion <- root_criterion(
+    testfun = function(path) file.exists(file.path(path, "target")) && basename(dirname(dirname(path))) == "check_subdirs",
+    desc = "has file `target` and basename of grandparent dir is `check_subdirs`",
+    subdir = c("a", "b")
+  )
+
+  expect_equal(
+    find_root(criterion, "check_subdirs/1"),
+    file.path(wd, "check_subdirs/1/a")
+  )
+
+  expect_equal(
+    find_root(criterion, "check_subdirs/2"),
+    file.path(wd, "check_subdirs/2/b")
+  )
+
+  expect_error(
+    find_root(criterion, "check_subdirs/3"),
+    "No root directory found"
+  )
+
+  expect_error(
+    find_root(criterion, "check_subdirs/4"),
+    "No root directory found"
+  )
+})
