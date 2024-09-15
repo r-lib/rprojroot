@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9007 (2024-09-15)
+
+## Continuous integration
+
+  - Install via R CMD INSTALL ., not pak (#107).
+    
+      - ci: Install via R CMD INSTALL ., not pak
+    
+      - ci: Bump version of upload-artifact action
+
+
 # rprojroot 2.0.4.9006 (2024-08-31)
 
 ## Features
