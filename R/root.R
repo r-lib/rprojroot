@@ -80,7 +80,10 @@ print.root_criterion <- function(x, ...) {
 #'
 #' @examples
 #' \dontrun{
-#' find_root(glob2rx("DESCRIPTION"), "^Package: ")
+#' find_root(has_file_pattern(
+#'   pattern = glob2rx("DESCRIPTION"),
+#'   contents = "^Package: "
+#' ))
 #' }
 #'
 #' @seealso [utils::glob2rx()] [file.path()]
@@ -99,7 +102,7 @@ find_root <- function(criterion, path = ".") {
       }
     }
 
-    if (is_root(path)) {
+    if (is_fs_root(path)) {
       stop("No root directory found in ", start_path, " or its parent directories. ",
         paste(format(criterion), collapse = "\n"),
         call. = FALSE
@@ -128,10 +131,10 @@ get_start_path <- function(path, subdirs) {
 }
 
 # Borrowed from devtools
-is_root <- function(path) {
+is_fs_root <- function(path) {
   identical(
-    normalizePath(path, winslash = "/"),
-    normalizePath(dirname(path), winslash = "/")
+    normalizePath(path, winslash = "/", mustWork = FALSE),
+    normalizePath(dirname(path), winslash = "/", mustWork = FALSE)
   )
 }
 
@@ -319,7 +322,13 @@ is_remake_project <- has_file("remake.yml")
 is_drake_project <- has_dir(".drake")
 
 #' @export
-is_pkgdown_project <- has_file("_pkgdown.yml") | has_file("_pkgdown.yaml") | has_file("pkgdown/_pkgdown.yml") | has_file("inst/_pkgdown.yml")
+is_pkgdown_project <-
+  has_file("_pkgdown.yml") |
+    has_file("_pkgdown.yaml") |
+    has_file("pkgdown/_pkgdown.yml") |
+    has_file("pkgdown/_pkgdown.yaml") |
+    has_file("inst/_pkgdown.yml") |
+    has_file("inst/_pkgdown.yaml")
 
 #' @export
 is_renv_project <- has_file("renv.lock", contents = '"Packages":\\s*\\{')

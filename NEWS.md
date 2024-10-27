@@ -1,5 +1,113 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9007 (2024-09-15)
+
+## Continuous integration
+
+  - Install via R CMD INSTALL ., not pak (#107).
+    
+      - ci: Install via R CMD INSTALL ., not pak
+    
+      - ci: Bump version of upload-artifact action
+
+
+# rprojroot 2.0.4.9006 (2024-08-31)
+
+## Features
+
+  - Align `is_pkgdown_project` with pkgdown \> 2.0.9. (#104, #106).
+
+  - Avoid warnings on Windows network drives (#105).
+
+## Chore
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/10425483146
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/10208520735
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/9728439643
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/9691616135
+
+## Continuous integration
+
+  - Install local package for pkgdown builds.
+
+  - Improve support for protected branches with fledge.
+
+  - Improve support for protected branches, without fledge.
+
+  - Sync with latest developments.
+
+  - Use v2 instead of master.
+
+  - Inline action.
+
+  - Use dev roxygen2 and decor.
+
+  - Fix on Windows, tweak lock workflow.
+
+  - Avoid checking bashisms on Windows.
+
+  - Better commit message.
+
+  - Bump versions, better default, consume custom matrix.
+
+  - Recent updates.
+
+
+# rprojroot 2.0.4.9005 (2024-01-24)
+
+- Internal changes only.
+
+
+# rprojroot 2.0.4.9004 (2024-01-16)
+
+## Documentation
+
+- Clarify `subdir` argument (#103).
+
+
+# rprojroot 2.0.4.9003 (2024-01-15)
+
+## Chore
+
+- Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
+
+- Add Aviator configuration.
+
+
+# rprojroot 2.0.4.9002 (2024-01-03)
+
+## Documentation
+
+- Fix typo (@salim-b, #99).
+
+
+# rprojroot 2.0.4.9001 (2023-11-20)
+
+## Bug fixes
+
+- Fix example for `find_root()` (@salim-b, #98).
+
+## Testing
+
+- Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
+
+
+# rprojroot 2.0.4.9000 (2023-11-06)
+
+- Merge branch 'cran-2.0.4'.
+
+
 # rprojroot 2.0.4 (2023-11-05)
 
 ## Features
