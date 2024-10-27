@@ -1,57 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://rprojroot.r-lib.org/404.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/TODO.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/articles/rprojroot.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/criteria.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/deprecated.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/find_root.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/find_root_file.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/root_criterion.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/rprojroot-package.html</loc>
-  </url>
-  <url>
-    <loc>https://rprojroot.r-lib.org/reference/thisfile.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://rprojroot.r-lib.org/404.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/LICENSE-text.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/LICENSE.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/TODO.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/articles/index.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/articles/rprojroot.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/authors.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/index.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/news/index.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/criteria.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/deprecated.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/find_root.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/find_root_file.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/index.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/root_criterion.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/rprojroot-package.html</loc></url>
+<url><loc>https://rprojroot.r-lib.org/reference/thisfile.html</loc></url>
 </urlset>
+
