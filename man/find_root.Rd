@@ -43,8 +43,9 @@ If no root is found, an error is thrown.
 \dontrun{
 find_root(has_file_pattern(
   pattern = glob2rx("DESCRIPTION"),
-  contents = "^Package: ")
-)}
+  contents = "^Package: "
+))
+}
 
 }
 \seealso{
