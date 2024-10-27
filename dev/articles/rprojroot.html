@@ -75,7 +75,7 @@ Müller</h4>
             
             <h4 data-toc-skip class="date">2024-10-27</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/docs-index/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="hidden name"><code>rprojroot.Rmd</code></div>
 
     </div>
@@ -200,8 +200,8 @@ with a specific name and specific contents.</p>
 <span></span>
 <span><span class="co"># List all files and directories below the root</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "codecov.yml"      "cran-comments.md" "DESCRIPTION"     </span></span>
-<span><span class="co">##  [5] "index.md"         "inst"             "LICENSE"          "LICENSE.md"      </span></span>
+<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "check"            "codecov.yml"      "cran-comments.md"</span></span>
+<span><span class="co">##  [5] "DESCRIPTION"      "inst"             "LICENSE"          "LICENSE.md"      </span></span>
 <span><span class="co">##  [9] "man"              "NAMESPACE"        "NEWS.md"          "R"               </span></span>
 <span><span class="co">## [13] "README.md"        "README.Rmd"       "revdep"           "rprojroot.Rproj" </span></span>
 <span><span class="co">## [17] "tests"            "TODO.md"          "vignettes"</span></span></code></pre>
@@ -225,14 +225,14 @@ ways to do that:</li>
 </ol>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rel_path_from_vignettes</span> <span class="op">&lt;-</span> <span class="st">"../R/rrmake.R"</span></span>
-<span><span class="va">rel_path_from_vignettes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">".."</span>, <span class="st">"R"</span>, <span class="st">"rrmake.R"</span><span class="op">)</span> <span class="co">##identical</span></span></code></pre></div>
+<span><span class="va">rel_path_from_vignettes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">".."</span>, <span class="st">"R"</span>, <span class="st">"rrmake.R"</span><span class="op">)</span> <span class="co">## identical</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Supplying a pathname to the file relative from the root of the
 package, e.g.,</li>
 </ol>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rel_path_from_root</span> <span class="op">&lt;-</span> <span class="st">"R/rrmake.R"</span></span>
-<span><span class="va">rel_path_from_root</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"rrmake.R"</span><span class="op">)</span> <span class="co">##identical</span></span></code></pre></div>
+<span><span class="va">rel_path_from_root</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"R"</span>, <span class="st">"rrmake.R"</span><span class="op">)</span> <span class="co">## identical</span></span></code></pre></div>
 <p>This second method requires finding the root of the package, which
 can be done with the <code><a href="../reference/root_criterion.html">has_file()</a></code> function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -409,7 +409,7 @@ error:</p>
 <pre><code><span><span class="co">## function(..., path = ".") {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55f2c3c44f88&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x5569b5800808&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -437,7 +437,7 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##     path(.(root), ...)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55f2c1a1c4e0&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x5569b352cec8&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -585,7 +585,7 @@ data files by using the function within your test scripts!</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">path_to_my_args_file</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Run the function with those arguments</span></span>
-<span><span class="va">my_fun_run</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">my_fun</span>,<span class="va">my_args</span><span class="op">)</span></span>
+<span><span class="va">my_fun_run</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">my_fun</span>, <span class="va">my_args</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Load the historical expectation with the helper</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span>file <span class="op">=</span> <span class="fu">get_my_path</span><span class="op">(</span><span class="st">"expected_output.Rdata"</span><span class="op">)</span><span class="op">)</span></span>
