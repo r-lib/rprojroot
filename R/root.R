@@ -82,8 +82,9 @@ print.root_criterion <- function(x, ...) {
 #' \dontrun{
 #' find_root(has_file_pattern(
 #'   pattern = glob2rx("DESCRIPTION"),
-#'   contents = "^Package: ")
-#' )}
+#'   contents = "^Package: "
+#' ))
+#' }
 #'
 #' @seealso [utils::glob2rx()] [file.path()]
 #'
@@ -323,11 +324,11 @@ is_drake_project <- has_dir(".drake")
 #' @export
 is_pkgdown_project <-
   has_file("_pkgdown.yml") |
-  has_file("_pkgdown.yaml") |
-  has_file("pkgdown/_pkgdown.yml") |
-  has_file("pkgdown/_pkgdown.yaml") |
-  has_file("inst/_pkgdown.yml") |
-  has_file("inst/_pkgdown.yaml")
+    has_file("_pkgdown.yaml") |
+    has_file("pkgdown/_pkgdown.yml") |
+    has_file("pkgdown/_pkgdown.yaml") |
+    has_file("inst/_pkgdown.yml") |
+    has_file("inst/_pkgdown.yaml")
 
 #' @export
 is_renv_project <- has_file("renv.lock", contents = '"Packages":\\s*\\{')
