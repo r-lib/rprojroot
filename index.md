@@ -1,47 +1,7 @@
----
-output:
-  github_document:
-    html_preview: false
----
 
 <!-- README.md and index.md are generated from README.Rmd. Please edit that file. -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
 
-set.seed(20230702)
-
-clean_output <- function(x, options) {
-  # Side effect
-  usethis::use_build_ignore("index.md")
-  
-  x <- gsub("0x[0-9a-f]+", "0xdeadbeef", x)
-  x <- gsub("dataframe_[0-9]*_[0-9]*", "      dataframe_42_42      ", x)
-  x <- gsub("[0-9]*\\.___row_number ASC", "42.___row_number ASC", x)
-
-  index <- x
-  index <- gsub("─", "-", index)
-  index <- strsplit(paste(index, collapse = "\n"), "\n---\n")[[1]][[2]]
-  writeLines(index, "index.md")
-
-  x <- fansi::strip_sgr(x)
-  x
-}
-
-options(cli.num_colors = 256)
-
-local({
-  hook_source <- knitr::knit_hooks$get("document")
-  knitr::knit_hooks$set(document = clean_output)
-})
-
-rlang::local_interactive(FALSE)
-```
 
 # [rprojroot](https://rprojroot.r-lib.org/)
 
@@ -55,7 +15,8 @@ rlang::local_interactive(FALSE)
 This package helps accessing files relative to a *project root* to [stop the working directory insanity](https://gist.github.com/jennybc/362f52446fe1ebc4c49f).
 It is a low-level helper package for the [here](https://here.r-lib.org/) package.
 
-```{r}
+
+``` r
 library(rprojroot)
 ```
 
@@ -65,37 +26,69 @@ library(rprojroot)
 The rprojroot package works best when you have a "project": all related files contained in a subdirectory that can be categorized using a strict criterion.
 Let's create a package for demonstration.
 
-```{r}
+
+``` r
 dir <- tempfile()
 pkg <- usethis::create_package(dir)
+#> [32m✔[39m Creating
+#>   [34m/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/[39m.
+#> [32m✔[39m Setting active project to
+#>   [34m"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"[39m.
+#> [32m✔[39m Creating [34mR/[39m.
+#> [32m✔[39m Writing [34mDESCRIPTION[39m.
+#> [34mPackage[39m: file2afe66d464c
+#> [34mTitle[39m: What the Package Does (One Line, Title Case)
+#> [34mVersion[39m: 0.0.0.9000
+#> [34mDate[39m: 2024-10-27
+#> [34mAuthors@R[39m (parsed):
+#>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (<https://orcid.org/0000-0002-1416-3412>)
+#> [34mDescription[39m: What the package does (one paragraph).
+#> [34mLicense[39m: GPL-3
+#> [34mURL[39m: https://github.com/krlmlr/rprojroot,
+#>     https://krlmlr.github.io/rprojroot
+#> [34mBugReports[39m: https://github.com/krlmlr/rprojroot/issues
+#> [34mEncoding[39m: UTF-8
+#> [34mRoxygen[39m: list(markdown = TRUE)
+#> [34mRoxygenNote[39m: 7.3.2.9000
+#> [32m✔[39m Writing [34mNAMESPACE[39m.
+#> [32m✔[39m Setting active project to [34m"<no active project>"[39m.
 ```
 
 R packages satisfy the `is_r_package` criterion.
 A criterion is an object that contains a `find_file()` function.
 With `pkg` as working directory, the function works like `file.path()`, rooted at the working directory:
 
-```{r}
+
+``` r
 setwd(pkg)
 is_r_package
+#> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "
 is_r_package$find_file()
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"
 is_r_package$find_file("tests", "testthat")
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
 ```
 
 This works identically when starting from a subdirectory:
 
-```{r}
+
+``` r
 setwd(file.path(pkg, "R"))
 is_r_package$find_file()
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"
 is_r_package$find_file("tests", "testthat")
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
 ```
 
 There is one exception: if the first component passed to `find_file()` is already an absolute path.
 This allows safely applying this function to paths that may be absolute or relative:
 
-```{r}
+
+``` r
 setwd(file.path(pkg, "R"))
 path <- is_r_package$find_file()
 is_r_package$find_file(path, "tests", "testthat")
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
 ```
 
 
@@ -112,9 +105,3 @@ install.package("rprojroot")
 
 See the [documentation](https://rprojroot.r-lib.org/articles/rprojroot.html) for more detail.
 
----
-
-## Code of Conduct
-
-Please note that the rprojroot project is released with a [Contributor Code of Conduct](https://rprojroot.r-lib.org/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
