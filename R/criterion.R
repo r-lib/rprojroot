@@ -41,10 +41,15 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 #'   A textual description of the test criterion, of the same length
 #'   as `testfun`.
 #' @param subdir `[character]`\cr
-#'   Subdirectories to start the search in, if found
+#'   If given, the criterion will also be tested in the subdirectories
+#'   defined by this argument, in the order given.
+#'   The first existing directory will be used as a starting point.
+#'   This is used for the [is_testthat] criterion that needs to
+#'   *descend* into `tests/testthat` if starting at the package root,
+#'   but stay inside `tests/testthat` if called from a testthat test.
 #'
 #' @return
-#' An S3 object of class `root_criterion` wit the following members:
+#' An S3 object of class `root_criterion` with the following members:
 #'
 #' @export
 #'

@@ -1,33 +1,127 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# rprojroot 2.0.3.9004 (2023-03-24)
+# rprojroot 2.0.4.9007 (2024-09-15)
+
+## Continuous integration
+
+  - Install via R CMD INSTALL ., not pak (#107).
+    
+      - ci: Install via R CMD INSTALL ., not pak
+    
+      - ci: Bump version of upload-artifact action
+
+
+# rprojroot 2.0.4.9006 (2024-08-31)
+
+## Features
+
+  - Align `is_pkgdown_project` with pkgdown \> 2.0.9. (#104, #106).
+
+  - Avoid warnings on Windows network drives (#105).
+
+## Chore
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/10425483146
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/10208520735
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/9728439643
+
+  - Auto-update from GitHub Actions.
+    
+    Run: https://github.com/r-lib/rprojroot/actions/runs/9691616135
+
+## Continuous integration
+
+  - Install local package for pkgdown builds.
+
+  - Improve support for protected branches with fledge.
+
+  - Improve support for protected branches, without fledge.
+
+  - Sync with latest developments.
+
+  - Use v2 instead of master.
+
+  - Inline action.
+
+  - Use dev roxygen2 and decor.
+
+  - Fix on Windows, tweak lock workflow.
+
+  - Avoid checking bashisms on Windows.
+
+  - Better commit message.
+
+  - Bump versions, better default, consume custom matrix.
+
+  - Recent updates.
+
+
+# rprojroot 2.0.4.9005 (2024-01-24)
 
 - Internal changes only.
 
 
-# rprojroot 2.0.3.9003 (2023-02-17)
+# rprojroot 2.0.4.9004 (2024-01-16)
 
-- Internal changes only.
+## Documentation
 
-
-# rprojroot 2.0.3.9002 (2022-12-30)
-
-- Internal changes only.
+- Clarify `subdir` argument (#103).
 
 
-# rprojroot 2.0.3.9001 (2022-12-24)
+# rprojroot 2.0.4.9003 (2024-01-15)
 
-- Harmonize yaml formatting.
+## Chore
 
-- Revert changes to matrix section.
+- Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
 
-- Merged cran-2.0.3 into main.
+- Add Aviator configuration.
 
 
+# rprojroot 2.0.4.9002 (2024-01-03)
 
-# rprojroot 2.0.3.9000 (2022-03-25)
+## Documentation
 
-- Same as previous version.
+- Fix typo (@salim-b, #99).
+
+
+# rprojroot 2.0.4.9001 (2023-11-20)
+
+## Bug fixes
+
+- Fix example for `find_root()` (@salim-b, #98).
+
+## Testing
+
+- Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
+
+
+# rprojroot 2.0.4.9000 (2023-11-06)
+
+- Merge branch 'cran-2.0.4'.
+
+
+# rprojroot 2.0.4 (2023-11-05)
+
+## Features
+
+- Add `is_renv_project` criterion looking for an `renv.lock` file (@gadenbuie, #86).
+- Add `is_quarto_project` criterion looking for a Quarto project (@olivroy, #91, #92).
+
+## Chore
+
+- Update maintainer e-mail address.
+
+## Testing
+
+- Wrap `::` to skip if not installed in tests (#94).
 
 
 # rprojroot 2.0.3 (2022-03-25)
