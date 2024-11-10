@@ -3,7 +3,9 @@ test_that("match_contents in non-native encoding", {
   Encoding(desc) <- "latin1"
   writeLines(desc, descfile <- tempfile(), useBytes = TRUE)
   expect_silent(expect_true(
-    rprojroot:::match_contents(descfile, contents = "^Package: ",
-                               n = -1L, fixed = FALSE)
+    rprojroot:::match_contents(descfile,
+      contents = "^Package: ",
+      n = -1L, fixed = FALSE
+    )
   ))
 })
