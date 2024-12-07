@@ -1,5 +1,46 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9008 (2024-12-07)
+
+## Features
+
+- Avoid warnings about invalid inputs with non-native encoding (@bastistician, #80).
+
+## Chore
+
+- Enable auto-styling (#82).
+
+## Continuous integration
+
+- Use larger retry count for lock-threads workflow (#140).
+
+- Ignore errors when removing pkg-config on macOS (#130).
+
+- Explicit permissions (#128).
+
+- Use styler from main branch (#126).
+
+- Need to install R on Ubuntu 24.04 (#124).
+
+- Use Ubuntu 24.04 and styler PR (#122).
+
+- Correctly detect branch protection (#117).
+
+- Use stable pak (#116).
+
+- Trigger run (#115).
+
+- Use pkgdown branch (#109).
+
+## Documentation
+
+- Switch to `index.md` (#113).
+
+## Uncategorized
+
+- PLACEHOLDER https://github.com/r-lib/rprojroot/pull/16 (#16).
+
+
 # rprojroot 2.0.4.9007 (2024-09-15)
 
 ## Continuous integration
