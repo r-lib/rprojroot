@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9010 (2024-12-09)
+
+## Continuous integration
+
+- Avoid failure in fledge workflow if no changes (#144).
+
+
 # rprojroot 2.0.4.9009 (2024-12-08)
 
 ## Continuous integration
