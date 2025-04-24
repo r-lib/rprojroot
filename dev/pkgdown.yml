@@ -3,7 +3,7 @@ pkgdown: 2.1.1.9000
 pkgdown_sha: 62d5c5a0fc12899aae97f6ce14018d2784bf308b
 articles:
   rprojroot: rprojroot.html
-last_built: 2025-04-24T12:09Z
+last_built: 2025-04-24T12:24Z
 urls:
   reference: https://rprojroot.r-lib.org/reference
   article: https://rprojroot.r-lib.org/articles
