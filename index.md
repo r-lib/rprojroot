@@ -31,19 +31,19 @@ Let's create a package for demonstration.
 dir <- tempfile()
 pkg <- usethis::create_package(dir)
 #> [32m✔[39m Creating
-#>   [34m/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/[39m.
+#>   [34m/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/[39m.
 #> [32m✔[39m Setting active project to
-#>   [34m"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"[39m.
+#>   [34m"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"[39m.
 #> [32m✔[39m Creating [34mR/[39m.
 #> [32m✔[39m Writing [34mDESCRIPTION[39m.
-#> [34mPackage[39m: file2afe66d464c
+#> [34mPackage[39m: file337b29a46586
 #> [34mTitle[39m: What the Package Does (One Line, Title Case)
 #> [34mVersion[39m: 0.0.0.9000
-#> [34mDate[39m: 2024-10-27
+#> [34mDate[39m: 2025-06-27
 #> [34mAuthors@R[39m (parsed):
 #>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (<https://orcid.org/0000-0002-1416-3412>)
 #> [34mDescription[39m: What the package does (one paragraph).
-#> [34mLicense[39m: GPL-3
+#> [34mLicense[39m: MIT
 #> [34mURL[39m: https://github.com/krlmlr/rprojroot,
 #>     https://krlmlr.github.io/rprojroot
 #> [34mBugReports[39m: https://github.com/krlmlr/rprojroot/issues
@@ -64,9 +64,9 @@ setwd(pkg)
 is_r_package
 #> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "
 is_r_package$find_file()
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"
 is_r_package$find_file("tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
 ```
 
 This works identically when starting from a subdirectory:
@@ -75,9 +75,9 @@ This works identically when starting from a subdirectory:
 ``` r
 setwd(file.path(pkg, "R"))
 is_r_package$find_file()
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"
 is_r_package$find_file("tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
 ```
 
 There is one exception: if the first component passed to `find_file()` is already an absolute path.
@@ -88,7 +88,7 @@ This allows safely applying this function to paths that may be absolute or relat
 setwd(file.path(pkg, "R"))
 path <- is_r_package$find_file()
 is_r_package$find_file(path, "tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"
+#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
 ```
 
 

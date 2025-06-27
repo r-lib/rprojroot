@@ -29,11 +29,21 @@ clean_output <- function(x, options) {
   index <- strsplit(paste(index, collapse = "\n"), "\n---\n")[[1]][[2]]
   writeLines(index, "index.md")
 
+  x <- gsub('(`vignette[(]"([^"]+)"[)]`)', "[\\1](https://rprojroot.r-lib.org/articles/\\2.html)", x)
   x <- fansi::strip_sgr(x)
   x
 }
 
-options(cli.num_colors = 256)
+options(
+  cli.num_colors = 256,
+  cli.width = 71,
+  width = 71,
+  pillar.bold = TRUE,
+  pillar.max_title_chars = 5,
+  pillar.min_title_chars = 5,
+  pillar.max_footer_lines = 12,
+  conflicts.policy = list(warn = FALSE)
+)
 
 local({
   hook_source <- knitr::knit_hooks$get("document")
