@@ -101,7 +101,12 @@ as <code>testfun</code>.</p></dd>
 
 <dt id="arg-subdir">subdir<a class="anchor" aria-label="anchor" href="#arg-subdir"></a></dt>
 <dd><p><code>[character]</code><br>
-Subdirectories to start the search in, if found</p></dd>
+If given, the criterion will also be tested in the subdirectories
+defined by this argument, in the order given.
+The first existing directory will be used as a starting point.
+This is used for the <a href="criteria.html">is_testthat</a> criterion that needs to
+<em>descend</em> into <code>tests/testthat</code> if starting at the package root,
+but stay inside <code>tests/testthat</code> if called from a testthat test.</p></dd>
 
 
 <dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
@@ -144,7 +149,7 @@ The required name of the root directory.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An S3 object of class <code>root_criterion</code> wit the following members:</p>
+    <p>An S3 object of class <code>root_criterion</code> with the following members:</p>
 <dl><dt><code>testfun</code></dt>
 <dd><p>The <code>testfun</code> argument</p></dd>
 
@@ -222,7 +227,7 @@ with support for case-insensitive file systems.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.9000.</p>
 </div>
 
       </footer></div>
