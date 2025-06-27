@@ -49,6 +49,7 @@ jobs:
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
       - uses: ./.github/workflows/pkgdown-build
+        if: github.event_name != 'push'
 
       - uses: ./.github/workflows/pkgdown-deploy
         if: github.event_name == 'push'
