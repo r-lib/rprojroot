@@ -32,3 +32,4 @@ Roxygen: list(markdown = TRUE, load = "source")
 RoxygenNote: 7.3.2.9000
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: true
+Config/Needs/website: tidyverse/tidytemplate

@@ -1,4 +1,11 @@
-url: https://rprojroot.r-lib.org/
+url: https://rprojroot.r-lib.org
+
+template:
+  bootstrap: 5
+  package: tidytemplate
+  includes:
+    in_header: |
+      <script defer data-domain="rprojroot.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 
 reference:
 - title: Finding the root
