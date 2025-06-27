@@ -86,19 +86,19 @@
 <code class="sourceCode R"><span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">pkg</span> <span class="op">&lt;-</span> <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html" class="external-link">create_package</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Creating</span></span>
-<span><span class="co">#&gt;   <span style="color: #0000BB;">/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/</span>.</span></span>
+<span><span class="co">#&gt;   <span style="color: #0000BB;">/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Setting active project to</span></span>
-<span><span class="co">#&gt;   <span style="color: #0000BB;">"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"</span>.</span></span>
+<span><span class="co">#&gt;   <span style="color: #0000BB;">"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Creating <span style="color: #0000BB;">R/</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">DESCRIPTION</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">Package</span>: file2afe66d464c</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">Package</span>: file337b29a46586</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Title</span>: What the Package Does (One Line, Title Case)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Version</span>: 0.0.0.9000</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">Date</span>: 2024-10-27</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">Date</span>: 2025-06-27</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Authors@R</span> (parsed):</span></span>
 <span><span class="co">#&gt;     * Kirill Müller &lt;kirill@cynkra.com&gt; [aut, cre] (&lt;https://orcid.org/0000-0002-1416-3412&gt;)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Description</span>: What the package does (one paragraph).</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">License</span>: GPL-3</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">License</span>: MIT</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">URL</span>: https://github.com/krlmlr/rprojroot,</span></span>
 <span><span class="co">#&gt;     https://krlmlr.github.io/rprojroot</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">BugReports</span>: https://github.com/krlmlr/rprojroot/issues</span></span>
@@ -113,22 +113,22 @@
 <span><span class="va">is_r_package</span></span>
 <span><span class="co">#&gt; Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"</span></span>
+<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
 <p>This works identically when starting from a subdirectory:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">pkg</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c"</span></span>
+<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
 <p>There is one exception: if the first component passed to <code>find_file()</code> is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">pkg</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">path</span> <span class="op">&lt;-</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpA7TxJ1/file2afe66d464c/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
 <p>As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.</p>
 </div>
 <div class="section level2">
