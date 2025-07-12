@@ -87,7 +87,7 @@
 <h2 class="pkg-version" data-toc-text="2.0.2" id="rprojroot-202-2020-11-15">rprojroot 2.0.2 (2020-11-15)<a class="anchor" aria-label="anchor" href="#rprojroot-202-2020-11-15"></a></h2><p class="text-muted">CRAN release: 2020-11-15</p>
 <div class="section level3">
 <h3 id="features-2-0-2">Features<a class="anchor" aria-label="anchor" href="#features-2-0-2"></a></h3>
-<ul><li>In <code><a href="../reference/find_root_file.html">find_root_file()</a></code>, if the first path component is already an absolute path, the path is returned unchanged without referring to the root. This allows using both root-relative and absolute paths in <code>here::here()</code>. Mixing root-relative and absolute paths in the same call returns an error (<a href="https://github.com/r-lib/rprojroot/issues/59" class="external-link">#59</a>).</li>
+<ul><li>In <code><a href="../reference/find_root_file.html">find_root_file()</a></code>, if the first path component is already an absolute path, the path is returned unchanged without referring to the root. This allows using both root-relative and absolute paths in <code><a href="https://here.r-lib.org/reference/here.html" class="external-link">here::here()</a></code>. Mixing root-relative and absolute paths in the same call returns an error (<a href="https://github.com/r-lib/rprojroot/issues/59" class="external-link">#59</a>).</li>
 <li>
 <code><a href="../reference/find_root_file.html">find_root_file()</a></code> propagates <code>NA</code> values in path components. Using tidyverse recycling rules for path components of length different from one (<a href="https://github.com/r-lib/rprojroot/issues/66" class="external-link">#66</a>).</li>
 <li>
