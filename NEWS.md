@@ -8,9 +8,9 @@
 
 ## Features
 
-- Add `is_vscode_project` criterion, true if a `.vscode/` directory exists.
+- Add `is_vscode_project` criterion, true if a `.vscode/` directory exists (#155, #157, @jennybc).
 
-- New `is_targets_project()` (@mitchelloharawild, #108, #146).
+- New `is_targets_project` (@mitchelloharawild, #108, #146).
 
 - Avoid warnings about invalid inputs with non-native encoding (@bastistician, #80).
 
@@ -20,93 +20,7 @@
 
 ## Chore
 
-- Enable auto-styling (#82).
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-lib/rprojroot/actions/runs/10425483146
-
-  Run: https://github.com/r-lib/rprojroot/actions/runs/10208520735
-
-  Run: https://github.com/r-lib/rprojroot/actions/runs/9728439643
-
-  Run: https://github.com/r-lib/rprojroot/actions/runs/9691616135
-
 - Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
-
-- Add Aviator configuration.
-
-## Continuous integration
-
-- Enhance permissions for workflow (#154).
-
-- Permissions, better tests for missing suggests, lints (#153).
-
-- Only fail covr builds if token is given (#152).
-
-- Always use `_R_CHECK_FORCE_SUGGESTS_=false` (#151).
-
-- Correct installation of xml2 (#150).
-
-- Explain (#149).
-
-- Add xml2 for covr, print testthat results (#148).
-
-- Sync (#147).
-
-- Avoid failure in fledge workflow if no changes (#144).
-
-- Fetch tags for fledge workflow to avoid unnecessary NEWS entries (#142).
-
-- Use larger retry count for lock-threads workflow (#140).
-
-- Ignore errors when removing pkg-config on macOS (#130).
-
-- Explicit permissions (#128).
-
-- Use styler from main branch (#126).
-
-- Need to install R on Ubuntu 24.04 (#124).
-
-- Use Ubuntu 24.04 and styler PR (#122).
-
-- Correctly detect branch protection (#117).
-
-- Use stable pak (#116).
-
-- Trigger run (#115).
-
-- Use pkgdown branch (#109).
-
-- Install via R CMD INSTALL ., not pak (#107).
-
-  - ci: Install via R CMD INSTALL ., not pak
-
-  - ci: Bump version of upload-artifact action
-
-- Install local package for pkgdown builds.
-
-- Improve support for protected branches with fledge.
-
-- Improve support for protected branches, without fledge.
-
-- Sync with latest developments.
-
-- Use v2 instead of master.
-
-- Inline action.
-
-- Use dev roxygen2 and decor.
-
-- Fix on Windows, tweak lock workflow.
-
-- Avoid checking bashisms on Windows.
-
-- Better commit message.
-
-- Bump versions, better default, consume custom matrix.
-
-- Recent updates.
 
 ## Documentation
 
@@ -119,16 +33,6 @@
 ## Testing
 
 - Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
-
-## Uncategorized
-
-- Merge branch 'docs'.
-
-- PLACEHOLDER https://github.com/r-lib/rprojroot/pull/16 (#16).
-
-- Internal changes only.
-
-- Merge branch 'cran-2.0.4'.
 
 
 # rprojroot 2.0.4 (2023-11-05)
