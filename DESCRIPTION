@@ -1,6 +1,6 @@
 Package: rprojroot
 Title: Finding Files in Project Subdirectories
-Version: 2.0.4.9011
+Version: 2.1.0
 Authors@R: 
     person(given = "Kirill",
            family = "M\u00fcller",
