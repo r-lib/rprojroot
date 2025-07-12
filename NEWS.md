@@ -1,199 +1,38 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# rprojroot 2.0.4.9011 (2025-07-12)
-
-## Features
-
-- Add `is_vscode_project` criterion, true if a `.vscode/` directory exists.
-
-- New `is_targets_project()` (@mitchelloharawild, #108, #146).
-
-## Continuous integration
-
-- Enhance permissions for workflow (#154).
-
-- Permissions, better tests for missing suggests, lints (#153).
-
-- Only fail covr builds if token is given (#152).
-
-- Always use `_R_CHECK_FORCE_SUGGESTS_=false` (#151).
-
-- Correct installation of xml2 (#150).
-
-- Explain (#149).
-
-- Add xml2 for covr, print testthat results (#148).
-
-- Sync (#147).
-
-## Uncategorized
-
-- Merge branch 'docs'.
-
-- Merge branch 'docs'.
-
-
-# rprojroot 2.0.4.9010 (2024-12-09)
-
-## Continuous integration
-
-- Avoid failure in fledge workflow if no changes (#144).
-
-
-# rprojroot 2.0.4.9009 (2024-12-08)
-
-## Continuous integration
-
-- Fetch tags for fledge workflow to avoid unnecessary NEWS entries (#142).
-
-
-# rprojroot 2.0.4.9008 (2024-12-07)
-
-## Features
-
-- Avoid warnings about invalid inputs with non-native encoding (@bastistician, #80).
-
-## Chore
-
-- Enable auto-styling (#82).
-
-## Continuous integration
-
-- Use larger retry count for lock-threads workflow (#140).
-
-- Ignore errors when removing pkg-config on macOS (#130).
-
-- Explicit permissions (#128).
-
-- Use styler from main branch (#126).
-
-- Need to install R on Ubuntu 24.04 (#124).
-
-- Use Ubuntu 24.04 and styler PR (#122).
-
-- Correctly detect branch protection (#117).
-
-- Use stable pak (#116).
-
-- Trigger run (#115).
-
-- Use pkgdown branch (#109).
-
-## Documentation
-
-- Switch to `index.md` (#113).
-
-## Uncategorized
-
-- PLACEHOLDER https://github.com/r-lib/rprojroot/pull/16 (#16).
-
-
-# rprojroot 2.0.4.9007 (2024-09-15)
-
-## Continuous integration
-
-  - Install via R CMD INSTALL ., not pak (#107).
-    
-      - ci: Install via R CMD INSTALL ., not pak
-    
-      - ci: Bump version of upload-artifact action
-
-
-# rprojroot 2.0.4.9006 (2024-08-31)
-
-## Features
-
-  - Align `is_pkgdown_project` with pkgdown \> 2.0.9. (#104, #106).
-
-  - Avoid warnings on Windows network drives (#105).
-
-## Chore
-
-  - Auto-update from GitHub Actions.
-    
-    Run: https://github.com/r-lib/rprojroot/actions/runs/10425483146
-
-  - Auto-update from GitHub Actions.
-    
-    Run: https://github.com/r-lib/rprojroot/actions/runs/10208520735
-
-  - Auto-update from GitHub Actions.
-    
-    Run: https://github.com/r-lib/rprojroot/actions/runs/9728439643
-
-  - Auto-update from GitHub Actions.
-    
-    Run: https://github.com/r-lib/rprojroot/actions/runs/9691616135
-
-## Continuous integration
-
-  - Install local package for pkgdown builds.
-
-  - Improve support for protected branches with fledge.
-
-  - Improve support for protected branches, without fledge.
-
-  - Sync with latest developments.
-
-  - Use v2 instead of master.
-
-  - Inline action.
-
-  - Use dev roxygen2 and decor.
-
-  - Fix on Windows, tweak lock workflow.
-
-  - Avoid checking bashisms on Windows.
-
-  - Better commit message.
-
-  - Bump versions, better default, consume custom matrix.
-
-  - Recent updates.
-
-
-# rprojroot 2.0.4.9005 (2024-01-24)
-
-- Internal changes only.
-
-
-# rprojroot 2.0.4.9004 (2024-01-16)
-
-## Documentation
-
-- Clarify `subdir` argument (#103).
-
-
-# rprojroot 2.0.4.9003 (2024-01-15)
-
-## Chore
-
-- Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
-
-- Add Aviator configuration.
-
-
-# rprojroot 2.0.4.9002 (2024-01-03)
-
-## Documentation
-
-- Fix typo (@salim-b, #99).
-
-
-# rprojroot 2.0.4.9001 (2023-11-20)
+# rprojroot 2.1.0 (2025-07-12)
 
 ## Bug fixes
 
 - Fix example for `find_root()` (@salim-b, #98).
 
+## Features
+
+- Add `is_vscode_project` criterion, true if a `.vscode/` directory exists (#155, #157, @jennybc).
+
+- New `is_targets_project` (@mitchelloharawild, #108, #146).
+
+- Avoid warnings about invalid inputs with non-native encoding (@bastistician, #80).
+
+- Align `is_pkgdown_project` with pkgdown \> 2.0.9. (#104, #106).
+
+- Avoid warnings on Windows network drives (#105).
+
+## Chore
+
+- Rename `is_root()` to `is_fs_root()` to avoid confusion (#101).
+
+## Documentation
+
+- Switch to `index.md` (#113).
+
+- Clarify `subdir` argument (#103).
+
+- Fix typo (@salim-b, #99).
+
 ## Testing
 
 - Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
-
-
-# rprojroot 2.0.4.9000 (2023-11-06)
-
-- Merge branch 'cran-2.0.4'.
 
 
 # rprojroot 2.0.4 (2023-11-05)
