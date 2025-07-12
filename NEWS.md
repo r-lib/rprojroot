@@ -1,5 +1,38 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.0.4.9011 (2025-07-12)
+
+## Features
+
+- Add `is_vscode_project` criterion, true if a `.vscode/` directory exists.
+
+- New `is_targets_project()` (@mitchelloharawild, #108, #146).
+
+## Continuous integration
+
+- Enhance permissions for workflow (#154).
+
+- Permissions, better tests for missing suggests, lints (#153).
+
+- Only fail covr builds if token is given (#152).
+
+- Always use `_R_CHECK_FORCE_SUGGESTS_=false` (#151).
+
+- Correct installation of xml2 (#150).
+
+- Explain (#149).
+
+- Add xml2 for covr, print testthat results (#148).
+
+- Sync (#147).
+
+## Uncategorized
+
+- Merge branch 'docs'.
+
+- Merge branch 'docs'.
+
+
 # rprojroot 2.0.4.9010 (2024-12-09)
 
 ## Continuous integration
