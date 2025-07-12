@@ -313,6 +313,9 @@ has_basename <- function(basename, subdir = NULL) {
 is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n = 1L)
 
 #' @export
+is_vscode_project <- has_dir(".vscode")
+
+#' @export
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
 #' @export
@@ -367,6 +370,7 @@ from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 criteria <- structure(
   list(
     is_rstudio_project = is_rstudio_project,
+    is_vscode_project = is_vscode_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
     is_pkgdown_project = is_pkgdown_project,
@@ -395,6 +399,14 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_rstudio_project"
+
+#' @details
+#' `is_vscode_project` looks for a `.vscode` directory.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_vscode_project"
 
 #' @details
 #' `is_r_package` looks for a `DESCRIPTION` file.

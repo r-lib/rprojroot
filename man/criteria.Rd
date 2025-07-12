@@ -4,6 +4,7 @@
 \name{criteria}
 \alias{criteria}
 \alias{is_rstudio_project}
+\alias{is_vscode_project}
 \alias{is_r_package}
 \alias{is_remake_project}
 \alias{is_drake_project}
@@ -22,6 +23,8 @@
 criteria
 
 is_rstudio_project
+
+is_vscode_project
 
 is_r_package
 
@@ -54,6 +57,8 @@ This is a collection of commonly used root criteria.
 }
 \details{
 \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
+
+\code{is_vscode_project} looks for a \code{.vscode} directory.
 
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
 
