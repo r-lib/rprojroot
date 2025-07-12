@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,9 +58,9 @@
                         <h4 data-toc-skip class="author">Kirill
 Müller</h4>
             
-            <h4 data-toc-skip class="date">2025-06-27</h4>
+            <h4 data-toc-skip class="date">2025-07-12</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/docs/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.5/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="d-none name"><code>rprojroot.Rmd</code></div>
     </div>
 
@@ -115,7 +115,7 @@ function. In this example here, we’re starting in the
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.4"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.0.5"</span></span></code></pre>
 <p>There is one exception: if the first component passed to
 <code>find_file()</code> is already an absolute path. This allows safely
 applying this function to paths that may be absolute or relative:</p>
@@ -124,7 +124,7 @@ applying this function to paths that may be absolute or relative:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.4"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.0.5"</span></span></code></pre>
 <p>You can also construct an accessor to your root using the
 <code>root$make_fix_file()</code> function:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -139,7 +139,7 @@ current working directory is outside your project:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.4"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.0.5"</span></span></code></pre>
 <p>If you know the absolute path of some directory below your project,
 but cannot be sure of your current working directory, pass that absolute
 path to <code>root$make_fix_file()</code>:</p>
@@ -184,13 +184,13 @@ with a specific name and specific contents.</p>
 <span></span>
 <span><span class="co"># List all files and directories below the root</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "codecov.yml"      "cran-comments.md"</span></span>
-<span><span class="co">##  [4] "DESCRIPTION"      "index.md"         "inst"            </span></span>
-<span><span class="co">##  [7] "LICENSE"          "LICENSE.md"       "man"             </span></span>
-<span><span class="co">## [10] "NAMESPACE"        "NEWS.md"          "R"               </span></span>
-<span><span class="co">## [13] "README.md"        "README.Rmd"       "revdep"          </span></span>
-<span><span class="co">## [16] "rprojroot.Rproj"  "tests"            "TODO.md"         </span></span>
-<span><span class="co">## [19] "vignettes"</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "check"            "codecov.yml"     </span></span>
+<span><span class="co">##  [4] "cran-comments.md" "DESCRIPTION"      "index.md"        </span></span>
+<span><span class="co">##  [7] "inst"             "LICENSE"          "LICENSE.md"      </span></span>
+<span><span class="co">## [10] "man"              "NAMESPACE"        "NEWS.md"         </span></span>
+<span><span class="co">## [13] "R"                "README.md"        "README.Rmd"      </span></span>
+<span><span class="co">## [16] "revdep"           "rprojroot.Rproj"  "tests"           </span></span>
+<span><span class="co">## [19] "TODO.md"          "vignettes"</span></span></code></pre>
 <div class="section level4">
 <h4 id="relative-paths-to-a-stable-root">Relative paths to a stable root<a class="anchor" aria-label="anchor" href="#relative-paths-to-a-stable-root"></a>
 </h4>
@@ -293,11 +293,14 @@ example.)</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/root_criterion.html">as_root_criterion</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></span></code></pre>
 <p>The return value of these functions can be stored and reused; in
-fact, the package provides 12 such criteria:</p>
+fact, the package provides 13 such criteria:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">criteria</span></span></code></pre></div>
 <pre><code><span><span class="co">## $is_rstudio_project</span></span>
 <span><span class="co">## Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $is_vscode_project</span></span>
+<span><span class="co">## Root criterion: contains a directory ".vscode"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_r_package</span></span>
 <span><span class="co">## Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span></span>
@@ -395,7 +398,7 @@ error:</p>
 <pre><code><span><span class="co">## function(..., path = ".") {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55cc611bccf0&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55a815b8e958&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -423,7 +426,7 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##     path(.(root), ...)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55cc63a03940&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55a8184407b0&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -463,16 +466,18 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## [34] "export(is_root_criterion)"                   </span></span>
 <span><span class="co">## [35] "export(is_rstudio_project)"                  </span></span>
 <span><span class="co">## [36] "export(is_svn_root)"                         </span></span>
-<span><span class="co">## [37] "export(is_testthat)"                         </span></span>
-<span><span class="co">## [38] "export(is_vcs_root)"                         </span></span>
-<span><span class="co">## [39] "export(root_criterion)"                      </span></span>
-<span><span class="co">## [40] "export(thisfile)"                            </span></span>
-<span><span class="co">## [41] "export(thisfile_knit)"                       </span></span>
-<span><span class="co">## [42] "export(thisfile_r)"                          </span></span>
-<span><span class="co">## [43] "export(thisfile_rscript)"                    </span></span>
-<span><span class="co">## [44] "export(thisfile_source)"                     </span></span>
-<span><span class="co">## [45] "importFrom(utils,str)"                       </span></span>
-<span><span class="co">## [46] "importFrom(utils,tail)"</span></span></code></pre>
+<span><span class="co">## [37] "export(is_targets_project)"                  </span></span>
+<span><span class="co">## [38] "export(is_testthat)"                         </span></span>
+<span><span class="co">## [39] "export(is_vcs_root)"                         </span></span>
+<span><span class="co">## [40] "export(is_vscode_project)"                   </span></span>
+<span><span class="co">## [41] "export(root_criterion)"                      </span></span>
+<span><span class="co">## [42] "export(thisfile)"                            </span></span>
+<span><span class="co">## [43] "export(thisfile_knit)"                       </span></span>
+<span><span class="co">## [44] "export(thisfile_r)"                          </span></span>
+<span><span class="co">## [45] "export(thisfile_rscript)"                    </span></span>
+<span><span class="co">## [46] "export(thisfile_source)"                     </span></span>
+<span><span class="co">## [47] "importFrom(utils,str)"                       </span></span>
+<span><span class="co">## [48] "importFrom(utils,tail)"</span></span></code></pre>
 <p>This is a more robust alternative to <code>$find_file()</code>,
 because it <em>fixes</em> the project directory when
 <code>$make_fix_file()</code> is called, instead of searching for it
@@ -486,7 +491,7 @@ directory to somewhere outside the project:</p>
 <span>  <span class="st">"../.."</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.size</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1147</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1200</span></span></code></pre>
 <p>The <code>make_fix_file()</code> member function also accepts an
 optional <code>path</code> argument, in case you know your project’s
 root but the current working directory is somewhere outside. The path to

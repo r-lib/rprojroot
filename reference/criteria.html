@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Prespecified criteria</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/docs/R/root.R" class="external-link"><code>R/root.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.5/R/root.R" class="external-link"><code>R/root.R</code></a></small>
       <div class="d-none name"><code>criteria.Rd</code></div>
     </div>
 
@@ -44,11 +44,15 @@
 <span></span>
 <span><span class="va">is_rstudio_project</span></span>
 <span></span>
+<span><span class="va">is_vscode_project</span></span>
+<span></span>
 <span><span class="va">is_r_package</span></span>
 <span></span>
 <span><span class="va">is_remake_project</span></span>
 <span></span>
 <span><span class="va">is_drake_project</span></span>
+<span></span>
+<span><span class="va">is_targets_project</span></span>
 <span></span>
 <span><span class="va">is_pkgdown_project</span></span>
 <span></span>
@@ -72,9 +76,11 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>is_rstudio_project</code> looks for a file with extension <code>.Rproj</code>.</p>
+<p><code>is_vscode_project</code> looks for a <code>.vscode</code> directory.</p>
 <p><code>is_r_package</code> looks for a <code>DESCRIPTION</code> file.</p>
 <p><code>is_remake_project</code> looks for a <code>remake.yml</code> file.</p>
 <p><code>is_drake_project</code> looks for a <code>.drake</code> directory.</p>
+<p><code>is_targets_project</code> looks for a <code>_targets.R</code> file.</p>
 <p><code>is_pkgdown_project</code> looks for a <code>_pkgdown.yml</code>, <code>_pkgdown.yaml</code>, <code>pkgdown/_pkgdown.yml</code> and/or <code>inst/_pkgdown.yml</code> file.</p>
 <p><code>is_renv_project</code> looks for an <code>renv.lock</code> file.</p>
 <p><code>is_projectile_project</code> looks for a <code>.projectile</code> file.</p>
