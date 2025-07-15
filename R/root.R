@@ -232,7 +232,7 @@ has_dir <- function(filepath) {
     dir.exists(testfile)
   }))
 
-  desc <- paste0('contains a directory "', filepath, '"')
+  desc <- paste0("contains a directory '", filepath, "'")
 
   root_criterion(testfun, desc)
 }
