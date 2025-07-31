@@ -58,7 +58,7 @@ This is a collection of commonly used root criteria.
 \details{
 \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
 
-\code{is_vscode_project} looks for a \code{.vscode} directory.
+\code{is_vscode_project} looks for a \code{.vscode/settings.json} file.
 
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
 
