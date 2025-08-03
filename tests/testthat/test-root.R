@@ -308,3 +308,10 @@ test_that("stops if depth reached", {
   # Checks that search for root terminates for very deep hierarchies
   expect_error(find_root_mocked(""), "Maximum search of [0-9]+ exceeded")
 })
+
+# The exact style of quoting here (double inside single as opposed to nested
+# double quotes) makes generating the here docs *much less fiddly*.
+# See https://github.com/r-lib/here/pull/130
+test_that("is_renv_project prints regex-friendly-ish text", {
+  expect_snapshot(is_renv_project)
+})
