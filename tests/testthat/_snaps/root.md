@@ -45,7 +45,7 @@
       Root criterion: contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line
       
       $is_vscode_project
-      Root criterion: contains a file '.vscode/settings.json'
+      Root criterion: contains a file ".vscode/settings.json"
       
       $is_r_package
       Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '
@@ -100,17 +100,17 @@
       str(criteria)
     Output
       List of 13
-       $ is_rstudio_project   : chr "Root criterion: contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line"
-       $ is_vscode_project    : chr "Root criterion: contains a file '.vscode/settings.json'"
-       $ is_r_package         : chr "Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '"
-       $ is_remake_project    : chr "Root criterion: contains a file 'remake.yml'"
-       $ is_pkgdown_project   : chr [1:7] "Root criterion: one of" "- contains a file '_pkgdown.yml'" "- contains a file '_pkgdown.yaml'" "- contains a file 'pkgdown/_pkgdown.yml'" ...
-       $ is_renv_project      : chr "Root criterion: contains a file 'renv.lock' with contents matching '\"Packages\":\\s*\\{'"
-       $ is_projectile_project: chr "Root criterion: contains a file '.projectile'"
-       $ is_quarto_project    : chr "Root criterion: contains a file '_quarto.yml'"
-       $ is_git_root          : chr [1:3] "Root criterion: one of" "- contains a directory '.git'" "- contains a file '.git' with contents matching '^gitdir: '"
-       $ is_svn_root          : chr "Root criterion: contains a directory '.svn'"
-       $ is_vcs_root          : chr [1:4] "Root criterion: one of" "- contains a directory '.git'" "- contains a file '.git' with contents matching '^gitdir: '" "- contains a directory '.svn'"
+       $ is_rstudio_project   : chr "Root criterion: contains a file matching \"[.]Rproj$\" with contents matching \"^Version: \" in the first line"
+       $ is_vscode_project    : chr "Root criterion: contains a file \".vscode/settings.json\""
+       $ is_r_package         : chr "Root criterion: contains a file \"DESCRIPTION\" with contents matching \"^Package: \""
+       $ is_remake_project    : chr "Root criterion: contains a file \"remake.yml\""
+       $ is_pkgdown_project   : chr [1:7] "Root criterion: one of" "- contains a file \"_pkgdown.yml\"" "- contains a file \"_pkgdown.yaml\"" "- contains a file \"pkgdown/_pkgdown.yml\"" ...
+       $ is_renv_project      : chr "Root criterion: contains a file \"renv.lock\" with contents matching \"\"Packages\":\\s*\\{\""
+       $ is_projectile_project: chr "Root criterion: contains a file \".projectile\""
+       $ is_quarto_project    : chr "Root criterion: contains a file \"_quarto.yml\""
+       $ is_git_root          : chr [1:3] "Root criterion: one of" "- contains a directory \".git\"" "- contains a file \".git\" with contents matching \"^gitdir: \""
+       $ is_svn_root          : chr "Root criterion: contains a directory \".svn\""
+       $ is_vcs_root          : chr [1:4] "Root criterion: one of" "- contains a directory \".git\"" "- contains a file \".git\" with contents matching \"^gitdir: \"" "- contains a directory \".svn\""
        $ is_testthat          : chr "Root criterion: directory name is \"testthat\" (also look in subdirectories: `tests/testthat`, `testthat`)"
        $ from_wd              : chr "Root criterion: from current working directory"
 
