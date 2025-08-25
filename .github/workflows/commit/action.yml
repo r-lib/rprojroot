@@ -81,4 +81,6 @@ runs:
       uses: reviewdog/action-suggester@v1
       with:
         github_token: ${{ inputs.token }}
-        tool_name: "Auto-formatting"
+        level: error
+        fail_level: error
+        tool_name: "rcc"
