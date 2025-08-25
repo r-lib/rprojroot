@@ -36,6 +36,8 @@ runs:
           # Running on a PR - will use reviewdog in next step
           echo "Code changes detected on PR, will suggest changes via reviewdog"
           echo "use_reviewdog=true" | tee -a $GITHUB_OUTPUT
+          git reset HEAD
+          git status
         elif [ "${foreign}" = "true" ]; then
           # https://github.com/krlmlr/actions-sync/issues/44
           echo "Can't push to foreign branch"
