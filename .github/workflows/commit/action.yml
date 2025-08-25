@@ -31,7 +31,12 @@ runs:
         set -x
         protected=${{ github.ref_protected }}
         foreign=${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
-        if [ "${foreign}" = "true" ]; then
+        is_pr=${{ github.event_name == 'pull_request' }}
+        if [ "${is_pr}" = "true" ]; then
+          # Running on a PR - will use reviewdog in next step
+          echo "Code changes detected on PR, will suggest changes via reviewdog"
+          echo "use_reviewdog=true" | tee -a $GITHUB_OUTPUT
+        elif [ "${foreign}" = "true" ]; then
           # https://github.com/krlmlr/actions-sync/issues/44
           echo "Can't push to foreign branch"
         elif [ "${protected}" = "true" ]; then
@@ -70,3 +75,10 @@ runs:
           echo sha=$(git rev-parse HEAD) >> $GITHUB_OUTPUT
         fi
       shell: bash
+
+    - name: Suggest changes via reviewdog
+      if: steps.commit.outputs.use_reviewdog == 'true'
+      uses: reviewdog/action-suggester@v1
+      with:
+        github_token: ${{ inputs.token }}
+        tool_name: "Auto-formatting"
