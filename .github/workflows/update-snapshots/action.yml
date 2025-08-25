@@ -69,7 +69,8 @@ runs:
       shell: bash
 
     - name: Create pull request
-      if: ${{ steps.check-changed.outputs.changed }}
+      # Fall through if PR, will use reviewdog/action-suggester in the commit action
+      if: ${{ steps.check-changed.outputs.changed }} && ${{ github.event_name != 'pull_request' }}
       id: cpr
       uses: peter-evans/create-pull-request@v6
       with:
