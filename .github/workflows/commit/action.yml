@@ -80,7 +80,7 @@ runs:
 
     - name: Suggest changes via reviewdog
       if: steps.commit.outputs.use_reviewdog == 'true'
-      uses: reviewdog/action-suggester@v1
+      uses: krlmlr/action-suggester@main
       with:
         github_token: ${{ inputs.token }}
         tool_name: "rcc"
