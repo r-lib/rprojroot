@@ -9,7 +9,7 @@ given directory is a project root."><meta name="robots" content="noindex"><scrip
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.0.99.9900</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@ given directory is a project root."><meta name="robots" content="noindex"><scrip
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Is a directory the project root?</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.99.9900/R/criterion.R" class="external-link"><code>R/criterion.R</code></a>, <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.99.9900/R/root.R" class="external-link"><code>R/root.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/R/criterion.R" class="external-link"><code>R/criterion.R</code></a>, <a href="https://github.com/r-lib/rprojroot/blob/main/R/root.R" class="external-link"><code>R/root.R</code></a></small>
       <div class="d-none name"><code>root_criterion.Rd</code></div>
     </div>
 
@@ -191,9 +191,9 @@ with support for case-insensitive file systems.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">root_criterion</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"somefile"</span><span class="op">)</span><span class="op">)</span>, <span class="st">"has somefile"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: has somefile</span>
 <span class="r-in"><span><span class="fu">has_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "DESCRIPTION"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file 'DESCRIPTION'</span>
 <span class="r-in"><span><span class="va">is_r_package</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">is_r_package</span><span class="op">$</span><span class="va">find_file</span></span></span>
 <span class="r-in"><span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">make_fix_file</span><span class="op">(</span><span class="st">"."</span><span class="op">)</span></span></span>

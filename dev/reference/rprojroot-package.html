@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.0.99.9900</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>rprojroot: Finding Files in Project Subdirectories</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.99.9900/R/rprojroot-package.R" class="external-link"><code>R/rprojroot-package.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/R/rprojroot-package.R" class="external-link"><code>R/rprojroot-package.R</code></a></small>
       <div class="d-none name"><code>rprojroot-package.Rd</code></div>
     </div>
 
@@ -61,48 +61,48 @@ root criteria.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">criteria</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_rstudio_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_vscode_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a directory ".vscode"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file '.vscode/settings.json'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_r_package</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_remake_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "remake.yml"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file 'remake.yml'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_pkgdown_project</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: one of</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "_pkgdown.yml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "_pkgdown.yaml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "pkgdown/_pkgdown.yml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "pkgdown/_pkgdown.yaml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "inst/_pkgdown.yml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file "inst/_pkgdown.yaml"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file '_pkgdown.yml'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file '_pkgdown.yaml'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file 'pkgdown/_pkgdown.yml'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file 'pkgdown/_pkgdown.yaml'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file 'inst/_pkgdown.yml'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file 'inst/_pkgdown.yaml'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_renv_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file 'renv.lock' with contents matching '"Packages":\s*\{'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_projectile_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file ".projectile"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file '.projectile'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_quarto_project</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file "_quarto.yml"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a file '_quarto.yml'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_git_root</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: one of</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory ".git"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file ".git" with contents matching "^gitdir: "</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory '.git'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file '.git' with contents matching '^gitdir: '</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_svn_root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a directory ".svn"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: contains a directory '.svn'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_vcs_root</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: one of</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory ".git"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file ".git" with contents matching "^gitdir: "</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory ".svn"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory '.git'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a file '.git' with contents matching '^gitdir: '</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - contains a directory '.svn'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $is_testthat</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Root criterion: directory name is "testthat" (also look in subdirectories: `tests/testthat`, `testthat`)</span>

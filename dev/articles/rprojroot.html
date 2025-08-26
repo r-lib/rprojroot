@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.0.99.9900</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,9 +59,9 @@
                         <h4 data-toc-skip class="author">Kirill
 Müller</h4>
             
-            <h4 data-toc-skip class="date">2025-07-12</h4>
+            <h4 data-toc-skip class="date">2025-08-26</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/cran-2.0.99.9900/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="d-none name"><code>rprojroot.Rmd</code></div>
     </div>
 
@@ -90,15 +90,15 @@ started, followed by a longer description of the features.</p>
 <p>What is your project: An R package?</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_r_package</a></span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '</span></span></code></pre>
 <p>Or an RStudio project?</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_rstudio_project</a></span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line</span></span></code></pre>
 <p>Or something else?</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rprojroot</span><span class="fu">::</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">".git/index"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file ".git/index"</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file '.git/index'</span></span></code></pre>
 <p>For now, we assume it’s an R package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">root</span> <span class="op">&lt;-</span> <span class="fu">rprojroot</span><span class="fu">::</span><span class="va"><a href="../reference/criteria.html">is_r_package</a></span></span></code></pre></div>
@@ -116,7 +116,7 @@ function. In this example here, we’re starting in the
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.99.9900"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.0.9000"</span></span></code></pre>
 <p>There is one exception: if the first component passed to
 <code>find_file()</code> is already an absolute path. This allows safely
 applying this function to paths that may be absolute or relative:</p>
@@ -125,7 +125,7 @@ applying this function to paths that may be absolute or relative:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.99.9900"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.0.9000"</span></span></code></pre>
 <p>You can also construct an accessor to your root using the
 <code>root$make_fix_file()</code> function:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -140,7 +140,7 @@ current working directory is outside your project:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.0.99.9900"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.0.9000"</span></span></code></pre>
 <p>If you know the absolute path of some directory below your project,
 but cannot be sure of your current working directory, pass that absolute
 path to <code>root$make_fix_file()</code>:</p>
@@ -185,13 +185,13 @@ with a specific name and specific contents.</p>
 <span></span>
 <span><span class="co"># List all files and directories below the root</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="fu"><a href="../reference/find_root.html">find_root</a></span><span class="op">(</span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "codecov.yml"      "cran-comments.md"</span></span>
-<span><span class="co">##  [4] "DESCRIPTION"      "index.md"         "inst"            </span></span>
-<span><span class="co">##  [7] "LICENSE"          "LICENSE.md"       "man"             </span></span>
-<span><span class="co">## [10] "NAMESPACE"        "NEWS.md"          "R"               </span></span>
-<span><span class="co">## [13] "README.md"        "README.Rmd"       "revdep"          </span></span>
-<span><span class="co">## [16] "rprojroot.Rproj"  "tests"            "TODO.md"         </span></span>
-<span><span class="co">## [19] "vignettes"</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] "_pkgdown.yml"     "check"            "codecov.yml"     </span></span>
+<span><span class="co">##  [4] "cran-comments.md" "DESCRIPTION"      "index.md"        </span></span>
+<span><span class="co">##  [7] "inst"             "LICENSE"          "LICENSE.md"      </span></span>
+<span><span class="co">## [10] "man"              "NAMESPACE"        "NEWS.md"         </span></span>
+<span><span class="co">## [13] "R"                "README.md"        "README.Rmd"      </span></span>
+<span><span class="co">## [16] "revdep"           "rprojroot.Rproj"  "tests"           </span></span>
+<span><span class="co">## [19] "TODO.md"          "vignettes"</span></span></code></pre>
 <div class="section level4">
 <h4 id="relative-paths-to-a-stable-root">Relative paths to a stable root<a class="anchor" aria-label="anchor" href="#relative-paths-to-a-stable-root"></a>
 </h4>
@@ -224,7 +224,7 @@ package, e.g.,</li>
 can be done with the <code><a href="../reference/root_criterion.html">has_file()</a></code> function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'DESCRIPTION'</span></span></code></pre>
 <p>So, using <em>rprojroot</em> you can specify the path relative from
 root in the following manner:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
@@ -285,61 +285,61 @@ successfully determined the correct path:</p>
 <code>root_criterion</code>:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'DESCRIPTION'</span></span></code></pre>
 <p>In addition, character values are coerced to <code>has_file</code>
 criteria by default, this coercion is applied automatically by
 <code><a href="../reference/find_root.html">find_root()</a></code>. (This feature is used by the introductory
 example.)</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/root_criterion.html">as_root_criterion</a></span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "DESCRIPTION"</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'DESCRIPTION'</span></span></code></pre>
 <p>The return value of these functions can be stored and reused; in
 fact, the package provides 13 such criteria:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">criteria</span></span></code></pre></div>
 <pre><code><span><span class="co">## $is_rstudio_project</span></span>
-<span><span class="co">## Root criterion: contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span></span>
+<span><span class="co">## Root criterion: contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_vscode_project</span></span>
-<span><span class="co">## Root criterion: contains a directory ".vscode"</span></span>
+<span><span class="co">## Root criterion: contains a file '.vscode/settings.json'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_r_package</span></span>
-<span><span class="co">## Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span></span>
+<span><span class="co">## Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_remake_project</span></span>
-<span><span class="co">## Root criterion: contains a file "remake.yml"</span></span>
+<span><span class="co">## Root criterion: contains a file 'remake.yml'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_pkgdown_project</span></span>
 <span><span class="co">## Root criterion: one of</span></span>
-<span><span class="co">## - contains a file "_pkgdown.yml"</span></span>
-<span><span class="co">## - contains a file "_pkgdown.yaml"</span></span>
-<span><span class="co">## - contains a file "pkgdown/_pkgdown.yml"</span></span>
-<span><span class="co">## - contains a file "pkgdown/_pkgdown.yaml"</span></span>
-<span><span class="co">## - contains a file "inst/_pkgdown.yml"</span></span>
-<span><span class="co">## - contains a file "inst/_pkgdown.yaml"</span></span>
+<span><span class="co">## - contains a file '_pkgdown.yml'</span></span>
+<span><span class="co">## - contains a file '_pkgdown.yaml'</span></span>
+<span><span class="co">## - contains a file 'pkgdown/_pkgdown.yml'</span></span>
+<span><span class="co">## - contains a file 'pkgdown/_pkgdown.yaml'</span></span>
+<span><span class="co">## - contains a file 'inst/_pkgdown.yml'</span></span>
+<span><span class="co">## - contains a file 'inst/_pkgdown.yaml'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_renv_project</span></span>
-<span><span class="co">## Root criterion: contains a file "renv.lock" with contents matching ""Packages":\s*\{"</span></span>
+<span><span class="co">## Root criterion: contains a file 'renv.lock' with contents matching '"Packages":\s*\{'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_projectile_project</span></span>
-<span><span class="co">## Root criterion: contains a file ".projectile"</span></span>
+<span><span class="co">## Root criterion: contains a file '.projectile'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_quarto_project</span></span>
-<span><span class="co">## Root criterion: contains a file "_quarto.yml"</span></span>
+<span><span class="co">## Root criterion: contains a file '_quarto.yml'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_git_root</span></span>
 <span><span class="co">## Root criterion: one of</span></span>
-<span><span class="co">## - contains a directory ".git"</span></span>
-<span><span class="co">## - contains a file ".git" with contents matching "^gitdir: "</span></span>
+<span><span class="co">## - contains a directory '.git'</span></span>
+<span><span class="co">## - contains a file '.git' with contents matching '^gitdir: '</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_svn_root</span></span>
-<span><span class="co">## Root criterion: contains a directory ".svn"</span></span>
+<span><span class="co">## Root criterion: contains a directory '.svn'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_vcs_root</span></span>
 <span><span class="co">## Root criterion: one of</span></span>
-<span><span class="co">## - contains a directory ".git"</span></span>
-<span><span class="co">## - contains a file ".git" with contents matching "^gitdir: "</span></span>
-<span><span class="co">## - contains a directory ".svn"</span></span>
+<span><span class="co">## - contains a directory '.git'</span></span>
+<span><span class="co">## - contains a file '.git' with contents matching '^gitdir: '</span></span>
+<span><span class="co">## - contains a directory '.svn'</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $is_testthat</span></span>
 <span><span class="co">## Root criterion: directory name is "testthat" (also look in subdirectories: `tests/testthat`, `testthat`)</span></span>
@@ -353,17 +353,17 @@ fact, the package provides 13 such criteria:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">has_license</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"LICENSE"</span><span class="op">)</span></span>
 <span><span class="va">has_license</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "LICENSE"</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'LICENSE'</span></span></code></pre>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">is_projecttemplate_project</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/root_criterion.html">has_file</a></span><span class="op">(</span><span class="st">"config/global.dcf"</span>, <span class="st">"^version: "</span><span class="op">)</span></span>
 <span><span class="va">is_projecttemplate_project</span></span></code></pre></div>
-<pre><code><span><span class="co">## Root criterion: contains a file "config/global.dcf" with contents matching "^version: "</span></span></code></pre>
+<pre><code><span><span class="co">## Root criterion: contains a file 'config/global.dcf' with contents matching '^version: '</span></span></code></pre>
 <p>You can also combine criteria via the <code>|</code> operator:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">is_r_package</span> <span class="op">|</span> <span class="va">is_rstudio_project</span></span></code></pre></div>
 <pre><code><span><span class="co">## Root criterion: one of</span></span>
-<span><span class="co">## - contains a file "DESCRIPTION" with contents matching "^Package: "</span></span>
-<span><span class="co">## - contains a file matching "[.]Rproj$" with contents matching "^Version: " in the first line</span></span></code></pre>
+<span><span class="co">## - contains a file 'DESCRIPTION' with contents matching '^Package: '</span></span>
+<span><span class="co">## - contains a file matching '[.]Rproj$' with contents matching '^Version: ' in the first line</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="shortcuts">Shortcuts<a class="anchor" aria-label="anchor" href="#shortcuts"></a>
@@ -399,7 +399,7 @@ error:</p>
 <pre><code><span><span class="co">## function(..., path = ".") {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x561b3f85a958&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x5566033d8428&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -427,7 +427,7 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##     path(.(root), ...)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x561b42110300&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x556605c89170&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
