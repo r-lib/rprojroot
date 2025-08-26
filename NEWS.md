@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# rprojroot 2.1.0.9000 (2025-08-26)
+# rprojroot 2.1.1 (2025-08-26)
 
 ## Features
 
