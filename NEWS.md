@@ -6,12 +6,6 @@
 
 - `is_vscode_project` looks for `.vscode/settings.json` instead of just `.vscode/` (#162, #163).
 
-## Continuous integration
-
-- Cleanup and fix macOS (#165).
-
-- Format with air, check detritus, better handling of `extra-packages` (#164).
-
 ## Documentation
 
 - Use single quotes to avoid nested double quotes (#161).
