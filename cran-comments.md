@@ -1,4 +1,4 @@
-rprojroot 2.1.0
+rprojroot 2.1.1
 
 ## Cran Repository Policy
 
