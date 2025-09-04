@@ -29,7 +29,7 @@ VignetteBuilder:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, load = "source")
-RoxygenNote: 7.3.2.9000
+RoxygenNote: 7.3.3.9000
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: true
 Config/Needs/website: tidyverse/tidytemplate
