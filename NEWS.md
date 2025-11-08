@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9001 (2025-11-08)
+
+## Continuous integration
+
+- Sync (#173).
+
+
 # rprojroot 2.1.1.9000 (2025-09-21)
 
 ## Chore
