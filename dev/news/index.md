@@ -1,5 +1,11 @@
 # Changelog
 
+## rprojroot 2.1.1.9001 (2025-11-08)
+
+### Continuous integration
+
+- Sync ([\#173](https://github.com/r-lib/rprojroot/issues/173)).
+
 ## rprojroot 2.1.1.9000 (2025-09-21)
 
 ### Chore
