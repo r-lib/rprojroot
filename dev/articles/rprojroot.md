@@ -73,7 +73,7 @@ readLines(root$find_file("DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9001"
+    ## [3] "Version: 2.1.1.9002"
 
 There is one exception: if the first component passed to `find_file()`
 is already an absolute path. This allows safely applying this function
@@ -86,7 +86,7 @@ readLines(root$find_file(path, "DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9001"
+    ## [3] "Version: 2.1.1.9002"
 
 You can also construct an accessor to your root using the
 `root$make_fix_file()` function:
@@ -108,7 +108,7 @@ withr::with_dir(
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9001"
+    ## [3] "Version: 2.1.1.9002"
 
 If you know the absolute path of some directory below your project, but
 cannot be sure of your current working directory, pass that absolute
@@ -428,7 +428,7 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x55a86a2c1a48>
+    ## <environment: 0x55e1dd39ba48>
 
 ``` r
 # Our package does not have a LICENSE file, trying to find the root results in an error
@@ -461,7 +461,7 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x55a86cc33cf8>
+    ## <environment: 0x55e1dfd0dcf8>
 
 ``` r
 # Show contents of the NAMESPACE file in our project

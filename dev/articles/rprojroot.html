@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">rprojroot</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.1.9001</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.1.9002</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@
                         <h4 data-toc-skip class="author">Kirill
 Müller</h4>
             
-            <h4 data-toc-skip class="date">2025-11-09</h4>
+            <h4 data-toc-skip class="date">2025-11-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-lib/rprojroot/blob/main/vignettes/rprojroot.Rmd" class="external-link"><code>vignettes/rprojroot.Rmd</code></a></small>
       <div class="d-none name"><code>rprojroot.Rmd</code></div>
@@ -116,7 +116,7 @@ function. In this example here, we’re starting in the
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.1.1.9001"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.1.9002"</span></span></code></pre>
 <p>There is one exception: if the first component passed to
 <code>find_file()</code> is already an absolute path. This allows safely
 applying this function to paths that may be absolute or relative:</p>
@@ -125,7 +125,7 @@ applying this function to paths that may be absolute or relative:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">root</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"DESCRIPTION"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.1.1.9001"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.1.9002"</span></span></code></pre>
 <p>You can also construct an accessor to your root using the
 <code>root$make_fix_file()</code> function:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -140,7 +140,7 @@ current working directory is outside your project:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Package: rprojroot"                            </span></span>
 <span><span class="co">## [2] "Title: Finding Files in Project Subdirectories"</span></span>
-<span><span class="co">## [3] "Version: 2.1.1.9001"</span></span></code></pre>
+<span><span class="co">## [3] "Version: 2.1.1.9002"</span></span></code></pre>
 <p>If you know the absolute path of some directory below your project,
 but cannot be sure of your current working directory, pass that absolute
 path to <code>root$make_fix_file()</code>:</p>
@@ -399,7 +399,7 @@ error:</p>
 <pre><code><span><span class="co">## function(..., path = ".") {</span></span>
 <span><span class="co">##     find_root_file(..., criterion = criterion, path = path)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55a86a2c1a48&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55e1dd39ba48&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Our package does not have a LICENSE file, trying to find the root results in an error</span></span>
 <span><span class="fu">R</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -427,7 +427,7 @@ root <em>at creation time</em>.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">##     path(.(root), ...)</span></span>
 <span><span class="co">##   }</span></span>
-<span><span class="co">## &lt;environment: 0x55a86cc33cf8&gt;</span></span></code></pre>
+<span><span class="co">## &lt;environment: 0x55e1dfd0dcf8&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show contents of the NAMESPACE file in our project</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/logical.html" class="external-link">F</a></span><span class="op">(</span><span class="st">"NAMESPACE"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>

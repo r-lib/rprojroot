@@ -1,5 +1,12 @@
 # Changelog
 
+## rprojroot 2.1.1.9002 (2025-11-10)
+
+### Continuous integration
+
+- Use workflows for fledge
+  ([\#175](https://github.com/r-lib/rprojroot/issues/175)).
+
 ## rprojroot 2.1.1.9001 (2025-11-08)
 
 ### Continuous integration
