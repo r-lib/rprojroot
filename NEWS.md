@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9003 (2025-11-12)
+
+## Continuous integration
+
+- Fix reviewdog and add commenting workflow (#177).
+
+
 # rprojroot 2.1.1.9002 (2025-11-10)
 
 ## Continuous integration
