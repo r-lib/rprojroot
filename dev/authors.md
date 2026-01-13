@@ -10,13 +10,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/r-lib/rprojroot/blob/main/DESCRIPTION)
 
-Müller K (2025). *rprojroot: Finding Files in Project Subdirectories*. R
-package version 2.1.1.9003, <https://rprojroot.r-lib.org/>.
+Müller K (2026). *rprojroot: Finding Files in Project Subdirectories*. R
+package version 2.1.1.9004, <https://rprojroot.r-lib.org/>.
 
     @Manual{,
       title = {rprojroot: Finding Files in Project Subdirectories},
       author = {Kirill Müller},
-      year = {2025},
-      note = {R package version 2.1.1.9003},
+      year = {2026},
+      note = {R package version 2.1.1.9004},
       url = {https://rprojroot.r-lib.org/},
     }
