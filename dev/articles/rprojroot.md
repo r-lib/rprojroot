@@ -428,7 +428,7 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x5594586b5680>
+    ## <environment: 0x563bc37ff7d0>
 
 ``` r
 # Our package does not have a LICENSE file, trying to find the root results in an error
@@ -461,7 +461,7 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x5594593b9978>
+    ## <environment: 0x563bc44ff1a8>
 
 ``` r
 # Show contents of the NAMESPACE file in our project
