@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9005 (2026-01-14)
+
+## Continuous integration
+
+- Fix comment (#183).
+
+- Tweaks (#182).
+
+- Test all R versions on branches that start with cran- (#181).
+
+
 # rprojroot 2.1.1.9004 (2025-11-17)
 
 ## Continuous integration
