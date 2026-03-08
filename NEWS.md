@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9006 (2026-03-08)
+
+## Chore
+
+- Auto-update from GitHub Actions (#185).
+
+
 # rprojroot 2.1.1.9005 (2026-01-14)
 
 ## Continuous integration
