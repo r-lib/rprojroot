@@ -22,35 +22,35 @@
 \usage{
 criteria
 
-is_rstudio_project
+data(is_rstudio_project)
 
-is_vscode_project
+data(is_vscode_project)
 
-is_r_package
+data(is_r_package)
 
-is_remake_project
+data(is_remake_project)
 
-is_drake_project
+data(is_drake_project)
 
-is_targets_project
+data(is_targets_project)
 
-is_pkgdown_project
+data(is_pkgdown_project)
 
-is_renv_project
+data(is_renv_project)
 
-is_projectile_project
+data(is_projectile_project)
 
-is_quarto_project
+data(is_quarto_project)
 
-is_git_root
+data(is_git_root)
 
-is_svn_root
+data(is_svn_root)
 
-is_vcs_root
+data(is_vcs_root)
 
-is_testthat
+data(is_testthat)
 
-from_wd
+data(from_wd)
 }
 \description{
 This is a collection of commonly used root criteria.
