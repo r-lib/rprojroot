@@ -181,8 +181,18 @@ test_that("concrete criteria", {
     do.call(file.path, list(wd, "hierarchy", "a", "b", "c")[seq_len(n + 1L)])
   }
 
-  # HACK
-  writeLines(character(), file.path(hierarchy(3L), ".projectile"))
+  # HACK to prevent a NOTE like this from R CMD check:
+  # checking for hidden files and directories ... NOTE
+  # Found the following hidden files and directories:
+  #   tests/testthat/hierarchy/.vscode
+  dot_projectile <- file.path(hierarchy(3L), ".projectile")
+  on.exit(file.remove(dot_projectile), add = TRUE)
+  writeLines(character(), dot_projectile)
+
+  dot_vscode <- file.path(hierarchy(1L), ".vscode")
+  on.exit(unlink(dot_vscode, recursive = TRUE), add = TRUE)
+  dir.create(dot_vscode)
+  writeLines("{}", file.path(dot_vscode, "settings.json"))
 
   stop_path <- hierarchy(0L)
   path <- hierarchy(4L)
@@ -190,6 +200,7 @@ test_that("concrete criteria", {
   local_mocked_bindings(is_fs_root = function(x) x == stop_path)
 
   expect_equal(find_root(is_rstudio_project, path = path), hierarchy(1L))
+  expect_equal(find_root(is_vscode_project, path = path), hierarchy(1L))
   expect_equal(find_root(is_remake_project, path = path), hierarchy(2L))
   expect_equal(find_root(is_projectile_project, path = path), hierarchy(3L))
 })
@@ -296,4 +307,11 @@ test_that("stops if depth reached", {
 
   # Checks that search for root terminates for very deep hierarchies
   expect_error(find_root_mocked(""), "Maximum search of [0-9]+ exceeded")
+})
+
+# The exact style of quoting here (double inside single as opposed to nested
+# double quotes) makes generating the here docs *much less fiddly*.
+# See https://github.com/r-lib/here/pull/130
+test_that("is_renv_project prints regex-friendly-ish text", {
+  expect_snapshot(is_renv_project)
 })

@@ -201,12 +201,12 @@ has_file <- function(filepath, contents = NULL, n = -1L, fixed = FALSE) {
   }))
 
   desc <- paste0(
-    'contains a file "', filepath, '"',
+    "contains a file '", filepath, "'",
     if (!is.null(contents)) {
       paste0(
         " with contents ",
         if (!fixed) "matching ",
-        '"', contents, '"',
+        "'", contents, "'",
         if (n >= 0L) paste0(" in the first ", format_lines(n))
       )
     }
@@ -232,7 +232,7 @@ has_dir <- function(filepath) {
     dir.exists(testfile)
   }))
 
-  desc <- paste0('contains a directory "', filepath, '"')
+  desc <- paste0("contains a directory '", filepath, "'")
 
   root_criterion(testfun, desc)
 }
@@ -273,12 +273,12 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L, fixed = FALSE) {
   }))
 
   desc <- paste0(
-    'contains a file matching "', pattern, '"',
+    "contains a file matching '", pattern, "'",
     if (!is.null(contents)) {
       paste0(
         " with contents ",
         if (!fixed) "matching ",
-        '"', contents, '"',
+        "'", contents, "'",
         if (n >= 0L) paste0(" in the first ", format_lines(n))
       )
     }
@@ -313,6 +313,9 @@ has_basename <- function(basename, subdir = NULL) {
 is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n = 1L)
 
 #' @export
+is_vscode_project <- has_file(".vscode/settings.json")
+
+#' @export
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
 #' @export
@@ -320,6 +323,9 @@ is_remake_project <- has_file("remake.yml")
 
 #' @export
 is_drake_project <- has_dir(".drake")
+
+#' @export
+is_targets_project <- has_file("_targets.R")
 
 #' @export
 is_pkgdown_project <-
@@ -364,6 +370,7 @@ from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 criteria <- structure(
   list(
     is_rstudio_project = is_rstudio_project,
+    is_vscode_project = is_vscode_project,
     is_r_package = is_r_package,
     is_remake_project = is_remake_project,
     is_pkgdown_project = is_pkgdown_project,
@@ -394,6 +401,14 @@ str.root_criteria <- function(object, ...) {
 "is_rstudio_project"
 
 #' @details
+#' `is_vscode_project` looks for a `.vscode/settings.json` file.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_vscode_project"
+
+#' @details
 #' `is_r_package` looks for a `DESCRIPTION` file.
 #'
 #' @format NULL
@@ -416,6 +431,15 @@ str.root_criteria <- function(object, ...) {
 #' @rdname criteria
 #' @export
 "is_drake_project"
+
+
+#' @details
+#' `is_targets_project` looks for a `_targets.R` file.
+#'
+#' @format NULL
+#' @rdname criteria
+#' @export
+"is_targets_project"
 
 #' @details
 #' `is_pkgdown_project` looks for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file.

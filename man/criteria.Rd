@@ -4,9 +4,11 @@
 \name{criteria}
 \alias{criteria}
 \alias{is_rstudio_project}
+\alias{is_vscode_project}
 \alias{is_r_package}
 \alias{is_remake_project}
 \alias{is_drake_project}
+\alias{is_targets_project}
 \alias{is_pkgdown_project}
 \alias{is_renv_project}
 \alias{is_projectile_project}
@@ -22,11 +24,15 @@ criteria
 
 is_rstudio_project
 
+is_vscode_project
+
 is_r_package
 
 is_remake_project
 
 is_drake_project
+
+is_targets_project
 
 is_pkgdown_project
 
@@ -52,11 +58,15 @@ This is a collection of commonly used root criteria.
 \details{
 \code{is_rstudio_project} looks for a file with extension \code{.Rproj}.
 
+\code{is_vscode_project} looks for a \code{.vscode/settings.json} file.
+
 \code{is_r_package} looks for a \code{DESCRIPTION} file.
 
 \code{is_remake_project} looks for a \code{remake.yml} file.
 
 \code{is_drake_project} looks for a \code{.drake} directory.
+
+\code{is_targets_project} looks for a \verb{_targets.R} file.
 
 \code{is_pkgdown_project} looks for a \verb{_pkgdown.yml}, \verb{_pkgdown.yaml}, \verb{pkgdown/_pkgdown.yml} and/or \verb{inst/_pkgdown.yml} file.
 
