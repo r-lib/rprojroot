@@ -309,24 +309,60 @@ has_basename <- function(basename, subdir = NULL) {
   root_criterion(testfun, desc, subdir = subdir)
 }
 
+#' Prespecified criteria
+#'
+#' This is a collection of commonly used root criteria.
+#'
+#' @format NULL
+#' @name criteria
+NULL
+
+#' @details
+#' `is_rstudio_project` looks for a file with extension `.Rproj`.
+#'
+#' @rdname criteria
 #' @export
 is_rstudio_project <- has_file_pattern("[.]Rproj$", contents = "^Version: ", n = 1L)
 
+#' @details
+#' `is_vscode_project` looks for a `.vscode/settings.json` file.
+#'
+#' @rdname criteria
 #' @export
 is_vscode_project <- has_file(".vscode/settings.json")
 
+#' @details
+#' `is_r_package` looks for a `DESCRIPTION` file.
+#'
+#' @rdname criteria
 #' @export
 is_r_package <- has_file("DESCRIPTION", contents = "^Package: ")
 
+#' @details
+#' `is_remake_project` looks for a `remake.yml` file.
+#'
+#' @rdname criteria
 #' @export
 is_remake_project <- has_file("remake.yml")
 
+#' @details
+#' `is_drake_project` looks for a `.drake` directory.
+#'
+#' @rdname criteria
 #' @export
 is_drake_project <- has_dir(".drake")
 
+#' @details
+#' `is_targets_project` looks for a `_targets.R` file.
+#'
+#' @rdname criteria
 #' @export
 is_targets_project <- has_file("_targets.R")
 
+#' @details
+#' `is_pkgdown_project` looks for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file.
+#'
+#' @rdname criteria
 #' @export
 is_pkgdown_project <-
   has_file("_pkgdown.yml") |
@@ -336,36 +372,66 @@ is_pkgdown_project <-
     has_file("inst/_pkgdown.yml") |
     has_file("inst/_pkgdown.yaml")
 
+#' @details
+#' `is_renv_project` looks for an `renv.lock` file.
+#'
+#' @rdname criteria
 #' @export
 is_renv_project <- has_file("renv.lock", contents = '"Packages":\\s*\\{')
 
+#' @details
+#' `is_projectile_project` looks for a `.projectile` file.
+#'
+#' @rdname criteria
 #' @export
 is_projectile_project <- has_file(".projectile")
 
+#' @details
+#' `is_quarto_project` looks for a `_quarto.yml` file.
+#'
+#' @rdname criteria
 #' @export
 is_quarto_project <- has_file("_quarto.yml")
 
+#' @details
+#' `is_git_root` looks for a `.git` directory.
+#'
+#' @rdname criteria
 #' @export
 is_git_root <- has_dir(".git") | has_file(".git", contents = "^gitdir: ")
 
+#' @details
+#' `is_svn_root` looks for a `.svn` directory.
+#'
+#' @rdname criteria
 #' @export
 is_svn_root <- has_dir(".svn")
 
+#' @details
+#' `is_vcs_root` looks for the root of a version control
+#' system, currently only Git and SVN are supported.
+#'
+#' @rdname criteria
 #' @export
 is_vcs_root <- is_git_root | is_svn_root
 
+#' @details
+#' `is_testthat` looks for the `testthat` directory, works when
+#'   developing, testing, and checking a package.
+#'
+#' @rdname criteria
 #' @export
 is_testthat <- has_basename("testthat", c("tests/testthat", "testthat"))
 
+#' @details
+#' `from_wd` uses the current working directory.
+#'
+#' @rdname criteria
 #' @export
 from_wd <- root_criterion(function(path) TRUE, "from current working directory")
 
-#' Prespecified criteria
-#'
-#' This is a collection of commonly used root criteria.
-#'
 #' @format NULL
-#'
+#' @rdname criteria
 #' @export
 criteria <- structure(
   list(
@@ -391,126 +457,3 @@ criteria <- structure(
 str.root_criteria <- function(object, ...) {
   str(lapply(object, format))
 }
-
-#' @details
-#' `is_rstudio_project` looks for a file with extension `.Rproj`.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_rstudio_project"
-
-#' @details
-#' `is_vscode_project` looks for a `.vscode/settings.json` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_vscode_project"
-
-#' @details
-#' `is_r_package` looks for a `DESCRIPTION` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_r_package"
-
-#' @details
-#' `is_remake_project` looks for a `remake.yml` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_remake_project"
-
-#' @details
-#' `is_drake_project` looks for a `.drake` directory.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_drake_project"
-
-
-#' @details
-#' `is_targets_project` looks for a `_targets.R` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_targets_project"
-
-#' @details
-#' `is_pkgdown_project` looks for a `_pkgdown.yml`, `_pkgdown.yaml`, `pkgdown/_pkgdown.yml` and/or `inst/_pkgdown.yml` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_pkgdown_project"
-
-#' @details
-#' `is_renv_project` looks for an `renv.lock` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_renv_project"
-
-#' @details
-#' `is_projectile_project` looks for a `.projectile` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_projectile_project"
-
-#' @details
-#' `is_quarto_project` looks for a `_quarto.yml` file.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_quarto_project"
-
-#' @details
-#' `is_git_root` looks for a `.git` directory.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_git_root"
-
-#' @details
-#' `is_svn_root` looks for a `.svn` directory.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_svn_root"
-
-#' @details
-#' `is_vcs_root` looks for the root of a version control
-#' system, currently only Git and SVN are supported.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_vcs_root"
-
-#' @details
-#' `is_testthat` looks for the `testthat` directory, works when
-#'   developing, testing, and checking a package.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"is_testthat"
-
-#' @details
-#' `from_wd` uses the current working directory.
-#'
-#' @format NULL
-#' @rdname criteria
-#' @export
-"from_wd"
