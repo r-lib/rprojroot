@@ -5,8 +5,6 @@ This is a collection of commonly used root criteria.
 ## Usage
 
 ``` r
-criteria
-
 is_rstudio_project
 
 is_vscode_project
@@ -36,6 +34,8 @@ is_vcs_root
 is_testthat
 
 from_wd
+
+criteria
 ```
 
 ## Details

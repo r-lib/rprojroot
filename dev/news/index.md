@@ -1,5 +1,23 @@
 # Changelog
 
+## rprojroot 2.1.1.9006 (2026-03-08)
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#185](https://github.com/r-lib/rprojroot/issues/185)).
+
+## rprojroot 2.1.1.9005 (2026-01-14)
+
+### Continuous integration
+
+- Fix comment ([\#183](https://github.com/r-lib/rprojroot/issues/183)).
+
+- Tweaks ([\#182](https://github.com/r-lib/rprojroot/issues/182)).
+
+- Test all R versions on branches that start with cran-
+  ([\#181](https://github.com/r-lib/rprojroot/issues/181)).
+
 ## rprojroot 2.1.1.9004 (2025-11-17)
 
 ### Continuous integration
@@ -149,8 +167,7 @@ CRAN release: 2020-11-15
   [`find_root_file()`](https://rprojroot.r-lib.org/dev/reference/find_root_file.md),
   if the first path component is already an absolute path, the path is
   returned unchanged without referring to the root. This allows using
-  both root-relative and absolute paths in
-  [`here::here()`](https://here.r-lib.org/reference/here.html). Mixing
+  both root-relative and absolute paths in `here::here()`. Mixing
   root-relative and absolute paths in the same call returns an error
   ([\#59](https://github.com/r-lib/rprojroot/issues/59)).
 - [`find_root_file()`](https://rprojroot.r-lib.org/dev/reference/find_root_file.md)

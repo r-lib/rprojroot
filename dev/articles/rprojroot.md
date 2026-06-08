@@ -12,6 +12,7 @@ directory: For instance, in RStudio it’s sometimes:
 - again the project root (when executing chunks of a vignette).
 
 ``` r
+
 basename(getwd())
 ```
 
@@ -27,6 +28,7 @@ started, followed by a longer description of the features.
 What is your project: An R package?
 
 ``` r
+
 rprojroot::is_r_package
 ```
 
@@ -35,6 +37,7 @@ rprojroot::is_r_package
 Or an RStudio project?
 
 ``` r
+
 rprojroot::is_rstudio_project
 ```
 
@@ -43,6 +46,7 @@ rprojroot::is_rstudio_project
 Or something else?
 
 ``` r
+
 rprojroot::has_file(".git/index")
 ```
 
@@ -51,6 +55,7 @@ rprojroot::has_file(".git/index")
 For now, we assume it’s an R package:
 
 ``` r
+
 root <- rprojroot::is_r_package
 ```
 
@@ -62,36 +67,40 @@ here, we’re starting in the `vignettes` subdirectory and find the
 original `DESCRIPTION` file:
 
 ``` r
+
 basename(getwd())
 ```
 
     ## [1] "vignettes"
 
 ``` r
+
 readLines(root$find_file("DESCRIPTION"), 3)
 ```
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9004"
+    ## [3] "Version: 2.1.1.9006"
 
 There is one exception: if the first component passed to `find_file()`
 is already an absolute path. This allows safely applying this function
 to paths that may be absolute or relative:
 
 ``` r
+
 path <- root$find_file()
 readLines(root$find_file(path, "DESCRIPTION"), 3)
 ```
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9004"
+    ## [3] "Version: 2.1.1.9006"
 
 You can also construct an accessor to your root using the
 `root$make_fix_file()` function:
 
 ``` r
+
 root_file <- root$make_fix_file()
 ```
 
@@ -100,6 +109,7 @@ Note that `root_file()` is a *function* that works just like
 directory is outside your project:
 
 ``` r
+
 withr::with_dir(
   "../..",
   readLines(root_file("DESCRIPTION"), 3)
@@ -108,13 +118,14 @@ withr::with_dir(
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9004"
+    ## [3] "Version: 2.1.1.9006"
 
 If you know the absolute path of some directory below your project, but
 cannot be sure of your current working directory, pass that absolute
 path to `root$make_fix_file()`:
 
 ``` r
+
 root_file <- root$make_fix_file("C:\\Users\\User Name\\...")
 ```
 
@@ -124,6 +135,7 @@ vignettes using the
 function:
 
 ``` r
+
 root_file <- root$make_fix_file(dirname(thisfile()))
 ```
 
@@ -162,6 +174,7 @@ function constructs a criterion that checks for the presence of a file
 with a specific name and specific contents.
 
 ``` r
+
 library(rprojroot)
 
 # List all files and directories below the root
@@ -193,6 +206,7 @@ When your working directory is `pkgname/vignettes`, you can access the
     ways to do that:
 
 ``` r
+
 rel_path_from_vignettes <- "../R/rrmake.R"
 rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ## identical
 ```
@@ -201,6 +215,7 @@ rel_path_from_vignettes <- file.path("..", "R", "rrmake.R") ## identical
     package, e.g.,
 
 ``` r
+
 rel_path_from_root <- "R/rrmake.R"
 rel_path_from_root <- file.path("R", "rrmake.R") ## identical
 ```
@@ -211,6 +226,7 @@ be done with the
 function:
 
 ``` r
+
 has_file("DESCRIPTION")
 ```
 
@@ -220,6 +236,7 @@ So, using *rprojroot* you can specify the path relative from root in the
 following manner:
 
 ``` r
+
 # Specify a path/to/file relative to the root
 rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
 ```
@@ -232,6 +249,7 @@ the `rrmake.R` file by:
 1.  Supplying a pathname relative to your working directory.
 
 ``` r
+
 rel_path_from_testthat <- "../../R/rrmake.R"
 ```
 
@@ -243,6 +261,7 @@ second method is the same…
     example.
 
 ``` r
+
 # Specify a path/to/file relative to the root
 rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
 ```
@@ -265,6 +284,7 @@ can check to make sure that *rprojroot* has successfully determined the
 correct path:
 
 ``` r
+
 # Specify a path/to/file relative to the root
 rel_path_from_root <- find_root_file("R", "rrmake.R", criterion = has_file("DESCRIPTION"))
 
@@ -283,6 +303,7 @@ function (and the more general
 both return an S3 object of class `root_criterion`:
 
 ``` r
+
 has_file("DESCRIPTION")
 ```
 
@@ -294,6 +315,7 @@ default, this coercion is applied automatically by
 (This feature is used by the introductory example.)
 
 ``` r
+
 as_root_criterion("DESCRIPTION")
 ```
 
@@ -303,6 +325,7 @@ The return value of these functions can be stored and reused; in fact,
 the package provides 13 such criteria:
 
 ``` r
+
 criteria
 ```
 
@@ -362,6 +385,7 @@ criteria
 Defining new criteria is easy:
 
 ``` r
+
 has_license <- has_file("LICENSE")
 has_license
 ```
@@ -369,6 +393,7 @@ has_license
     ## Root criterion: contains a file 'LICENSE'
 
 ``` r
+
 is_projecttemplate_project <- has_file("config/global.dcf", "^version: ")
 is_projecttemplate_project
 ```
@@ -378,6 +403,7 @@ is_projecttemplate_project
 You can also combine criteria via the `|` operator:
 
 ``` r
+
 is_r_package | is_rstudio_project
 ```
 
@@ -393,6 +419,7 @@ shortcut functions can be created. The
 is a shortcut for `find_root_file(..., criterion = is_r_package)`:
 
 ``` r
+
 # Print first lines of the source for this document
 head(readLines(find_package_root_file("vignettes", "rprojroot.Rmd")))
 ```
@@ -407,6 +434,7 @@ head(readLines(find_package_root_file("vignettes", "rprojroot.Rmd")))
 To save typing effort, define a shorter alias:
 
 ``` r
+
 P <- find_package_root_file
 
 # Use a shorter alias
@@ -420,6 +448,7 @@ below the root specified by this criterion. As our project does not have
 a file named `LICENSE`, querying the root results in an error:
 
 ``` r
+
 # Use the has_license criterion to find the root
 R <- has_license$find_file
 R
@@ -428,9 +457,10 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x555657a937e0>
+    ## <environment: 0x560547bb25e0>
 
 ``` r
+
 # Our package does not have a LICENSE file, trying to find the root results in an error
 R()
 ```
@@ -443,6 +473,7 @@ We can also create a function that computes a path relative to the root
 *at creation time*.
 
 ``` r
+
 # Define a function that computes file paths below the current root
 F <- is_r_package$make_fix_file()
 F
@@ -461,9 +492,10 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x5556587931a8>
+    ## <environment: 0x5605489650b0>
 
 ``` r
+
 # Show contents of the NAMESPACE file in our project
 readLines(F("NAMESPACE"))
 ```
@@ -526,6 +558,7 @@ This function can be used even if we later change the working directory
 to somewhere outside the project:
 
 ``` r
+
 # Print the size of the namespace file, working directory outside the project
 withr::with_dir(
   "../..",
@@ -558,6 +591,7 @@ Ideally, this should work in the following situation:
 The `is_testthat` criterion allows robust lookup of test files.
 
 ``` r
+
 is_testthat
 ```
 
@@ -569,6 +603,7 @@ test directory. It uses two project root lookups in total, so that it
 also works when rendering the vignette (*sigh*):
 
 ``` r
+
 dir(is_testthat$find_file("hierarchy", path = is_r_package$find_file()))
 ```
 
@@ -583,6 +618,7 @@ testing file at `tests/testthat/test_my_fun.R` which tests the
 `my_fun()` function:
 
 ``` r
+
 my_fun_run <- do.call(my_fun, my_args)
 
 testthat::test_that(
@@ -610,6 +646,7 @@ running any tests, you can place a `get_my_path()` in this file and use
 it throughout your tests:
 
 ``` r
+
 ## saved to tests/testthat/helper.R
 get_my_path <- function(file_name) {
   rprojroot::find_testthat_root_file(
@@ -622,6 +659,7 @@ Now you can ask `get_my_path()` to find your important data files by
 using the function within your test scripts!
 
 ``` r
+
 ## Find the correct path with your custom rprojroot helper function
 path_to_my_args_file <- get_my_path("my_args.Rdata")
 

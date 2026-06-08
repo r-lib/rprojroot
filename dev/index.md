@@ -7,6 +7,7 @@ low-level helper package for the [here](https://here.r-lib.org/)
 package.
 
 ``` r
+
 library(rprojroot)
 ```
 
@@ -17,6 +18,7 @@ files contained in a subdirectory that can be categorized using a strict
 criterion. Let’s create a package for demonstration.
 
 ``` r
+
 dir <- tempfile()
 pkg <- usethis::create_package(dir)
 #> ✔ Creating
@@ -50,6 +52,7 @@ directory, the function works like
 working directory:
 
 ``` r
+
 setwd(pkg)
 is_r_package
 #> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "
@@ -62,6 +65,7 @@ is_r_package$find_file("tests", "testthat")
 This works identically when starting from a subdirectory:
 
 ``` r
+
 setwd(file.path(pkg, "R"))
 is_r_package$find_file()
 #> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"
@@ -74,6 +78,7 @@ is already an absolute path. This allows safely applying this function
 to paths that may be absolute or relative:
 
 ``` r
+
 setwd(file.path(pkg, "R"))
 path <- is_r_package$find_file()
 is_r_package$find_file(path, "tests", "testthat")
@@ -88,6 +93,7 @@ your project, you can retrieve the project root.
 Install the package from CRAN:
 
 ``` r
+
 install.package("rprojroot")
 ```
 

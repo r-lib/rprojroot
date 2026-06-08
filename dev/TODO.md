@@ -32,7 +32,7 @@ Update roxygen2
 
 Use `@examplesIf` where appropriate
 
-[`styler::style_pkg()`](https://styler.r-lib.org/reference/style_pkg.html)
+`styler::style_pkg()`
 
 Remove `Collate:`
 
@@ -60,8 +60,7 @@ Avoid `iris`
 
 Synchronize with own downstream packages
 
-Add type to documentation of function arguments, as in
-[`?here::here`](https://here.r-lib.org/reference/here.html)
+Add type to documentation of function arguments, as in `?here::here`
 
 Check `goodpractice::gp()`
 

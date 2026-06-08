@@ -14,8 +14,7 @@
 
 ## Criteria
 
-- [`criteria`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
-  [`is_rstudio_project`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
+- [`is_rstudio_project`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
   [`is_vscode_project`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
   [`is_r_package`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
   [`is_remake_project`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
@@ -29,7 +28,8 @@
   [`is_svn_root`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
   [`is_vcs_root`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
   [`is_testthat`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
-  [`from_wd`](https://rprojroot.r-lib.org/dev/reference/criteria.md) :
+  [`from_wd`](https://rprojroot.r-lib.org/dev/reference/criteria.md)
+  [`criteria`](https://rprojroot.r-lib.org/dev/reference/criteria.md) :
   Prespecified criteria
 - [`root_criterion()`](https://rprojroot.r-lib.org/dev/reference/root_criterion.md)
   [`is_root_criterion()`](https://rprojroot.r-lib.org/dev/reference/root_criterion.md)
