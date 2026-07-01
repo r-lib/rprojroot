@@ -44,5 +44,7 @@ export(thisfile_knit)
 export(thisfile_r)
 export(thisfile_rscript)
 export(thisfile_source)
-importFrom(utils,str)
-importFrom(utils,tail)
+importFrom(utils,
+  str,
+  tail
+)
