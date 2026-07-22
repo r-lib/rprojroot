@@ -1,5 +1,59 @@
 # Changelog
 
+## rprojroot 2.1.1.9008 (2026-07-02)
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#230](https://github.com/r-lib/rprojroot/issues/230)).
+
+## rprojroot 2.1.1.9007 (2026-06-08)
+
+### Features
+
+- Add `is_renv_project` criterion looking for an `renv.lock` file
+  ([@gadenbuie](https://github.com/gadenbuie),
+  [\#86](https://github.com/r-lib/rprojroot/issues/86)).
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#228](https://github.com/r-lib/rprojroot/issues/228)).
+
+- Add ccache to `.gitignore` and `.Rbuildignore`.
+
+### Continuous integration
+
+- Update ccache-action reference.
+
+- Bump action version.
+
+- Create snapshot update PR against correct branch.
+
+- Add reference to `/apply-patch` workflow in commit message.
+
+- Clarify rationale for not deploying on schedule.
+
+- Only run fledge on pushes to main.
+
+- Tweak fledge workflow and ccache action.
+
+- Cosmetics.
+
+- Bump action versions.
+
+- Install clang-format-21.
+
+- Align fledge workflow.
+
+### Documentation
+
+- Add “Supported By Posit” badge to rprojroot website
+  ([@jeroenjanssens](https://github.com/jeroenjanssens),
+  [\#172](https://github.com/r-lib/rprojroot/issues/172)).
+
+- Compatibility with roxygen2 8.0.0.
+
 ## rprojroot 2.1.1.9006 (2026-03-08)
 
 ### Chore

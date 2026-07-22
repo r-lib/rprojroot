@@ -80,7 +80,7 @@ readLines(root$find_file("DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9006"
+    ## [3] "Version: 2.1.1.9008"
 
 There is one exception: if the first component passed to `find_file()`
 is already an absolute path. This allows safely applying this function
@@ -94,7 +94,7 @@ readLines(root$find_file(path, "DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9006"
+    ## [3] "Version: 2.1.1.9008"
 
 You can also construct an accessor to your root using the
 `root$make_fix_file()` function:
@@ -118,7 +118,7 @@ withr::with_dir(
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9006"
+    ## [3] "Version: 2.1.1.9008"
 
 If you know the absolute path of some directory below your project, but
 cannot be sure of your current working directory, pass that absolute
@@ -457,7 +457,7 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x56253a8b1eb8>
+    ## <environment: 0x5b33f7667450>
 
 ``` r
 
@@ -492,7 +492,7 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x56253b663a98>
+    ## <environment: 0x5b33f841c718>
 
 ``` r
 
@@ -546,8 +546,10 @@ readLines(F("NAMESPACE"))
     ## [44] "export(thisfile_r)"                          
     ## [45] "export(thisfile_rscript)"                    
     ## [46] "export(thisfile_source)"                     
-    ## [47] "importFrom(utils,str)"                       
-    ## [48] "importFrom(utils,tail)"
+    ## [47] "importFrom(utils,"                           
+    ## [48] "  str,"                                      
+    ## [49] "  tail"                                      
+    ## [50] ")"
 
 This is a more robust alternative to `$find_file()`, because it *fixes*
 the project directory when `$make_fix_file()` is called, instead of
@@ -566,7 +568,7 @@ withr::with_dir(
 )
 ```
 
-    ## [1] 1200
+    ## [1] 1189
 
 The `make_fix_file()` member function also accepts an optional `path`
 argument, in case you know your project’s root but the current working
