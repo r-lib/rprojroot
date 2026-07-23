@@ -1,5 +1,13 @@
 # Changelog
 
+## rprojroot 2.1.1.9009 (2026-07-22)
+
+### Continuous integration
+
+- Run on Ubuntu 26.04.
+
+- Align workflows with template.
+
 ## rprojroot 2.1.1.9008 (2026-07-02)
 
 ### Chore

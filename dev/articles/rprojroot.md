@@ -80,7 +80,7 @@ readLines(root$find_file("DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9008"
+    ## [3] "Version: 2.1.1.9009"
 
 There is one exception: if the first component passed to `find_file()`
 is already an absolute path. This allows safely applying this function
@@ -94,7 +94,7 @@ readLines(root$find_file(path, "DESCRIPTION"), 3)
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9008"
+    ## [3] "Version: 2.1.1.9009"
 
 You can also construct an accessor to your root using the
 `root$make_fix_file()` function:
@@ -118,7 +118,7 @@ withr::with_dir(
 
     ## [1] "Package: rprojroot"                            
     ## [2] "Title: Finding Files in Project Subdirectories"
-    ## [3] "Version: 2.1.1.9008"
+    ## [3] "Version: 2.1.1.9009"
 
 If you know the absolute path of some directory below your project, but
 cannot be sure of your current working directory, pass that absolute
@@ -457,7 +457,7 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x5b33f7667450>
+    ## <environment: 0x5e585f05b3a0>
 
 ``` r
 
@@ -492,7 +492,7 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x5b33f841c718>
+    ## <environment: 0x5e585fe0dfd8>
 
 ``` r
 
