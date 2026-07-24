@@ -1,5 +1,13 @@
 # Changelog
 
+## rprojroot 2.1.1.9010 (2026-07-24)
+
+### Bug fixes
+
+#### ci
+
+- Emit empty package matrix when there are no (rev)deps.
+
 ## rprojroot 2.1.1.9009 (2026-07-22)
 
 ### Continuous integration
