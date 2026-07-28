@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9012 (2026-07-28)
+
+## Testing
+
+- Replace mockr with `testthat::local_mocked_bindings()` (@salim-b, #97).
+
+## Uncategorized
+
+- Ci: Link the responsible workflow run in snapshot update PRs (#96).
+
+
 # rprojroot 2.1.1.9011 (2026-07-25)
 
 ## Continuous integration
