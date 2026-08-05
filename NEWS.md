@@ -1,5 +1,30 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9013 (2026-08-05)
+
+## Features
+
+- Breaking change: The `subdir` argument to `root_criterion()` must have length one (#84, #102).
+
+## Chore
+
+- Auto-update from GitHub Actions (#236).
+
+## Continuous integration
+
+- Remove unused pr-commands workflow.
+
+## Documentation
+
+- Clarify `subdir` argument (#103).
+
+- Fix typo (@salim-b, #99).
+
+## Breaking changes
+
+- Breaking change: The `subdir` argument to `root_criterion()` must have length one (#84, #102).
+
+
 # rprojroot 2.1.1.9012 (2026-07-28)
 
 ## Testing
