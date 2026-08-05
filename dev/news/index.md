@@ -1,5 +1,19 @@
 # Changelog
 
+## rprojroot 2.1.1.9012 (2026-07-28)
+
+### Testing
+
+- Replace mockr with
+  [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
+  ([@salim-b](https://github.com/salim-b),
+  [\#97](https://github.com/r-lib/rprojroot/issues/97)).
+
+### Uncategorized
+
+- Ci: Link the responsible workflow run in snapshot update PRs
+  ([\#96](https://github.com/r-lib/rprojroot/issues/96)).
+
 ## rprojroot 2.1.1.9011 (2026-07-25)
 
 ### Continuous integration
