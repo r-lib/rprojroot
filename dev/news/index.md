@@ -1,5 +1,40 @@
 # Changelog
 
+## rprojroot 2.1.1.9013 (2026-08-05)
+
+### Features
+
+- Breaking change: The `subdir` argument to
+  [`root_criterion()`](https://rprojroot.r-lib.org/dev/reference/root_criterion.md)
+  must have length one
+  ([\#84](https://github.com/r-lib/rprojroot/issues/84),
+  [\#102](https://github.com/r-lib/rprojroot/issues/102)).
+
+### Chore
+
+- Auto-update from GitHub Actions
+  ([\#236](https://github.com/r-lib/rprojroot/issues/236)).
+
+### Continuous integration
+
+- Remove unused pr-commands workflow.
+
+### Documentation
+
+- Clarify `subdir` argument
+  ([\#103](https://github.com/r-lib/rprojroot/issues/103)).
+
+- Fix typo ([@salim-b](https://github.com/salim-b),
+  [\#99](https://github.com/r-lib/rprojroot/issues/99)).
+
+### Breaking changes
+
+- Breaking change: The `subdir` argument to
+  [`root_criterion()`](https://rprojroot.r-lib.org/dev/reference/root_criterion.md)
+  must have length one
+  ([\#84](https://github.com/r-lib/rprojroot/issues/84),
+  [\#102](https://github.com/r-lib/rprojroot/issues/102)).
+
 ## rprojroot 2.1.1.9012 (2026-07-28)
 
 ### Testing
