@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9014 (2026-08-06)
+
+## Features
+
+- Align `is_pkgdown_project` with pkgdown \> 2.0.9. (#104, #106).
+
+- Avoid warnings on Windows network drives (#105).
+
+## Continuous integration
+
+- Add sharded `revdep2` workflow.
+
+
 # rprojroot 2.1.1.9013 (2026-08-05)
 
 ## Features
