@@ -265,7 +265,9 @@ is_r_package | is_rstudio_project
 To avoid specifying the search criteria for the project root every time,
 shortcut functions can be created.
 The `find_package_root_file()` is a shortcut for
-`find_root_file(..., criterion = is_r_package)`:
+`find_root_file(..., criterion = is_r_package)`,
+extended to also find a package that lives in a subdirectory of a
+multi-language repository:
 
 ```{r}
 # Print first lines of the source for this document
