@@ -1,5 +1,13 @@
 # Changelog
 
+## rprojroot 2.1.1.9016 (2026-09-05)
+
+### Bug fixes
+
+#### ci
+
+- Backport kit fixes from `rigraph`, `duckdb-r` and `dm`.
+
 ## rprojroot 2.1.1.9015 (2026-08-08)
 
 ### Continuous integration
