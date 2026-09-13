@@ -9,9 +9,8 @@
 Robust, reliable and flexible paths to files below a project root. The 'root' of a project is defined as a directory that matches a certain criterion, e.g., it contains a certain regular file.
 }
 \details{
-See the "Value" section in \code{\link[=root_criterion]{root_criterion()}} for documentation
-of root criterion objects, and  \link{criteria} for useful predefined
-root criteria.
+See the "Value" section in \code{\link[=root_criterion]{root_criterion()}} for documentation of root criterion objects,
+and  \link{criteria} for useful predefined root criteria.
 }
 \examples{
 criteria

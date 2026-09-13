@@ -37,9 +37,8 @@ with the additional path components appended.
 Throws an error if no root is found.
 }
 \description{
-\code{find_root_file()} is a wrapper around \code{\link[=find_root]{find_root()}} that
-appends an arbitrary number of path components to the root using
-\code{\link[base:file.path]{base::file.path()}}.
+\code{find_root_file()} is a wrapper around \code{\link[=find_root]{find_root()}}
+that appends an arbitrary number of path components to the root using \code{\link[base:file.path]{base::file.path()}}.
 }
 \details{
 This function operates on the notion of relative paths.
