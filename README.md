@@ -42,7 +42,6 @@ pkg <- usethis::create_package(dir)
 #>     pick a license
 #> Encoding: UTF-8
 #> Roxygen: list(markdown = TRUE)
-#> RoxygenNote: 8.1.0
 #> ✔ Writing NAMESPACE.
 #> ✔ Setting active project to "<no active project>".
 ```
