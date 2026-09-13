@@ -27,25 +27,22 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 
 #' Is a directory the project root?
 #'
-#' Objects of the `root_criterion` class decide if a
-#' given directory is a project root.
+#' Objects of the `root_criterion` class decide if a given directory is a project root.
 #'
-#' Construct criteria using `root_criterion` in a very general fashion
-#' by specifying a function with a `path` argument, and a description.
+#' Construct criteria using `root_criterion` in a very general fashion by specifying a function with a `path` argument,
+#' and a description.
 #'
 #' @param testfun `[function|list(function)]`\cr
 #'   A function with one parameter that returns `TRUE`
 #'   if the directory specified by this parameter is the project root,
-#'   and `FALSE` otherwise. Can also be a list of such functions.
+#'   and `FALSE` otherwise.
+#'   Can also be a list of such functions.
 #' @param desc `[character]`\cr
-#'   A textual description of the test criterion, of the same length
-#'   as `testfun`.
+#'   A textual description of the test criterion, of the same length as `testfun`.
 #' @param subdir `[character]`\cr
-#'   If given, the criterion will also be tested in the subdirectories
-#'   defined by this argument, in the order given.
+#'   If given, the criterion will also be tested in the subdirectories defined by this argument, in the order given.
 #'   The first existing directory will be used as a starting point.
-#'   This is used for the [is_testthat] criterion that needs to
-#'   *descend* into `tests/testthat` if starting at the package root,
+#'   This is used for the [is_testthat] criterion that needs to *descend* into `tests/testthat` if starting at the package root,
 #'   but stay inside `tests/testthat` if called from a testthat test.
 #'
 #' @return
@@ -101,12 +98,10 @@ root_criterion <- function(testfun, desc, subdir = NULL) {
   #'     if the first argument is an absolute path.
   #'   }
   criterion$find_file <- make_find_root_file(criterion)
-  #'   \item{`make_fix_file`}{A function with a `path` argument that
-  #'      returns a function that finds paths relative to the root.  For a
-  #'      criterion `cr`, the result of `cr$make_fix_file(".")(...)`
-  #'      is identical to `cr$find_file(...)`. The function created by
-  #'      `make_fix_file()` can be saved to a variable to be more independent
-  #'      of the current working directory.
+  #'   \item{`make_fix_file`}{A function with a `path` argument
+  #'      that returns a function that finds paths relative to the root.  For a criterion `cr`,
+  #'      the result of `cr$make_fix_file(".")(...)` is identical to `cr$find_file(...)`.
+  #'      The function created by `make_fix_file()` can be saved to a variable to be more independent of the current working directory.
   #'   }
   #' }
   criterion$make_fix_file <-
