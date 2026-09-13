@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9017 (2026-09-13)
+
+## Features
+
+### ci
+
+- Align the `revdep2`, `revdep4` and `revdepx` subsystems with `rigraph`.
+
+## Continuous integration
+
+- Survive an archived CRAN package, cache revdep compiles (@krlmlr, #242).
+
+## Documentation
+
+- Switch to `index.md` (#111).
+
+
 # rprojroot 2.1.1.9016 (2026-09-05)
 
 ## Bug fixes
