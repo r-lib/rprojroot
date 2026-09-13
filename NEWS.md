@@ -1,5 +1,32 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9018 (2026-09-13)
+
+## Chore
+
+- Remove Copilot setup steps.
+
+## Continuous integration
+
+- Correctly detect branch protection (#117).
+
+- Trigger run (#115).
+
+## Documentation
+
+- Use `index.md` (#114).
+
+## fledge
+
+- Bump version to 2.0.4.9008 (#121).
+
+- Bump version to 2.0.4.9008 (#120).
+
+## Uncategorized
+
+- Fix(ci): Keep the raw name expression out of the running job's step list (cynkra/cynkratemplate#119).
+
+
 # rprojroot 2.1.1.9017 (2026-09-13)
 
 ## Features
