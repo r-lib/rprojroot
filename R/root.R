@@ -12,7 +12,7 @@ as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
 
 #' @details
 #' The `as_root_criterion()` function accepts objects of class `root_criterion`, and character values;
-#'  the latter will be converted to criteria using `has_file`.
+#' the latter will be converted to criteria using `has_file`.
 #'
 #' @rdname root_criterion
 #' @export
@@ -62,14 +62,14 @@ print.root_criterion <- function(x, ...) {
 #' Find the root of a directory hierarchy
 #'
 #' A \emph{root} is defined as a directory that contains a regular file
-#'  whose name matches a given pattern and which optionally contains a given text.
-#'  The search for a root starts at a given directory (the working directory by default),
-#'  and proceeds up the directory hierarchy.
+#' whose name matches a given pattern and which optionally contains a given text.
+#' The search for a root starts at a given directory (the working directory by default),
+#' and proceeds up the directory hierarchy.
 #'
 #' Starting from the working directory, the `find_root()` function searches for the root.
-#'  If a root is found, the `...` arguments are used to construct a path;
-#'  thus, if no extra arguments are given, the root is returned.
-#'  If no root is found, an error is thrown.
+#' If a root is found, the `...` arguments are used to construct a path;
+#' thus, if no extra arguments are given, the root is returned.
+#' If no root is found, an error is thrown.
 #'
 #' @inheritParams find_root_file
 #' @return The normalized path of the root as specified by the search criterion.
@@ -159,7 +159,7 @@ format_lines <- function(n) {
 
 #' @details
 #' The `has_file()` function constructs a criterion
-#'  that checks for the existence of a specific file (which itself can be in a subdirectory of the root) with specific contents.
+#' that checks for the existence of a specific file (which itself can be in a subdirectory of the root) with specific contents.
 #'
 #' @rdname root_criterion
 #' @param filepath `[character(1)]`\cr
@@ -238,7 +238,7 @@ check_relative <- function(filepath) {
 
 #' @details
 #' The `has_file_pattern()` function constructs a criterion that checks for the existence of a file that matches a pattern,
-#'  with specific contents.
+#' with specific contents.
 #'
 #' @rdname root_criterion
 #' @param pattern `[character(1)]`\cr
@@ -282,7 +282,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L, fixed = FALSE) {
 
 #' @details
 #' The `has_basename()` function constructs a criterion that checks if the [base::basename()] of the root directory has a specific name,
-#'  with support for case-insensitive file systems.
+#' with support for case-insensitive file systems.
 #'
 #' @rdname root_criterion
 #' @param basename `[character(1)]`\cr
@@ -401,7 +401,7 @@ is_svn_root <- has_dir(".svn")
 
 #' @details
 #' `is_vcs_root` looks for the root of a version control system,
-#'  currently only Git and SVN are supported.
+#' currently only Git and SVN are supported.
 #'
 #' @rdname criteria
 #' @export

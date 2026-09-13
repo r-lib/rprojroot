@@ -30,7 +30,7 @@ make_fix_root_file <- function(criterion, path, subdir = NULL) {
 #' Objects of the `root_criterion` class decide if a given directory is a project root.
 #'
 #' Construct criteria using `root_criterion` in a very general fashion by specifying a function with a `path` argument,
-#'  and a description.
+#' and a description.
 #'
 #' @param testfun `[function|list(function)]`\cr
 #'   A function with one parameter that returns `TRUE`
