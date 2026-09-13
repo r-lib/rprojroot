@@ -36,10 +36,9 @@ pkg <- usethis::create_package(dir)
 #> Title: What the Package Does (One Line, Title Case)
 #> Version: 0.0.0.9000
 #> Authors@R (parsed):
-#>     * First Last <first.last@example.com> [aut, cre]
+#>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>)
 #> Description: What the package does (one paragraph).
-#> License: `use_mit_license()`, `use_gpl3_license()` or friends to
-#>     pick a license
+#> License: MIT + file LICENSE
 #> Encoding: UTF-8
 #> Roxygen: list(markdown = TRUE)
 #> ✔ Writing NAMESPACE.

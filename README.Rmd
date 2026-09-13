@@ -18,7 +18,22 @@ clean_output <- function(x, options) {
 
   # The demo package below is created inside the session's temporary
   # directory, whose name is random and so different on every render.
-  x <- gsub(normalizePath(tempdir(), winslash = "/"), "/tmp/RtmpXXXXXX", x, fixed = TRUE)
+  # usethis echoes that directory in more than one spelling: the "Creating"
+  # line repeats the path as it was passed in, while "Setting active project"
+  # reports the resolved one.
+  # On macOS the two differ, because `/var` is a symlink to `/private/var`,
+  # and on Windows a backslashed spelling shows up as well.
+  # Substitute every spelling, longest first, so that a short one is never
+  # replaced inside a longer one and leaves a stray prefix behind.
+  temp_dirs <- unique(c(
+    tempdir(),
+    chartr("\\", "/", tempdir()),
+    normalizePath(tempdir(), winslash = "/"),
+    normalizePath(tempdir(), winslash = "\\")
+  ))
+  for (temp_dir in temp_dirs[order(nchar(temp_dirs), decreasing = TRUE)]) {
+    x <- gsub(temp_dir, "/tmp/RtmpXXXXXX", x, fixed = TRUE)
+  }
   # The demo package's DESCRIPTION records whichever roxygen2 wrote it:
   # `RoxygenNote` on a release build, `Config/roxygen2/version` on a
   # development one. That makes the rendered README differ by machine rather
@@ -37,6 +52,10 @@ clean_output <- function(x, options) {
 
 options(
   cli.num_colors = 256,
+  # Pinned so that a render under a non-UTF-8 locale keeps cli's Unicode check
+  # marks, instead of downgrading each of them to `v` and churning a dozen
+  # lines of output.
+  cli.unicode = TRUE,
   cli.width = 71,
   width = 71,
   pillar.bold = TRUE,
@@ -44,6 +63,20 @@ options(
   pillar.min_title_chars = 5,
   pillar.max_footer_lines = 12,
   conflicts.policy = list(warn = FALSE)
+)
+
+# `usethis::create_package()` fills the demo package's DESCRIPTION from this
+# option, so whoever renders the README decides what the front page shows.
+# Pinned here to the data it is meant to show, rather than left to the
+# maintainer's `.Rprofile`, which also contributed a `Date:` of the render day
+# and this package's own `URL:` to a DESCRIPTION that is not this package's.
+# The umlaut is written as an escape, so that the field reads the same however
+# the rendering session interprets the source file.
+options(
+  usethis.description = list(
+    `Authors@R` = 'person("Kirill", "M\u00fcller", email = "kirill@cynkra.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-1416-3412"))',
+    License = "MIT + file LICENSE"
+  )
 )
 
 local({
