@@ -19,6 +19,15 @@ clean_output <- function(x, options) {
   # The demo package below is created inside the session's temporary
   # directory, whose name is random and so different on every render.
   x <- gsub(normalizePath(tempdir(), winslash = "/"), "/tmp/RtmpXXXXXX", x, fixed = TRUE)
+  # The demo package's DESCRIPTION records whichever roxygen2 wrote it:
+  # `RoxygenNote` on a release build, `Config/roxygen2/version` on a
+  # development one. That makes the rendered README differ by machine rather
+  # than by run, so CI would rewrite it on every re-render. Dropped outright --
+  # the demo package's roxygen version is not what this README demonstrates.
+  # Matched loosely because this hook runs before the colour is stripped, so
+  # the field name may be wrapped in SGR escapes.
+  x <- gsub("(?m)^#>[^\n]*(RoxygenNote|Config/roxygen2/version)[^\n]*\n", "", x, perl = TRUE)
+
   x <- gsub("0x[0-9a-f]+", "0xdeadbeef", x)
   x <- gsub("dataframe_[0-9]*_[0-9]*", "      dataframe_42_42      ", x)
   x <- gsub("[0-9]*\\.___row_number ASC", "42.___row_number ASC", x)

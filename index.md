@@ -43,7 +43,6 @@ pkg <- usethis::create_package(dir)
 #>     pick a license
 #> [34mEncoding[39m: UTF-8
 #> [34mRoxygen[39m: list(markdown = TRUE)
-#> [34mRoxygenNote[39m: 8.1.0
 #> [32m✔[39m Writing [34mNAMESPACE[39m.
 #> [32m✔[39m Setting active project to [34m"<no active project>"[39m.
 ```
