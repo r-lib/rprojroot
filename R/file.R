@@ -1,13 +1,13 @@
 #' File paths relative to the root of a directory hierarchy
 #'
 #' `find_root_file()` is a wrapper around [find_root()]
-#'  that appends an arbitrary number of path components to the root using [base::file.path()].
+#' that appends an arbitrary number of path components to the root using [base::file.path()].
 #'
 #' This function operates on the notion of relative paths.
-#'  The `...` argument is expected to contain a path relative to the root.
-#'  If the first path component passed to `...` is already an absolute path,
-#'  the `criterion` and `path` arguments are ignored,
-#'  and `...` is forwarded to [file.path()].
+#' The `...` argument is expected to contain a path relative to the root.
+#' If the first path component passed to `...` is already an absolute path,
+#' the `criterion` and `path` arguments are ignored,
+#' and `...` is forwarded to [file.path()].
 #'
 #' @param criterion `[root_criterion]`\cr
 #'   A criterion, one of the predefined [criteria]

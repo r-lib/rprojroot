@@ -5,8 +5,8 @@
 #' `r lifecycle::badge("soft-deprecated")`
 #'
 #' \R does not store nor export the path of the currently running script.  This is an attempt to circumvent this limitation by applying heuristics (such as call stack and argument inspection) that work in many cases.
-#'  **CAVEAT**: Use this function only if your workflow does not permit other solution:
-#'  if a script needs to know its location, it should be set outside the context of the script if possible.
+#' **CAVEAT**: Use this function only if your workflow does not permit other solution:
+#' if a script needs to know its location, it should be set outside the context of the script if possible.
 #'
 #' @details This functions currently work only if the script was `source`d, processed with `knitr`, or run with `Rscript` or using the `--file` parameter to the `R` executable.  For code run with `Rscript`, the exact value of the parameter passed to `Rscript` is returned.
 #'
