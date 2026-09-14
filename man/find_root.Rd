@@ -13,29 +13,29 @@ get_root_desc(criterion, path)
 \item{criterion}{\verb{[root_criterion]}\cr
 A criterion, one of the predefined \link{criteria}
 or created by \code{\link[=root_criterion]{root_criterion()}}.
-Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
+ Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
 
 \item{path}{\verb{[character(1)]}\cr
 The start directory.}
 }
 \value{
 The normalized path of the root as specified by the search criterion.
-Throws an error if no root is found
+ Throws an error if no root is found
 }
 \description{
 A \emph{root} is defined as a directory that contains a regular file
 whose name matches a given pattern and which optionally contains a given text.
-The search for a root starts at a given directory (the working directory by default),
+ The search for a root starts at a given directory (the working directory by default),
 and proceeds up the directory hierarchy.
 
 \code{get_root_desc()} returns the description of the criterion for a root path.
-This is especially useful for composite root criteria created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
+ This is especially useful for composite root criteria created with \code{\link[=|.root_criterion]{|.root_criterion()}}.
 }
 \details{
 Starting from the working directory, the \code{find_root()} function searches for the root.
-If a root is found, the \code{...} arguments are used to construct a path;
+ If a root is found, the \code{...} arguments are used to construct a path;
 thus, if no extra arguments are given, the root is returned.
-If no root is found, an error is thrown.
+ If no root is found, an error is thrown.
 }
 \examples{
 \dontrun{

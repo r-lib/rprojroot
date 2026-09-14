@@ -21,12 +21,12 @@ find_testthat_root_file(..., path = ".")
 \arguments{
 \item{...}{\verb{[character]}\cr
 Further path components passed to \code{\link[=file.path]{file.path()}}.
-All arguments must be the same length or length one.}
+ All arguments must be the same length or length one.}
 
 \item{criterion}{\verb{[root_criterion]}\cr
 A criterion, one of the predefined \link{criteria}
 or created by \code{\link[=root_criterion]{root_criterion()}}.
-Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
+ Will be coerced using \code{\link[=as_root_criterion]{as_root_criterion()}}.}
 
 \item{path}{\verb{[character(1)]}\cr
 The start directory.}
@@ -34,7 +34,7 @@ The start directory.}
 \value{
 The normalized path of the root as specified by the search criteria,
 with the additional path components appended.
-Throws an error if no root is found.
+ Throws an error if no root is found.
 }
 \description{
 \code{find_root_file()} is a wrapper around \code{\link[=find_root]{find_root()}}
@@ -42,8 +42,8 @@ that appends an arbitrary number of path components to the root using \code{\lin
 }
 \details{
 This function operates on the notion of relative paths.
-The \code{...} argument is expected to contain a path relative to the root.
-If the first path component passed to \code{...} is already an absolute path,
+ The \code{...} argument is expected to contain a path relative to the root.
+ If the first path component passed to \code{...} is already an absolute path,
 the \code{criterion} and \code{path} arguments are ignored,
 and \code{...} is forwarded to \code{\link[=file.path]{file.path()}}.
 }
