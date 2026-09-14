@@ -1,7 +1,6 @@
 #' @details
-#' See the "Value" section in [root_criterion()] for documentation
-#' of root criterion objects, and  [criteria] for useful predefined
-#' root criteria.
+#' See the "Value" section in [root_criterion()] for documentation of root criterion objects,
+#' and  [criteria] for useful predefined root criteria.
 #'
 #' @examples
 #' criteria
