@@ -37,13 +37,11 @@ pkg <- usethis::create_package(dir)
 #> [34mTitle[39m: What the Package Does (One Line, Title Case)
 #> [34mVersion[39m: 0.0.0.9000
 #> [34mAuthors@R[39m (parsed):
-#>     * First Last <first.last@example.com> [aut, cre]
+#>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>)
 #> [34mDescription[39m: What the package does (one paragraph).
-#> [34mLicense[39m: `use_mit_license()`, `use_gpl3_license()` or friends to
-#>     pick a license
+#> [34mLicense[39m: MIT + file LICENSE
 #> [34mEncoding[39m: UTF-8
 #> [34mRoxygen[39m: list(markdown = TRUE)
-#> [34mRoxygenNote[39m: 8.1.0
 #> [32m✔[39m Writing [34mNAMESPACE[39m.
 #> [32m✔[39m Setting active project to [34m"<no active project>"[39m.
 ```
