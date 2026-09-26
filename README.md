@@ -8,7 +8,7 @@
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![rcc](https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg)](https://github.com/r-lib/rprojroot/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rprojroot)](https://cran.r-project.org/package=rprojroot)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/rprojroot/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/rprojroot?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/rprojroot/graph/badge.svg)](https://app.codecov.io/gh/r-lib/rprojroot/tree/main)
 <!-- badges: end -->
 
 This package helps accessing files relative to a *project root* to [stop the working directory insanity](https://gist.github.com/jennybc/362f52446fe1ebc4c49f).
