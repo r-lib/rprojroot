@@ -457,7 +457,7 @@ R
     ## function(..., path = ".") {
     ##     find_root_file(..., criterion = criterion, path = path)
     ##   }
-    ## <environment: 0x5fa1cb2eaaf0>
+    ## <environment: 0x5a10b9e2de48>
 
 ``` r
 
@@ -492,7 +492,7 @@ F
     ## 
     ##     path(.(root), ...)
     ##   }
-    ## <environment: 0x5fa1cc51ef40>
+    ## <environment: 0x5a10bb063a08>
 
 ``` r
 
