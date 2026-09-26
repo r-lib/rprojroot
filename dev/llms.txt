@@ -19,28 +19,22 @@ criterion. Let’s create a package for demonstration.
 
 ``` r
 
-dir <- tempfile()
+# A fixed name, so the demo package is not called `file1a2b3c` in the output.
+dir <- file.path(tempdir(), "demopkg")
 pkg <- usethis::create_package(dir)
-#> ✔ Creating
-#>   /var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/.
-#> ✔ Setting active project to
-#>   "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586".
+#> ✔ Creating /tmp/RtmpXXXXXX/demopkg/.
+#> ✔ Setting active project to "/tmp/RtmpXXXXXX/demopkg".
 #> ✔ Creating R/.
 #> ✔ Writing DESCRIPTION.
-#> Package: file337b29a46586
+#> Package: demopkg
 #> Title: What the Package Does (One Line, Title Case)
 #> Version: 0.0.0.9000
-#> Date: 2025-06-27
 #> Authors@R (parsed):
-#>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (<https://orcid.org/0000-0002-1416-3412>)
+#>     * Kirill Müller <kirill@cynkra.com> [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>)
 #> Description: What the package does (one paragraph).
-#> License: MIT
-#> URL: https://github.com/krlmlr/rprojroot,
-#>     https://krlmlr.github.io/rprojroot
-#> BugReports: https://github.com/krlmlr/rprojroot/issues
+#> License: MIT + file LICENSE
 #> Encoding: UTF-8
 #> Roxygen: list(markdown = TRUE)
-#> RoxygenNote: 7.3.2.9000
 #> ✔ Writing NAMESPACE.
 #> ✔ Setting active project to "<no active project>".
 ```
@@ -55,11 +49,11 @@ working directory:
 
 setwd(pkg)
 is_r_package
-#> Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "
+#> Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '
 is_r_package$find_file()
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"
+#> [1] "/tmp/RtmpXXXXXX/demopkg"
 is_r_package$find_file("tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
+#> [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"
 ```
 
 This works identically when starting from a subdirectory:
@@ -68,9 +62,9 @@ This works identically when starting from a subdirectory:
 
 setwd(file.path(pkg, "R"))
 is_r_package$find_file()
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"
+#> [1] "/tmp/RtmpXXXXXX/demopkg"
 is_r_package$find_file("tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
+#> [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"
 ```
 
 There is one exception: if the first component passed to `find_file()`
@@ -82,7 +76,7 @@ to paths that may be absolute or relative:
 setwd(file.path(pkg, "R"))
 path <- is_r_package$find_file()
 is_r_package$find_file(path, "tests", "testthat")
-#> [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"
+#> [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"
 ```
 
 As long as you are sure that your working directory is somewhere inside
@@ -95,6 +89,14 @@ Install the package from CRAN:
 ``` r
 
 install.package("rprojroot")
+```
+
+Or the development version from GitHub with:
+
+``` r
+
+# install.packages("pak")
+pak::pak("r-lib/rprojroot")
 ```
 
 See the

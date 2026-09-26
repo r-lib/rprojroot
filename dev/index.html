@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="index.html">rprojroot</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.1.9017</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">2.1.1.9018</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,52 +64,46 @@
 </h2>
 <p>The rprojroot package works best when you have a “project”: all related files contained in a subdirectory that can be categorized using a strict criterion. Let’s create a package for demonstration.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># A fixed name, so the demo package is not called `file1a2b3c` in the output.</span></span>
+<span><span class="va">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"demopkg"</span><span class="op">)</span></span>
 <span><span class="va">pkg</span> <span class="op">&lt;-</span> <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html" class="external-link">create_package</a></span><span class="op">(</span><span class="va">dir</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Creating</span></span>
-<span><span class="co">#&gt;   <span style="color: #0000BB;">/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Setting active project to</span></span>
-<span><span class="co">#&gt;   <span style="color: #0000BB;">"/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Creating <span style="color: #0000BB;">/tmp/RtmpXXXXXX/demopkg/</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Setting active project to <span style="color: #0000BB;">"/tmp/RtmpXXXXXX/demopkg"</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Creating <span style="color: #0000BB;">R/</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">DESCRIPTION</span>.</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">Package</span>: file337b29a46586</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">Package</span>: demopkg</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Title</span>: What the Package Does (One Line, Title Case)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Version</span>: 0.0.0.9000</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">Date</span>: 2025-06-27</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Authors@R</span> (parsed):</span></span>
-<span><span class="co">#&gt;     * Kirill Müller &lt;kirill@cynkra.com&gt; [aut, cre] (&lt;https://orcid.org/0000-0002-1416-3412&gt;)</span></span>
+<span><span class="co">#&gt;     * Kirill Müller &lt;kirill@cynkra.com&gt; [aut, cre] (ORCID: &lt;https://orcid.org/0000-0002-1416-3412&gt;)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Description</span>: What the package does (one paragraph).</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">License</span>: MIT</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">URL</span>: https://github.com/krlmlr/rprojroot,</span></span>
-<span><span class="co">#&gt;     https://krlmlr.github.io/rprojroot</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">BugReports</span>: https://github.com/krlmlr/rprojroot/issues</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">License</span>: MIT + file LICENSE</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Encoding</span>: UTF-8</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">Roxygen</span>: list(markdown = TRUE)</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">RoxygenNote</span>: 7.3.2.9000</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">NAMESPACE</span>.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Setting active project to <span style="color: #0000BB;">"&lt;no active project&gt;"</span>.</span></span></code></pre></div>
 <p>R packages satisfy the <code>is_r_package</code> criterion. A criterion is an object that contains a <code>find_file()</code> function. With <code>pkg</code> as working directory, the function works like <code><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path()</a></code>, rooted at the working directory:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">pkg</span><span class="op">)</span></span>
 <span><span class="va">is_r_package</span></span>
-<span><span class="co">#&gt; Root criterion: contains a file "DESCRIPTION" with contents matching "^Package: "</span></span>
+<span><span class="co">#&gt; Root criterion: contains a file 'DESCRIPTION' with contents matching '^Package: '</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span></span>
+<span><span class="co">#&gt; [1] "/tmp/RtmpXXXXXX/demopkg"</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"</span></span></code></pre></div>
 <p>This works identically when starting from a subdirectory:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">pkg</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586"</span></span>
+<span><span class="co">#&gt; [1] "/tmp/RtmpXXXXXX/demopkg"</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"</span></span></code></pre></div>
 <p>There is one exception: if the first component passed to <code>find_file()</code> is already an absolute path. This allows safely applying this function to paths that may be absolute or relative:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">pkg</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">path</span> <span class="op">&lt;-</span> <span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">is_r_package</span><span class="op">$</span><span class="fu">find_file</span><span class="op">(</span><span class="va">path</span>, <span class="st">"tests"</span>, <span class="st">"testthat"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/dj/yhk9rkx97wn_ykqtnmk18xvc0000gn/T/RtmpVBhMLR/file337b29a46586/tests/testthat"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "/tmp/RtmpXXXXXX/demopkg/tests/testthat"</span></span></code></pre></div>
 <p>As long as you are sure that your working directory is somewhere inside your project, you can retrieve the project root.</p>
 </div>
 <div class="section level2">
@@ -118,6 +112,10 @@
 <p>Install the package from CRAN:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install.package</span><span class="op">(</span><span class="st">"rprojroot"</span><span class="op">)</span></span></code></pre></div>
+<p>Or the development version from GitHub with:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"r-lib/rprojroot"</span><span class="op">)</span></span></code></pre></div>
 <p>See the <a href="https://rprojroot.r-lib.org/articles/rprojroot.html">documentation</a> for more detail.</p>
 </div>
 </div>
@@ -166,7 +164,7 @@
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://github.com/r-lib/rprojroot/actions" class="external-link"><img src="https://github.com/r-lib/rprojroot/workflows/rcc/badge.svg" alt="rcc"></a></li>
 <li><a href="https://cran.r-project.org/package=rprojroot" class="external-link"><img src="https://www.r-pkg.org/badges/version/rprojroot" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://app.codecov.io/gh/r-lib/rprojroot?branch=main" class="external-link"><img src="https://codecov.io/gh/r-lib/rprojroot/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/r-lib/rprojroot/tree/main" class="external-link"><img src="https://codecov.io/gh/r-lib/rprojroot/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 

@@ -1,5 +1,36 @@
 # Changelog
 
+## rprojroot 2.1.1.9018 (2026-09-13)
+
+### Chore
+
+- Remove Copilot setup steps.
+
+### Continuous integration
+
+- Correctly detect branch protection
+  ([\#117](https://github.com/r-lib/rprojroot/issues/117)).
+
+- Trigger run ([\#115](https://github.com/r-lib/rprojroot/issues/115)).
+
+### Documentation
+
+- Use `index.md`
+  ([\#114](https://github.com/r-lib/rprojroot/issues/114)).
+
+### fledge
+
+- Bump version to 2.0.4.9008
+  ([\#121](https://github.com/r-lib/rprojroot/issues/121)).
+
+- Bump version to 2.0.4.9008
+  ([\#120](https://github.com/r-lib/rprojroot/issues/120)).
+
+### Uncategorized
+
+- Fix(ci): Keep the raw name expression out of the running job’s step
+  list (cynkra/cynkratemplate#119).
+
 ## rprojroot 2.1.1.9017 (2026-09-13)
 
 ### Features
