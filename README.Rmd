@@ -120,6 +120,13 @@ Install the package from CRAN:
 install.package("rprojroot")
 ```
 
+Or the development version from GitHub with:
+
+``` r
+# install.packages("pak")
+pak::pak("r-lib/rprojroot")
+```
+
 See the [documentation](https://rprojroot.r-lib.org/articles/rprojroot.html) for more detail.
 
 ---
