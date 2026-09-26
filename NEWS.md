@@ -1,5 +1,40 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# rprojroot 2.1.1.9019 (2026-09-26)
+
+## Features
+
+- New `is_targets_project()` (@mitchelloharawild, #108, #146).
+
+## Continuous integration
+
+- Explain (#149).
+
+- Avoid failure in fledge workflow if no changes (#144).
+
+- Correct installation of xml2 (#150).
+
+## Documentation
+
+- Drop the demo package's roxygen2 version from the README (#253).
+
+- Break lines at meaning boundaries (#252).
+
+- Drop the branch from the coverage badge (#251).
+
+- Harmonize README and pkgdown front page rendering (#245).
+
+- Add a `pak::pak()` development install to the README (#244).
+
+## fledge
+
+- Bump version to 2.0.4.9010 (#145).
+
+- Bump version to 2.0.4.9008 (#141).
+
+- Bump version to 2.0.4.9008 (#139).
+
+
 # rprojroot 2.1.1.9018 (2026-09-13)
 
 ## Chore
