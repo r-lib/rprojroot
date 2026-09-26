@@ -20,7 +20,8 @@ library(rprojroot)
 
 ## Example
 
-The rprojroot package works best when you have a "project": all related files contained in a subdirectory that can be categorized using a strict criterion.
+The rprojroot package works best when you have a "project":
+all related files contained in a subdirectory that can be categorized using a strict criterion.
 Let's create a package for demonstration.
 
 ``` r

@@ -37,18 +37,16 @@ has_basename(basename, subdir = NULL)
 \item{testfun}{\verb{[function|list(function)]}\cr
 A function with one parameter that returns \code{TRUE}
 if the directory specified by this parameter is the project root,
-and \code{FALSE} otherwise. Can also be a list of such functions.}
+and \code{FALSE} otherwise.
+Can also be a list of such functions.}
 
 \item{desc}{\verb{[character]}\cr
-A textual description of the test criterion, of the same length
-as \code{testfun}.}
+A textual description of the test criterion, of the same length as \code{testfun}.}
 
 \item{subdir}{\verb{[character]}\cr
-If given, the criterion will also be tested in the subdirectories
-defined by this argument, in the order given.
+If given, the criterion will also be tested in the subdirectories defined by this argument, in the order given.
 The first existing directory will be used as a starting point.
-This is used for the \link{is_testthat} criterion that needs to
-\emph{descend} into \code{tests/testthat} if starting at the package root,
+This is used for the \link{is_testthat} criterion that needs to \emph{descend} into \code{tests/testthat} if starting at the package root,
 but stay inside \code{tests/testthat} if called from a testthat test.}
 
 \item{x}{\verb{[object]}\cr
@@ -62,9 +60,8 @@ File path (can contain directories).}
 
 \item{contents, fixed}{\verb{[character(1)]}\cr
 If \code{contents} is \code{NULL} (the default), file contents are not checked.
-Otherwise, \code{contents} is a regular expression
-(if \code{fixed} is \code{FALSE}) or a search string (if \code{fixed} is \code{TRUE}), and
-file contents are checked matching lines.}
+Otherwise, \code{contents} is a regular expression (if \code{fixed} is \code{FALSE}) or a search string (if \code{fixed} is \code{TRUE}),
+and file contents are checked matching lines.}
 
 \item{n}{\verb{[integerish(1)]}\cr
 Maximum number of lines to read to check file contents.}
@@ -91,43 +88,34 @@ The function forwards to \code{\link[=find_root_file]{find_root_file()}},
 which passes \code{...} directly to \code{file.path()}
 if the first argument is an absolute path.
 }
-\item{\code{make_fix_file}}{A function with a \code{path} argument that
-returns a function that finds paths relative to the root.  For a
-criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)}
-is identical to \code{cr$find_file(...)}. The function created by
-\code{make_fix_file()} can be saved to a variable to be more independent
-of the current working directory.
+\item{\code{make_fix_file}}{A function with a \code{path} argument that returns a function that finds paths relative to the root.
+For a criterion \code{cr}, the result of \code{cr$make_fix_file(".")(...)} is identical to \code{cr$find_file(...)}.
+The function created by \code{make_fix_file()} can be saved to a variable to be more independent of the current working directory.
 }
 }
 }
 \description{
-Objects of the \code{root_criterion} class decide if a
-given directory is a project root.
+Objects of the \code{root_criterion} class decide if a given directory is a project root.
 }
 \details{
-Construct criteria using \code{root_criterion} in a very general fashion
-by specifying a function with a \code{path} argument, and a description.
+Construct criteria using \code{root_criterion} in a very general fashion by specifying a function with a \code{path} argument,
+and a description.
 
-The \code{as_root_criterion()} function accepts objects of class
-\code{root_criterion}, and character values; the latter will be
-converted to criteria using \code{has_file}.
+The \code{as_root_criterion()} function accepts objects of class \code{root_criterion}, and character values;
+the latter will be converted to criteria using \code{has_file}.
 
-Root criteria can be combined with the \code{|} operator. The result is a
-composite root criterion that requires either of the original criteria to
-match.
+Root criteria can be combined with the \code{|} operator.
+The result is a composite root criterion that requires either of the original criteria to match.
 
-The \code{has_file()} function constructs a criterion that checks for the
-existence of a specific file (which itself can be in a subdirectory of the
-root) with specific contents.
+The \code{has_file()} function constructs a criterion
+that checks for the existence of a specific file (which itself can be in a subdirectory of the root) with specific contents.
 
-The \code{has_dir()} function constructs a criterion that checks for the
-existence of a specific directory.
+The \code{has_dir()} function constructs a criterion that checks for the existence of a specific directory.
 
-The \code{has_file_pattern()} function constructs a criterion that checks for the
-existence of a file that matches a pattern, with specific contents.
+The \code{has_file_pattern()} function constructs a criterion that checks for the existence of a file that matches a pattern,
+with specific contents.
 
-The \code{has_basename()} function constructs a criterion that checks if the
-\code{\link[base:basename]{base::basename()}} of the root directory has a specific name,
+The \code{has_basename()} function constructs a criterion that checks if the \code{\link[base:basename]{base::basename()}} of the root directory has a specific name,
 with support for case-insensitive file systems.
 }
 \examples{

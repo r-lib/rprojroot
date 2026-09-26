@@ -79,11 +79,10 @@ This is a collection of commonly used root criteria.
 
 \code{is_svn_root} looks for a \code{.svn} directory.
 
-\code{is_vcs_root} looks for the root of a version control
-system, currently only Git and SVN are supported.
+\code{is_vcs_root} looks for the root of a version control system,
+currently only Git and SVN are supported.
 
-\code{is_testthat} looks for the \code{testthat} directory, works when
-developing, testing, and checking a package.
+\code{is_testthat} looks for the \code{testthat} directory, works when developing, testing, and checking a package.
 
 \code{from_wd} uses the current working directory.
 }

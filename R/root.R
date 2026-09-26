@@ -11,9 +11,8 @@ is_root_criterion <- function(x) {
 as_root_criterion <- function(x) UseMethod("as_root_criterion", x)
 
 #' @details
-#' The `as_root_criterion()` function accepts objects of class
-#' `root_criterion`, and character values; the latter will be
-#' converted to criteria using `has_file`.
+#' The `as_root_criterion()` function accepts objects of class `root_criterion`, and character values;
+#' the latter will be converted to criteria using `has_file`.
 #'
 #' @rdname root_criterion
 #' @export
@@ -47,9 +46,8 @@ print.root_criterion <- function(x, ...) {
 
 #' @export
 #' @rdname root_criterion
-#' @details Root criteria can be combined with the `|` operator. The result is a
-#'   composite root criterion that requires either of the original criteria to
-#'   match.
+#' @details Root criteria can be combined with the `|` operator.
+#'   The result is a composite root criterion that requires either of the original criteria to match.
 #' @param y `[object]`\cr
 #'   An object.
 `|.root_criterion` <- function(x, y) {
@@ -65,11 +63,10 @@ print.root_criterion <- function(x, ...) {
 #'
 #' A \emph{root} is defined as a directory that contains a regular file
 #' whose name matches a given pattern and which optionally contains a given text.
-#' The search for a root starts at a given directory (the working directory
-#' by default), and proceeds up the directory hierarchy.
+#' The search for a root starts at a given directory (the working directory by default),
+#' and proceeds up the directory hierarchy.
 #'
-#' Starting from the working directory, the `find_root()` function searches
-#' for the root.
+#' Starting from the working directory, the `find_root()` function searches for the root.
 #' If a root is found, the `...` arguments are used to construct a path;
 #' thus, if no extra arguments are given, the root is returned.
 #' If no root is found, an error is thrown.
@@ -139,9 +136,8 @@ is_fs_root <- function(path) {
 }
 
 #' @rdname find_root
-#' @description `get_root_desc()` returns the description of the criterion
-#'   for a root path. This is especially useful for composite root criteria
-#'   created with [|.root_criterion()].
+#' @description `get_root_desc()` returns the description of the criterion for a root path.
+#'   This is especially useful for composite root criteria created with [|.root_criterion()].
 #' @export
 get_root_desc <- function(criterion, path) {
   for (i in seq_along(criterion$testfun)) {
@@ -162,18 +158,16 @@ format_lines <- function(n) {
 }
 
 #' @details
-#' The `has_file()` function constructs a criterion that checks for the
-#' existence of a specific file (which itself can be in a subdirectory of the
-#' root) with specific contents.
+#' The `has_file()` function constructs a criterion
+#' that checks for the existence of a specific file (which itself can be in a subdirectory of the root) with specific contents.
 #'
 #' @rdname root_criterion
 #' @param filepath `[character(1)]`\cr
 #'   File path (can contain directories).
 #' @param contents,fixed `[character(1)]`\cr
 #'   If `contents` is `NULL` (the default), file contents are not checked.
-#'   Otherwise, `contents` is a regular expression
-#'   (if `fixed` is `FALSE`) or a search string (if `fixed` is `TRUE`), and
-#'   file contents are checked matching lines.
+#'   Otherwise, `contents` is a regular expression (if `fixed` is `FALSE`) or a search string (if `fixed` is `TRUE`),
+#'   and file contents are checked matching lines.
 #' @param n `[integerish(1)]`\cr
 #'   Maximum number of lines to read to check file contents.
 #' @export
@@ -216,8 +210,7 @@ has_file <- function(filepath, contents = NULL, n = -1L, fixed = FALSE) {
 }
 
 #' @details
-#' The `has_dir()` function constructs a criterion that checks for the
-#' existence of a specific directory.
+#' The `has_dir()` function constructs a criterion that checks for the existence of a specific directory.
 #'
 #' @rdname root_criterion
 #' @export
@@ -244,8 +237,8 @@ check_relative <- function(filepath) {
 }
 
 #' @details
-#' The `has_file_pattern()` function constructs a criterion that checks for the
-#' existence of a file that matches a pattern, with specific contents.
+#' The `has_file_pattern()` function constructs a criterion that checks for the existence of a file that matches a pattern,
+#' with specific contents.
 #'
 #' @rdname root_criterion
 #' @param pattern `[character(1)]`\cr
@@ -288,8 +281,7 @@ has_file_pattern <- function(pattern, contents = NULL, n = -1L, fixed = FALSE) {
 }
 
 #' @details
-#' The `has_basename()` function constructs a criterion that checks if the
-#' [base::basename()] of the root directory has a specific name,
+#' The `has_basename()` function constructs a criterion that checks if the [base::basename()] of the root directory has a specific name,
 #' with support for case-insensitive file systems.
 #'
 #' @rdname root_criterion
@@ -408,16 +400,15 @@ is_git_root <- has_dir(".git") | has_file(".git", contents = "^gitdir: ")
 is_svn_root <- has_dir(".svn")
 
 #' @details
-#' `is_vcs_root` looks for the root of a version control
-#' system, currently only Git and SVN are supported.
+#' `is_vcs_root` looks for the root of a version control system,
+#' currently only Git and SVN are supported.
 #'
 #' @rdname criteria
 #' @export
 is_vcs_root <- is_git_root | is_svn_root
 
 #' @details
-#' `is_testthat` looks for the `testthat` directory, works when
-#'   developing, testing, and checking a package.
+#' `is_testthat` looks for the `testthat` directory, works when developing, testing, and checking a package.
 #'
 #' @rdname criteria
 #' @export
