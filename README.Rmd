@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    html_preview: false
+output: cynkratemplate::readme_document
 ---
 
 <!-- README.md and index.md are generated from README.Rmd. Please edit that file. -->
@@ -17,20 +15,14 @@ knitr::opts_chunk$set(
 set.seed(20230702)
 
 clean_output <- function(x, options) {
-  # Side effect
-  usethis::use_build_ignore("index.md")
 
+  # The demo package below is created inside the session's temporary
+  # directory, whose name is random and so different on every render.
+  x <- gsub(normalizePath(tempdir(), winslash = "/"), "/tmp/RtmpXXXXXX", x, fixed = TRUE)
   x <- gsub("0x[0-9a-f]+", "0xdeadbeef", x)
   x <- gsub("dataframe_[0-9]*_[0-9]*", "      dataframe_42_42      ", x)
   x <- gsub("[0-9]*\\.___row_number ASC", "42.___row_number ASC", x)
 
-  index <- x
-  index <- gsub("─", "-", index)
-  index <- strsplit(paste(index, collapse = "\n"), "\n---\n")[[1]][[2]]
-  writeLines(index, "index.md")
-
-  x <- gsub('(`vignette[(]"([^"]+)"[)]`)', "[\\1](https://rprojroot.r-lib.org/articles/\\2.html)", x)
-  x <- fansi::strip_sgr(x)
   x
 }
 
@@ -76,7 +68,8 @@ The rprojroot package works best when you have a "project": all related files co
 Let's create a package for demonstration.
 
 ```{r}
-dir <- tempfile()
+# A fixed name, so the demo package is not called `file1a2b3c` in the output.
+dir <- file.path(tempdir(), "demopkg")
 pkg <- usethis::create_package(dir)
 ```
 
