@@ -47,7 +47,7 @@ pkg <- usethis::create_package(dir)
 
 R packages satisfy the `is_r_package` criterion.
 A criterion is an object that contains a `find_file()` function.
-With `pkg` as working directory, the function works like `file.path()`, rooted at the working directory:
+With `pkg` as working directory, the function works like [`file.path()`](https://rdrr.io/r/base/file.path.html), rooted at the working directory:
 
 ``` r
 setwd(pkg)
