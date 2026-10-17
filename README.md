@@ -18,6 +18,29 @@ It is a low-level helper package for the [here](https://here.r-lib.org/) package
 library(rprojroot)
 ```
 
+## Goals and non-goals
+
+rprojroot aims to:
+
+- Find the root of a project by walking up from a starting directory until a directory matches a criterion.
+- Ship criteria for the project layouts people already have,
+  from `is_r_package` and `is_rstudio_project` to `is_git_root` and `is_renv_project`;
+  see `criteria` for the full list.
+- Let you state your own criterion with `root_criterion()` or `has_file()`,
+  and combine criteria with `|`.
+- Build paths below the root that stay correct wherever the working directory happens to be,
+  with `find_file()` and `make_fix_file()`.
+- Install with no dependencies beyond base R.
+
+It is explicitly not trying to:
+
+- Be the package you reach for in an interactive session:
+  the [here](https://here.r-lib.org/) package sits on top of rprojroot for that, and is intended for interactive use only.
+- Guess which criterion applies to your project:
+  `find_root()` takes the criterion as its first argument, and raises an error when no directory above the starting path matches it.
+- Determine the path of the currently running script:
+  `thisfile()` is soft-deprecated, and these functions are now available in the whereami package.
+
 ## Example
 
 The rprojroot package works best when you have a "project":
